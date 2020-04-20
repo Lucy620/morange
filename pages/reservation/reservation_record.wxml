@@ -1,0 +1,64 @@
+<!--pages/my_ reservation/reservation_record.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <!--记录存在-->
+  <!--时间选择-->
+  <view class="date-box">
+    <picker mode="date" fields="month" value="{{date}}" bindchange="bindDateChange">
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+    <image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+  </view>
+
+  <block wx:if="{{list.length > 0}}">
+    <!--预约课程-->
+    <view class="box" wx:for="{{list}}" wx:key='index'>
+      <image src="{{item.coach.headimgurl}}" class="coach"></image>
+      <view class="mid">
+        <view class="title">
+          <!--等候中-->
+          <text wx:if="{{item.order.status == 'queue' && item.data.is_enable == 1}}">[等候中]</text>
+          <!--拼课--->
+          <text wx:if="{{item.data.is_spell == 1}}">『拼课』</text> {{item.data.camp ? item.data.camp.course.name : item.data.course.name}}
+          <text wx:if="{{item.data.course.type == 'camp'}}">{{item.data.camp.name}}</text>
+        </view>
+        <!--私教课-->
+        <view class="name" wx:if="{{item.data.course.type == 'private'}}">{{item.coach.name}}</view>
+        <!---拼课 团课 训练营-->
+        <view class="name" wx:else>{{item.store.name}}
+          <!--拼课--->
+          <text wx:if="{{item.data.is_spell == 1}}" class="btn-tips {{item.data.is_enable == 1 ? 's-btn-tips': '' }}">{{ item.data.is_enable == 0? '待接单':'已接单'}}</text>
+        </view>
+        <!---私教课 训练营-->
+        <view class="tips" wx:if="{{item.data.course.type != 'team'}}">剩余
+          <text class="s-yellow">{{item.surplus}} / {{item.total}}</text> 课时
+        </view>
+        <!---团课 拼课-->
+        <view class="date" wx:else>{{tools.formatTime(item.data.start_at,'{m}月{d}日')}}
+          <text class="time">{{tools.formatTime(item.data.start_at,'{h}:{i}')}}-{{tools.formatTime(item.data.end_at,'{h}:{i}')}}</text>
+        </view>
+      </view>
+      <view class="btn" bindtap="see" data-id="{{item.id}}" data-ordersn="{{item.ordersn}}" data-type="{{item.data.course.type}}">查看</view>
+      <view class="wrap" wx:if="{{item.data.course.type == 'team'}}">
+        <view class="silk-ribbon" wx:if="{{item.sign_at == 0}}">未签到</view>
+      </view>
+    </view>
+  </block>
+
+  <!--记录不存在-->
+  <block wx:if="{{list.length == 0}}">
+    <view class="no-record-box">
+      <view class="record-box">
+        <view class="record-tips">本月无任何预约记录</view>
+        <view class="record-tips">「有心不怕迟，立即约课吧! 」</view>
+        <view class="record-btn" bindtap='jumpPage' data-url='pages/course/course'>立 即 约 课</view>
+        <view class="cancel-tips" bindtap='jumpPage' data-url='pages/reservation/cancel_reservation'>已取消的课程></view>
+      </view>
+    </view>
+  </block>
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

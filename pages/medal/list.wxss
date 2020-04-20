@@ -1,0 +1,101 @@
+/* pages/medal/list.wxss */
+
+/**tab 栏**/
+
+.tab-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 62rpx;
+  background-color: #111;
+}
+
+.tab-row {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid #272727;
+}
+
+.tab-item:last-child {
+  border: none;
+}
+
+.tab-text {
+  width: 304rpx;
+  height: 62rpx;
+  line-height: 62rpx;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.select-tab-item {
+  color: #ffae00;
+  border-bottom: 1px solid #ffae00;
+  background: url(https://boringcdn.nanningboring.com/molicheng/tab-bg.png);
+  background-size: 100% 100%;
+}
+
+/**勋章列表**/
+
+.medal-box {
+  position: fixed;
+  top: 97rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.scroll-view-box {
+  height: 100%;
+}
+
+.medal-title {
+  width: 541rpx;
+  padding: 5rpx 30rpx;
+  font-size: 24rpx;
+  color: #fff;
+  background: url(https://boringcdn.nanningboring.com/molicheng/medal-title-bg.png);
+  background-size: 100%;
+}
+
+.medal-rwo {
+  width: 690rpx;
+  margin: 25rpx auto 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.medal-item {
+  width: 230rpx;
+  margin-bottom: 50rpx;
+  text-align: center;
+}
+
+.medal-icon {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.medal-tips {
+  font-size: 20rpx;
+  color: #fff;
+  min-height: 60rpx;
+  padding: 0 10rpx;
+}
+
+.tips {
+  color: #bcbcbc;
+  text-align: center;
+  padding: 20rpx 0 45rpx;
+  width: 100%;
+  font-size: 26rpx;
+}

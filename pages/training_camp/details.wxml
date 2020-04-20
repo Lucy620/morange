@@ -1,0 +1,117 @@
+<!--pages/training_camp/details.wxml-->
+
+<import src="../../wxParse/wxParse.wxml" />
+<view class="wrapper" hidden="{{showLoad}}">
+
+
+  <!--轮播-->
+  <view class="swiper-box" id='posterHeight'>
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000" wx:if="{{show_type == 'slide' || show_type == '' }}">
+      <block wx:for="{{list.slide_imgs}}" wx:key="{{index}}">
+        <swiper-item bindtap="previewImage" data-url="{{item}}">
+          <image src="{{item}}" class="slide-image" mode="widthFix" />
+        </swiper-item>
+      </block>
+    </swiper>
+    
+    <!--视频-->
+    <video wx:else src="{{videoUrl.video}}" show-center-play-btn="{{true}}"  poster="{{videoUrl.poster}}?imageView2/1/w/750/h/300" controls="{{true}}" objectFit='fill'></video>
+  </view>
+
+  <view class="position-box">
+
+    <!--tab栏-->
+    <view class="tab-box {{scroll ? 'position-tab-box ' : ''}}">
+      <view class="row-box {{dataId == 1 ? 'select-tab' : ''}}" bindtap="switchTab" data-id="1">
+        近期营期
+      </view>
+      <view class="row-box {{dataId == 2 ? 'select-tab' : ''}}" bindtap="switchTab" data-id="2">
+        课程介绍
+      </view>
+    </view>
+  </view>
+
+  <!--近期营期-->
+  <view class="box-title">
+    <view class="title-icon-box">
+      <image src="https://boringcdn.nanningboring.com/molicheng/tiem-ixon.png" mode="widthFix" class="icon"></image>
+      <view class="title-text">近期营期</view>
+    </view>
+    <view class="city-title">
+      <picker bindchange="bindPickerChange" value="{{cityLindex}}" range-key="name" range="{{cityList}}">
+        <view class="picker" wx:if="{{cityLindex == -1}}">请选择></view>
+        <view class="picker" wx:else>
+          {{cityList[cityLindex].name}}>
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <!--训练营-->
+  <view class="camp-box" id='camphHeight'>
+    <view class="list" wx:for="{{list.camp}}" wx:key='index'>
+      <view class="store-row">
+        <view class="store-address">{{item.store.name}}</view>
+        <view class="map-box" bindtap="seeMap" data-latitude="{{item.store.latitude}}" data-longitude="{{item.store.longitude}}" data-name="{{item.store.name}}" data-address="{{item.store.address}}">
+          <view class="map-text">查看地图</view>
+          <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="map-arrow"></image>
+        </view>
+      </view>
+
+      <!--教练-->
+      <view class="box">
+        <image src="{{item.coach.headimgurl}}" mode="widthFix" class="coach"></image>
+        <view class="mid">
+          <view class="mid-title">{{item.name}}</view>
+          <view class="name">{{item.time_text}}</view>
+          <view class="date">{{tools.formatTime(item.start_at,'{m}月{d}日')}}-{{tools.formatTime(item.end_at,'{m}月{d}日')}}
+            <text class="money">￥{{tools.fen2yuan(item.price)}}</text>
+            <text class="limit">[上限{{item.total_stock}}人]</text>
+          </view>
+        </view>
+        <view class="btn full-btn" wx:if="{{item.rest_stock == 0}}">满员</view>
+        <view class="btn" wx:else bindtap="confirmOrder" data-order_type="buy" data-id="{{item.id}}">报名</view>
+      </view>
+    </view>
+  </view>
+
+  <!--简介-->
+  <view class="wxParse-box">
+    <view class="title-box">
+      <image src="https://boringcdn.nanningboring.com/molicheng/icon.png" mode="widthFix" class="icon"></image>
+      <view class="title">课程简介</view>
+    </view>
+    <view class="introduction">
+      <template is="wxParse" data="{{wxParseData:introduce.nodes}}" />
+    </view>
+  </view>
+
+  <!--注意事项-->
+  <view class="wxParse-box">
+    <view class="title-box">
+      <image src="https://boringcdn.nanningboring.com/molicheng/matter-icon.png" mode="widthFix" class="icon"></image>
+      <view class="title">注意事项</view>
+    </view>
+    <view class="introduction">
+      <template is="wxParse" data="{{wxParseData:note.nodes}}" />
+    </view>
+  </view>
+
+  <!--健身步骤-->
+  <view class="wxParse-box">
+    <view class="title-box">
+      <image src="https://boringcdn.nanningboring.com/molicheng/step-icon.png" mode="widthFix" class="icon"></image>
+      <view class="title">健身步骤</view>
+    </view>
+    <view class="introduction">
+      <template is="wxParse" data="{{wxParseData:step.nodes}}" />
+    </view>
+  </view>
+
+  <view class="{{reserve ? 'tips-btn s-black' : 'tips-btn'}}" bindtap="reserveCourse">{{ reserve ? '已经开启上架的提醒' : '新的一期上架提醒我'}}</view>
+
+  <!--转发有礼-->
+  <share isShare="{{isShare}}" id='share'></share>
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

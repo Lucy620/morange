@@ -1,0 +1,4 @@
+<!--pages/cutscenes/cutscenes.wxml-->
+<view class="cutscenes-box">
+  <image src="https://boringcdn.nanningboring.com/molicheng/cutscenes.png" mode="aspectFill"></image>
+</view>

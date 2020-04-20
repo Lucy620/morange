@@ -1,0 +1,223 @@
+/* pages/user/integralDetail.wxss */
+page {
+  background-image: linear-gradient(#2a2a2a, #1c1c1c);
+}
+
+.head {
+  height: 456rpx;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 10rpx;
+}
+
+.user-box {
+  display: flex;
+  align-items: center;
+  padding-bottom: 68rpx;
+  flex: 1;
+}
+
+.user-img {
+  width: 153rpx;
+  height: 153rpx;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
+  border: solid 4rpx #ffffff;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+
+.head-text {
+  flex: 1;
+  padding-left: 30rpx;
+  margin-left: -10rpx;
+}
+
+.silver-box {
+  background: url(https://boringcdn.nanningboring.com/molic/silver-title-bg.png);
+  background-size: 100%;
+}
+
+.title {
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.grade-text {
+  margin-right: 15rpx;
+  font-weight: 40rpx;
+}
+
+.tips {
+  color: #fff;
+  font-size: 21rpx;
+}
+
+.icon-box {
+  width: 180rpx;
+  display: flex;
+  align-items: centere;
+  justify-content: space-between;
+  padding-bottom: 65rpx;
+}
+
+.head-icon {
+  width: 75rpx;
+  height: 73rpx;
+}
+
+.icon-text {
+  color: #fff;
+  font-size: 16rpx;
+  text-align: center;
+}
+
+.integral-box {
+  width: 731rpx;
+  height: 197rpx;
+  background-color: #1a1a1a;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
+  border-radius: 13rpx;
+  margin: -50rpx auto 20rpx;
+}
+
+.box {
+  padding: 30rpx 25rpx;
+}
+
+.speed-box {
+  width: 695rpx;
+  height: 15rpx;
+  background-color: #000000;
+  border-radius: 7rpx;
+  border: solid 1rpx #2d2d2d;
+  margin: 0 auto;
+}
+
+.speed {
+  height: 15rpx;
+  background-image: linear-gradient(90deg,
+      #ff4800 41%,
+      #ff7200 89%,
+      #ffba00 100%),
+    linear-gradient(#000000,
+      #000000);
+  border-radius: 7rpx;
+}
+
+.integral-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+
+.integral-text-tips {
+  color: #848484;
+  font-size: 24rpx;
+}
+
+.integral-text-num {
+  color: #ffffff;
+  font-size: 32rpx;
+}
+
+.yellow {
+  color: #ffae00;
+}
+
+.integral-detailed {
+  font-size: 24rpx;
+  color: #fff;
+  text-align: right;
+  margin-top: 40rpx;
+
+}
+
+.grade-btn {
+  width: 731rpx;
+  height: 99rpx;
+  line-height: 99rpx;
+  margin: -35rpx auto 0;
+  text-align: center;
+  color: #000;
+  font-size: 32rpx;
+  background: url(https://boringcdn.nanningboring.com/molic/grade-btn.png);
+  background-size: 100%;
+}
+
+
+.task-list {
+  width: 731rpx;
+  min-height: 677rpx;
+  margin: 20rpx auto 0;
+  background-color: #1a1a1a;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
+  border-radius: 13rpx;
+}
+
+.list-box {
+  padding: 25rpx 20rpx;
+}
+
+.task-tips {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.task-title {
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.tips-text {
+  font-size: 28rpx;
+  color: #9c9c9c;
+}
+
+.task-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 20rpx 0;
+}
+
+.task {
+  font-size: 28rpx;
+  color: #fff;
+  flex: 1;
+}
+
+.reward {
+  font-size: 24rpx;
+  margin-left: 25rpx;
+  color: #9c9c9c;
+}
+
+.btn {
+  width: 139rpx;
+  height: 53rpx;
+  text-align: center;
+  line-height: 53rpx;
+  border-radius: 7rpx;
+  font-size: 27rpx;
+  color: #000;
+  background: url(https://boringcdn.nanningboring.com/molic/btn.png);
+  background-size: 100%;
+}
+
+.gray-btn {
+  background: #575757;
+  color: #8d8d8d;
+}
+
+.line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

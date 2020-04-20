@@ -1,0 +1,40 @@
+/* pages/components/forwarding/forwarding.wxss */
+
+/**转发弹出**/
+
+.box-mask {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding-top: 100rpx;
+}
+.content-box{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #cdcdcd;
+}
+.row{
+  font-size: 40rpx;
+  background: #fff;
+  text-align: center;
+  height: 99rpx;
+  color: #747474;
+  line-height: 99rpx;
+  margin-bottom: 5rpx;
+  border-radius: 0rpx;
+  padding: 0;
+}
+.row::after{
+  border: 0;
+}
+.row:last-child{
+  margin: 0;
+}
+

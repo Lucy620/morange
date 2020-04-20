@@ -1,0 +1,252 @@
+/* pages/coach/curriculum.wxss */
+
+page {
+  background: #262626;
+}
+
+/**海报**/
+
+.poster-box {
+  display: flex;
+  align-items: center;
+  height: 215.3rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/poster-bg.png);
+  background-size: 100%;
+  padding-left: 20rpx;
+}
+
+.user-coach {
+  width: 127rpx;
+  height: 127rpx;
+  border-radius: 50%;
+}
+
+.coach {
+  flex: 1;
+  color: #fff;
+  margin-left: 5rpx;
+}
+
+.coach-name {
+  font-size: 26.7rpx;
+}
+
+.coach-introduction {
+  font-size: 20rpx;
+}
+
+.tag {
+  position: relative;
+  z-index: 1;
+  margin: -20rpx auto 0;
+  width: 114rpx;
+  height: 32.7rpx;
+  text-align: center;
+  line-height: 32.7rpx;
+  font-size: 20rpx;
+  background-image: linear-gradient(#ffae00, #ffae00), linear-gradient(#b8b8b8, #b8b8b8);
+  background-blend-mode: normal, normal;
+  border-radius: 6.7rpx;
+}
+
+/*排课  日历 */
+
+.calendar {
+  color: #525252;
+  background: #181818;
+}
+
+.calendar-header {
+  color: #fff;
+  font-size: 20rpx;
+}
+
+.calendar-board {
+  color: #fff;
+  font-weight: bold;
+  font-size: 20rpx;
+}
+
+/***提示**/
+
+.tips {
+  font-size: 20rpx;
+  text-align: center;
+  color: #525252;
+  padding: 25rpx 0;
+}
+
+/**日常*/
+
+.daily-box {
+  width: 719.3rpx;
+  height: 158rpx;
+  margin: 0 auto;
+  background-color: #141414;
+  margin-bottom: 5rpx;
+}
+
+.daily-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 25rpx;
+}
+
+.daily-details {
+  flex: 1;
+}
+
+.time {
+  font-size: 28rpx;
+  color: #fff;
+  height: 50rpx;
+}
+
+.store {
+  color: #525252;
+  font-size: 20rpx;
+  height: 50rpx;
+}
+
+.curriculum {
+  color: #525252;
+  font-size: 20rpx;
+}
+
+.s-yellow {
+  color: #ffae00;
+  margin-left: 15rpx;
+}
+
+/**我**/
+
+.activity-status {
+  height: 115.3rpx;
+  background-color: #181818;
+  display: flex;
+  align-items: center;
+}
+
+.status-itme {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.status-itme::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 1px;
+  height: 50rpx;
+  margin-top: -25rpx;
+  background: #525252;
+}
+
+.status-itme:last-child:after {
+  width: 0;
+  height: 0;
+  background: none;
+}
+
+.number {
+  font-size: 40rpx;
+  color: #ffae00;
+  font-weight: bold;
+}
+
+.staus-text {
+  font-size: 20rpx;
+  color: #fff;
+}
+
+.coach-thing {
+  height: 35.3rpx;
+  line-height: 35.3rpx;
+  font-size: 20rpx;
+  padding-left: 25rpx;
+  color: #525252;
+  background-color: #3a3a3a;
+}
+.coach-tips{
+  color: #fff;
+  text-align: center;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.coach-thing-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25rpx;
+  margin-bottom: 2rpx;
+  background: #2e2e2e;
+}
+.thing-row{
+  margin: 0;
+}
+.thing-text {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.thing-arrow {
+  display: flex;
+  align-items: center;
+  color: #525252;
+}
+.arrow {
+  width: 20rpx;
+  height: 20rpx;
+  transform: rotate(-90deg);
+  margin-left: 5rpx;
+  margin-top: 8rpx;
+}
+.thing-tips {
+  color: #fff;
+  font-size: 22rpx;
+  margin-right: 25rpx;
+}
+
+/**按钮**/
+
+.btn-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 102rpx;
+  display: flex;
+  align-items: center;
+  background-color: #000;
+  padding-top: 10rpx;
+}
+
+.btn {
+  flex: 1;
+  height: 100%;
+  text-align: center;
+}
+
+.slect-btn {
+  background: url(https://boringcdn.nanningboring.com/molicheng/btn-bg1.png);
+  background-size: 100% 100%;
+  border-bottom: 2rpx solid #ffae00;
+}
+
+.date-icon {
+  width: 51.3rpx;
+  height: 50rpx;
+}
+
+.btn-text {
+  color: #424242;
+  font-size: 24rpx;
+}
+
+.slect-btn-text {
+  color: #ffae00;
+}

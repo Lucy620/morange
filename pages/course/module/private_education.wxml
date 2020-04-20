@@ -1,0 +1,105 @@
+<import src="../../../wxParse/wxParse.wxml" />
+<template name="private_education">
+  <view class="box">
+      <view class="coach">
+        <image src="{{courseData.coach.headimgurl}}" mode="aspectFill" class="user-coach"></image>
+      </view>
+    <view class="head-box">
+      <view class="private-course-title">
+        {{courseData.data.course.name}}
+        <text class="private-details-text"  bindtap='jumpPage' data-url='pages/private_education/course?private_id={{courseData.data.id}}'>详情</text>
+      </view>
+      <view class="private-tips-box">
+        课程安排，请与教练微信沟通
+      </view>
+      <image class="mask-bg" src="https://boringcdn.nanningboring.com/molicheng/mask.png" mode="widthFix"></image>
+    </view>
+    <view class="private-list">
+      <view class="circular"></view>
+      <view class="circular1"></view>
+      <view class="private-wrow-top">
+        <image src="https://boringcdn.nanningboring.com/molicheng/icon3.png" mode="widthFix" class="private-icon"></image>
+        <view class="private-text">入场密码：
+          <text class="league-tips">{{courseData.order.open_code}}</text>
+        </view>
+      </view>
+      <view class="private-wrow">
+        <image src="https://boringcdn.nanningboring.com/molicheng/wx-icon.png" mode="widthFix" class="private-icon"></image>
+        <view class="private-text">
+          教练：
+          <view class="private-name">{{courseData.coach.name}}</view>
+          <view class="private-tips-friends" wx:if="{{!showWeChat}}" bindtap="addFriends">加好友</view>
+          <view class="wechat-text" wx:if="{{showWeChat}}">{{courseData.coach.weixin}}
+            <text class="copy-text" bindtap="copy" data-weixin="{{courseData.coach.weixin}}">复制</text>
+          </view>
+        </view>
+      </view>
+      <view class="private-wrow">
+        <image src="https://boringcdn.nanningboring.com/molicheng/user-icon3.png" mode="widthFix" class="private-icon"></image>
+        <view class="private-text">名额：1人
+        </view>
+      </view>
+      <view class="private-wrow">
+        <image src="https://boringcdn.nanningboring.com/molicheng/course-icon.png" mode="widthFix" class="private-icon"></image>
+        <view class="private-text">剩余：{{courseData.surplus}}/{{courseData.total}}课时
+        </view>
+      </view>
+      <view class="private-wrow">
+        <image src="https://boringcdn.nanningboring.com/molicheng/date-icon1.png" mode="widthFix" class="private-icon"></image>
+        <view class="private-text">有效期至：{{tools.formatTime(courseData.end_at,'{y}年{m}月{d}日{h}:{i}')}}
+        </view>
+      </view>
+      <view class="private-address">
+        <view class="private-wrow-address">
+          <image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="address-icon"></image>
+          <view class="private-text">地址：</view>
+        </view>
+      </view>
+      <view class="private-address-text">{{courseData.store.address}}</view>
+      <view class="private-map" bindtap="seeMap" data-latitude="{{courseData.store.latitude}}" data-longitude="{{courseData.store.longitude}}" data-name="{{courseData.store.name}}" data-address="{{courseData.store.address}}">点击查看地图</view>
+      <view class="private-wrow">
+        <image src="https://boringcdn.nanningboring.com/molicheng/matter-icon.png" mode="widthFix" class="private-icon"></image>
+        <view class="private-text">注意</view>
+      </view>
+      <view class="private-text-box">
+        <template is="wxParse" data="{{wxParseData:note.nodes}}" />
+      </view>
+      <view class="private_-ducation-box">
+        <view class="money-row">
+          <view class="money-row-text">总价：</view>
+          <view class="money-row-text">{{tools.fen2yuan(courseData.order.total_price,2)}}元</view>
+        </view>
+        <view class="money-row">
+          <view class="money-row-text">实付: </view>
+          <view class="money-row-text">
+          <text class="s-gray" wx:if="{{courseData.order.pay_method == 'card'}}">(魔橙卡支付)</text>
+            <text class="s-gray" wx:if="{{courseData.order.pay_method == 'weixin'}}">(微信支付)</text>{{tools.fen2yuan(courseData.order.pay_price,2)}}元
+          </view>
+        </view>
+        <view class="money-row">
+          <view class="money-row-text">支付时间: </view>
+          <view class="money-row-text s-gray">{{tools.formatTime(courseData.order.pay_at,'{y}年{m}月{d}日{h}:{i}')}}</view>
+        </view>
+        <view class="private-btn" bindtap="applyTrain">申请退训</view>
+        <view class="private-tips-text">退训退款说明: 在报名后30天内申请退训，将退还剩余课时数等额的实款项; 报名后30天之后申请退训，将退还剩余课时数的实付款项的30%。
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="mask-box" wx:if="{{show}}">
+    <view class="mask-text-box">
+      <view class="mask-text-title">退款须知</view>
+      <view class="mask-text-tips">
+        退训退款会退回实付款项；如有使用 代金券，截至退款日期仍在有效期内 的代金券一并退回；退回的代金券， 有效期与使用时一致。
+      </view>
+      <view class="mask-btn-box">
+        <view class="mask-btn" bindtap="closeTips">再想想</view>
+        <view class="confirm-btn" bindtap="apply">确认退训</view>
+      </view>
+    </view>
+  </view>
+
+</template>
+
+<wxs module="tools" src="../../../utils/tools.wxs"></wxs>

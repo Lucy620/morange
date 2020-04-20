@@ -1,0 +1,90 @@
+<import src="../../../wxParse/wxParse.wxml" />
+<template name="training_camp">
+  <view class="box">
+    <view class="coach">
+      <image src="{{courseData.coach.headimgurl}}" mode="aspectFill" class="user-coach"></image>
+    </view>
+    <view class="head-box">
+      <view class="course-title">
+        {{courseData.data.camp.course.name + courseData.data.camp.name }}
+        <view class="training-camp-time">
+          {{tools.formatTime(courseData.data.camp.start_at,'{m}月{d}日 {h}:{i}')}} - {{tools.formatTime(courseData.data.camp.end_at,'{m}月{d}日 {h}:{i}')}}
+        </view>
+      </view>
+      <view class="training-camp-tips-box">
+        课程安排，请与教练微信沟通
+      </view>
+      <image class="mask-bg" src="https://boringcdn.nanningboring.com/molicheng/mask.png" mode="widthFix"></image>
+    </view>
+    <view class="training-box">
+      <view class="circular"></view>
+      <view class="circular1"></view>
+      <view class="training-camp-top">
+        <image src="https://boringcdn.nanningboring.com/molicheng/icon3.png" mode="widthFix" class="training-icon"></image>
+        <view class="training-text">入场密码：
+          <text class="league-tips">{{courseData.order.open_code}}</text>
+        </view>
+      </view>
+      <view class="training-camp">
+        <image src="https://boringcdn.nanningboring.com/molicheng/course-icon.png" mode="widthFix" class="training-icon"></image>
+        <view class="training-text">{{courseData.item.length}}课（已签到{{courseData.sign_amount}}节）</view>
+      </view>
+      <view class="training-list">
+        <view class="training-course" wx:for="{{courseData.item}}" wx:key='index' wx:for-item='course'> {{tools.formatTime(course.start_at,'{m}月{d}日')}} {{tools.getWeek(course.start_at)}} {{tools.formatTime(course.start_at,'{h}:{i}')}}-{{tools.formatTime(course.end_at,'{h}:{i}')}}
+          <text class="s-red {{course.sign_at > 0 ? 's-green' : ''}}">{{course.sign_at > 0 ? '已签到' : '未签到'}}</text>
+        </view>
+      </view>
+      <view class="training-camp">
+        <image src="https://boringcdn.nanningboring.com/molicheng/wx-icon.png" mode="widthFix" class="training-icon"></image>
+        <view class="training-text">
+          教练：
+          <view class="training-name">{{courseData.coach.name}}</view>
+          <view class="training-tips" wx:if="{{!showWeChat}}" bindtap="addFriends">加好友</view>
+          <view class="wechat-text" wx:if="{{showWeChat}}">{{courseData.coach.weixin}}
+            <text class="copy-text" bindtap="copy" data-weixin="{{courseData.coach.weixin}}">复制</text>
+          </view>
+        </view>
+      </view>
+      <view class="training-camp">
+        <image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="training-icon"></image>
+        <view class="training-text">地址：</view>
+      </view>
+      <view class="training-text-wrapper">
+        <view class="training-address-text">{{courseData.store.address}}</view>
+        <view class="training-map" bindtap="seeMap" data-latitude="{{courseData.store.latitude}}" data-longitude="{{courseData.store.longitude}}" data-name="{{courseData.store.name}}" data-address="{{courseData.store.address}}">点击查看地图</view>
+      </view>
+      <view class="training-camp">
+        <image src="https://boringcdn.nanningboring.com/molicheng/date-icon1.png" mode="widthFix" class="training-icon"></image>
+        <view class="training-text">本期课程安排</view>
+      </view>
+      <view class="training-text-wrapper">{{courseData.data.camp.time_text}}</view>
+      <view class="training-camp">
+        <image src="https://boringcdn.nanningboring.com/molicheng/matter-icon.png" mode="widthFix" class="training-icon"></image>
+        <view class="training-text">注意</view>
+      </view>
+      <view class="training-text-box">
+        <template is="wxParse" data="{{wxParseData:note.nodes}}" />
+      </view>
+      <view class="money-row">
+        <view class="money-row-text">总价：</view>
+        <view class="money-row-text">{{tools.fen2yuan(courseData.order.total_price,2)}}元</view>
+      </view>
+      <view class="money-row">
+        <view class="money-row-text">实付: </view>
+        <view class="money-row-text">
+          <text class="s-gray" wx:if="{{courseData.order.pay_method == 'card'}}">(魔橙卡支付)</text>
+          <text class="s-gray" wx:if="{{courseData.order.pay_method == 'weixin'}}">(微信支付)</text>{{tools.fen2yuan(courseData.order.pay_price,2)}}元
+        </view>
+      </view>
+      <view class="money-row">
+        <view class="money-row-text">支付时间: </view>
+        <view class="money-row-text s-gray">{{tools.formatTime(courseData.order.pay_at,'{y}年{m}月{d}日{h}:{i}')}}</view>
+      </view>
+      <view class="private-btn" bindtap="apply" wx:if="{{courseData.data.camp.complete_status == 0}}">申请退营</view>
+      <view class="private-tips-text">退营须知：距离开营超过7天申请退营，支持全额退款；不足7天，将收取报名费30%的退营手续费；开营后，不支持退营。若使用代金券，代金券不支 持退换。
+      </view>
+    </view>
+  </view>
+</template>
+
+<wxs module="tools" src="../../../utils/tools.wxs"></wxs>

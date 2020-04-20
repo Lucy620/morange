@@ -1,0 +1,102 @@
+<!--pages/private_education/reservation_success.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <view class="box-ok">
+    <image src="https://boringcdn.nanningboring.com/molicheng/ok-logo.png" mode="widthFix" class="ok-logo"></image>
+
+    <!--私教课 训练营-->
+    <view class="tips-title" wx:if="{{payData.data.course.type == 'camp' || payData.data.course.type == 'private'}}">课程安排请与教练沟通</view>
+
+    <!--团课 拼课-->
+    <view class="tips-title" wx:if="{{payData.data.course.type == 'team'}}">
+      <view>支付成功</view>
+      <view class="tips-text">入场密码：
+        <text class="s-yellow" wx:if="{{payData.status == 'queue' || time > min}}">开课前30分钟显示</text>
+        <text class="s-yellow" wx:if="{{payData.status == 'success' && time < min}}">{{payData.open_code}}</text>
+      </view>
+    </view>
+
+
+  </view>
+
+  <!--私教 训练-->
+  <view class="coach-box">
+    <view class="coach">
+      <image src="{{payData.data.coach.headimgurl}}" mode="aspectFill" class="user-coach"></image>
+      <view class="name-box">
+        <view class="name">{{payData.data.coach.name}}</view>
+        <view class="tips">欢迎加好友聊聊~</view>
+      </view>
+    </view>
+    <view class="coach-btn-box" bindtap="addFriends" wx:if="{{!showWeChat}}">
+      <view class="coach-btn">加好友</view>
+    </view>
+    <view class="wechat-text" wx:if="{{showWeChat}}">{{payData.data.coach.weixin}}
+      <text class="copy-text" bindtap="copy" data-weixin="{{payData.data.coach.weixin}}">复制</text>
+    </view>
+  </view>
+
+  <view class="list">
+
+    <!--私教课-->
+    <block wx:if="{{payData.data.course.type == 'private'}}">
+      <view class="row-box">
+        <view class="row-text">课程：</view>
+        <view class="row-text">{{payData.data.course.name}}</view>
+      </view>
+      <view class="row-box">
+        <view class="row-text">教练：</view>
+        <view class="row-text">{{payData.data.coach.name}}</view>
+      </view>
+    </block>
+
+    <!--团课 训练营-->
+    <block wx:if="{{payData.data.course.type == 'team' || payData.data.course.type == 'camp'}}">
+      <view class="row-box">
+        <view class="row-text">课程: 
+        <!--拼课--->
+        <text wx:if="{{payData.data.is_spell == 1}}">『拼课』</text>{{payData.data.course.name}}
+          <text wx:if="{{payData.data.course.type == 'camp'}}">{{payData.data.name}}</text>
+        </view>
+      </view>
+      <view class="row-box">
+        <view class="row-text">门店：{{payData.data.store.name}}</view>
+        <view class="row-text" bindtap="seeMap" data-latitude="{{payData.data.store.latitude}}" data-longitude="{{payData.data.store.longitude}}" data-name="{{payData.data.store.name}}" data-address="{{payData.data.store.address}}">
+          <text class="s-yellow">交通指引 ></text>
+        </view>
+      </view>
+      <view class="row-box">
+
+        <!--团课-->
+        <view class="row-text" wx:if="{{payData.data.course.type == 'team'}}">时间: {{tools.formatTime(payData.data.start_at,'{m}月{d}日')}} {{tools.getWeek(payData.data.start_at)}} {{tools.formatTime(payData.data.start_at,'{h}:{i}')}}-{{tools.formatTime(payData.data.end_at,'{h}:{i}')}}</view>
+
+        <!--训练营-->
+        <view class="row-text" wx:if="{{payData.data.course.type == 'camp'}}">时间: {{tools.formatTime(payData.data.start_at,'{m}月{d}日')}} - {{tools.formatTime(payData.data.end_at,'{m}月{d}日')}}</view>
+      </view>
+
+      <!--团课 拼课--->
+      <view class="notice-box" wx:if="{{payData.data.course.type == 'team'}}">
+        <view>须知:</view>
+        <view>未满14周岁请勿进入;请按实际预约到场，课程中如需核验报名，请出示预约编号(编号会在课前15分钟推送);如无法出示将会被请出，累积两次将被列入信用黑名单，感谢配合。</view>
+      </view>
+    </block>
+  </view>
+
+  <!--团课-->
+  <image src="https://boringcdn.nanningboring.com/molicheng/share-img.png" mode="widthFix" class="share-img" wx:if="{{payData.data.course.type == 'team'}}" bindtap="onGive"></image>
+
+
+  <view class="btn-box">
+    <view class="btn" bindtap="back">返回继续预约</view>
+    <view class="btn s-btn" bindtap='jumpPage' data-url='pages/reservation/my_reservation'>查看我的预约</view>
+  </view>
+
+  <!--邀请好友-->
+  <give isGive="{{isGive}}" course_id="{{payData.data.course.id}}" bind:closeGuve='closeGuve'></give>
+
+  <!--转发有礼-->
+  <share isShare="{{isShare}}" id='share'></share>
+
+</view>
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

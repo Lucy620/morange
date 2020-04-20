@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "Morange 魔力星球排名",
+  "usingComponents": {
+    "share": "/pages/components/share/share"
+  }
+}

@@ -1,0 +1,87 @@
+<!--pages/user/integralDetail.wxml-->
+<view class="wrapper" hidden="{{showLoad}}">
+
+	<!--开通魔橙卡 等级存在-->
+	<block wx:if="{{user.type == 'vip'}}">
+		<view class="head" style="background: url({{background[grade]}}); background-size: 100%;">
+			<view class="user-box">
+				<image src="{{user.miniprogram.headimgurl}}" mode="widthFix" class="user-img"></image>
+				<view class="head-text {{grade > 0 ? 'silver-box' : ''}}">
+					<view class="title"><text class="grade-text">Lv.{{grade_id}}</text>{{integralItem.name}}</view>
+					<view class="tips">Lv.{{grade_id}} MORANGE POWER </view>
+				</view>
+			</view>
+			<view class="icon-box">
+				<view class="icon-row" wx:for="{{iconList[grade]}}" wx:key='index' bindtap="jumpPage" data-url='pages/user/integralEquity?grade_id={{integralItem.grade_id}}&user_integral={{user.total_integral}}'>
+					<image class="head-icon" src="{{item.icon}}" mode="widthFix"></image>
+					<view class="icon-text">{{item.name}}</view>
+				</view>
+			</view>
+		</view>
+		<view class="integral-box">
+			<view class="box">
+				<view class="speed-box">
+					<view class="speed" style="width:{{speed}}%"></view>
+				</view>
+				<view class="integral-text">
+					<view class="integral-text-tips" wx:if="{{!tipsText}}">再获得{{user.total_integral >= integral[integral.length - 1].integral ? '0' :  integralItem.integral - user.total_integral}}点积分即可升至{{scalableName}}</view>
+					<view class="integral-text-tips" wx:else>再获得{{tipsText}}</view>
+					<view class="integral-text-num"><text class="yellow">{{user.total_integral}}</text>/{{integralItem.integral}}</view>
+				</view>
+				<view class="integral-detailed" bindtap='jumpPage' data-url='pages/user/integralChange'>积分变动明细 ></view>
+			</view>
+		</view>
+	</block>
+
+	<!--未通魔橙卡 等级不存在-->
+	<block wx:else>
+		<view class="head" style="background: url(https://boringcdn.nanningboring.com/molicno-grade-bg.png); background-size: 100%;">
+			<view class="user-box">
+				<image src="{{user.miniprogram.headimgurl}}" mode="widthFix" class="user-img"></image>
+				<view class="head-text">
+					<view class="title"><text class="grade-text">Lv.0</text>热血青铜</view>
+					<view class="tips">Lv.0 MORANGE POWER </view>
+				</view>
+			</view>
+			<view class="icon-box">
+				<view class="icon-row" bindtap='jumpPage' data-url='pages/user/integralEquity?grade_id=1&user_integral={{user.total_integral}}'>
+					<image class="head-icon" src="https://boringcdn.nanningboring.com/molicgrade-icon1.png" mode="widthFix"></image>
+					<view class="icon-text">专属页面</view>
+				</view>
+				<view class="icon-row" bindtap='jumpPage' data-url='pages/user/integralEquity?grade_id=1&user_integral={{user.total_integral}}'>
+					<image class="head-icon" src="https://boringcdn.nanningboring.com/molicgrade-icon2.png" mode="widthFix"></image>
+					<view class="icon-text">更多权益</view>
+				</view>
+			</view>
+		</view>
+		<view class="integral-box">
+			<view class="box">
+				<view class="speed-box">
+					<view class="speed" style="width:0%"></view>
+				</view>
+				<view class="integral-text">
+					<view class="integral-text-tips">再获得1000点积分即可升至不屈白银</view>
+					<view class="integral-text-num"><text class="yellow">0</text>/1000</view>
+				</view>
+				<view class="integral-detailed" bindtap='jumpPage' data-url='pages/user/integralChange'>积分变动明细 ></view>
+			</view>
+		</view>
+		<view class="grade-btn" bindtap='jumpPage' data-url='pages/recharge/recharge?type=normal'>开通魔橙卡立享等级收益</view>
+	</block>
+
+
+	<view class="task-list">
+		<view class="list-box">
+			<view class="task-tips">
+				<view class="task-title">成长任务</view>
+				<view class="tips-text">完成任务提升积分</view>
+			</view>
+			<view class="task-row" wx:for="{{task}}" wx:key='index'>
+				<view class="task">{{item.name}}<text class="reward">积分+{{item.integral}}</text></view>
+				<view class="btn {{item.complete ? 'gray-btn' : ''}}" bindtap="goComplete" data-status='{{item.complete}}' data-type="{{item.type}}">{{item.complete == 'wait' ? '去完成': item.complete ? '已完成' : '去完成'}}</view>
+				<image src="https://boringcdn.nanningboring.com/molic/line.png" class="line" mode="widthFix"></image>
+			</view>
+		</view>
+	</view>
+
+</view>

@@ -1,0 +1,238 @@
+/* pages/store/store_details.wxss */
+
+/***轮播**/
+
+.swiper-box {
+  height: 300rpx;
+  background-color: #3d3d3d;
+}
+
+swiper {
+  height: 100%;
+}
+
+.slide-image {
+  width: 100%;
+}
+
+video{
+  width: 100%;
+  height: 100%;
+}
+/**课程分类**/
+
+.course-category-box {
+  width: 720rpx;
+  background-color: #121212;
+  border-radius: 6rpx;
+  margin: 15rpx auto;
+}
+
+.course-category {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+}
+
+.course-category-row {
+  flex: 1;
+}
+
+.course-category-title {
+  color: #fff;
+  font-size: 26rpx;
+}
+
+.course-category-tips {
+  color: #b1b1b1;
+  font-size: 24rpx;
+}
+
+.course-category-btn {
+  width: 99rpx;
+  height: 52rpx;
+  text-align: center;
+  line-height: 52rpx;
+  border-radius: 6.7rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/curriculum-btn.png);
+  background-size: 100%;
+  font-size: 24rpx;
+   position: relative;
+  z-index: 1;
+}
+
+/**课程简介**/
+
+.course-introduction-box {
+  width: 720rpx;
+  background-color: #1c1c1c;
+  border-radius: 6rpx;
+  margin: 15rpx auto;
+}
+
+.title-box {
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  height: 72rpx;
+  background-color: #121212;
+  border-top-left-radius: 13rpx;
+  border-top-right-radius: 13rpx;
+}
+
+.icon {
+  width: 31rpx;
+  height: 32rpx;
+}
+
+.title {
+  color: #fff;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+}
+
+.introduction {
+  padding: 10px;
+  font-size: 24rpx;
+  line-height: 1.8;
+  color: #818181;
+  overflow: hidden;
+}
+
+/**地址**/
+
+.address-introduction-box {
+  width: 720rpx;
+  background-color: #1c1c1c;
+  border-radius: 6rpx;
+  margin: 15rpx auto;
+}
+
+.address-title-box {
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  height: 72rpx;
+  background-color: #121212;
+  border-top-left-radius: 13rpx;
+  border-top-right-radius: 13rpx;
+}
+
+.address-icon {
+  width: 31rpx;
+  height: 32rpx;
+}
+
+.address-title {
+  color: #fff;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+}
+
+.address-introduction {
+  padding: 30rpx 20rpx;
+}
+
+.address-text {
+  color: #818181;
+  font-size: 24rpx;
+}
+
+.s-map {
+  color: #ffae00;
+  text-decoration: underline;
+  margin-left: 10rpx;
+}
+
+/**事项**/
+
+.matter-box {
+  width: 720rpx;
+  background-color: #1c1c1c;
+  border-radius: 6rpx;
+  margin: 15rpx auto;
+}
+
+.matter-title {
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  height: 72rpx;
+  background-color: #121212;
+  border-top-left-radius: 13rpx;
+  border-top-right-radius: 13rpx;
+}
+
+.title-text {
+  color: #fff;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+}
+
+.matter-icon {
+  width: 31rpx;
+  height: 32rpx;
+}
+
+.matter-introduction {
+  padding: 20rpx;
+  font-size: 24rpx;
+  line-height: 1.8;
+  color: #818181;
+}
+
+/**步骤**/
+
+.step-box {
+  width: 720rpx;
+  background-color: #1c1c1c;
+  border-radius: 6rpx;
+  margin: 15rpx auto;
+}
+
+.step-title {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  height: 72rpx;
+  background-color: #121212;
+  border-top-left-radius: 13rpx;
+  border-top-right-radius: 13rpx;
+}
+
+.step-title-text {
+  color: #fff;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+}
+
+.step-icon {
+  width: 31rpx;
+  height: 32rpx;
+}
+
+.step-row {
+  padding: 20rpx;
+  font-size: 24rpx;
+  line-height: 1.8;
+  color: #818181;
+}
+
+.btn-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ff6f0d
+}
+
+.btn {
+  text-align: center;
+  height: 95rpx;
+  line-height: 95rpx;
+  font-size: 32rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png) no-repeat;
+  /*background: #ff6f0d url(http://oppocdn.afxeon.net/FkPzF8pGpgaVpgQrCKBDeyfGiJw9) no-repeat;*/
+  background-size: 100%;
+}

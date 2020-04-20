@@ -1,0 +1,33 @@
+<!--pages/reservation/cancel_reservation.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <!--时间-->
+  <view class="date-box">本月</view>
+
+
+  <!--预约课程-->
+  <view class="box" wx:for="{{list}}" wx:key='index'>
+    <image src="{{item.data.coach.headimgurl}}" class="coach"></image>
+    <view class="mid">
+      <view class="title">
+        <!--等候中-->
+        <text wx:if="{{item.status == 'queue' && item.data.is_enable == 1}}">[等候中]</text>
+        <!--拼课--->
+        <text wx:if="{{item.data.is_spell == 1}}">『拼课』</text> {{item.data.course.name}}
+      </view>
+      <!--私教课-->
+      <view class="name" wx:if="{{item.data.course.type == 'private'}}">{{item.coach.name}}</view>
+      <!---拼课 团课 训练营-->
+      <view class="name" wx:else>{{item.data.store.name}}</view>
+      <!---团课 拼课-->
+      <view class="date">{{tools.formatTime(item.data.start_at,'{m}月{d}日')}}
+        <text class="time">{{tools.formatTime(item.data.start_at,'{h}:{i}')}}-{{tools.formatTime(item.data.end_at,'{h}:{i}')}}</text>
+      </view>
+    </view>
+    <view class="btn" bindtap='jumpPage' data-url='pages/refund/refund_success?ordersn={{item.ordersn}}'>查看</view>
+  </view>
+
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

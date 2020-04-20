@@ -1,0 +1,30 @@
+<!--pages/user/integralEquity.wxml-->
+<view class="wrapper" hidden="{{showLoad}}">
+	<swiper indicator-dots="{{true}}" autoplay="{{false}}" interval="5000" duration="500" indicator-active-color="#ff8400" bindchange='binSwiper' current='{{equity}}'>
+		<block wx:for="{{integral}}" wx:key="index">
+			<swiper-item class='swiper-item-box'>
+				<image class="swiper-item" src="{{item.img}}" mode="widthFix"></image>
+				<view class="grade-box">
+					<view class="grade-title">Lv.{{item.grade_id +' '+ item.name}}</view>
+					<view class="grade-num-box"><text class="yellow">{{userType == 'user' ? '0' : user_integral}}</text>/{{item.integral}}</view>
+				</view>
+				<image class="current" wx:if="{{item.grade_id == grade_id}}" src="https://boringcdn.nanningboring.com/molic/current.png"></image>
+			</swiper-item>
+		</block>
+	</swiper>
+
+	<view class="equity-box">
+		<view class="equity-list">
+			<view class="equity-row" wx:for="{{privilege}}" wx:key='index'>
+				<view class="equity-top">
+					<image src="{{item.img}}" class="equity-icon" mode="widthFix"></image>
+					<view class="equity-title">
+						<view class="title">{{item.name}}</view>
+						<view class="tips">{{item.content}}</view>
+					</view>
+				</view>
+				<image src="https://boringcdn.nanningboring.com/molic/line.png" class="line" mode="widthFix"></image>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,319 @@
+/* pages/store/course.wxss */
+
+page {
+  background: #181818;
+}
+
+/**星期**/
+
+.week-box {
+  position: fixed;
+  top: 10rpx;
+  left: 0;
+  right: 0;
+  height: 62rpx;
+  line-height: 62rpx;
+  z-index: 1;
+  background-color: #181818;
+  display: flex;
+  align-items: center;
+}
+
+.week-item {
+  flex: 1;
+  text-align: center;
+  color: #818181;
+  font-size: 24rpx;
+  position: relative;
+}
+
+.s-line {
+  position: relative;
+}
+
+.s-line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -25rpx;
+  width: 1px;
+  height: 50rpx;
+  background: #272727;
+}
+
+.select-week-box {
+  position: absolute;
+  top: -7rpx;
+  left: 50%;
+  margin-left: -33rpx;
+  width: 66rpx;
+  height: 66rpx;
+  z-index: 1;
+  border-radius: 50%;
+  background-image: linear-gradient(to bottom, #ffd324, #ff7200);
+  padding: 5rpx;
+}
+
+.select-week {
+  width: 66rpx;
+  height: 66rpx;
+  background-color: #252525;
+  border-radius: 50%;
+}
+
+.select-date {
+  padding-top: 12rpx;
+  width: 100%;
+  font-size: 20rpx;
+  color: #818181;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.select-date-tips {
+  width: 100%;
+  font-size: 22rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/**教练 门店**/
+
+.coach-store-box {
+  position: fixed;
+  top: 72rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.list-swiper-box {
+  height: 100%;
+}
+
+.scroll-box {
+  height: 100%;
+}
+
+.store-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 55.3rpx;
+  padding: 0 20rpx;
+  background-color: #000;
+}
+
+.store-address {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.map-box {
+  display: flex;
+  align-items: center;
+}
+
+.map-text {
+  font-size: 24rpx;
+  color: #818181;
+}
+
+.map-arrow {
+  width: 20rpx;
+  height: 20rpx;
+  transform: rotate(-90deg);
+  margin-left: 5rpx;
+  margin-top: 8rpx;
+}
+
+.coach-info {
+  display: flex;
+  align-items: center;
+  height: 162rpx;
+  padding: 0 20rpx;
+  background-color: #181818;
+}
+
+.coach-img {
+  width: 96.7rpx;
+  height: 96.7rpx;
+  border-radius: 50%;
+  position: relative;
+}
+
+.coach-img image {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.coach-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  box-shadow: 0rpx 0rpx 5.3rpx 0rpx rgba(0, 0, 0, 0.5);
+  opacity: 0.5;
+  color: #818181;
+  font-size: 50rpx;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.coach-info-details {
+  flex: 1;
+  margin-left: 45rpx;
+}
+
+.info-tips {
+  color: #818181;
+  font-size: 24rpx;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  height: 162rpx;
+  padding: 0 25rpx;
+  background-color: #181818;
+  border-bottom: 5rpx solid #1f1f1f;
+  position: relative;
+}
+
+.coach {
+  width: 96.7rpx;
+  height: 96.7rpx;
+  background-color: #272727;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.box-row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.mid {
+  flex: 1;
+  margin-left: 25rpx;
+}
+
+.title {
+  color: #fff;
+  height: 50rpx;
+  font-size: 26.7rpx;
+}
+
+.attributes-box {
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  color: #bcbcbc;
+  font-size: 20rpx;
+}
+
+.garden {
+  width: 10rpx;
+  height: 10rpx;
+  margin: 0 10rpx;
+  border-radius: 50%;
+  background: #bcbcbc;
+}
+
+.date {
+  color: #bcbcbc;
+  font-size: 20rpx;
+}
+
+.time {
+  color: #ffae00;
+}
+
+.btn {
+  width: 99rpx;
+  height: 52rpx;
+  text-align: center;
+  line-height: 52rpx;
+  border-radius: 6.7rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/curriculum-btn.png);
+  background-size: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.wrap {
+  width: 150rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 0;
+  right: -25rpx;
+  overflow: hidden;
+}
+
+.silk-ribbon {
+  display: inline-block;
+  text-align: center;
+  width: 210rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  position: absolute;
+  top: 10rpx;
+  right: -55rpx;
+  overflow: hidden;
+  transform: rotate(43deg);
+  -ms-transform: rotate(43deg);
+  -moz-transform: rotate(43deg);
+  -webkit-transform: rotate(43deg);
+  -o-transform: rotate(43deg);
+  background: #ff6a1f;
+  color: #fff777;
+  font-size: 18rpx;
+}
+
+.full {
+  background: #424242;
+  color: #bcbcbc;
+}
+
+.full-btn {
+  background: none;
+  border-radius: 10rpx;
+  border: solid 3rpx #424242;
+  color: #bcbcbc;
+}
+
+.coach-btn-box {
+  width: 99rpx;
+  height: 53rpx;
+  border-radius: 4px;
+  background-image: linear-gradient(to bottom, #ffd324, #ff7200);
+  overflow: hidden;
+  padding: 1px;
+}
+
+.wait-btn {
+  line-height: 53rpx;
+  text-align: center;
+  color: #ffae00;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: #2a2a2a;
+}

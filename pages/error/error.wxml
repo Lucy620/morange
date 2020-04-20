@@ -1,0 +1,5 @@
+<view class='error-box'>
+  <image mode='widthFix' class='error-tip' src='http://boringcdn.nanningboring.com/jiabang/error.png'></image>
+  <view class='error-text'>{{errortip}}</view>
+  <view class='load' bindtap='load'>重新加载</view>
+</view>

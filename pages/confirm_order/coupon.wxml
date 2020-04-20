@@ -1,0 +1,45 @@
+<!--pages/confirm_order/coupon.wxml-->
+
+<view class="tips-more-box">
+  <view class="line"></view>
+  <view class="tips-more">可用代金券</view>
+  <view class="line"></view>
+</view>
+
+<!--代金券-->
+<view class="coupon-box" wx:for="{{coupon_list}}" wx:key='index' bindtap="selectCoupon" data-index="{{index}}">
+  <view class="coupon-box-row">
+    <view class="coupon-details">
+      <view class="coupon-text">{{item.name}}</view>
+        <view class="coupon-text-tips" catchtap="openExplain" data-name="{{item.name}}" data-notice="{{item.notice}}">查看可用范围</view>
+    </view>
+    <view class="coupon-money" wx:if="{{item.reduce_cost > 0}}">¥ {{tools.fen2yuan(item.reduce_cost,2)}}</view>
+  </view>
+  <view class="coupon-box-date">
+    <view class="coupon-date">有效期至：{{tools.formatTime(item.use_end,'{y}-{m}-{d}')}}(剩余{{item.day}}天)</view>
+  </view>
+  <view class="wrap" wx:if="{{item.select}}">
+    <view class="silk-ribbon">
+      <image src="https://boringcdn.nanningboring.com/molicheng/check-icon.png" class="check-icon" mode="widthFix"></image>
+    </view>
+  </view>
+</view>
+
+<view class="mask-box" wx:if="{{showExplain}}">
+  <view class="mask-row-box">
+    <view class="mask-title">代金券使用说明</view>
+    <view class="mask-text-box">
+      <view class="coupon-row">
+        <view class="coupon-tips">名称：</view>
+        <view class="mask-text">{{title}}</view>
+      </view>
+      <view class="coupon-row">
+        <view class="coupon-tips">使用说明：</view>
+        <view class="mask-text">{{notice}}</view>
+      </view>
+    </view>
+    <image src="https://oppocdn.afxeon.net/close-iocm.png" mode="widthFix" class="close-iocm" bindtap="closeTips"></image>
+  </view>
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

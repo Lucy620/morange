@@ -1,0 +1,63 @@
+<!--pages/coach/add_ report.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+  <view class="head">要报备的事项</view>
+  <view class="row-box">
+    <view class="row-title">事项</view>
+    <view class="picker-box">
+      <picker value="{{index}}" range="{{array}}" bindchange="bindPickerChange">
+        <view class="picker" wx:if="{{index != -1}}">
+          {{array[index]}}
+        </view>
+        <view class="picker" wx:else>
+          请选择
+        </view>
+      </picker>
+      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="arrow"></image>
+    </view>
+  </view>
+  <view class="row-box">
+    <view class="row-title">事由</view>
+    <view class="picker-box">
+      <input placeholder="请补充事项说明" bindinput="binKeyValue"></input>
+    </view>
+  </view>
+  <view class="row-box">
+    <view class="row-title">日期</view>
+    <view class="picker-box">
+      <picker mode='date' value="{{date}}" bindchange="bindDateChange">
+        <view class="picker" wx:if="{{date}}">
+          {{date}}
+        </view>
+        <view class="picker" wx:else>
+          请选择
+        </view>
+      </picker>
+      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="arrow"></image>
+    </view>
+  </view>
+  <view class="row-box">
+    <view class="row-title">时间</view>
+    <view class="picker-box">
+      <picker fields='month' mode='time' value="{{start}}" bindchange="bindTimeStart">
+        <view class="picker">
+          {{start}}
+        </view>
+      </picker>
+      <view class="picker-lien">-</view>
+      <picker fields='month' mode='time' value="{{end}}" bindchange="bindTimeEnd">
+        <view class="picker">
+          {{end}}
+        </view>
+      </picker>
+      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="arrow"></image>
+    </view>
+  </view>
+
+  <view class="btn-box">
+    <view class="btn-date">发起日期：{{tools.formatTime(nowtime,'{m}月{d}日')}}</view>
+    <view class="btn" bindtap="confirm">确定</view>
+  </view>
+
+</view>
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

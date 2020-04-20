@@ -1,0 +1,142 @@
+/* pages/medal/medal.wxss */
+
+.wrapper{
+  height: 100%;
+  text-align: center;
+  background: #000 url(https://boringcdn.nanningboring.com/molicheng/medal-bg.png) no-repeat;
+  background-size: 100%;
+}
+
+
+/**勋章**/
+
+.medal-img {
+  width: 309rpx;
+  height: 340rpx;
+  margin-top: 60rpx;
+}
+
+.speed {
+  width: 214.7rpx;
+  height: 13.3rpx;
+  margin: 40rpx auto 0;
+  background-image: linear-gradient(#000, #000);
+  background-blend-mode: normal, normal;
+}
+
+.speed-box {
+  height: 100%;
+  background-image: linear-gradient(90deg, #009795 40%, #00cba2 51%, #00ffae 100%);
+  background-blend-mode: normal, normal;
+}
+
+.speed-bg {
+  background: url(https://boringcdn.nanningboring.com/molicheng/speed-bg.png);
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.node-number {
+  color: #fff;
+  margin-top: 15rpx;
+  font-size: 26.7rpx;
+}
+
+.time {
+  color: #fff;
+  margin-top: 20rpx;
+  font-size: 26.7rpx;
+}
+
+.shadow {
+  width: 304.7rpx;
+  height: 18rpx;
+  margin-top: 40rpx;
+  margin: 0 auto;
+}
+
+/**要求**/
+
+.list-box {
+  padding: 50rpx;
+}
+
+.list-row {
+  padding: 30rpx 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.row-icon {
+  width: 41rpx;
+  height: 41rpx;
+}
+
+.s-row-icon {
+  width: 34rpx;
+  height: 53rpx;
+}
+
+.row-text {
+  color: #fff;
+  font-size: 32rpx;
+  margin-left: 20rpx;
+}
+
+.list-text {
+  color: #fff;
+  text-align: left;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+
+.user-box {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 50rpx;
+}
+
+.user-row {
+  width: 217rpx;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.user-img {
+  width: 127rpx;
+  height: 127rpx;
+  background-color: #272727;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
+  border: solid 2rpx #ff8a00;
+  border-radius: 50%;
+}
+
+.user-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.date {
+  font-size: 18rpx;
+  color: #9e9e9e;
+}
+
+.medal-btn {
+  width: 356rpx;
+  height: 81.3rpx;
+  line-height: 81.3rpx;
+  margin: 100rpx auto 0;
+  color: #000;
+  background: url(https://boringcdn.nanningboring.com/molicheng/medal-btn.png);
+  background-size: 100%;
+  border-radius: 40.7rpx;
+}

@@ -1,0 +1,27 @@
+<!--pages/store/camp.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <view class="tips-box" wx:if="{{noData}}">
+    <image src="https://boringcdn.nanningboring.com/molicheng/user-icon.png" mode="widthFix" class="tips-img"></image>
+    <view class="tips-text">该门店暂无训练营</view>
+    <view class="tips-more-box">
+      <view class="line"></view>
+      <view class="tips-more">更多训练营</view>
+      <view class="line"></view>
+    </view>
+  </view>
+
+
+  <view class="list-row">
+    <block wx:for="{{list}}" wx:key='index'>
+      <view class="row" bindtap='jumpPage' data-url='pages/training_camp/details?course_id={{item.id}}&area_id={{areaList[areaIndex].id}}'>
+        <view class="training-camp-box">
+          <image src="{{item.slide_imgs[0]}}?imageView2/1/w/400/h/270" mode="widthFix" class="training-camp1"></image>
+          <view class="training-camp-name">{{item.name}}</view>
+          <view class="ranking-tab">{{item.camp.length}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

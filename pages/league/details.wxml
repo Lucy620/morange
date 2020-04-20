@@ -1,0 +1,119 @@
+<!--pages/league/details.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <!--轮播-->
+  <view class="swiper-box">
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000" wx:if="{{show_type == 'slide' || show_type == ''}}">
+      <block wx:for="{{list.course.slide_imgs}}" wx:key="{{index}}">
+        <swiper-item bindtap="previewImage" data-url="{{item}}">
+          <image src="{{item}}" class="slide-image" mode="widthFix" />
+        </swiper-item>
+      </block>
+    </swiper>
+    
+    <!--视频-->
+    <video wx:else src="{{videoUrl.video}}" show-center-play-btn="{{true}}"  poster="{{videoUrl.poster}}?imageView2/1/w/750/h/300" controls="{{true}}" objectFit='fill'></video>
+  </view>
+
+  <!--教练故事-->
+  <view class="coach-story">
+    <view class="story-box">
+      <view class="details-box" bindtap="openStory">
+        <view class="coach-name">{{list.coach.name}}</view>
+        <view class="story" style="height:{{storyHeight}}rpx;">{{list.coach.introduction}}</view>
+        <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow" wx:if="{{storyHeight == '70'}}"></image>
+      </view>
+      <image src="{{list.coach.headimgurl}}" mode="aspectFill" class="user-coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{list.coach.user_id}}'></image>
+    </view>
+  </view>
+
+  <!--课时 时间 门店-->
+  <view class="list-box">
+
+    <view class="list-row">
+      <image src="https://boringcdn.nanningboring.com/molicheng/tiem-ixon.png" mode="widthFix" class="course-icon"></image>
+      <view class="list-details">时间：{{tools.formatTime(list.start_at,'{y}年{m}月{d}日')}} {{tools.getWeek(list.start_at)}} {{tools.formatTime(list.start_at,'{h}:{i}')}}-{{tools.formatTime(list.end_at,'{h}:{i}')}}</view>
+    </view>
+    <view class="list-row">
+      <image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="address-icon"></image>
+      <view class="list-details">
+        <view>门店：{{list.store.name}}</view>
+        <view>{{list.store.address}}
+          <text class="s-yellow" bindtap="seeMap" data-name="{{list.store.name}}" data-address="{{list.store.address}}" data-latitude="{{list.store.latitude}}" data-longitude="{{list.store.longitude}}">查看地图</text>
+        </view>
+      </view>
+    </view>
+    <view class="list-row">
+      <image src="https://boringcdn.nanningboring.com/molicheng/$.png" mode="widthFix" class="course-icon"></image>
+      <view class="list-details">
+        魔橙卡￥{{tools.fen2yuan(list.vip_price,2,2)}}
+      </view>
+    </view>
+  </view>
+
+
+  <!--简介-->
+  <view class="wxParse-box">
+    <view class="title-box">
+      <image src="https://boringcdn.nanningboring.com/molicheng/icon.png" mode="widthFix" class="icon"></image>
+      <view class="title">课程简介</view>
+    </view>
+    <view class="introduction">
+      <template is="wxParse" data="{{wxParseData:introduce.nodes}}" />
+    </view>
+  </view>
+
+  <!--注意事项-->
+  <view class="wxParse-box">
+    <view class="title-box">
+      <image src="https://boringcdn.nanningboring.com/molicheng/matter-icon.png" mode="widthFix" class="icon"></image>
+      <view class="title">注意事项</view>
+    </view>
+    <view class="introduction">
+      <template is="wxParse" data="{{wxParseData:note.nodes}}" />
+    </view>
+  </view>
+
+  <!--健身步骤-->
+  <view class="wxParse-box">
+    <view class="title-box">
+      <image src="https://boringcdn.nanningboring.com/molicheng/step-icon.png" mode="widthFix" class="icon"></image>
+      <view class="title">健身步骤</view>
+    </view>
+    <view class="introduction">
+      <template is="wxParse" data="{{wxParseData:step.nodes}}" />
+    </view>
+  </view>
+
+  <view class="btn-box">
+
+
+    <!--结束-->
+    <view class="end-btn" wx:if="{{nowtime > list.end_at}}">已结束</view>
+    <block wx:if="{{nowtime < list.end_at && list.is_spell == 0}}">
+      <!--正常-->
+      <view class="btn" wx:if="{{list.rest_stock > 0}}">
+        <view class="{{nowtime > start_at ? 'gray-btn' : 'btn-text'}}" bindtap="confirmOrder" data-order_type="give">赠课给好友</view>
+        <view class="btn-text" bindtap="confirmOrder" data-order_type="buy">立即约课</view>
+      </view>
+      <!--等候-->
+      <view class="btn" wx:if="{{list.rest_stock == 0}}">
+        <view class="gray-btn">赠课给好友</view>
+        <view class="btn-text" bindtap="confirmOrder" data-order_type="buy">等候({{queue_order}}人等候中)</view>
+      </view>
+    </block>
+
+    <!--拼课-->
+    <view wx:if="{{list.is_spell == 1 && nowtime < list.end_at}}" class="btn" bindtap="confirmOrder" data-order_type="buy">
+      <view class="btn-text">立即拼课</view>
+    </view>
+
+  </view>
+
+  <!--转发有礼-->
+  <share isShare="{{isShare}}" id='share'></share>
+
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "give": "/pages/components/give/give",
+    "share": "/pages/components/share/share"
+  }
+}

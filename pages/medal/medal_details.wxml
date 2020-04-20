@@ -1,0 +1,57 @@
+<!--pages/medal/medal.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+  <!--勋章-->
+  <image src="{{status== 'true' ? medal.light_img : medal.img}}" mode="widthFix" class="medal-img" wx:if="{{unlock == 'true'}}"></image>
+  <image src="http://boringcdn.nanningboring.com/FgzfHnaSVFL_xijFi23souN9Kiif" mode="widthFix" class="medal-img" wx:else></image>
+  <block wx:if="{{medal.category.type != 'other'}}">
+    <view class="speed">
+      <view class="speed-box" style="width:{{speed}}%">
+        <view class="speed-bg"></view>
+      </view>
+    </view>
+    <view class="node-number">{{user_amount}}节/{{medal.amount ? medal.amount : 0}}节</view>
+  </block>
+  <view class="time" wx:if="{{relation}}">(于{{tools.formatTime(time,'{y}年{m}月{d}日')}}解锁该勋章)</view>
+  <view class="shadow">
+    <image src="https://boringcdn.nanningboring.com/molicheng/shadow-icon.png" mode="widthFix" class="shadow"></image>
+  </view>
+
+
+  <!--要求-->
+  <view class="list-box">
+    <view class="list-row">
+      <view class="row">
+        <image src="https://boringcdn.nanningboring.com/molicheng/row-icon.png" mode="widthFix" class="row-icon"></image>
+        <text class="row-text">目标</text>
+      </view>
+      <view class="list-text">
+        {{medal.target}}
+      </view>
+    </view>
+    <view class="list-row">
+      <view class="row">
+        <image src="https://boringcdn.nanningboring.com/molicheng/row-icon1.png" mode="widthFix" class="s-row-icon"></image>
+        <text class="row-text">奖励</text>
+      </view>
+      <view class="list-text">
+        {{medal.award}}
+      </view>
+    </view>
+    <view class="list-row">
+      <view class="row">
+        <image src="https://boringcdn.nanningboring.com/molicheng/row-icon2.png" mode="widthFix" class="s-row-icon"></image>
+        <text class="row-text">名人堂</text>
+      </view>
+      <view class="user-box">
+        <view class="user-row" wx:for="{{user_list}}" wx:key='index'>
+          <image src="{{item.miniprogram.headimgurl}}" mode="widthFix" class="user-img"></image>
+          <view class="user-name">{{item.miniprogram.nickname}}</view>
+          <view class="date">{{tools.formatTime(item.created_at,'{y}.{m}.{d}')}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="medal-btn" bindtap="back">查看我的勋章</view>
+</view>
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

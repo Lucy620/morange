@@ -1,0 +1,427 @@
+/* pages/private_education/list.wxss */
+
+/***轮播**/
+
+.swiper-box {
+  height: 215.3rpx;
+}
+
+swiper {
+  height: 100%;
+}
+
+.slide-image {
+  width: 100%;
+}
+
+/***tab栏**/
+
+.tab-box {
+  display: flex;
+  align-items: center;
+  height: 62rpx;
+  background-color: #181818;
+  margin-bottom: 5rpx;
+}
+
+.row-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #5e5e5e;
+}
+
+.row-box:last-child {
+  border: none;
+}
+
+.title {
+  font-size: 26rpx;
+  color: #fff;
+}
+
+.tab-icon {
+  width: 25rpx;
+  height: 25rpx;
+  margin-left: 10rpx;
+}
+
+/**教练**/
+
+.box {
+  display: flex;
+  align-items: center;
+  height: 162rpx;
+  padding: 0 25rpx;
+  background-color: #181818;
+  margin-bottom: 5rpx;
+  position: relative;
+}
+
+.coach {
+  width: 96.7rpx;
+  height: 96.7rpx;
+  background-color: #272727;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.box-row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.mid {
+  flex: 1;
+  margin-left: 25rpx;
+}
+
+.title {
+  color: #fff;
+  height: 50rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  line-height: 50rpx;
+  font-size: 26.7rpx;
+}
+
+.attributes-box {
+  display: flex;
+  align-items: center;
+  margin: 10rpx 0;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  color: #bcbcbc;
+  font-size: 20rpx;
+}
+
+.garden {
+  width: 10rpx;
+  height: 10rpx;
+  margin: 0 10rpx;
+  border-radius: 50%;
+  background: #bcbcbc;
+}
+
+.price-box {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.s-yellow {
+  color: #ffae00;
+  margin-right: 10rpx;
+}
+
+.btn {
+  width: 99rpx;
+  height: 52rpx;
+  text-align: center;
+  line-height: 52rpx;
+  border-radius: 6.7rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/curriculum-btn.png);
+  background-size: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.wrap {
+  width: 150rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.silk-ribbon {
+  display: inline-block;
+  text-align: center;
+  width: 155rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  position: absolute;
+  top: 10rpx;
+  right: -55rpx;
+  transform: rotate(43deg);
+  -ms-transform: rotate(43deg);
+  -moz-transform: rotate(43deg);
+  -webkit-transform: rotate(43deg);
+  -o-transform: rotate(43deg);
+  background: #ff6a1f;
+  color: #fff777;
+  font-size: 18rpx;
+  overflow: hidden;
+}
+
+.full {
+  background: #424242;
+  color: #bcbcbc;
+}
+
+.full-btn {
+  background: none;
+  border-radius: 10rpx;
+  border: solid 3rpx #424242;
+  color: #bcbcbc;
+}
+
+/**筛选课程**/
+
+.course-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.mask-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.cover {
+  width: 466rpx;
+  position: absolute;
+  top: 0;
+  left: -750px;
+  bottom: 0;
+  z-index: 2;
+  background-color: #262626;
+}
+
+.course-title-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 89.3rpx;
+  line-height: 89.3rpx;
+  background-color: #0d0d0d;
+  position: relative;
+  z-index: 2;
+  padding: 0 20rpx;
+}
+
+.course-title {
+  display: flex;
+  align-items: center;
+}
+
+.course-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.course-title-text {
+  margin-left: 15rpx;
+  color: #fff;
+}
+
+.course-row {
+  position: absolute;
+  top: 89.3rpx;
+  bottom: 89rpx;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  text-align: center;
+}
+
+.scroll-view-box {
+  height: 100%;
+}
+
+.course-item {
+  width: 426rpx;
+  height: 53rpx;
+  line-height: 53rpx;
+  border-radius: 7rpx;
+  margin: 50rpx auto;
+  color: #b1b1b1;
+  font-size: 25rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border: solid 2rpx #b1b1b1;
+}
+
+.select-course-item {
+  border: solid 2rpx #ff9c00;
+  color: #000;
+  background-image: linear-gradient(#ff9c00, #ff9c00);
+  background-blend-mode: normal, normal;
+  border-radius: 7rpx;
+}
+
+.tips {
+  color: #b1b1b1;
+  font-size: 24rpx;
+}
+
+/**门店**/
+
+.screen-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.screen-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.screen-container {
+  width: 599rpx;
+  position: absolute;
+  top: 0;
+  left: -750px;
+  bottom: 0;
+  z-index: 2;
+  background-color: #262626;
+}
+
+.scroll-view-box {
+  height: 100%;
+}
+
+.screen-title-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 89.3rpx;
+  line-height: 89.3rpx;
+  background-color: #0d0d0d;
+  position: relative;
+  z-index: 1;
+  padding: 0 20rpx;
+}
+
+.screen-title {
+  display: flex;
+  align-items: center;
+}
+
+.screen-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.screen-title-text {
+  margin-left: 15rpx;
+  color: #fff;
+}
+
+.area-box {
+  position: absolute;
+  top: 89.3rpx;
+  bottom: 89rpx;
+  width: 133rpx;
+  text-align: center;
+  background-color: #131313;
+}
+
+.area-item {
+  font-size: 24rpx;
+  height: 53rpx;
+  line-height: 53rpx;
+  margin: 40rpx auto;
+  color: #5e5e5e;
+}
+
+.select-area-item {
+  color: #ffae00;
+}
+
+.area-list {
+  flex: 1;
+}
+
+.area-list {
+  position: absolute;
+  top: 89.3rpx;
+  left: 133rpx;
+  width: 200rpx;
+  bottom: 89rpx;
+  text-align: center;
+  background: #1f1f1f;
+}
+
+.store-list {
+  position: absolute;
+  top: 89.3rpx;
+  left: 333rpx;
+  width: 266rpx;
+  bottom: 89rpx;
+  text-align: center;
+}
+
+.store-item {
+  width: 259rpx;
+  height: 53rpx;
+  line-height: 53rpx;
+  margin: 40rpx auto;
+  color: #fff;
+  font-size: 25rpx;
+}
+
+.select-store-item {
+  color: #000;
+  background-image: linear-gradient(#ff9c00, #ff9c00), linear-gradient(#bcbcbc, #bcbcbc);
+  background-blend-mode: normal, normal;
+  border-radius: 7rpx;
+}
+
+.btn-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  height: 89rpx;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.mask-btn {
+  width: 226rpx;
+  height: 89rpx;
+  text-align: center;
+  line-height: 89rpx;
+  color: #fff;
+  font-size: 32rpx;
+  background-color: #000;
+}
+
+.s-mask-btn {
+  flex: 1;
+  font-size: 32rpx;
+  color: #000;
+  height: 89rpx;
+  line-height: 89rpx;
+  text-align: center;
+  font-weight: bold;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background-size: 100% 100%;
+}

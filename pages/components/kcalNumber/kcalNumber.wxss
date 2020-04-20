@@ -1,0 +1,12 @@
+/* pages/components/forwarding/forwarding.wxss */
+
+.row-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.number-icon {
+  width: 25rpx;
+  height: 47rpx;
+}

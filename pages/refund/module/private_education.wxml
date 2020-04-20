@@ -1,0 +1,56 @@
+<template name="private_education">
+  <view class="box">
+    <view class="coach">
+      <image src="{{order.data.coach.headimgurl}}" mode="aspectFill" class="user-coach"></image>
+    </view>
+    <view class="course-title">
+      {{order.data.course.name}}
+      <view class="private-tips-box">
+        已取消并退款：款项已退回至
+        <text wx:if="{{order.pay_method == 'weixin'}}">微信钱包</text>
+        <text wx:if="{{order.pay_method == 'card'}}">魔橙卡</text>
+      </view>
+      <text wx:if="{{nowtime > start_at}}">报名后30天之后申请退训，将退还剩余课时数的实付款项30%。</text>
+    </view>
+    <view class="list-box">
+      <view class="row">
+        <view class="title">教练:</view>
+        <view class="title">
+          <view class="friends-box">
+            <view class="friends" wx:if="{{!showWeChat}}" bindtap="addFriends">加好友</view>
+            <view class="wechat-text" wx:if="{{showWeChat}}">
+              <text class="copy-text" bindtap="copy" data-weixin="{{order.data.coach.weixin}}">复制</text> {{order.data.coach.weixin}}
+            </view>
+          </view>
+          {{order.data.coach.name}}
+        </view>
+      </view>
+      <view class="row">
+        <view class="title">人数:</view>
+        <view class="title">
+          {{order.course_num}}人
+        </view>
+      </view>
+      <view class="row">
+        <view class="title">应付:</view>
+        <view class="title">
+          {{tools.fen2yuan(order.pay_price,2)}}元
+        </view>
+      </view>
+      <view class="row">
+        <view class="title">实付:</view>
+        <view class="title">
+          <text class="s-gray">({{order.pay_method == 'card' ? '魔橙卡支付' : '微信支付'}})</text>{{tools.fen2yuan(order.pay_price,2)}}元
+        </view>
+      </view>
+      <!-- <view class="row">
+        <view class="title">有效期至:</view>
+        <view class="title">
+          {{tools.formatTime(order.data.end_at,'{y}年{m}月{d}日 {h}:{i}')}}
+        </view>
+      </view> -->
+    </view>
+  </view>
+</template>
+
+<wxs module="tools" src="../../../utils/tools.wxs"></wxs>

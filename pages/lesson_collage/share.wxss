@@ -1,0 +1,110 @@
+/* pages/lesson_collage/share.wxss */
+
+.box {
+  text-align: center;
+}
+
+.poster {
+  width: 657rpx;
+  height: 292rpx;
+  margin: 20rpx auto 0;
+  border-radius: 13rpx;
+}
+
+.container-box {
+  width: 697rpx;
+  height: 755rpx;
+  margin: 0 auto;
+  background: url(https://boringcdn.nanningboring.com/molicheng/lesson-collage.png);
+  background-size: 100%;
+}
+
+.tips {
+  text-align: right;
+  padding: 35rpx 25rpx 0;
+}
+
+.user-img {
+  width: 173rpx;
+  height: 174rpx;
+  border-radius: 50%;
+  margin-top: -200rpx;
+  border: solid 1rpx #fff;
+}
+
+.text-box {
+  margin-top: 20rpx;
+  text-align: center;
+}
+
+.user-name {
+  font-size: 33rpx;
+}
+
+.s-yellow {
+  margin-right: 10rpx;
+  color: #ffae00;
+}
+
+.coach {
+  font-size: 31rpx;
+  margin: 50rpx auto;
+}
+
+.text {
+  color: #6c6c6c;
+  font-size: 24rpx;
+  margin-top: 100rpx;
+}
+
+.address {
+  color: #6c6c6c;
+  margin-top: 30rpx;
+  font-size: 24rpx;
+}
+
+.btn-box {
+  margin: 0 20rpx;
+  margin-top: 50rpx;
+  border-top: 3rpx dashed #975600;
+}
+
+.time-tips {
+  color: #000;
+  text-align: center;
+  height: 42rpx;
+  line-height: 42rpx;
+  margin-top: 30rpx;
+}
+
+.btn {
+  width: 639rpx;
+  height: 93rpx;
+  line-height: 93rpx;
+  margin: 20rpx auto 0;
+  text-align: center;
+  color: #000;
+  font-size: 40rpx;
+  background-image: linear-gradient(#ff9c00, #ff9c00);
+  border-radius: 7rpx;
+}
+
+.btn::after {
+  border: 0;
+}
+
+.home-btn {
+  position: fixed;
+  right: 15rpx;
+  bottom: 100rpx;
+  width: 111rpx;
+  height: 111rpx;
+}
+
+.logo {
+  position: absolute;
+  bottom: 0;
+  left: 96rpx;
+  width: 557rpx;
+  height: 87rpx;
+}

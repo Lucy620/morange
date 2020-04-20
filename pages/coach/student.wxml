@@ -1,0 +1,14 @@
+<!--pages/coach/student.wxml-->
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <view class="month">本月</view>
+  <view class="row" wx:for="{{list}}" wx:key='index'>
+    <view class="number {{index <= 2 ? 's-number' :'' }}">{{index + 1}}</view>
+    <image src="{{item.miniprogram.headimgurl}}" mode="widthFix" class="user-img"></image>
+    <view class="derails-box">
+      <view class="student-name {{index <= 2 ? 's-yellow' :'' }}">{{item.miniprogram.nickname}}</view>
+      <view class="derails">本月上过{{item.total_course}}节你的课，共计
+        <text class="{{index <= 2 ? 's-yellow' :'' }}">{{item.total_minute}}</text> 分钟</view>
+    </view>
+  </view>
+</view>

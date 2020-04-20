@@ -1,0 +1,67 @@
+/* pages/coach/course_list.wxss */
+
+.box {
+  display: flex;
+  align-items: center;
+  height: 162rpx;
+  padding: 0 25rpx;
+  background-color: #181818;
+  margin-bottom: 10rpx;
+  position: relative;
+}
+
+.coach {
+  width: 96.7rpx;
+  height: 96.7rpx;
+  background-color: #272727;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.mid {
+  flex: 1;
+  margin-left: 25rpx;
+  margin-right: 15rpx;
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  color: #fff;
+  height: 50rpx;
+  font-size: 26.7rpx;
+}
+
+.name {
+  color: #bcbcbc;
+  font-size: 24rpx;
+}
+
+.tips {
+  font-size: 24rpx;
+  color: #bcbcbc;
+}
+
+.s-yellow {
+  color: #ffae00;
+}
+
+.btn {
+  width: 99.3rpx;
+  height: 52rpx;
+  text-align: center;
+  line-height: 52rpx;
+  border-radius: 6.7rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/curriculum-btn.png);
+  background-size: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.no-data-tips{
+  color: #fff;
+  text-align: center;
+  padding-top: 50rpx;
+}

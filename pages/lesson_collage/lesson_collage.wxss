@@ -1,0 +1,197 @@
+/* pages/lesson_collage/lesson_collage.wxss */
+
+.wrapper {
+  padding: 0;
+}
+
+.title-box {
+  height: 89rpx;
+  background-color: #0d0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+  line-height: 89rpx;
+  height: 100%;
+  color: #fff;
+}
+
+.container-box {
+  display: flex;
+  position: absolute;
+  top: 89rpx;
+  left: 0;
+  right: 0;
+  bottom: 388rpx;
+}
+
+.coach-box {
+  left: 0;
+  width: 317rpx;
+  height: 100%;
+  background-color: #131313;
+}
+
+.scroll-box {
+  height: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 35rpx;
+  margin: 15rpx 0;
+}
+
+.coach-img {
+  width: 127rpx;
+  height: 127rpx;
+  border-radius: 50%;
+  border: 2px solid #131313;
+}
+
+.coach-name {
+  flex: 1;
+  text-align: center;
+  color: #818181;
+}
+
+.s-coach-img {
+  border: 2px solid #ff9c00;
+}
+
+.s-coach-name {
+  color: #ff9c00;
+}
+
+.course-box {
+  flex: 1;
+  height: 100%;
+}
+
+.scroll-box {
+  height: 100%;
+}
+
+.course {
+  color: #fff;
+  font-size: 25rpx;
+}
+.course-item{
+  padding-top: 20rpx
+}
+.course-item:last-child{
+  padding-bottom: 20rpx
+}
+.course {
+  text-align: center;
+  margin: 0 auto;
+  width: 259rpx;
+  padding: 15rpx 0;
+  word-break: keep-all;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.s-course {
+  color: #000;
+  border-radius: 10rpx;
+  background: #ff9c00;
+}
+
+.foot-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.time-box {
+  height: 300rpx;
+  background-color: #0d0d0d;
+}
+
+.time-tips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30rpx 0;
+}
+
+.tiem-icon {
+  width: 31rpx;
+  height: 31rpx;
+}
+
+.tips-text {
+  color: #818181;
+  font-size: 32rpx;
+  margin-left: 10rpx;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-row {
+  width: 246rpx;
+  height: 60rpx;
+  background-image: linear-gradient(#303030, #303030);
+  border-radius: 7rpx;
+}
+
+.time-date {
+  margin-right: 35rpx;
+}
+
+.picker {
+  text-align: center;
+  height: 100%;
+  line-height: 60rpx;
+  color: #fff;
+}
+
+.store-box {
+  width: 300rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  background-image: linear-gradient(#303030, #303030);
+  border-radius: 7rpx;
+  color: #fff;
+  margin: 30rpx auto 0;
+}
+
+.btn-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.mask-btn {
+  width: 317rpx;
+  height: 89rpx;
+  text-align: center;
+  line-height: 89rpx;
+  color: #fff;
+  font-size: 32rpx;
+  background-color: #000;
+}
+
+.s-mask-btn {
+  flex: 1;
+  font-size: 32rpx;
+  color: #000;
+  height: 89rpx;
+  line-height: 89rpx;
+  text-align: center;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background-size: 100% 100%;
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "训练营",
+  "usingComponents": {
+    "share": "/pages/components/share/share"
+  }
+}

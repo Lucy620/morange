@@ -1,0 +1,13 @@
+<!--pages/components/number/number.wxml-->
+<view class="row-number">
+  <image wx:if="{{number == 0}}" src="https://boringcdn.nanningboring.com/molic/kcal-number0.png" class="number-icon"></image>
+  <image wx:if="{{number == 1}}" src="https://boringcdn.nanningboring.com/molic/kcal-number1.png" class="number-icon"></image>
+  <image wx:if="{{number == 2}}" src="https://boringcdn.nanningboring.com/molic/kcal-number2.png" class="number-icon"></image>
+  <image wx:if="{{number == 3}}" src="https://boringcdn.nanningboring.com/molic/kcal-number3.png" class="number-icon"></image>
+  <image wx:if="{{number == 4}}" src="https://boringcdn.nanningboring.com/molic/kcal-number4.png" class="number-icon"></image>
+  <image wx:if="{{number == 5}}" src="https://boringcdn.nanningboring.com/molic/kcal-number5.png" class="number-icon"></image>
+  <image wx:if="{{number == 6}}" src="https://boringcdn.nanningboring.com/molic/kcal-number6.png" class="number-icon"></image>
+  <image wx:if="{{number == 7}}" src="https://boringcdn.nanningboring.com/molic/kcal-number7.png" class="number-icon"></image>
+  <image wx:if="{{number == 8}}" src="https://boringcdn.nanningboring.com/molic/kcal-number8.png" class="number-icon"></image>
+  <image wx:if="{{number == 9}}" src="https://boringcdn.nanningboring.com/molic/kcal-number9.png" class="number-icon"></image>
+</view>

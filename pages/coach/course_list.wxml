@@ -1,0 +1,18 @@
+<!--pages/coach/course_list.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+  <!--预约课程-->
+  <view class="box" wx:if="{{list.length > 0}}" wx:for="{{list}}" wx:key='index'>
+    <image src="{{item.miniprogram.headimgurl}}" class="coach"></image>
+    <view class="mid">
+      <view class="title">{{item.data.course.name}}</view>
+      <view class="name">{{item.miniprogram.nickname}}</view>
+      <view class="tips">剩余
+        <text class="s-yellow">{{item.surplus}} / {{item.total}}</text> 课时
+      </view>
+    </view>
+    <view class="btn" bindtap='jumpPage' data-url='pages/coach/private?id={{item.data.id}}&ordersn={{item.data.ordersn}}'>查看</view>
+  </view>
+  <view wx:if="{{list.length == 0}}" class="no-data-tips">暂无数据</view>
+</view>
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

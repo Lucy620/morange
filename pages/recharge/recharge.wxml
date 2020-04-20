@@ -1,0 +1,65 @@
+<!--pages/recharge/recharge.wxml-->
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <view class="row-box">
+    <view class="row">
+      <view class="text">充值账户：</view>
+      <view class="text">{{user.miniprogram.nickname}}</view>
+    </view>
+    <view class="row">
+      <view class="text">剩余额度</view>
+
+      <!--未开通魔橙卡-->
+      <block wx:if="{{user.type == 'user'}}">
+        <view class="text">尚未开通魔橙卡</view>
+      </block>
+
+      <!--已开通魔橙卡-->
+      <block wx:if="{{user.type == 'vip'}}">
+        <view class="text">￥{{tools.fen2yuan(user.balance,2)}}元</view>
+      </block>
+
+    </view>
+    <view class="money-box">
+      <view class="text">充值额度：</view>
+      <view class="money-list">
+
+        <!--未开通魔橙卡 已开通-->
+        <block wx:for="{{list}}" wx:key='index'>
+          <view class="money-row-box" wx:if="{{type == 'normal'}}" bindtap="createCharge" data-id="{{item.id}}">
+            <view class="money-row">
+              <view class="money">￥{{tools.fen2yuan(item.pay_price,2)}}</view>
+              <view class="tips-money">到账：{{tools.fen2yuan(item.pay_price + item.gift_price,2)}}</view>
+            </view>
+          </view>
+          <!--秒杀-->
+          <view class="snatch-money-row  {{nowtime < item.start_at || nowtime > item.end_at || item.stock == 0 ? 'gray' : ''}}" wx:if="{{type == 'snatch'}}" bindtap="createSnatchCharge" data-end_at="{{item.end_at}}" data-start_at="{{item.start_at}}" data-id="{{item.id}}" data-stock="{{item.stock}}">
+            <view class="money-row {{nowtime < item.start_at || nowtime > item.end_at || item.stock == 0 ? 'gray-text' : ''}}">
+              <view class="money">￥{{tools.fen2yuan(item.pay_price,2)}}</view>
+              <view class="tips-money">到账：{{tools.fen2yuan(item.pay_price + item.gift_price,2)}}</view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+  <!--须知-->
+  <view class="box">
+    <view>须知:</view>
+    <view>
+      <text>{{tips_text}}</text>
+    </view>
+  </view>
+
+
+</view>
+
+<view class="bg" wx:if="{{show}}">
+  <image src="https://boringcdn.nanningboring.com/molicheng/recharge-bg.png" class="recharge-bg" mode="widthFix"></image>
+  <view class="btn-box" bindtap="goBack">
+    <view class="btn">返回</view>
+  </view>
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

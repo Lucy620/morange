@@ -1,0 +1,54 @@
+<!--pages/Invitation/coupon.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+  <view class="container-box">
+  
+    <!--可领取-->
+    <view class="receive" wx:if="{{is_new == 'true' && is_get == 'false' && send_user.id != user.id}}">
+      <image src="{{send_user.miniprogram.headimgurl}}" mode="widthFix" class="user-img"></image>
+      <view class="user-box receive-box">
+        <text class="name">{{send_user.miniprogram.nickname}}</text> 邀你健身
+      </view>
+      <view class="receive-tips">送你{{tools.fen2yuan(total_price)}}元新人券，一起来健身吧！</view>
+      <view class="coupon-box">
+        <view class="coupon-details">
+          <view class="coupon-details-title">{{coupon.name}}</view>
+          <view class="coupon-details-money">¥{{tools.fen2yuan(coupon.price,2)}}
+            <text class="coupon-details-nun">X {{coupon.amount}}</text>
+          </view>
+        </view>
+        <view class="coupon-btn" bindtap="saveCoupon" wx:if="{{!isReceive}}">
+          立即
+          <view>领取</view>
+        </view>
+
+        <view class="coupon-btn s-gray" wx:else>
+          领取
+          <view>成功</view>
+        </view>
+      </view>
+    </view>
+
+    
+    <!--不可领取 只限邀请-->
+    <view class="box" wx:else>
+      <image src="{{send_user.miniprogram.headimgurl}}" mode="widthFix" class="user-img"></image>
+      <view class="user-box">
+        <text class="name">{{send_user.miniprogram.nickname}}</text> 邀你健身
+      </view>
+      <!--不可领取 自己发放-->
+      <block wx:if="{{send_user.id == user.id}}">
+        <view class="tips">不能领取自己发放的代金券哦~</view>
+      </block>
+      <!--不可领取 已领过新人券-->
+      <block wx:else>
+        <view class="tips" wx:if="{{is_get == 'false'}}">该礼券仅限新用户领取哦~</view>
+        <view class="tips" wx:else>已领过新人券，无法重复领取哦~</view>
+      </block>
+      <button open-type='share' open-type='share' class="btn">邀请好友赢代金券</button>
+    </view>
+
+  </view>
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

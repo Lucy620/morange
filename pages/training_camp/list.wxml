@@ -1,0 +1,80 @@
+<!--pages/training_camp/list.wxml-->
+
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <!--tab栏-->
+  <view class="tab-box">
+    <view class="row-box" bindtap="openAnimation" data-type="area">
+      <view class="title">{{areaList[areaIndex].name}}</view>
+      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="tab-icon"></image>
+    </view>
+    <view class="row-box" bindtap="openAnimation" data-type="tag">
+      <view class="title" wx:if="{{tagNumber == 0}}">全部</view>
+      <view class="title" wx:if="{{tagNumber > 0}}">{{tagNumber}}个标签</view>
+      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="tab-icon"></image>
+    </view>
+  </view>
+
+  <!-- <view class="mask">新训练营上架，点击查看
+    <image src="https://boringcdn.nanningboring.com/molicheng/mask-arrow.png" mode="widthFix" class="mask-arrow"></image>
+  </view> -->
+  <view class="list-box">
+    <view class="list-row">
+      <block wx:for="{{list}}" wx:key='index'>
+        <view class="row" bindtap='jumpPage' data-url='pages/training_camp/details?course_id={{item.id}}&area_id={{areaList[areaIndex].id}}'>
+          <view class="training-camp-box">
+            <image src="{{item.slide_imgs[0]}}?imageView2/1/w/400/h/270" mode="widthFix" class="training-camp1"></image>
+            <view class="training-camp-name">{{item.name}}</view>
+            <view class="ranking-tab">{{item.camp.length}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!--筛选城市 标签-->
+  <view class="box" wx:if="{{cover}}">
+    <view class="mask-box" bindtap="closeAnimation"></view>
+
+    <!--城市-->
+    <view class="screen-box" wx:if="{{type == 'area'}}" animation="{{animation}}">
+      <view class="course-title-box">
+        <view class="course-title">
+          <image src="https://boringcdn.nanningboring.com/molicheng/city-icon.png" mode="widthFix" class="course-icon"></image>
+          <text class="course-title-text">城市</text>
+        </view>
+      </view>
+      <view class="area-box">
+        <scroll-view scroll-y class="scroll-view-box">
+          <view class="area-item {{areaIndex == index ? 'select-area-item' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choiceCity" data-index="{{index}}">{{item.name}}</view>
+        </scroll-view>
+      </view>
+    </view>
+
+    <!--标签-->
+    <view class="tag-box" wx:if="{{type == 'tag'}}" animation="{{animation}}">
+      <view class="course-title-box">
+        <view class="course-title">
+          <image src="https://boringcdn.nanningboring.com/molicheng/tag-icon.png" mode="widthFix" class="course-icon"></image>
+          <text class="course-title-text">选择标签（可多选）</text>
+        </view>
+        <view class="tips">已选{{tagNumber == 0 ? '1' : tagNumber}}项</view>
+      </view>
+      <view class="tag-list">
+        <scroll-view scroll-y class="scroll-view-box">
+          <view class="tag-row">
+            <view class="tag-item {{item.select ? 'select-tag-item' : ''}}" wx:for='{{tagList}}' wx:key='index' bindtap="choiceTag" data-index="{{index}}">{{item.name}}</view>
+          </view>
+        </scroll-view>
+      </view>
+      <view class="btn-box">
+        <view class="mask-btn" bindtap="onEmpty">清 空</view>
+        <view class="s-mask-btn" bindtap="confirmSelect">确 认</view>
+      </view>
+    </view>
+  </view>
+
+  <!--转发有礼-->
+  <share isShare="{{isShare}}" id='share'></share>
+</view>

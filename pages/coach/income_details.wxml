@@ -1,0 +1,28 @@
+<!--pages/coach/income_details.wxml-->
+
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <view class="head-box">
+    <picker mode="date" fields="month" value="{{date}}" bindchange="bindDateChange">
+      <view class="date">{{date}}</view>
+      <view class="tips-income">总收入
+        <text class="s-yellow">¥{{tools.fen2yuan(total_income,2)}}</text>
+      </view>
+    </picker>
+    <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="arrow"></image>
+  </view>
+
+  <view class="schedule-row" wx:for="{{list}}" wx:key='index' bindtap='jumpPage' data-url="pages/coach/member_sign?id={{item.id}}&type=income">
+    <view class="date-tiem-box">
+      <view class="date">{{item.data.course.name}}</view>
+      <view class="tiem">{{tools.formatTime(item.data.created_at,'{m}月{d}日')}}</view>
+    </view>
+    <view class="tips-tiem">
+      <view class="time-text">￥{{tools.fen2yuan(item.total_income,2)}}</view>
+    </view>
+  </view>
+
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

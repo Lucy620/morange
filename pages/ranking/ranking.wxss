@@ -1,0 +1,207 @@
+/* pages/ranking/ranking.wxss */
+
+/**头部**/
+
+.head-box {
+  height: 295rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-bg.png);
+  background-size: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.row-title {
+  flex: 1;
+  color: #b2530e;
+  text-align: center;
+  position: relative;
+}
+
+.title {
+  color: #000;
+}
+
+.row-title::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  border-right: 1px solid #b2530e;
+}
+
+.row-title:last-child:after {
+  border: none;
+}
+
+/**用户排名**/
+
+.user-box {
+  width: 696.7rpx;
+  height: 594.7rpx;
+  margin: -130rpx auto 0;
+  border-radius: 13.3rpx;
+  text-align: center;
+  background: url(https://boringcdn.nanningboring.com/molicheng/user-ranking-bg.png);
+  background-size: 100%;
+  position: relative;
+}
+
+.logo-text {
+  width: 430.7rpx;
+  height: 66.7rpx;
+  margin-top: 30rpx;
+}
+
+.user-img {
+  width: 173.3rpx;
+  height: 174rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: -50rpx;
+  left: 261.7rpx;
+  border: solid 2px #fff;
+}
+
+.box {
+  height: 280rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.user-ranking {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rpx;
+}
+
+.ranking-text {
+  font-weight: bold;
+}
+.ranking-tips{
+  text-decoration: underline;
+  color: #ffae00;
+}
+.ranking-date {
+  font-weight: bold;
+}
+
+.user-list {
+  margin: 30rpx 20rpx;
+  border-top: dotted 2.7rpx #a5a5a5;
+  display: flex;
+  align-items: center;
+}
+
+.user {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40rpx;
+}
+
+.user-icon {
+  width: 133.3rpx;
+  height: 134rpx;
+  border-radius: 50%;
+}
+
+.ranking {
+  margin-left: 15rpx;
+  font-size: 21.3rpx;
+}
+
+.time {
+  font-size: 16rpx;
+}
+
+/**用户列表**/
+
+.user-list-item {
+  width: 696.7rpx;
+  height: 201.3rpx;
+  margin: 30rpx auto;
+  text-align: center;
+  background: url(https://boringcdn.nanningboring.com/molicheng/user-list-item-bg.png);
+  background-size: 100%;
+}
+
+.user-title {
+  width: 186rpx;
+  height: 20rpx;
+  margin-top: 30rpx;
+}
+
+.user-item-box {
+  width: 100%;
+}
+
+.scroll-box {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.user-item {
+  width: 232rpx;
+  display: inline-block;
+  position: relative;
+}
+
+.user-item-img {
+  width: 112rpx;
+  height: 112.7rpx;
+  border-radius: 50%;
+}
+.user-item-black{
+    width: 112rpx;
+  height: 112.7rpx;
+  border-radius: 50%;
+  background: #232323;
+}
+.brand {
+  position: absolute;
+  right: 50rpx;
+  bottom: 0;
+  width: 56rpx;
+  height: 86rpx;
+}
+
+/**按钮**/
+
+.btn-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+.btn-tips {
+  font-size: 24rpx;
+  color: #a5a5a5;
+  margin-bottom: 20rpx;
+}
+
+.btn {
+  height: 110.7rpx;
+  line-height: 110.7rpx;
+  font-size: 32rpx;
+  color: #000;
+  padding: 0;
+  margin: 0;
+  border-radius: 0rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background-size: 100%;
+}
+
+.btn::after {
+  border: 0;
+}

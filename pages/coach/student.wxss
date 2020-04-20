@@ -1,0 +1,56 @@
+/* pages/coach/student.wxss */
+
+.month {
+  height: 58rpx;
+  line-height: 58rpx;
+  text-align: center;
+  color: #fff;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  height: 158rpx;
+  background-color: #373737;
+  padding: 0 30rpx;
+  margin-bottom: 1px;
+}
+
+.number {
+  font-size: 66.7rpx;
+  color: #9b9b9b;
+  font-weight: bold;
+  width: 90rpx;
+}
+.s-number {
+  color: #ffae00;
+  background-image: -webkit-linear-gradient(bottom, #ff890a, #ffa41d, #ffde45);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.user-img {
+  width: 126.7rpx;
+  height: 126.7rpx;
+  border-radius: 50%;
+}
+
+.derails-box {
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.student-name {
+  color: #fff;
+}
+
+.derails {
+  font-size: 24rpx;
+  margin-top: 10rpx;
+  color: #9b9b9b;
+}
+
+.s-yellow {
+  color: #ffae00;
+}
+
+

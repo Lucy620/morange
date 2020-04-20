@@ -1,0 +1,207 @@
+/* pages/coach/member_sign.wxss */
+
+.bg-box {
+  width: 697rpx;
+  margin: 0 auto;
+  background: #ffab18;
+  position: relative;
+}
+
+.mask-bg {
+  width: 750rpx;
+  position: absolute;
+  right: -55rpx;
+  bottom: -220rpx;
+  opacity: 0.05;
+  z-index: -1;
+  transform: rotate(-15deg);
+}
+.user-img{
+  text-align: center;
+  margin-top: 50rpx;
+}
+.user-name{
+  font-size: 24rpx;
+}
+.head-portrait {
+  width: 105.3rpx;
+  height: 105.3rpx;
+  border-radius: 5.3rpx;
+}
+
+.circular {
+  position: absolute;
+  bottom: -15rpx;
+  left: -15rpx;
+  width: 30rpx;
+  height: 30rpx;
+  background: #1f1f1f;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.circular1 {
+  position: absolute;
+  bottom: -15rpx;
+  right: -15rpx;
+  width: 30rpx;
+  height: 30rpx;
+  background: #1f1f1f;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/**课程 二维码**/
+
+.list-box {
+  padding: 50rpx 30rpx;
+  text-align: center;
+  position: relative;
+}
+
+.logo-text {
+  position: absolute;
+  top: 45rpx;
+  left: 50%;
+  margin-left: -215rpx;
+  width: 430.7rpx;
+  height: 66.7rpx;
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  font-weight: bold;
+  font-size: 40rpx;
+}
+
+
+/**签到扫码**/
+
+.qrcode {
+  width: 286.7rpx;
+  height: 286.7rpx;
+  margin-top: 80rpx;
+}
+
+.tips-box {
+  font-size: 29.3rpx;
+  margin-top: 80rpx;
+  padding-bottom: 50rpx;
+  border-bottom: solid 1.3rpx #d75600;
+}
+
+/**课程**/
+
+.curriculum-box {
+  width: 637rpx;
+  margin: 0 auto;
+  padding: 0 30rpx 50rpx;
+  background: #fffbe6;
+  border-bottom-left-radius: 13rpx;
+  border-bottom-right-radius: 13rpx;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  border-bottom: 1.3rpx solid #a5a5a5;
+}
+
+.name-icon-box {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 31.3rpx;
+  height: 32rpx;
+}
+
+.curriculum-btn {
+  width: 99.3rpx;
+  height: 52.7rpx;
+  line-height: 52.7rpx;
+  text-align: center;
+  font-size: 26.7rpx;
+  border-radius: 6.7rpx;
+  border: solid 2rpx #848484;
+  color: #848484;
+}
+
+.row-address {
+  padding: 30rpx 0;
+  border-bottom: 1.3rpx solid #a5a5a5;
+}
+
+.address-icon {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.address {
+  padding: 20rpx 0;
+  color: #676767;
+}
+
+.map-text {
+  color: #000;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1.3rpx solid #a5a5a5;
+}
+
+.row-text {
+  color: #000;
+  font-weight: 500;
+  margin-left: 15rpx;
+}
+
+.curriculum-row {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+}
+
+.course-img-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.curriculum-img-box {
+  text-align: center;
+}
+
+.course-img {
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.course-img:nth-child(4n+0) {
+  margin-right: 0;
+}
+
+.img-text {
+  color: #848484;
+  font-size: 24rpx;
+}
+
+.save-btn {
+  border: 1px solid #333;
+  color: #848484;
+  margin: 30rpx 0;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  text-align: center;
+}

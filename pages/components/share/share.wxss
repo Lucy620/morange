@@ -1,0 +1,68 @@
+/* pages/components/forwarding/forwarding.wxss */
+
+/**转发弹出**/
+
+.box-mask {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding-top: 100rpx;
+}
+
+.mask-title {
+  width: 195rpx;
+  height: 45rpx;
+  margin: 0 auto;
+}
+
+.mask-title image {
+  width: 100%;
+}
+
+.mask-icon {
+  width: 384rpx;
+  height: 255rpx;
+  margin-top: 40rpx;
+}
+
+.mask-tips-user {
+  margin-top: 40rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.mask-tips {
+  color: #fff;
+  font-size: 24rpx;
+  margin-top: 40rpx;
+}
+
+.mask-btn-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100rpx;
+}
+
+.mask-btn {
+  width: 393rpx;
+  height: 59rpx;
+  margin: 0 auto;
+  line-height: 59rpx;
+  color: #ffae00;
+  border-width: 2rpx;
+  border-style: solid;
+  border-radius: 4px;
+  border: 3px solid linear-gradient(0deg, #ff6e0d 0%, #ffba00 100%);
+}
+
+.mask-btn-tips {
+  font-size: 25rpx;
+  color: #a5a5a5;
+  margin-top: 40rpx;
+}

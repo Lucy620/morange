@@ -1,0 +1,151 @@
+<!--pages/private_education/help_refund.wxml-->
+
+<view class="wrapper">
+
+  <view class="box">
+    <view class="coach">
+      <image src="{{refundData.coach_img}}" mode="aspectFill" class="user-coach"></image>
+    </view>
+    <view class="course-title">
+      自助退款
+    </view>
+    <view class="list-box">
+
+      <!--私教课-->
+      <block wx:if="{{refundData.type =='private'}}">
+        <view class="list-row">
+          <view class="list-title">有效期至:</view>
+          <view class="list-title"> {{tools.formatTime(refundData.end_at,'{y}年{m}月{d}日{h}:{i}')}}</view>
+        </view>
+        <view class="list-row">
+          <view class="list-title">预约内容:</view>
+          <view class="list-title">{{refundData.name}}</view>
+        </view>
+        <view class="list-row">
+          <view class="list-title">退款金额:</view>
+          <view class="list-title s-yellow">{{tools.fen2yuan(refundData.pay_price,2)}}元</view>
+        </view>
+        <view class="list-row">
+          <view class="list-title">退款说明:</view>
+          <view class="list-text" wx:if="{{nowtime < start_at}}">
+            <view>报名后30天之后申请退训，将退还剩余课时数的实付款项30%。</view>
+          </view>
+          <view class="list-text" wx:else>
+            <view>报名后30天内申请退训，将退还剩余课时数等额的实付款项</view>
+          </view>
+        </view>
+        <view class="list-row">
+          <view class="list-title">退款方式:</view>
+          <view class="list-title" wx:if="{{refundData.pay_method == 'weixin'}}">微信钱包 (预计5个工作日到账)</view>
+          <view class="list-title" wx:if="{{refundData.pay_method == 'card'}}">立即退款至魔橙卡余额</view>
+        </view>
+      </block>
+
+      <!--训练营-->
+      <block wx:if="{{refundData.type =='camp'}}">
+        <view class="list-row">
+          <view class="list-title">有效期至:</view>
+          <view class="list-title">{{tools.formatTime(refundData.start_at,'{m}月{d}日')}}-{{tools.formatTime(refundData.end_at,'{m}月{d}日')}}</view>
+        </view>
+        <view class="list-row">
+          <view class="list-title">预约内容:</view>
+          <view class="list-title">{{refundData.name}}</view>
+        </view>
+        <view class="list-row">
+          <view class="list-title">退款金额:</view>
+          <view class="list-title s-yellow">{{tools.fen2yuan(refundData.pay_price,2)}}元</view>
+        </view>
+        <view class="list-row">
+          <view class="list-title">退款说明:</view>
+          <view class="list-title" wx:if="{{nowtime < start_at}}">
+            <view>距离开营超过7天，按报名</view>
+            <view>实付金额全额退款</view>
+          </view>
+          <view class="list-title" wx:else>
+            <view>不足7天，将收取报名费30%</view>
+            <view>的退营手续费</view>
+          </view>
+        </view>
+        <view class="list-row">
+          <view class="list-title">退款方式:</view>
+          <view class="list-title" wx:if="{{refundData.pay_method == 'weixin'}}">微信钱包 (预计5个工作日到账)</view>
+          <view class="list-title" wx:if="{{refundData.pay_method == 'card'}}">立即退款至魔橙卡余额</view>
+        </view>
+      </block>
+
+      <!--团课-->
+      <block wx:if="{{refundData.type =='team'}}">
+        <view class="list-row">
+          <view class="list-title">预约时间:</view>
+          <view class="list-title">{{tools.formatTime(refundData.start_at,'{m}月{d}日')}} {{tools.formatTime(refundData.start_at,'{h}:{i}')}}-{{tools.formatTime(refundData.end_at,'{h}:{i}')}}</view>
+        </view>
+        <view class="list-row">
+          <view class="list-title">预约内容:</view>
+          <view class="list-title">{{refundData.name}}</view>
+        </view>
+        <view class="list-row">
+          <view class="list-title">退款金额:</view>
+          <view class="list-title s-yellow">{{tools.fen2yuan(refundData.pay_price,2)}}元</view>
+        </view>
+
+        <view class="list-row" wx:if="{{refundData.spell_status == 4 && refundData.is_spell == 1}}">
+          <view class="list-title">退款说明:</view>
+          <view class="list-text">拼课人数已满6人，拼课成功，可取消，但不退款。</view>
+        </view>
+
+        <view class="list-row">
+          <view class="list-title">退款方式:</view>
+          <view class="list-title" wx:if="{{(nowtime > start_at || refundData.orderType == 'give') && refundData.order_status !='queue'}}">本次取消不支持退款</view>
+          <block wx:else>
+            <view class="list-title" wx:if="{{refundData.pay_method == 'weixin'}}">微信钱包 (预计5个工作日到账)</view>
+            <view class="list-title" wx:if="{{refundData.pay_method == 'card'}}">立即退款至魔橙卡余额</view>
+          </block>
+        </view>
+
+
+      </block>
+
+    </view>
+
+    <view class="btn" bindtap="confirm">确认取消</view>
+  </view>
+
+
+  <view class="mask-box" wx:if="{{show}}">
+    <view class="mask-text-box">
+      <view class="mask-text-title">提示</view>
+
+      <!--团课-->
+      <view class="mask-league-tips" wx:if="{{refundData.type == 'team' && nowtime > start_at}}">
+
+        <block wx:if="{{refundData.order_status !='queue'}}">
+          本次取消
+          <text class="s-black">不支持</text>退款
+          <view class="text-tips">
+            确认取消预约吗?
+          </view>
+        </block>
+        <view class="text-tips" wx:else>
+          确认取消预约吗?
+        </view>
+      </view>
+
+
+      <!--私教课 训练营-->
+      <view class="mask-text-tips" wx:else>
+        确认取消预约吗?
+      </view>
+
+
+
+      <view class="mask-btn-box">
+        <view class="mask-btn" bindtap="close">再看看</view>
+        <view class="confirm-btn" bindtap="applyRefund">确认取消</view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

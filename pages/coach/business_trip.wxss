@@ -1,0 +1,69 @@
+/* pages/coach/business_trip.wxss */
+
+page {
+  background: #212121;
+}
+
+.head-tips {
+  padding: 25rpx 0;
+  background-color: #1f1f1f;
+  text-align: center;
+}
+
+.head-text {
+  color: #a1a1a1;
+  font-size: 27rpx;
+}
+
+.s-yellow {
+  color: #ffae00;
+  margin-right: 10rpx;
+}
+
+.list-box-tips {
+  padding-top: 200rpx;
+  text-align: center;
+}
+
+.tips-title {
+  color: #fff;
+  font-size: 27rpx;
+  margin-bottom: 50rpx;
+}
+
+.box-tips {
+  color: #a1a1a1;
+  font-size: 24rpx;
+}
+
+.btn-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 89rpx;
+  display: flex;
+  align-items: center;
+}
+
+.black-btn {
+  width: 281rpx;
+  height: 89rpx;
+  line-height: 89rpx;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  font-size: 32rpx;
+}
+
+.add-btn {
+  flex: 1;
+  font-size: 32rpx;
+  color: #000;
+  height: 89rpx;
+  line-height: 89rpx;
+  font-weight: bold;
+  text-align: center;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background-size: 100% 100%;
+}

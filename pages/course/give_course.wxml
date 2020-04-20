@@ -1,0 +1,44 @@
+<!--pages/course/give_course.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+
+  <!--时间选择-->
+  <view class="date-box">
+    <picker mode="date" fields="month" value="{{date}}" bindchange="bindDateChange">
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+    <image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+  </view>
+
+  <view class="box" wx:for="{{list}}" wx:key='index'>
+    <image src="{{item.team.coach.headimgurl}}" class="coach"></image>
+    <view class="mid">
+      <view class="title">{{item.team.course.name}}</view>
+      <view class="name">{{item.team.store.name}}</view>
+      <view class="date">{{tools.formatTime(item.team.start_at,'{m}月{d}日')}}
+        <text class="time">{{tools.formatTime(item.team.start_at,'{h}:{i}')}}-{{tools.formatTime(item.team.end_at,'{h}:{i}')}}</text>
+
+        <text class="tag-tips" wx:if="{{item.give_user_id == 0}}">待领取</text>
+        <text class="tag-tips" wx:if="{{item.give_user_id > 0 && item.refund_at == 0}}">已领取</text>
+        <text class="tag-tips cancel-text" wx:if="{{item.refund_at > 0 && item.give_user_id == 0}}">已取消</text>
+      </view>
+    </view>
+    <view class="btn" bindtap='jumpPage' data-url='pages/refund/refund_success?ordersn={{item.ordersn}}'>查看</view>
+  </view>
+
+
+  <view class="tips-box" wx:if="{{list.length == 0}}">
+    <view class="box-row">
+      <view class="tips">还没有赠送过课程哦!</view>
+      <view class="tips-text">点击任意课程的名称，选择「赠课给好友」，即可送出。</view>
+      <view class="tips-btn" bindtap='jumpPage' data-url='pages/course/course'>立即去送课</view>
+    </view>
+  </view>
+
+
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

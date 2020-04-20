@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "预约成功",
+  "usingComponents": {
+    "give": "/pages/components/give/give",
+    "share": "/pages/components/share/share"
+  }
+}

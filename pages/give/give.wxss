@@ -1,0 +1,128 @@
+/* pages/give/give.wxss */
+
+.box {
+  width: 697rpx;
+  height: 941rpx;
+  background-color: #fffbe6;
+  border-radius: 13rpx;
+  margin: 150rpx auto 0;
+  background: url(https://boringcdn.nanningboring.com/molicheng/give.png);
+  background-size: 100%;
+}
+
+.poster-box {
+  width: 657rpx;
+  height: 292rpx;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.poster {
+  width: 100%;
+  border-radius: 13rpx;
+  margin-top: -70rpx;
+}
+
+.user-img {
+  width: 173rpx;
+  height: 174rpx;
+  border-radius: 50%;
+  margin-top: -50rpx;
+  border: solid 1rpx #fff;
+}
+
+.tips {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #000;
+}
+
+.text-box {
+  margin-top: 100rpx;
+  text-align: center;
+}
+
+.user-name {
+  font-size: 33rpx;
+}
+
+.s-yellow {
+  margin-right: 10rpx;
+  color: #ffae00;
+}
+
+.coach {
+  font-size: 31rpx;
+  margin: 50rpx auto;
+}
+
+.text {
+  color: #6c6c6c;
+  font-size: 24rpx;
+  margin-bottom: 15rpx;
+}
+
+.btn-box {
+  margin-top: 80rpx;
+  border-top: 3rpx dashed #975600;
+}
+
+.time-tips {
+  color: #000;
+  text-align: center;
+  height: 42rpx;
+  line-height: 42rpx;
+  margin-top: 20rpx;
+}
+
+.btn {
+  width: 639rpx;
+  height: 93rpx;
+  line-height: 93rpx;
+  margin: 20rpx auto 0;
+  text-align: center;
+  color: #000;
+  font-size: 40rpx;
+  background-image: linear-gradient(#ff9c00, #ff9c00);
+  border-radius: 7rpx;
+}
+
+.btn::after {
+  border: 0;
+}
+
+.receive-tips {
+  width: 639rpx;
+  height: 93rpx;
+  line-height: 93rpx;
+  margin: 20rpx auto 0;
+  text-align: center;
+  color: #fff;
+  font-size: 40rpx;
+  background: #6c6c6c;
+  border-radius: 7rpx;
+}
+
+.home-btn {
+  position: fixed;
+  right: 15rpx;
+  bottom: 100rpx;
+  width: 111rpx;
+  height: 111rpx;
+}
+
+.logo {
+  position: absolute;
+  bottom: 0;
+  left: 96rpx;
+  width: 557rpx;
+  height: 87rpx;
+}
+
+.gray-btn{
+  color: #fff;
+  background: #6c6c6c;
+  margin-top: 70rpx;
+}

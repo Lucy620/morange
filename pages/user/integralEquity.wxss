@@ -1,0 +1,104 @@
+/* pages/user/integralEquity.wxss */
+page {
+  background-image: linear-gradient(#2a2a2a, #1c1c1c);
+}
+
+swiper {
+  height: 500rpx;
+  text-align: center;
+  position: relative;
+}
+
+.current {
+  position: absolute;
+  top: 22rpx;
+  left: 11rpx;
+  width: 129rpx;
+  height: 129rpx;
+
+}
+
+.swiper-item-box {
+  position: relative;
+}
+
+.swiper-item {
+  width: 723rpx;
+  height: 403rpx;
+  margin-top: 25rpx;
+}
+
+.grade-box {
+  position: absolute;
+  right: 15rpx;
+  bottom: 150rpx;
+  width: 588rpx;
+  height: 95rpx;
+  background: url(https://boringcdn.nanningboring.com/molic/grade-bg.png);
+  background-size: 100%;
+  text-align: right;
+  padding-right: 25rpx;
+}
+
+.grade-title {
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.grade-num-box {
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.yellow {
+  color: #ffae00;
+}
+
+.equity-box {
+  width: 718rpx;
+  min-height: 937rpx;
+  background-color: #323232;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.2);
+  border-radius: 13rpx;
+  margin: 0 auto;
+}
+
+.equity-list {
+  padding: 40rpx 30rpx;
+}
+
+.equity-row {
+  position: relative;
+  padding: 20rpx 0;
+}
+
+.equity-top {
+  display: flex;
+  align-items: center;
+}
+
+.equity-icon {
+  width: 75rpx;
+  height: 73rpx;
+}
+
+.equity-title {
+  flex: 1;
+  margin-left: 30rpx;
+}
+
+.title {
+  color: #fff;
+}
+
+.tips {
+  font-size: 20rpx;
+  color: #898989;
+}
+
+.line {
+  position: absolute;
+  bottom: 0;
+  left: 55rpx;
+  width: 640rpx;
+}

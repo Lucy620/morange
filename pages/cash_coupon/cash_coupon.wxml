@@ -1,0 +1,62 @@
+<!--pages/cash_coupon/cash_coupon.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <!--搜索-->
+  <view class="search-wrapper">
+    <input placeholder="点击这里输入兑换码" value="{{code}}" class="input-box" bindinput="binKeyValue"></input>
+    <view class="search-btn" bindtap="exchange">立即兑换</view>
+  </view>
+
+  <!--代金券提示  bindtap='jumpPage' data-url='pages/invitation/invitation'-->
+  <view class="coupon-tips-box">
+    <image src="https://boringcdn.nanningboring.com/molicheng/coupon-tips.png" mode="widthFix" class="coupon-tips-icon"></image>
+    <view class="tips-box">
+      <view class="tips-title">你还有代金券可领取!</view>
+      <view class="tips-btn" bindtap='jumpPage' data-url='pages/invitation/invitation'>立即查看></view>
+    </view>
+  </view>
+
+  <!--代金券-->
+  <view class="coupon-box" wx:for="{{list}}" wx:key='index'>
+    <view class="coupon-box-row">
+      <view class="coupon-details">
+        <view class="coupon-text">{{item.name}}</view>
+        <view class="coupon-text-tips" bindtap="openExplain" data-name="{{item.name}}" data-notice="{{item.notice}}">查看可用范围</view>
+      </view>
+      <view class="coupon-money" wx:if="{{item.reduce_cost > 0}}">¥ {{tools.fen2yuan(item.reduce_cost,2)}}</view>
+    </view>
+    <view class="coupon-box-date">
+      <view class="coupon-date">有效期至：{{tools.formatTime(item.use_end,'{y}-{m}-{d}')}}</view>
+    </view>
+  </view>
+
+  <!--无代金券提示-->
+  <view class="no-coupon-tips">
+    <view class="coupon-tips-title">暂无可用代金券哦~~</view>
+    <view class="coupon-tips-text" bindtap='jumpPage' data-url='pages/cash_coupon/invalid_coupon'>查看已失效的券></view>
+  </view>
+
+</view>
+
+<view class="mask-box" wx:if="{{showExplain}}">
+  <view class="mask-row-box">
+    <view class="mask-title">代金券使用说明</view>
+    <view class="mask-text-box">
+      <view class="coupon-row">
+        <view class="coupon-tips">名称：</view>
+        <view class="mask-text">{{title}}</view>
+      </view>
+      <view class="coupon-row">
+        <view class="coupon-tips">使用说明：</view>
+        <view class="mask-text">{{notice}}</view>
+      </view>
+    </view>
+    <image src="https://oppocdn.afxeon.net/close-iocm.png" mode="widthFix" class="close-iocm" bindtap="closeTips"></image>
+  </view>
+</view>
+
+
+<image src="https://boringcdn.nanningboring.com/molicheng/home-btn.png" mode="widthFix" class="home-btn" bindtap='jumpPage' data-url='pages/course/course' wx:if="{{showBack}}"></image>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

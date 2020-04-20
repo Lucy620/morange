@@ -1,0 +1,182 @@
+/* pages/my_ reservation/reservation_record.wxss */
+
+/**记录存在 时间选择**/
+
+.date-box {
+  height: 82rpx;
+  line-height: 82rpx;
+  text-align: center;
+  color: #bcbcbc;
+  background-color: #404040;
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -5rpx;
+  right: 30rpx;
+  color: #bcbcbc;
+  width: 21.3rpx;
+  height: 27.3rpx;
+}
+
+/**预约课程**/
+
+.box {
+  display: flex;
+  align-items: center;
+  height: 162rpx;
+  padding: 0 25rpx;
+  background-color: #181818;
+  margin-bottom: 10rpx;
+  position: relative;
+}
+
+.coach {
+  width: 96.7rpx;
+  height: 96.7rpx;
+  background-color: #272727;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.mid {
+  flex: 1;
+  margin-left: 25rpx;
+  margin-right: 15rpx;
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  color: #fff;
+  height: 50rpx;
+  font-size: 26.7rpx;
+}
+
+.name {
+  height: 40rpx;
+  color: #bcbcbc;
+  font-size: 24rpx;
+}
+
+.btn-tips {
+  background-color: #bcbcbc;
+  border-radius: 7rpx;
+  font-size: 20rpx;
+  color: #000;
+  padding: 2rpx 6rpx;
+}
+
+.s-btn-tips {
+  background-color: #ffae00;
+}
+
+.tips {
+  font-size: 24rpx;
+  color: #bcbcbc;
+}
+
+.s-yellow {
+  color: #ffae00;
+}
+
+.date {
+  color: #bcbcbc;
+  font-size: 24rpx;
+}
+
+.time {
+  color: #ffae00;
+}
+
+.btn {
+  position: relative;
+  z-index: 1;
+  width: 99.3rpx;
+  height: 52rpx;
+  text-align: center;
+  line-height: 52rpx;
+  border-radius: 6.7rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/curriculum-btn.png);
+  background-size: 100%;
+}
+
+.wrap {
+  width: 150rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 0;
+  right: -25rpx;
+  overflow: hidden;
+}
+
+.silk-ribbon {
+  display: inline-block;
+  text-align: center;
+  width: 210rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  position: absolute;
+  top: 5rpx;
+  right: -55rpx;
+  z-index: 2;
+  overflow: hidden;
+  transform: rotate(43deg);
+  -ms-transform: rotate(43deg);
+  -moz-transform: rotate(43deg);
+  -webkit-transform: rotate(43deg);
+  -o-transform: rotate(43deg);
+  background: #ff6a1f;
+  color: #ffae1c;
+  font-size: 18rpx;
+}
+
+/**记录不存在**/
+
+.month {
+  height: 82rpx;
+  line-height: 82rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #404040;
+}
+
+.no-record-box {
+  position: absolute;
+  top: 82rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.record-tips {
+  font-size: 40rpx;
+  color: #fff;
+  margin-bottom: 50rpx;
+}
+
+.record-btn {
+  width: 339.3rpx;
+  height: 99.3rpx;
+  margin: 0 auto;
+  line-height: 99.3rpx;
+  color: #ffae00;
+  border-width: 2rpx;
+  border-style: solid;
+  border-radius: 4px;
+  margin-bottom: 50rpx;
+  border: 3px solid linear-gradient(0deg, #ff6e0d 0%, #ffba00 100%);
+}
+
+.cancel-tips {
+  font-size: 33.3rpx;
+  color: #bcbcbc;
+}

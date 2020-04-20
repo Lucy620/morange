@@ -1,0 +1,777 @@
+/* pages/league/list.wxss */
+
+.container-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+/***轮播**/
+
+.swiper-box {
+  height: 200rpx;
+}
+
+swiper {
+  height: 100%;
+}
+
+.slide-image {
+  width: 100%;
+}
+
+/***tab栏**/
+
+.tab-box {
+  display: flex;
+  align-items: center;
+  height: 70rpx;
+  background-color: #181818;
+  border-bottom: 1px solid #3d3d3d;
+}
+
+.row-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1rpx solid #272727;
+}
+
+.row-box:last-child {
+  border: none;
+}
+
+.title {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.tab-icon {
+  width: 25rpx;
+  height: 25rpx;
+  margin-left: 10rpx;
+}
+
+/**星期**/
+
+.week-box {
+  height: 62rpx;
+  line-height: 62rpx;
+  background-color: #181818;
+  display: flex;
+  align-items: center;
+}
+
+.week-item {
+  flex: 1;
+  text-align: center;
+  color: #818181;
+  font-size: 24rpx;
+  position: relative;
+}
+
+.s-line {
+  position: relative;
+}
+
+.s-line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -25rpx;
+  width: 1px;
+  height: 50rpx;
+  background: #272727;
+}
+
+.select-week-box {
+  position: absolute;
+  top: -7rpx;
+  left: 50%;
+  margin-left: -33rpx;
+  width: 66rpx;
+  height: 66rpx;
+  z-index: 1;
+  border-radius: 50%;
+  background-image: linear-gradient(to bottom, #ffd324, #ff7200);
+  padding: 5rpx;
+}
+
+.select-week {
+  width: 66rpx;
+  height: 66rpx;
+  background-color: #252525;
+  border-radius: 50%;
+}
+
+.select-date {
+  padding-top: 12rpx;
+  width: 100%;
+  font-size: 20rpx;
+  color: #818181;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.select-date-tips {
+  width: 100%;
+  font-size: 22rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/**教练 门店**/
+
+.coach-store-box {
+  position: fixed;
+  top: 332rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.list-swiper-box {
+  height: 100%;
+}
+
+.scroll-box {
+  height: 100%;
+}
+
+.store-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 55.3rpx;
+  padding: 0 20rpx;
+  background-color: #000;
+}
+
+.store-address {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.map-box {
+  display: flex;
+  align-items: center;
+}
+
+.map-text {
+  font-size: 24rpx;
+  color: #818181;
+}
+
+.map-arrow {
+  width: 20rpx;
+  height: 20rpx;
+  transform: rotate(-90deg);
+  margin-left: 5rpx;
+  margin-top: 8rpx;
+}
+
+.coach-info {
+  display: flex;
+  align-items: center;
+  height: 162rpx;
+  padding: 0 20rpx;
+  background-color: #181818;
+}
+
+.coach-img {
+  width: 96.7rpx;
+  height: 96.7rpx;
+  border-radius: 50%;
+  position: relative;
+}
+
+.coach-img image {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.coach-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  box-shadow: 0rpx 0rpx 5.3rpx 0rpx rgba(0, 0, 0, 0.5);
+  opacity: 0.5;
+  color: #818181;
+  font-size: 50rpx;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.coach-info-details {
+  flex: 1;
+  margin-left: 45rpx;
+}
+
+.info-tips {
+  color: #818181;
+  font-size: 24rpx;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  height: 162rpx;
+  padding: 0 20rpx;
+  background-color: #181818;
+  margin-bottom: 5rpx;
+  position: relative;
+}
+.refresh-box{
+  margin: 0;
+}
+
+.coach {
+  width: 96.7rpx;
+  height: 96.7rpx;
+  background-color: #272727;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.box-row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.mid {
+  flex: 1;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.title {
+  color: #fff;
+  font-size: 26.7rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.attributes-box {
+  display: flex;
+  align-items: center;
+  margin: 10rpx 0;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  color: #bcbcbc;
+  font-size: 20rpx;
+}
+
+.garden {
+  width: 10rpx;
+  height: 10rpx;
+  margin: 0 10rpx;
+  border-radius: 50%;
+  background: #bcbcbc;
+}
+
+.date {
+  color: #fff;
+  font-size: 22rpx;
+}
+
+.time {
+  color: #ffae00;
+  margin-right: 10rpx;
+}
+
+.btn {
+  width: 99rpx;
+  height: 52rpx;
+  text-align: center;
+  line-height: 52rpx;
+  border-radius: 6.7rpx;
+  font-size: 27rpx;
+  color: #000;
+  background: url(https://boringcdn.nanningboring.com/molicheng/curriculum-btn.png);
+  background-size: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.wrap {
+  width: 150rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.silk-ribbon {
+  display: inline-block;
+  text-align: center;
+  width: 155rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  position: absolute;
+  top: 10rpx;
+  right: -55rpx;
+  overflow: hidden;
+  transform: rotate(43deg);
+  -ms-transform: rotate(43deg);
+  -moz-transform: rotate(43deg);
+  -webkit-transform: rotate(43deg);
+  -o-transform: rotate(43deg);
+  background: #ff6a1f;
+  color: #fff777;
+  font-size: 18rpx;
+}
+
+.full {
+  background: #424242;
+  color: #bcbcbc;
+}
+
+.full-btn {
+  background: none;
+  border-radius: 10rpx;
+  border: solid 3rpx #424242;
+  color: #bcbcbc;
+}
+
+.coach-btn-box {
+  width: 99rpx;
+  height: 53rpx;
+  border-radius: 4px;
+  background-image: linear-gradient(to bottom, #ffd324, #ff7200);
+  overflow: hidden;
+  padding: 1px;
+}
+
+.wait-btn {
+  line-height: 53rpx;
+  text-align: center;
+  color: #ffae00;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: #2a2a2a;
+}
+
+/**筛选课程**/
+
+.course-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.mask-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.cover {
+  width: 599rpx;
+  position: absolute;
+  top: 0;
+  left: -750px;
+  bottom: 0;
+  z-index: 2;
+  background-color: #262626;
+}
+
+.course-title-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 89.3rpx;
+  line-height: 89.3rpx;
+  background-color: #0d0d0d;
+  position: relative;
+  z-index: 2;
+  padding: 0 20rpx;
+}
+
+.course-title {
+  display: flex;
+  align-items: center;
+}
+
+.course-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.course-title-text {
+  margin-left: 15rpx;
+  color: #fff;
+}
+
+.course-row {
+  position: absolute;
+  top: 89.3rpx;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  text-align: center;
+  padding-bottom: 89rpx;
+}
+
+.tips {
+  color: #b1b1b1;
+  font-size: 24rpx;
+}
+
+.left {
+  width: 313rpx;
+  height: 100%;
+  background: #131313;
+}
+
+.scroll-view-box {
+  height: 100%;
+}
+
+.objective-box {
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  height: 49rpx;
+  background-color: #1b1b1b;
+}
+
+.objective-icon {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.objective-text {
+  margin-left: 10rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.objective-tab-bxo {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 25rpx;
+  flex-wrap: wrap;
+}
+
+.objective-tab {
+  flex-grow:1;
+  height: 53rpx;
+  line-height: 53rpx;
+  border-radius: 7rpx;
+  margin:20rpx 25rpx 20rpx 0;
+  font-size: 25rpx;
+  color: #b1b1b1;
+  border: solid 2rpx #b1b1b1;
+}
+
+.select-objective-tab {
+  border: solid 2rpx #ff9c00;
+  color: #000;
+  background-image: linear-gradient(#ff9c00, #ff9c00);
+  background-blend-mode: normal, normal;
+  border-radius: 7rpx;
+}
+
+.rigth {
+  flex: 1;
+}
+
+.course-item {
+  width: 259rpx;
+  padding: 20rpx 0;
+  border-radius: 7rpx;
+  margin: 0 auto;
+  font-size: 25rpx;
+  color: #b1b1b1;
+}
+
+.select-course-item {
+  border: none;
+  color: #000;
+  background: #ff9c00;
+}
+
+.item-width {
+  margin: 0 auto;
+  padding: 10rpx 0;
+  border-radius: 7rpx;
+  word-break: keep-all;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.btn-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  height: 89rpx;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.mask-btn {
+  width: 226rpx;
+  height: 89rpx;
+  text-align: center;
+  line-height: 89rpx;
+  color: #fff;
+  font-size: 32rpx;
+  background-color: #000;
+}
+
+.s-mask-btn {
+  flex: 1;
+  font-size: 32rpx;
+  color: #000;
+  height: 89rpx;
+  line-height: 89rpx;
+  text-align: center;
+  font-weight: bold;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background-size: 100% 100%;
+}
+
+.time-box {
+  position: absolute;
+  left: -750px;
+  top: 0;
+  bottom: 0;
+  width: 466rpx;
+  z-index: 1;
+  background-color: #262626;
+}
+
+.time-slot {
+  position: absolute;
+  top: 89.3rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 170rpx;
+}
+
+.time-item {
+  width: 333rpx;
+  height: 53rpx;
+  line-height: 53rpx;
+  border-radius: 7rpx;
+  border: solid 2rpx #b1b1b1;
+  margin: 30rpx auto 100rpx;
+  text-align: center;
+  color: #b1b1b1;
+}
+
+.select-time-item {
+  border: solid 2rpx #ff9c00;
+  color: #000;
+  background-image: linear-gradient(#ff9c00, #ff9c00);
+  background-blend-mode: normal, normal;
+  border-radius: 7rpx;
+}
+
+.time-tips-box {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 50rpx;
+  bottom: 100rpx;
+}
+
+.time-tips-img {
+  width: 44rpx;
+  height: 44rpx;
+  border: solid 2rpx #fff;
+  position: relative;
+}
+
+.select-time-tips {
+  border: solid 2rpx #ff9c00;
+}
+
+.hook-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -16rpx;
+  margin-top: -12rpx;
+  width: 34rpx;
+  height: 24rpx;
+}
+
+.time-tips-text {
+  font-size: 25rpx;
+  color: #fff;
+  margin-left: 20rpx;
+}
+
+.time-btn {
+  width: 186rpx;
+  height: 89rpx;
+  text-align: center;
+  line-height: 89rpx;
+  color: #fff;
+  font-size: 32rpx;
+  background-color: #000;
+}
+
+.s-time-btn {
+  flex: 1;
+  font-size: 32rpx;
+  color: #000;
+  height: 89rpx;
+  line-height: 89rpx;
+  text-align: center;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background-size: 100% 100%;
+}
+
+.screen-box {
+  width: 599rpx;
+  position: absolute;
+  top: 0;
+  left: -750px;
+  bottom: 0;
+  z-index: 2;
+}
+
+.screen-title-box {
+  display: flex;
+  align-items: center;
+  height: 89.3rpx;
+  line-height: 89.3rpx;
+  background-color: #0d0d0d;
+  padding-left: 30rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.screen-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.screen-title {
+  margin-left: 15rpx;
+  color: #fff;
+}
+
+.area-box {
+  position: absolute;
+  top: 89.3rpx;
+  bottom: 0;
+  width: 133rpx;
+  text-align: center;
+  padding-bottom: 89rpx;
+  background-color: #131313;
+}
+
+.scroll-view-box {
+  height: 100%;
+}
+
+.area-item {
+  font-size: 24rpx;
+  line-height: 53rpx;
+  margin: 40rpx 0;
+  color: #5e5e5e;
+}
+
+.select-area-item {
+  color: #ffae00;
+}
+
+.area-list {
+  width: 193rpx;
+  position: absolute;
+  top: 89.3rpx;
+  left: 133rpx;
+  bottom: 0;
+  text-align: center;
+  padding-bottom: 89rpx;
+  background-color: #1f1f1f;
+}
+
+.theme-box {
+  position: absolute;
+  top: 89.3rpx;
+  bottom: 0;
+  left: 324rpx;
+  width: 274rpx;
+  text-align: center;
+  padding-bottom: 89rpx;
+  background: #262626;
+}
+
+.theme-item {
+  width: 259rpx;
+  height: 53rpx;
+  line-height: 53rpx;
+  border-radius: 6.7rpx;
+  margin: 40rpx auto;
+  color: #b1b1b1;
+}
+
+.select-theme-item {
+  border: none;
+  color: #000;
+  background-image: linear-gradient(#ff9c00, #ff9c00), linear-gradient(#bcbcbc, #bcbcbc);
+  background-blend-mode: normal, normal;
+  border-radius: 6.7rpx;
+}
+
+.store-btn {
+  width: 250rpx;
+  height: 89rpx;
+  text-align: center;
+  line-height: 89rpx;
+  color: #fff;
+  font-size: 32rpx;
+  background-color: #000;
+}
+
+.s-store-btn {
+  flex: 1;
+  font-size: 32rpx;
+  color: #000;
+  height: 89rpx;
+  line-height: 89rpx;
+  text-align: center;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background-size: 100% 100%;
+}

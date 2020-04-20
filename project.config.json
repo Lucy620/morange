@@ -1,0 +1,116 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.8.0",
+	"appid": "wx2884425cff894733",
+	"projectname": "%E9%AD%94%E5%8A%9B%E6%A9%99",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "签到成功",
+					"pathName": "pages/sign/sign_success",
+					"query": "ordersn=2020011648985055",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的预约",
+					"pathName": "pages/reservation/my_reservation",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "会员签到",
+					"pathName": "pages/coach/member_sign",
+					"query": "id=2461&type=team",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "魔橙卡",
+					"pathName": "pages/user/user",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "积分会员权益",
+					"pathName": "pages/user/integralEquity",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "积分详情",
+					"pathName": "pages/user/integralDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "积分变动明细",
+					"pathName": "pages/user/integralChange",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "教练详情",
+					"pathName": "pages/coach/coach_details",
+					"query": "coach_id=36",
+					"scene": null
+				}
+			]
+		}
+	}
+}

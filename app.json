@@ -1,0 +1,98 @@
+{
+  "pages": [
+    "pages/course/course",
+    "pages/index/index",
+    "pages/login/login",
+    "pages/error/error",
+    "pages/user/user",
+    "pages/medal/list",
+    "pages/medal/medal_details",
+    "pages/reservation/my_reservation",
+    "pages/reservation/reservation_record",
+    "pages/reservation/cancel_reservation",
+    "pages/reservation/reservation_success",
+    "pages/invitation/invitation",
+    "pages/invitation/coupon",
+    "pages/recharge/recharge",
+    "pages/ranking/ranking",
+    "pages/cash_coupon/cash_coupon",
+    "pages/cash_coupon/invalid_coupon",
+    "pages/coach/coach_details",
+    "pages/coach/member_sign",
+    "pages/coach/student",
+    "pages/coach/curriculum",
+    "pages/coach/schedule",
+    "pages/coach/business_trip",
+    "pages/coach/report",
+    "pages/coach/points_fund",
+    "pages/coach/income_details",
+    "pages/coach/add_ report",
+    "pages/coach/course_list",
+    "pages/coach/private",
+    "pages/course/course_details",
+    "pages/course/give_course",
+    "pages/private_education/list",
+    "pages/private_education/course",
+    "pages/confirm_order/confirm_order",
+    "pages/confirm_order/payment_success",
+    "pages/confirm_order/coupon",
+    "pages/refund/help_refund",
+    "pages/refund/refund_success",
+    "pages/league/details",
+    "pages/training_camp/list",
+    "pages/training_camp/details",
+    "pages/give/give",
+    "pages/store/store_details",
+    "pages/store/course",
+    "pages/store/private",
+    "pages/store/camp",
+    "pages/lesson_collage/lesson_collage",
+    "pages/lesson_collage/share",
+    "pages/redirect/redirect",
+    "pages/outreach/outreach",
+    "pages/sign/sign",
+    "pages/sign/sign_success",
+    "pages/user/integralEquity",
+    "pages/user/integralDetail",
+    "pages/user/integralChange"
+  ],
+  "window": {
+    "backgroundColor": "#1f1f1f",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "MORANGE",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#ff5b3e",
+    "backgroundColor": "#000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/assets/image/home1.png",
+        "selectedIconPath": "/assets/image/home2.png",
+        "text": "门店"
+      },
+      {
+        "pagePath": "pages/course/course",
+        "iconPath": "/assets/image/book1.png",
+        "selectedIconPath": "/assets/image/book2.png",
+        "text": "课程"
+      },
+      {
+        "pagePath": "pages/reservation/my_reservation",
+        "iconPath": "/assets/image/love1.png",
+        "selectedIconPath": "/assets/image/love2.png",
+        "text": "我的预约"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "/assets/image/card1.png",
+        "selectedIconPath": "/assets/image/card2.png",
+        "text": "魔橙卡"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

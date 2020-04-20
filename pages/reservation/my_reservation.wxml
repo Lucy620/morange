@@ -1,0 +1,115 @@
+<!--pages/my_ reservation/my_reservation.wxml-->
+
+
+<loading wx:if="{{showTab}}"></loading>
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <!--头部-->
+  <view class="head-box">
+    <view class="row-box">
+      <view class="row-number">
+        <number wx:for="{{total_day}}" wx:key='index' number="{{item}}"></number>
+      </view>
+      <view class="row-text">累计天数</view>
+    </view>
+    <image src="{{user.miniprogram.headimgurl}}" mode="aspectFill" class="user-img"></image>
+    <view class="row-box">
+      <view class="row-number">
+        <number wx:for="{{total_course}}" wx:key='index' number="{{item}}"></number>
+      </view>
+      <view class="row-text">累计训练/次</view>
+    </view>
+  </view>
+  <!--卡路里-->
+  <view class="calorie-box">
+    <view class="calorie">
+      <view class="calorie-number">
+        <kcalNumber wx:for="{{day_calories}}" wx:key='index' number="{{item}}"></kcalNumber>
+      </view>
+      <view class="calorie-text">今日消耗热量/Kcal</view>
+    </view>
+    <view class="calorie">
+      <view class="calorie-number">
+        <kcalNumber wx:for="{{total_calories}}" wx:key='index' number="{{item}}"></kcalNumber>
+      </view>
+      <view class="calorie-text">累计消耗热量/Kcal</view>
+    </view>
+  </view>
+
+  <!--待进行-->
+  <view class="stay-conduct" wx:if="{{reserve_list.length > 0}}">
+    <view class="title-box">
+      <view class="title">待进行</view>
+    </view>
+    <view class="conduct-row" wx:for="{{reserve_list}}" wx:key='index'>
+      <view class="coach">
+        <image src="{{item.coach.headimgurl}}" class="user-coach"></image>
+        <view class="name-box">
+          <view class="course-title">
+            <!--等候中-->
+            <text wx:if="{{item.order.status == 'queue'}}">[等候中]</text>
+            <!--拼课-->
+            <text wx:if="{{item.data.is_spell == 1}}">『拼课』</text> {{item.data.camp ? item.data.camp.course.name : item.data.course.name}}
+            <text wx:if="{{item.data.course.type == 'camp'}}">{{item.data.camp.name}}</text>
+          </view>
+          <!--私教课-->
+          <view class="name" wx:if="{{item.data.course.type == 'private'}}">{{item.coach.name}}</view>
+          <!---拼课 团课 训练营-->
+          <view class="name" wx:else>{{item.store.name}}
+            <!--拼课-->
+            <block wx:if="{{item.data.is_spell == 1}}">
+              <text class="btn-tips" wx:if="{{item.data.spell_status == 0}}">待接单</text>
+              <text class="btn-tips s-btn-tips" wx:if="{{item.data.spell_status == 1 || item.data.spell_status == 4}}">已接单</text>
+              <text class="btn-tips" wx:if="{{item.data.spell_status == 2}}">拒绝接单</text>
+              <text class="btn-tips" wx:if="{{item.data.spell_status == 3}}">人数不足</text>
+            </block>
+          </view>
+          <!---私教课 训练营-->
+          <view class="tips" wx:if="{{item.data.course.type != 'team'}}">剩余
+            <text class="s-yellow">{{item.surplus}} / {{item.total}}</text> 课时
+          </view>
+          <!---团课 拼课-->
+          <view class="tips" wx:else>
+            {{tools.formatTime(item.start_at,'{m}月{d}日')}} {{tools.getWeek(item.start_at)}}
+            <text class="s-yellow"> {{tools.formatTime(item.start_at,'{h}:{i}')}}-{{tools.formatTime(item.end_at,'{h}:{i}')}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="coach-btn-box">
+        <view class="coach-btn" bindtap='jumpPage' data-url='pages/course/course_details?user_course_id={{item.id}}&user_name={{user.miniprogram.nickname}}'>查看</view>
+      </view>
+    </view>
+  </view>
+
+  <!--预约记录-->
+  <view class="title-box">
+    <view class="title">预约记录</view>
+  </view>
+  <view class="box" wx:for="{{month_list}}" wx:key='index' bindtap='jumpPage' data-url="pages/reservation/reservation_record?id={{index}}">
+    <image src="https://boringcdn.nanningboring.com/molicheng/box-img.png" mode="aspectFill" class="box-img"></image>
+    <view class="mask-box">
+      <view class="mask-row">
+        <image class="sign-title" src="https://boringcdn.nanningboring.com/molicheng/MORANGE-icon.png" mode="widthFix"></image>
+        <view class="month-title" wx:if="{{index == 0}}">本月</view>
+        <view class="month-title" wx:if="{{index == 1}}">上月</view>
+      </view>
+      <view class="number-row">
+        <view class="row-item">
+          <view class="row-item-title">训练天数</view>
+          <view class="row-item-number">{{item.day}}</view>
+        </view>
+        <view class="row-item">
+          <view class="row-item-title">训练次数</view>
+          <view class="row-item-number">{{item.num}}</view>
+        </view>
+        <view class="row-item">
+          <view class="row-item-title">训练时长/分钟</view>
+          <view class="row-item-number">{{item.time}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

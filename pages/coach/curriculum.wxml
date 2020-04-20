@@ -1,0 +1,151 @@
+<!--pages/coach/curriculum.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <!--海报-->
+
+  <view class="poster-box">
+    <view class="coach-box">
+      <image src="{{list.user.coach.headimgurl}}"  mode="aspectFill" class="user-coach"></image>
+      <view class="tag">{{list.user.coach.level.name}}</view>
+    </view>
+    <view class="coach">
+      <view class="coach-name">{{list.user.coach.nickname}}</view>
+      <view class="coach-introduction">本月授课{{list.month_course_num}}节，{{list.month_course_time}}分钟，橙友{{list.month_course_people}}人~~~</view>
+    </view>
+  </view>
+
+  <!--排课-->
+  <block wx:if="{{dataId == 1}}">
+    <!--日历-->
+    <calendar id="Calendar" bind:select="select" defaultValue="{{value}}" defaultMonth="{{month}}" bind:bindDateChange="bindDateChange"></calendar>
+
+    <block wx:if="{{spell_team.length > 0}}">
+      <view class="tips">------------------- 拼课 -------------------</view>
+      <!-- 拼课-->
+      <view class="daily-box" wx:for="{{spell_team}}" wx:key='index' bindtap='jumpPage' data-url='pages/coach/member_sign?id={{item.id}}&type={{item.course.type}}'>
+        <view class="daily-row">
+          <view class="daily-details">
+            <view class="time">{{tools.formatTime(item.start_at,'{h}:{i}')}} - {{tools.formatTime(item.end_at,'{h}:{i}')}} </view>
+            <view class="store">{{item.store.name}}</view>
+            <view class="curriculum">{{item.course.name}}
+              <text class="s-yellow">({{item.surplus}}/{{item.total}})</text>
+            </view>
+          </view>
+          <image src="{{list.user.coach.headimgurl}}"  mode="aspectFill" class="user-coach"></image>
+        </view>
+      </view>
+    </block>
+    <!--日常-->
+
+    <block wx:if="{{courseList.length > 0}}">
+      <view class="tips">-------------- 已完成的日常 --------------</view>
+      <view class="daily-box" wx:for="{{courseList}}" wx:key='index' bindtap='jumpPage' data-url='pages/coach/member_sign?id={{item.id}}&type={{item.course.type}}'>
+        <view class="daily-row">
+          <view class="daily-details">
+             <view class="time">{{tools.formatTime(item.start_at,'{h}:{i}')}} - {{tools.formatTime(item.end_at,'{h}:{i}')}} </view>
+            <view class="store">{{item.camp ? item.camp.store.name : item.store.name}}</view>
+            <view class="curriculum">{{item.camp ? item.camp.name : item.course.name}}
+              <text class="s-yellow">({{item.surplus}}/{{item.total}})</text>
+            </view>
+          </view>
+          <image src="{{list.user.coach.headimgurl}}"  mode="aspectFill" class="user-coach"></image>
+        </view>
+      </view>
+    </block>
+  </block>
+  
+  <!--我-->
+  <block wx:if="{{dataId == 2}}">
+    <view class="activity-status">
+      <view class="status-itme">
+        <view class="number">{{list.user.coach.course_num}}</view>
+        <view class="staus-text">总授课/节</view>
+      </view>
+      <view class="status-itme">
+        <view class="number">{{list.user.coach.course_time}}</view>
+        <view class="staus-text">总时长/分钟</view>
+      </view>
+      <view class="status-itme">
+        <view class="number">{{tools.fen2yuan(list.month_income,2)}}</view>
+        <view class="staus-text">收入/本月</view>
+      </view>
+    </view>
+    <view class="coach-thing">教练事务</view>
+    <view class="coach-thing-row" bindtap="jumpPage" data-url="pages/coach/schedule">
+      <view class="thing-text">课外日程</view>
+      <view class="thing-arrow">
+        <text class="thing-tips" wx:if="{{last_schedule}}">最近一次提交截止至{{tools.formatTime(last_schedule.created_at,'{m}月{d}日{h}:{i}')}}</text>
+        <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow"></image>
+      </view>
+    </view>
+    <view class="coach-thing-row">
+      <view class="thing-text">外出/出差报备</view>
+      <view class="thing-arrow" bindtap="jumpPage" data-url="pages/coach/business_trip">
+        <text class="thing-tips" wx:if="{{last_out}}">最近一次提交截止至{{tools.formatTime(last_out.created_at,'{m}月{d}日{h}:{i}')}}</text>
+        <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow"></image>
+      </view>
+    </view>
+    <view class="coach-thing-row" bindtap='jumpPage' data-url='pages/coach/income_details'>
+      <view class="thing-text">收入明细</view>
+      <view class="thing-arrow" bindtap="jumpPage" data-url="pages/coach/business_trip">
+        <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow"></image>
+      </view>
+    </view>
+    <view class="coach-thing-row" bindtap='jumpPage' data-url='pages/coach/points_fund'>
+      <view class="thing-text">基金/积分明细</view>
+      <view class="thing-arrow">
+        <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow"></image>
+      </view>
+    </view>
+    <view class="coach-thing-row thing-row" bindtap='jumpPage' data-url='pages/coach/student?coach_id={{list.user.id}}'>
+      <view class="thing-text">学员排名</view>
+      <view class="thing-arrow">
+        <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow"></image>
+      </view>
+    </view>
+    <view class="coach-thing">我的授课</view>
+    <view class="coach-thing-row thing-row" bindtap='jumpPage' data-url='pages/coach/course_list'>
+      <view class="thing-text">私教课</view>
+      <view class="thing-arrow">
+        <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow"></image>
+      </view>
+    </view>
+    <view class="coach-thing">我的培训</view>
+    <view class="coach-tips">敬请期待~~</view>
+
+
+    <block wx:if="{{show}}">
+      <view class="coach-thing-row">
+        <view class="thing-text">培训报名</view>
+        <view class="thing-arrow">
+          <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow"></image>
+        </view>
+      </view>
+      <view class="coach-thing-row">
+        <view class="thing-text">已报名的培训</view>
+        <view class="thing-arrow">
+          <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow"></image>
+        </view>
+      </view>
+    </block>
+
+  </block>
+
+
+  <!--按钮-->
+  <view class="btn-box">
+    <view class="btn {{dataId == 1 ? 'slect-btn' : ''}}" bindtap="switchTab" data-id="1">
+      <image src="{{dataId == 1 ? 'https://boringcdn.nanningboring.com/molicheng/date-icon1.png' : 'https://boringcdn.nanningboring.com/molicheng/date-icon2.png' }}" mode="widthFix" class="date-icon"></image>
+      <view class="btn-text {{dataId == 1 ? 'slect-btn-text' : ''}}">排课</view>
+    </view>
+    <view class="btn {{dataId == 2 ? 'slect-btn' : ''}}" bindtap="switchTab" data-id="2">
+      <image src="{{dataId == 2 ? 'https://boringcdn.nanningboring.com/molicheng/user-icon2.png' : 'https://boringcdn.nanningboring.com/molicheng/user-icon1.png'}}" mode="widthFix" class="date-icon"></image>
+      <view class="btn-text {{dataId == 2 ? 'slect-btn-text' : ''}}">我</view>
+    </view>
+
+  </view>
+
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

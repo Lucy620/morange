@@ -1,0 +1,111 @@
+/* pages/coach/points_fund.wxss */
+
+/**tab 栏**/
+
+.tab-box {
+  font-size: 24rpx;
+  height: 62rpx;
+  background-color: #111;
+}
+
+.tab-row {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid #272727;
+}
+
+.tab-item:last-child {
+  border: none;
+}
+
+.tab-text {
+  width: 304rpx;
+  height: 62rpx;
+  line-height: 62rpx;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
+}
+
+.select-tab-item {
+  color: #ffae00;
+  border-bottom: 1px solid #ffae00;
+  background: url(https://boringcdn.nanningboring.com/molicheng/tab-bg.png);
+  background-size: 100% 100%;
+}
+
+.tips-box {
+  height: 82rpx;
+  line-height: 82rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+  background-color: #404040;
+}
+
+.s-yellow {
+  color: #ffae00;
+}
+
+.picker-box {
+  height: 62rpx;
+  line-height: 62rpx;
+  color: #fff;
+  background-color: #181818;
+  margin-bottom: 10rpx;
+}
+
+.picker-row {
+  position: relative;
+}
+
+picker {
+  width: 100%;
+  text-align: center;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 20rpx;
+  margin-top: -8rpx;
+  width: 24rpx;
+  height: 16rpx;
+}
+
+.tips {
+  color: #fff;
+  position: absolute;
+  top: 500rpx;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.schedule-row {
+  display: flex;
+  align-items: center;
+  height: 131.3rpx;
+  padding: 0 30rpx;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+  background-color: #141414;
+}
+
+.date-tiem-box {
+  flex: 1;
+  color: #fff;
+}
+
+.tips-tiem{
+  color: #ffae00;
+  font-size: 26rpx;
+}

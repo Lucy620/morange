@@ -1,0 +1,65 @@
+<!--pages/Invitation/Invitation.wxml-->
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <!--邀请海报-->
+  <view class="poster-box">
+    <image src="https://boringcdn.nanningboring.com/molicheng/invite-poster1.png" class="poster"></image>
+  </view>
+  <button open-type='share' open-type='share' class="btn">立即邀请</button>
+
+  <!--记录-->
+  <view class="record-box">
+    <view class="record-title-box">
+      <view class="record-title">我的邀请记录</view>
+      <view class="record-tips" bindtap='jumpPage' data-url='pages/course/course'>去约课></view>
+    </view>
+    <view class="record">
+      <view class="record-row">
+        <number wx:for="{{wait}}" wx:key='index' number="{{item}}"></number>元
+      </view>
+      <view class="record-row">
+        <number wx:for="{{complete}}" wx:key='index' number="{{item}}"></number>元
+      </view>
+
+      <!-- <view class="record-row">
+        <text class="record-money">{{tools.fen2yuan(wait)}}</text>元
+        <view class="record-tips">代金券在路上></view>
+      </view>
+      <view class="record-row">
+        <text class="record-money">{{tools.fen2yuan(complete)}}</text>元
+        <view class="record-tips">累计获得></view>
+      </view> -->
+    </view>
+  </view>
+
+  <!--规则-->
+  <view class="rule-box">
+    <view class="rule-row">
+      <view class="line"></view>
+      <view class="rule-title">活动细则</view>
+      <view class="line"></view>
+    </view>
+    <view class="rule-text">
+      <view class="rule">
+        1.新用户(未 上过课且账户内无可用新人券的用户)可从你转发或扫描二维码打开的页面中，点击立即领取，领取2张新人券。
+      </view>
+      <view class="rule">
+        2.用户使用你发出的新人券预约常规课程、训练营、 自助健身，并完成签到后，将返赠您2张代金券，返赠券仅限本人使用，用于商业牟利将有封号风险。
+      </view>
+      <view class="rule">
+        3.新人券和返赠券仅在有效期内可用，过期自动作废。新人券和返赠券仅限用于常规约课、训练营、自助健身预约抵扣，不兑现不找零，每次预约仅可用一张券。
+      </view>
+      <view class="rule">
+        4.以上为常规活动规则，特殊活动规则请以活动说明为准(详见魔力橙健身公众号活动推文)。
+      </view>
+      <view class="rule">
+        5.如有其它疑问可拨打魔力橙客服电话
+        <text bindtap="onPhone" data-tel="07715896640">(07715896640)</text>
+      </view>
+      <view class="rule">
+        6.该活动最终解释权归广西南宁魔力橙健身服务有限公司所有。
+      </view>
+    </view>
+  </view>
+</view>
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

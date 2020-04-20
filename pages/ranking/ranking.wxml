@@ -1,0 +1,74 @@
+<!--pages/ranking/ranking.wxml-->
+
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <!--头部-->
+  <view class="head-box">
+    <view class="row">
+      <view class="row-title {{type == 'rank_month' ? 'title' : ''}}" bindtap="switchTab" data-type="rank_month">本月</view>
+      <view class="row-title {{type == 'rank_year' ? 'title' : ''}}" bindtap="switchTab" data-type="rank_year">今年</view>
+      <view class="row-title {{type == 'rank_all' ? 'title' : ''}}" bindtap="switchTab" data-type="rank_all">总计</view>
+    </view>
+  </view>
+
+  <!--用户排名-->
+  <view class="user-box">
+    <image src="https://boringcdn.nanningboring.com/molicheng/logo-text.png" mode="widthFix" class="logo-text"></image>
+    <image src="{{user_info.miniprogram.headimgurl}}" mode="widthFix" class="user-img"></image>
+    <view class="box">
+      <view class="user-ranking">
+        <view class="ranking-tips" wx:if="{{user_info.type =='user'}}" bindtap='jumpPage' data-url='pages/recharge/recharge?type=normal'>开通魔橙卡查看排名</view>
+        <view class="ranking-text" wx:else>排名：第 {{user.rank ? user.rank : '?'}} 名</view>
+        <view class="ranking-date">时间：{{user.total_minute && user_info.type =='vip'  ? user.total_minute : '0'}}分钟</view>
+      </view>
+      <view class="user-list">
+        <view class="user">
+          <image src="{{before_user.headimgurl && user_info.type =='vip' ? before_user.headimgurl : 'https://boringcdn.nanningboring.com/molicheng/user-icon.png'}}" mode="widthFix" class="user-icon"></image>
+          <view class="ranking">前一名
+            <view class="time">{{before_user.total_minute ? before_user.total_minute : '0'}}分钟</view>
+          </view>
+        </view>
+        <view class="user">
+          <image src="{{after_user.headimgurl && user_info.type =='vip' ? after_user.headimgurl : 'https://boringcdn.nanningboring.com/molicheng/user-icon.png'}}" mode="widthFix" class="user-icon"></image>
+          <view class="ranking">后一名
+            <view class="time">{{after_user.total_minute ? after_user.total_minute : '0'}}分钟</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--用户列表-->
+  <view class="user-list-item">
+    <image src="https://boringcdn.nanningboring.com/molicheng/user-title.png" mode="widthFix" class="user-title"></image>
+    <view class="user-item-box">
+      <scroll-view class="scroll-box" scroll-x wx:if="{{list.length > 0}}">
+        <view class="user-item" wx:for="{{list}}" wx:key='index'>
+          <image src="{{item.headimgurl}}" mode="widthFix" class="user-item-img {{item.headimgurl ? '' : 'user-item-black'}}"></image>
+          <image src="https://boringcdn.nanningboring.com/molicheng/brand1.png" mode="widthFix" class="brand" wx:if="{{item.rank == 1}}"></image>
+          <image src="https://boringcdn.nanningboring.com/molicheng/brand2.png" mode="widthFix" class="brand" wx:if="{{item.rank == 2}}"></image>
+          <image src="https://boringcdn.nanningboring.com/molicheng/brand3.png" mode="widthFix" class="brand" wx:if="{{item.rank == 3}}"></image>
+        </view>
+      </scroll-view>
+      <view class="user-item" wx:if="{{list.length == 0}}" wx:for="{{3}}" wx:key='index'>
+        <image src="" mode="widthFix" class="user-item-black"></image>
+        <image src="https://boringcdn.nanningboring.com/molicheng/brand1.png" mode="widthFix" class="brand" wx:if="{{index == 0}}"></image>
+        <image src="https://boringcdn.nanningboring.com/molicheng/brand2.png" mode="widthFix" class="brand" wx:if="{{index == 1}}"></image>
+        <image src="https://boringcdn.nanningboring.com/molicheng/brand3.png" mode="widthFix" class="brand" wx:if="{{index == 2}}"></image>
+      </view>
+    </view>
+  </view>
+
+  <!--按钮-->
+  <view class="btn-box">
+    <view class="btn-tips">数据更新时间：{{tools.formatTime(nowtime,'{y}年{m}月{d}日 {h}:{i}:{s}')}}</view>
+    <button open-type='share' open-type='share' class="btn">转发到群 查看本月群排名</button>
+  </view>
+  <wxs module="tools" src="../../utils/tools.wxs"></wxs>
+
+
+  <!--转发有礼-->
+  <share isShare="{{isShare}}" id='share'></share>
+
+</view>

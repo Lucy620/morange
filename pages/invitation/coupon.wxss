@@ -1,0 +1,118 @@
+/* pages/Invitation/coupon.wxss */
+
+.container-box {
+  height: 888rpx;
+  background:url(https://boringcdn.nanningboring.com/molicheng/Invitation-coupon-bg.png) no-repeat;
+  background-size: 100%;
+}
+
+.box {
+  position: absolute;
+  top: 150rpx;
+  left: 25rpx;
+  width: 700rpx;
+  height: 588rpx;
+  text-align: center;
+  background: url(https://boringcdn.nanningboring.com/molicheng/bg.png);
+  background-size: 100%;
+}
+
+.user-img {
+  width: 173rpx;
+  height: 174rpx;
+  border-radius: 50%;
+  margin-top: -87rpx;
+  border: solid 1rpx #fff;
+}
+
+.user-box {
+  color: #fff;
+  font-size: 32rpx;
+  margin-top: 20rpx;
+}
+
+.name {
+  color: #ffc119;
+}
+
+.tips {
+  font-size: 40rpx;
+  color: #fff;
+  margin-top: 100rpx;
+}
+
+.btn {
+  font-size: 36rpx;
+  width: 639rpx;
+  height: 93rpx;
+  line-height: 93rpx;
+  margin: 100rpx auto 0;
+  color: #000;
+  background-image: linear-gradient(#ff9c00, #ff9c00);
+  background-blend-mode: normal, normal;
+  border-radius: 7rpx;
+}
+
+.receive {
+  position: absolute;
+  top: 150rpx;
+  left: 25rpx;
+  width: 700rpx;
+  min-height: 588rpx;
+  text-align: center;
+  background: #fffbe6 url(https://boringcdn.nanningboring.com/molicheng/receive-bg.png);
+  background-size: 100%;
+  border-radius: 20rpx;
+}
+
+.receive-box {
+  color: #000;
+}
+
+.receive-tips {
+  color: #000;
+  font-weight: bold;
+  margin-top: 50rpx;
+  font-size: 40rpx;
+}
+
+.coupon-box {
+  margin: 50rpx auto;
+  width: 590rpx;
+  height: 195rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: url(https://boringcdn.nanningboring.com/molicheng/Invitation-coupon.png);
+  background-size: 100%;
+}
+
+.coupon-details {
+  padding-left: 50rpx;
+  text-align: left;
+}
+
+.coupon-details-title {
+  font-size: 32rpx;
+  color: #000;
+}
+
+.coupon-details-money {
+  font-size: 50rpx;
+  color: #9f3c00;
+}
+
+.coupon-details-nun {
+  color: #9f3c00;
+  font-size: 32rpx;
+}
+
+.coupon-btn {
+  width: 79rpx;
+  color: #000;
+  padding-right: 35rpx;
+  font-size: 32rpx;
+}
+.s-gray{
+  color: #999;
+}

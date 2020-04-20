@@ -1,0 +1,163 @@
+/* pages/private_education/reservation_success.wxss */
+
+.box-ok {
+  text-align: center;
+  padding-top: 30rpx;
+}
+
+.ok-logo {
+  width: 185rpx;
+  height: 187rpx;
+  border-radius: 50%;
+}
+
+.tips-title {
+  font-size: 33rpx;
+  color: #fff;
+  margin-top: 20rpx;
+}
+
+.s-yellow {
+  color: #ffae00;
+}
+
+.tips-text {
+  margin-top: 20rpx;
+}
+
+.coach-box {
+  width: 683rpx;
+  height: 181rpx;
+  margin: 40rpx auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1c1c1c;
+  border-radius: 13rpx;
+}
+
+.coach {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+}
+
+.user-coach {
+  width: 127rpx;
+  height: 127rpx;
+  border-radius: 50%;
+}
+
+.name-box {
+  margin-left: 10rpx;
+}
+
+.name {
+  color: #fff;
+  font-size: 27rpx;
+}
+
+.tips {
+  color: #818181;
+  font-size: 24rpx;
+}
+
+.coach-btn-box {
+  width: 126rpx;
+  height: 53rpx;
+  border-radius: 4px;
+  background-image: linear-gradient(to bottom, #ffd324, #ff7200);
+  overflow: hidden;
+  padding: 1px;
+}
+
+.coach-btn {
+  line-height: 53rpx;
+  text-align: center;
+  color: #ffae00;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: #2a2a2a;
+}
+
+.list {
+  padding: 0 30rpx;
+  margin-top: 50rpx;
+}
+
+.row-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35rpx 0;
+  position: relative;
+}
+
+.row-box::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2rpx;
+  background: #6c6c6c;
+}
+
+.row-text {
+  color: #fff;
+}
+
+.notice-box {
+  color: #818181;
+  font-size: 21rpx;
+  padding: 20rpx 0;
+  line-height: 40rpx;
+}
+
+.share-img {
+  position: fixed;
+  bottom: 200rpx;
+  right: 15rpx;
+  width: 111rpx;
+  height: 111rpx;
+}
+
+.btn-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 89rpx;
+  line-height: 89rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+}
+
+.btn {
+  width: 313rpx;
+  text-align: center;
+  background: #000;
+}
+
+.s-btn {
+  flex: 1;
+  color: #000;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background-size: 100% 100%;
+}
+
+.wechat-text {
+  color: #818181;
+  margin-left: 10rpx;
+}
+
+.copy-text {
+  color: #818181;
+  margin-left: 10rpx;
+  text-decoration: underline;
+  margin-right: 10rpx;
+}

@@ -1,0 +1,38 @@
+/* pages/confirm_order/payment_success.wxss */
+
+.box-ok {
+  text-align: center;
+  padding-top: 30rpx;
+}
+
+.ok-logo {
+  width: 185rpx;
+  height: 187rpx;
+  border-radius: 50%;
+}
+
+.tips-title {
+  font-size: 33rpx;
+  color: #fff;
+  margin-top: 20rpx;
+}
+
+.btn {
+  width: 259rpx;
+  height: 53rpx;
+  line-height: 53rpx;
+  margin: 80rpx auto 10rpx;
+  font-size: 25rpx;
+  color: #000;
+  background-image: linear-gradient(#ff9c00, #ff9c00);
+  border-radius: 7rpx;
+}
+
+.tips {
+  color: #fff;
+}
+
+.s-yellow {
+  margin-right: 10rpx;
+  color: #ffae00;
+}

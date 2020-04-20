@@ -1,0 +1,14 @@
+/**app.wxss**/
+@import "/wxParse/wxParse.wxss";
+page {
+  font-size: 28rpx;
+  line-height: 1.5;
+  color: #333;
+  background: #1f1f1f;
+}
+.wrapper {
+  padding-bottom: 150rpx;
+}
+image{
+  height: auto;
+}

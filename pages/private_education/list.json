@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "私教",
+  "usingComponents": {
+    "share": "/pages/components/share/share"
+  }
+}

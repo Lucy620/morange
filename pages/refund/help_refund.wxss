@@ -1,0 +1,152 @@
+/* pages/private_education/help_refund.wxss */
+
+.box {
+  width: 697rpx;
+  height: 1290rpx;
+  margin: 0 auto;
+  background: url(https://boringcdn.nanningboring.com/molicheng/refund-bg.png);
+  background-size: 100%;
+  position: relative;
+}
+
+.coach {
+  text-align: center;
+  padding-top: 30rpx;
+}
+
+.user-coach {
+  width: 173rpx;
+  height: 174rpx;
+  border-radius: 50%;
+}
+
+.course-title {
+  color: #fff;
+  text-align: center;
+  font-size: 33rpx;
+  margin-top: 10rpx;
+}
+
+.list-box {
+  width: 663rpx;
+  margin: 70rpx auto 0;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  padding: 25rpx;
+  border-bottom: solid 1rpx #6c6c6c;
+}
+
+.list-title {
+  text-align: right;
+}
+.list-text{
+  text-align: right;
+  flex: 1;
+  margin-left: 15rpx;
+}
+
+.s-yellow {
+  color: #ffae00;
+}
+
+.btn {
+  font-size: 36rpx;
+  width: 661rpx;
+  position: absolute;
+  bottom: 80rpx;
+  height: 101rpx;
+  left: 18rpx;
+  text-align: center;
+  line-height: 101rpx;
+  color: #6c6c6c;
+  background-color: #303030;
+  border: solid 1rpx #6c6c6c;
+}
+
+.mask-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.mask-text-box {
+  width: 590rpx;
+  height: 333rpx;
+  background-color: #fffbe6;
+  border-radius: 5rpx;
+  position: relative;
+}
+
+.mask-text-title {
+  font-size: 32rpx;
+  text-align: center;
+  padding: 30rpx 0;
+  color: #000;
+}
+
+.mask-text-tips {
+  width: 447rpx;
+  margin: 20rpx auto 0;
+  text-align: center;
+  line-height: 40rpx;
+  color: #676767;
+  font-size: 28rpx;
+}
+
+.mask-btn-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  height: 108rpx;
+  line-height: 108rpx;
+}
+
+.mask-btn {
+  flex: 1;
+  text-align: center;
+  font-size: 32rpx;
+  color: #000;
+  border-top: 2rpx solid #a5a5a5;
+}
+
+.confirm-btn {
+  flex: 1;
+  text-align: center;
+  font-size: 32rpx;
+  color: #000;
+  border-top: 2rpx solid #ffbc0f;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background-size: 100% 100%;
+}
+
+.s-black {
+  color: #000;
+}
+
+.mask-league-tips {
+  width: 447rpx;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 40rpx;
+  color: #676767;
+  font-size: 28rpx;
+}
+
+.text-tips {
+  color: #676767;
+  font-size: 28rpx;
+}

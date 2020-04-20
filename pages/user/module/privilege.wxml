@@ -1,0 +1,17 @@
+  <template name="privilege">
+  <view class="privilege-box" bindtap="closePrivilege">
+    <swiper indicator-dots="{{true}}" autoplay="{{false}}" interval="5000" duration="1000" indicator-active-color="#ff8400" indicator-color="#4b4b4b">
+      <block wx:for="{{privilegeList}}" wx:key='index'>
+        <swiper-item>
+          <view class="privilege-title">魔橙卡特权</view>
+          <image src="{{item.main_img}}" mode="widthFix" class="privilege-icon"></image>
+          <view class="privilege-tips-title">{{item.privilege_tips_title}}</view>
+          <view class="privilege-tips">
+            <text>{{item.privilege_tips}}</text>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="privilege-btn" catchtap="jumpPage" data-url='pages/recharge/recharge'>立即开通</view>
+  </view>
+</template>

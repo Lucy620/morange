@@ -1,0 +1,229 @@
+<!--pages/private_education/confirm_order.wxml-->
+
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <view class="box">
+    <image src="https://boringcdn.nanningboring.com/molicheng/bg-icon.png" mode="widthFix" class="bg-icon"></image>
+    <view class="list-text">
+      <view class="title">
+        <!--拼课--->
+        <text wx:if="{{courseDate.is_spell == 1}}">『拼课』</text>{{course.name}}
+        <text wx:if="{{course.type=='team' || course.type=='camp'}}">({{courseDate.coach.name}})</text>
+      </view>
+
+      <!--私教课-->
+      <block wx:if="{{course.type=='private'}}">
+        <view class="coach-name">教练：{{courseDate.coach.name}}</view>
+      </block>
+
+      <!--团课 赠课 团课等待 拼课-->
+      <block wx:if="{{course.type=='team'}}">
+        <view class="coach-name">时间: {{tools.formatTime(courseDate.start_at,'{m}月{d}日')}} {{tools.formatTime(courseDate.start_at,'{h}:{i}')}}-{{tools.formatTime(courseDate.end_at,'{h}:{i}')}}</view>
+      </block>
+
+      <!--训练营-->
+      <block wx:if="{{course.type=='camp'}}">
+        <view class="training-camp-date">{{tools.formatTime(courseDate.start_at,'{m}月{d}日{h}:{i}')}}开营</view>
+        <view class="training-camp-time">时间: {{courseDate.time_text}}</view>
+      </block>
+
+      <view class="address">地点:{{courseDate.store.address}}</view>
+
+    </view>
+
+    <!--团课等待-->
+    <view class="wait-box" wx:if="{{courseDate.rest_stock == 0}}">
+      <view class="wait-title">当前等候
+        <text class="wait-people">{{queue_order}}</text>人</view>
+      <view class="wait-tips">注意:加入等候队列后，若有空位，将自动加入课程；</view>
+      <view class="wait-tips">若取消等候或未排上，预付金自动退回魔橙卡；</view>
+    </view>
+
+    <view class="row-box">
+      <view class="row-text">{{course.type=='private' ? '课时：' : '人数:'}}</view>
+      <view class="row-tab">
+
+        <!--私教课-->
+        <block wx:if="{{course.type=='private'}}">
+          <view class="tab-item {{number == item.course_num ? 'select-item' : ''}}" wx:for="{{price_list}}" wx:key='index' bindtap="choiceCourseTime" data-num="{{item.course_num}}" data-id="{{item.id}}" data-index="{{index}}">{{item.course_num}}课时
+            <block wx:if="{{item.first_price > 0 && courseDate.first}}">
+              <view class="tab-tips">首次</view>
+              <view class="tri-down"></view>
+            </block>
+          </view>
+        </block>
+
+        <!--团课-->
+        <block wx:if="{{course.type=='team' && type == 'buy' && courseDate.rest_stock > 0 && courseDate.is_spell == 0}}">
+          <view class="tab-item {{dataId == 1 ? 'select-item' : ''}}" bindtap="choiceNumber" data-id='1'>1人</view>
+          <view class="tab-item {{dataId == 2 ? 'select-item' : ''}}" bindtap="choiceNumber" data-id='2'>2人</view>
+          <view class="tab-item {{dataId == 3 ? 'select-item' : ''}}" bindtap="choiceNumber" data-id='3'>3人</view>
+        </block>
+
+        <!--拼课-->
+        <block wx:if="{{courseDate.is_spell == 1}}">
+          <view class="tab-item {{dataId == 1 ? 'select-item' : ''}}" bindtap="choiceNumber" data-id='1'>1人</view>
+          <view class="tab-item {{dataId == 3 ? 'select-item' : ''}}" bindtap="choiceNumber" data-id='3'>3人</view>
+          <view class="tab-item {{dataId == 6 ? 'select-item' : ''}}" bindtap="choiceNumber" data-id='6'>6人</view>
+        </block>
+
+        <!--训练营 赠课 等待-->
+        <block wx:if="{{course.type=='camp' || type == 'give' || courseDate.rest_stock == 0}}">
+          <view class="tab-item select-item">1人</view>
+        </block>
+
+      </view>
+    </view>
+
+    <!--训练营-->
+    <view class="row" wx:if="{{course.type=='camp'}}">
+      <view class="row-text">总价: </view>
+      <view class="row-tab">{{tools.fen2yuan(pay_price,2)}}元</view>
+    </view>
+
+    <!--私教课-->
+    <view class="row" wx:if="{{course.type =='private'}}">
+      <view class="row-text">价格: </view>
+      <!--首次体验价-->
+      <view class="row-tab" wx:if="{{price_list[priceIndex].first_price > 0 && courseDate.first}}">
+        <text class="money">￥{{tools.fen2yuan(price_list[priceIndex].price,2)}}元/课时</text>
+        <text class="s-yellow">(首次体验{{tools.fen2yuan(price_list[priceIndex].first_price,2)}}元/课时)</text>
+      </view>
+      <!--非首次体验价-->
+      <view class="row-tab" wx:else>{{tools.fen2yuan(price_list[priceIndex].price,2)}}元/课时</view>
+    </view>
+
+    <!--团课 赠课 拼课-->
+    <block wx:if="{{course.type=='team'}}">
+      <view class="row">
+        <view class="row-text">总价: </view>
+        <!--两人同行一人免单-->
+        <view class="row-tab" wx:if="{{activity.two && number == 2}}">
+          {{tools.fen2yuan(courseDate.price,2)}}元
+        </view>
+        <view class="row-tab" wx:else>
+          {{tools.fen2yuan(courseDate.price * number,2)}}元
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-text">魔橙卡折后价: </view>
+        <view class="row-tab">
+          <text class="s-yellow" wx:if="{{user.type == 'vip'}}">{{tools.fen2yuan(discount_price,2)}}元</text>
+          <block wx:if="{{user.type == 'user'}}">
+            <text class="s-yellow" bindtap='jumpPage' data-url='pages/recharge/recharge'>尚未开通，点击开通</text>
+            <image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+          </block>
+        </view>
+      </view>
+    </block>
+
+    <view class="row" wx:if="{{(courseDate.no_activity == 0 && courseDate.is_spell == 0) || course.type == 'private' || course.type == 'camp'}}">
+      <view class="row-text">代金券: </view>
+      <view class="row-tab" wx:if="{{coupon_list.length == 0}}">无代金券</view>
+      <view class="row-tab" wx:elif="{{user_coupon_id == 0}}" bindtap="openCoupon">
+        <text>{{coupon_list.length}}张可用</text>
+        <image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+      </view>
+      <!--代金券优惠-->
+      <view class="row-tab" wx:else bindtap="openCoupon">
+        -{{coupon_type == 'week' || coupon_type == 'gift' ? tools.fen2yuan(pay_price,2) : tools.fen2yuan(reduce_cost,2)}}元
+        <image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+      </view>
+    </view>
+
+    <!--团课 赠课 训练营-->
+    <view class="money-box" wx:if="{{type=='buy' && courseDate.rest_stock > 0 || type=='give' && courseDate.rest_stock > 0 }}">还需支付
+      <text class="money-text" wx:if="{{coupon_type == 'normal'}}">￥{{reduce_cost == pay_price ? '0.00' :  tools.fen2yuan(pay_price,2)}}</text>
+      <!--团课选择 免单券 赠课券-->
+      <text class="money-text" wx:if="{{coupon_type == 'week' || coupon_type == 'gift'}}">￥0</text>
+    </view>
+
+
+    <!--团课等待-->
+    <view class="wait-money" wx:if="{{courseDate.rest_stock == 0}}">
+      <view class="tab-text">还需支付</view>
+      <view class="row-tab">{{reduce_cost == pay_price ? '0.00' : tools.fen2yuan(pay_price,2)}}元</view>
+    </view>
+
+
+
+    <!--私教课-->
+    <view class="explain" wx:if="{{course.type=='private'}}">
+      说明:在报名后30天内申请退训，将退还剩余课时数等额的实付款项;报名后30天之后申请退训，将退还剩余课时数的实付款项30%。私教订单有效期为1年，逾期后，无法进行预约、退款等操作。为便于沟通时间安排，购买成功后，您的联系信息将对授课教练可见。
+    </view>
+
+    <!--拼课-->
+    <view class="explain s-explain" wx:if="{{course.type=='team' && courseDate.is_spell == 1}}">
+      <view class="spell-text">1、此课程为拼课课程，拼课发起后，教练员即收到通知，2小时内进行确 认；</view>
+      <view class="spell-text">2、若教练员未接单或在2小时内不确认接单，则系统默认拼课失败，预付 款原路返回；</view>
+      <view class="spell-text">3、若距拼课时间开始前3小时还未拼够6人，则系统默认拼课失败，预付款原路返回；</view>
+      <view class="spell-text">4、教练确认接单后后可以继续发起拼人，并在正常课表显示；当参与拼课人数满6人时，即拼课成功，不可取消，也不退款。 </view>
+    </view>
+
+
+    <!--团课 团课等待-->
+    <view class="explain {{courseDate.rest_stock == 0 ? 's-explain' : ''}}" wx:if="{{course.type=='team' && type != 'give' && courseDate.is_spell == 0}}">
+      温馨提示:开始时间前6个小时前取消预约，支持全额退款;开始时间前6小时后取消预约，不支持退款。
+    </view>
+
+    <!--赠课-->
+    <view class="explain" wx:if="{{type == 'give' && courseDate.rest_stock > 0}}">
+      温馨提示：课程赠出并被领取后，不可退回；赠送者和领取者均不可取消该订单。
+    </view>
+
+    <!--训练营-->
+    <view class="explain s-explain" wx:if="{{course.type=='camp'}}">
+      温馨提示：魔橙卡可支付训练营、私教课程，充值享送更优惠。孕产妇暂不建议 参与，详情请公众号留言咨询。
+      <view>退营须知：距离开营超过7天申请退营，支持全额退款；不足7天，将收取报名费 30%的退营手续费；开营后，不支持退营若使用代金券，代金券不支持退还。</view>
+    </view>
+
+    <!--拼课-->
+    <view class="explain" wx:if="{{show}}">
+      1、此课程为拼课课程，拼课发起后，教练员即收到通知，2小时内进行确 认；
+      <view>2、若教练员未接单或在2小时内不确认接单，则系统默认拼课失败，预付款原路返回；</view>
+      <view>3、若距拼课时间开始前3小时还未拼够6人，则系统默认拼课失败，预付款原路返回。</view>
+      <view>4、教练确认接单后后可以继续发起拼人，并在正常课表显示；当参与拼课人数满6人时，即拼课成功，不可取消，也不退款。 </view>
+    </view>
+
+  </view>
+
+
+  <!--按钮-->
+  <view class="btn" wx:if="{{user.balance < pay_price}}" bindtap="createOrder">确认订单，微信支付</view>
+  <view class="btn" wx:else bindtap="createBuy">{{type == 'give' ? '魔橙卡余额支付，赠送好友' : '确认订单，魔橙卡支付'}}</view>
+
+  <!--训练营 赠课-->
+  <view class="mask-box" wx:if="{{showTips}}">
+    <view class="mask-text-box">
+
+      <!--训练营-->
+      <block wx:if="{{isTips}}">
+        <view class="mask-text-title">注意</view>
+        <view class="camp-text-tips">
+          <scroll-view scroll-y class="scroll-box">
+            在报名FAT KILLER前，魔力橙想要真切地提醒您，如您的身体有以下任意一种情况，需要您事先咨询医生意见并取得医生的书面同意书后，才能报名参加。1.已诊断有心脏问题; 2.运动时感觉胸口疼痛; 3.过去一个月内，在非运动情况下出现胸口疼痛; 4.半年内多次出现头晕眼花而跌倒甚至昏厥的情况; 5.半年内曾有关节严重受伤， 如关节粉碎性骨折、韧带撕裂、腰椎间盘突出等; 6.有高血压问题;7.有糖尿病问题;8.已怀孕或正在孕阶段; 9.顺产6个月内、 或剖腹产12个月内。温馨提示:如有上述状况但无法提供医生书面同意书，为了让您获得更安全、有效的训练，即使成功报名入营，魔力橙也将会做出合理劝退。退营须知:距离开营超过7天申请退训，支持全额退款;距离开训不足7天，以及开训后，不支持退训;若使用代金券，代金券不支持退还。
+
+          </scroll-view>
+        </view>
+        <view class="mask-btn-box">
+          <view class="mask-btn" bindtap="closeTips">再看看</view>
+          <view class="confirm-btn" bindtap="createOrder">我同意</view>
+        </view>
+      </block>
+
+      <!--赠课-->
+      <block wx:if="{{isGive}}">
+        <view class="mask-text-title">提示</view>
+        <view class="mask-text-tips">赠送的课程被领取后，双方均不可取消该订单。</view>
+        <view class="mask-btn-box">
+          <view class="mask-btn" bindtap="closeTips">再想想</view>
+          <view class="confirm-btn" bindtap="createOrder">确定赠送</view>
+        </view>
+      </block>
+
+    </view>
+  </view>
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

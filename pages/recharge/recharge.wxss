@@ -1,0 +1,127 @@
+/* pages/recharge/recharge.wxss */
+
+.row-box {
+  padding: 0 25rpx;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  border-bottom: solid 1rpx #3e3e3e;
+}
+
+.text {
+  color: #fff;
+}
+
+.money-box {
+  padding: 30rpx 0;
+}
+
+.money-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ffae00;
+  flex-wrap: wrap;
+  margin: 30rpx 0;
+}
+
+.money-row-box {
+  width: 215rpx;
+  border-radius: 4px;
+  background-image: linear-gradient(to bottom, #ffd324, #ff7200);
+  overflow: hidden;
+  padding: 1px;
+  margin-bottom: 30rpx;
+}
+
+.money-row {
+  padding: 20rpx 0;
+  text-align: center;
+  color: #ffae00;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: #2a2a2a;
+}
+
+.snatch-money-row {
+  width: 706rpx;
+  border-radius: 4px;
+  background-image: linear-gradient(to bottom, #ffd324, #ff7200);
+  overflow: hidden;
+  padding: 1px;
+  margin-bottom: 30rpx;
+}
+
+.money {
+  font-size: 42.7rpx;
+}
+
+.tips-money {
+  font-size: 24rpx;
+}
+
+.gray-text {
+  color: #bcbcbc;
+}
+
+.gray {
+  background-image: linear-gradient(#bcbcbc, #bcbcbc);
+}
+
+/***须知**/
+
+.box {
+  position: absolute;
+  bottom: 10rpx;
+  left: 20rpx;
+  width: 710rpx;
+  font-size: 18.7rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 40rpx;
+  letter-spacing: 0.1rpx;
+  color: #bcbcbc;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0000;
+}
+
+.recharge-bg {
+  width: 100%;
+}
+
+.btn-box {
+  position: fixed;
+  bottom: 20rpx;
+  left: 50%;
+  margin-left: -363rpx;
+  width: 726rpx;
+  height: 86rpx;
+  border-radius: 4px;
+  font-size: 33rpx;
+  background-image: linear-gradient(to bottom, #ffd324, #ff7200);
+  overflow: hidden;
+  padding: 1px;
+  z-index: 1;
+}
+
+.btn {
+  line-height: 86rpx;
+  text-align: center;
+  color: #ffae00;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: #000;
+}

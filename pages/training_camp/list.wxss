@@ -1,0 +1,292 @@
+/* pages/training_camp/list.wxss */
+
+/***tab栏**/
+
+.tab-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  height: 62rpx;
+  background-color: #181818;
+  z-index: 1;
+}
+
+.row-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #272727;
+}
+
+.row-box:last-child {
+  border: none;
+}
+
+.title {
+  font-size: 26rpx;
+  color: #fff;
+}
+
+.tab-icon {
+  width: 25rpx;
+  height: 25rpx;
+  margin-left: 10rpx;
+}
+
+.mask {
+  position: absolute;
+  top: 62rpx;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  justify-content: center;
+  height: 62rpx;
+  background-color: #000;
+  opacity: 0.8;
+  font-size: 24rpx;
+  color: #ff990f;
+}
+
+.mask-arrow {
+  width: 15rpx;
+  height: 24rpx;
+  margin-top: 5rpx;
+  margin-left: 10rpx;
+}
+
+.list-box {
+  margin-top: 82rpx;
+}
+
+
+.list-row {
+  width: 710rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.row {
+  margin-bottom: 20rpx;
+}
+
+.training-camp-box {
+  width: 345rpx;
+  text-align: center;
+  background: #323232;
+  position: relative;
+  border-radius: 10rpx;
+}
+
+.training-camp1 {
+  width: 345rpx;
+  height: 233rpx;
+  border-top-right-radius: 10rpx;
+  border-top-left-radius: 10rpx;
+}
+
+.training-camp-name {
+  height: 59rpx;
+  line-height: 59rpx;
+  font-size: 24rpx;
+  box-shadow: 2rpx 5rpx 20rpx #000;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.ranking-tab {
+  width: 43rpx;
+  height: 58rpx;
+  position: absolute;
+  top: -1rpx;
+  color: #000;
+  font-size: 32rpx;
+  right: 0;
+  text-align: center;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-tab-bg.png);
+  background-size: 100% 100%;
+}
+
+/**城市 标签**/
+
+.box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.mask-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.screen-box {
+  width: 466rpx;
+  position: absolute;
+  top: 0;
+  left: -750px;
+  bottom: 0;
+  z-index: 2;
+  background-color: #262626;
+}
+
+.course-title-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 89.3rpx;
+  line-height: 89.3rpx;
+  background-color: #0d0d0d;
+  position: relative;
+  z-index: 2;
+  padding: 0 20rpx;
+}
+
+.course-title {
+  display: flex;
+  align-items: center;
+}
+
+.course-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.course-title-text {
+  margin-left: 15rpx;
+  color: #fff;
+}
+
+.tips {
+  color: #b1b1b1;
+  font-size: 24rpx;
+}
+
+.area-box {
+  position: absolute;
+  top: 89.3rpx;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.scroll-view-box {
+  height: 100%;
+}
+
+.area-item {
+  font-size: 24rpx;
+  color: #5e5e5e;
+  width: 333rpx;
+  height: 53rpx;
+  line-height: 53rpx;
+  margin: 50rpx auto;
+  text-align: center;
+  border-radius: 7rpx;
+  border: solid 2rpx #b1b1b1;
+}
+
+.select-area-item {
+  color: #000;
+  background: #ff990f;
+  border: solid 2rpx #ff990f;
+}
+
+.tag-box {
+  width: 599rpx;
+  position: absolute;
+  top: 0;
+  left: -750px;
+  bottom: 0;
+  z-index: 2;
+  background-color: #262626;
+  padding-bottom: 89rpx;
+}
+
+.tag-list {
+  position: absolute;
+  top: 89.3rpx;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding-bottom: 89rpx;
+}
+
+.tag-row {
+  display: flex;
+  padding-top: 40rpx;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tag-item {
+  color: #5e5e5e;
+  width: 166rpx;
+  height: 56rpx;
+  font-size: 25rpx;
+  line-height: 56rpx;
+  margin: 0 auto 45rpx;
+  text-align: center;
+  border-radius: 7rpx;
+  border: solid 2rpx #b1b1b1;
+}
+
+.tag-item:last-child {
+  margin: 0 18rpx 45rpx;
+}
+
+.select-tag-item {
+  color: #000;
+  background: #ff990f;
+  border: solid 2rpx #ff990f;
+}
+
+.btn-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  height: 89rpx;
+  display: flex;
+  align-items: center;
+}
+
+.mask-btn {
+  width: 226rpx;
+  height: 89rpx;
+  text-align: center;
+  line-height: 89rpx;
+  color: #fff;
+  font-size: 32rpx;
+  background-color: #000;
+}
+
+.s-mask-btn {
+  flex: 1;
+  font-size: 32rpx;
+  color: #000;
+  height: 89rpx;
+  line-height: 89rpx;
+  text-align: center;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background-size: 100% 100%;
+}

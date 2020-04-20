@@ -1,0 +1,209 @@
+/* pages/league/details.wxss */
+
+/***轮播**/
+
+.swiper-box {
+  height: 300rpx;
+  background-color: #3d3d3d;
+}
+
+swiper {
+  height: 100%;
+}
+
+.slide-image {
+  width: 100%;
+}
+
+video{
+  width: 100%;
+  height: 100%;
+}
+/**教练故事**/
+
+.coach-story {
+  width: 720rpx;
+  background-color: #1c1c1c;
+  border-radius: 13.3rpx;
+  margin: 15rpx auto;
+}
+
+.story-box {
+  display: flex;
+  min-height: 175rpx;
+}
+
+.details-box {
+  flex: 1;
+  padding: 20rpx 0 20rpx 20rpx;
+  text-align: center;
+}
+
+.coach-name {
+  color: #fff;
+  text-align: left;
+}
+
+.story {
+  text-align: left;
+  overflow: hidden;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+  color: #818181;
+}
+
+.arrow {
+  width: 24rpx;
+  height: 15.3rpx;
+}
+
+.user-coach {
+  width: 99rpx;
+  height: 99rpx;
+  border-radius: 50%;
+  margin: 20rpx;
+}
+
+/**课时 时间 门店**/
+
+.list-box {
+  width: 720rpx;
+  height: 348rpx;
+  background-color: #1c1c1c;
+  border-radius: 13rpx;
+  margin: 15rpx auto;
+}
+
+.list-row {
+  display: flex;
+  padding: 30rpx 20rpx;
+  border-bottom: 1rpx solid #2c2c2c;
+}
+
+.list-row:last-child {
+  border: none;
+}
+
+.course-icon {
+  width: 31rpx;
+  height: 31rpx;
+}
+
+.list-details {
+  flex: 1;
+  color: #fff;
+  margin-left: 20rpx;
+  font-size: 24rpx;
+}
+
+.s-yellow {
+  color: #ffae00;
+  text-decoration: underline;
+}
+
+.address-icon {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+/**简介 事项 健身步骤**/
+
+.wxParse-box {
+  width: 720rpx;
+  margin: 15rpx auto;
+  color: #818181;
+  background: #1c1c1c;
+}
+
+.title-box {
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  height: 72rpx;
+  background-color: #121212;
+  border-top-left-radius: 13rpx;
+  border-top-right-radius: 13rpx;
+}
+
+.icon {
+  width: 31rpx;
+  height: 32rpx;
+}
+
+.title {
+  color: #fff;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+}
+
+.introduction {
+  padding: 10px;
+  font-size: 24rpx;
+  line-height: 1.8;
+  color: #818181;
+  overflow: hidden;
+}
+
+/**按钮**/
+
+.btn-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ff6f0d;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 95rpx;
+  line-height: 95rpx;
+  font-size: 32rpx;
+  z-index: 1;
+  color: #333;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background-size: 100%;
+}
+
+.btn-text {
+  flex: 1;
+  position: relative;
+}
+
+.btn-text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  height: 40rpx;
+  margin-top: -20rpx;
+  background-color: #333;
+}
+
+.btn-text:last-child:after {
+  width: 0;
+  height: 0;
+  background-color: none;
+}
+
+.end-btn {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 95rpx;
+  line-height: 95rpx;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+}
+
+.gray-btn {
+  flex: 1;
+  color: #a5a5a5;
+  background: #818181;
+}

@@ -1,0 +1,128 @@
+/* pages/Invitation/Invitation.wxss */
+
+/**邀请海报**/
+
+.poster-box {
+  position: relative;
+  height: 880rpx;
+  box-shadow: inset 0rpx 0rpx 133.3rpx 33.3rpx rgba(0, 0, 0, 0.8);
+}
+
+.poster {
+  width: 750rpx;
+  height: 880rpx;
+}
+.btn {
+  width: 709.3rpx;
+  height: 99.3rpx;
+  font-size: 33.3rpx;
+  line-height: 99.3rpx;
+  text-align: center;
+  margin: 20rpx auto 30rpx;
+  color: #000;
+  background: url(https://boringcdn.nanningboring.com/molicheng/btn1.png);
+  background-size: 100%;
+  border-radius: 6.7rpx;
+}
+
+/**记录**/
+
+.record-box {
+  width: 710rpx;
+  height: 221.3rpx;
+  background-color: #494949;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
+  border-radius: 13.3rpx;
+  margin: 0 auto;
+}
+
+.record-title-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  height: 48rpx;
+}
+
+.record-title {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.record-tips {
+  font-size: 24rpx;
+  color: #bcbcbc;
+}
+
+.record {
+  height: 173.3rpx;
+  display: flex;
+  align-items: center;
+  background: #3a3a3a;
+  border-bottom-left-radius: 13.3rpx;
+  border-bottom-right-radius: 13.3rpx;
+}
+
+.record-row {
+  flex: 1;
+  color: #ff9d1e;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative; 
+}
+.record-row::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2rpx;
+  height: 100%;
+  pointer-events: none;
+  background-color: #bcbcbc;
+}
+
+.record-row:last-child:after {
+  width: 0;
+  height: 0;
+  background: none;
+}
+
+.record-tips {
+  color: #bcbcbc;
+  font-size: 20rpx;
+}
+
+/**规则**/
+
+.rule-box {
+  padding: 70rpx 20rpx;
+}
+
+.rule-row {
+  display: flex;
+  align-items: center;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: #494949;
+}
+
+.rule-title {
+  font-size: 20rpx;
+  color: #bcbcbc;
+  padding: 0 20rpx;
+}
+
+.rule-text {
+  color: #bcbcbc;
+  font-size: 18.7rpx;
+  margin-top: 30rpx;
+  text-align: justify;
+}
+
+.rule {
+  margin-bottom: 30rpx;
+}

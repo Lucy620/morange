@@ -1,0 +1,57 @@
+/* pages/coach/report.wxss */
+
+.tips {
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #535353;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+/**行程安排**/
+
+.list {
+  width: 719.3rpx;
+  margin: 0 auto;
+}
+
+.schedule-row {
+  display: flex;
+  align-items: center;
+  height: 131.3rpx;
+  padding: 0 30rpx;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+  background-color: #141414;
+}
+
+.date-tiem-box {
+  flex: 1;
+}
+
+.tips-tiem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.date {
+  color: #fff;
+}
+
+.tiem {
+  color: #535353;
+  font-size: 20rpx;
+  margin-top: 15rpx;
+}
+
+.tiem-icon {
+  width: 40rpx;
+  height: 34.7rpx;
+  margin-right: 15rpx;
+}
+
+.time-text {
+  font-size: 20rpx;
+  color: #fff;
+}

@@ -1,0 +1,74 @@
+<!--pages/lesson_collage/lesson_collage.wxml-->
+
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <view class="title-box">
+    <view class="title">教练</view>
+    <view class="title">课程</view>
+  </view>
+
+  <view class="container-box">
+
+    <!--教练-->
+    <view class="coach-box">
+      <scroll-view scroll-y class="scroll-box">
+        <view class="row" wx:for="{{coachList}}" wx:key='index' bindtap="choiceCoach" data-index="{{index}}">
+          <image src="{{item.headimgurl}}" mode="aspectFill" class="coach-img {{index == coachIndex ? 's-coach-img' : ''}}"></image>
+          <view class="coach-name {{index == coachIndex ? 's-coach-name' : ''}}">{{item.name}}</view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!--课程-->
+    <view class="course-box">
+      <scroll-view scroll-y class="scroll-box">
+        <view class="course-item" wx:for="{{courseList}}" wx:key='index' bindtap="choiceCourse" data-index="{{index}}">
+          <view class="course {{index == courseIndex ? 's-course' : ''}}" >{{item.name}}</view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <view class="foot-box">
+    <!--时间-->
+    <view class="time-box">
+      <view class="time-tips">
+        <image src="https://boringcdn.nanningboring.com/molicheng/tiem-ixon.png" mode="widthFix" class="tiem-icon"></image>
+        <view class="tips-text">请选择开始时间</view>
+      </view>
+      <view class="time">
+        <view class="time-row time-date">
+          <picker mode="date" value="{{date}}" start="{{start}}" bindchange="bindDateChange">
+            <view class="picker">
+              {{tools.formatTime(date,'{y}年{m}月{d}日')}}
+            </view>
+          </picker>
+        </view>
+        <view class="time-row">
+          <picker mode="time" value="{{time}}" bindchange="bindTimeChange">
+            <view class="picker">
+              {{time}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="store-box">
+        <picker value="{{storeIndex}}" range="{{storeList}}" range-key="name" bindchange="bindPickerChange">
+          <view class="picker" wx:if="{{storeIndex == -1}}">
+            请选择门店
+          </view>
+          <view class="picker" wx:else>
+            {{storeList[storeIndex].name}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="btn-box">
+      <view class="mask-btn" bindtap="onEmpty">清 空</view>
+      <view class="s-mask-btn" bindtap="confirm">确 认</view>
+    </view>
+  </view>
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

@@ -1,0 +1,26 @@
+page{
+  background: #f8f8f8;
+}
+.error-box {
+  text-align: center;
+  margin-top: 250rpx;
+}
+
+.error-tip {
+  width: 300rpx;
+  display: block;
+  margin: 0 auto;
+}
+
+.error-text {
+  font-size: 28rpx;
+  margin-top: 40rpx;
+  padding: 0 20rpx;
+}
+
+.load {
+  text-decoration: underline;
+  color: #00f;
+  margin-top: 15rpx;
+  font-size: 28rpx;
+}

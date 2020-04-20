@@ -1,0 +1,99 @@
+var tools = {
+  /**
+   * 判断是否为空
+   */
+  isEmpty: function(value) {
+    return value == '' || value === undefined || value === null || ('object' === typeof value && JSON.stringify(value) === "{}")
+  },
+  /**
+   * 时间戳转日期
+   */
+  formatTime: function(time, cFormat) {
+    if (arguments.length === 0) {
+      return null
+    }
+    var format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}'
+    var date = ''
+    if (typeof time === 'object') {
+      date = time
+    } else {
+      if (('' + time).length === 10) time = parseInt(time) * 1000
+      date = getDate(time)
+    }
+    var formatObj = {
+      y: date.getFullYear(),
+      m: date.getMonth() + 1,
+      d: date.getDate(),
+      h: date.getHours(),
+      i: date.getMinutes(),
+      s: date.getSeconds(),
+      a: date.getDay()
+    }
+    var reg = getRegExp("{(y|m|d|h|i|s|a)+}", "g")
+    var timeStr = format.replace(reg, function(result, key) {
+      var value = formatObj[key]
+      if (key === 'a') return ['一', '二', '三', '四', '五', '六', '日'][value - 1]
+      if (result.length > 0 && value < 10) {
+        value = '0' + value
+      }
+      return value || 0
+    })
+    return timeStr
+  },
+
+  /**
+   * 日常转星期
+   */
+
+  getWeek: function(Time) {
+    var week
+    var timedat = getDate(tools.formatTime(Time, '{y}-{m}-{d}'))
+    if (timedat.getDay() == 0) week = "星期日"
+    if (timedat.getDay() == 1) week = "星期一"
+    if (timedat.getDay() == 2) week = "星期二"
+    if (timedat.getDay() == 3) week = "星期三"
+    if (timedat.getDay() == 4) week = "星期四"
+    if (timedat.getDay() == 5) week = "星期五"
+    if (timedat.getDay() == 6) week = "星期六"
+    return week
+  },
+
+
+
+  /**
+   * 个性化时间
+   */
+  personalityTime: function(time) {
+    time = +time * 1000
+    var d = getDate(time)
+    var now = getDate()
+    var diff = (now - d) / 1000
+
+    if (diff < 30) {
+      return '刚刚'
+    } else if (diff < 3600) {
+      return Math.ceil(diff / 60) + '分钟前'
+    } else if (diff < 3600 * 24) {
+      return Math.ceil(diff / 3600) + '小时前'
+    } else if (diff < 3600 * 24 * 2) {
+      return '1天前'
+    }
+    return tools.formatTime(time / 1000)
+  },
+  /**
+   * 单位转换(分转元)
+   */
+  fen2yuan: function(num, decimal) {
+    var f = (+num / 100) || 0
+    decimal = decimal ? decimal : 0
+    var d = (Math.round(f * 100) / 100)
+    return d.toFixed(decimal)
+  },
+  /**
+   * 取整
+   */
+  parseInt: function(num) {
+    return parseInt(num)
+  }
+}
+module.exports = tools;

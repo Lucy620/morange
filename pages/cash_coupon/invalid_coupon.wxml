@@ -1,0 +1,25 @@
+<!--pages/cash_coupon/invalid_.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <view class="coupon-row" wx:for="{{list}}" wx:key='index'>
+    <view class="row-bg">
+      <view class="details">
+        <view class="details-text">
+          <view class="coupon-title">{{item.name}}</view>
+          <view class="coupon-introduce">{{item.notice}}</view>
+        </view>
+        <view class="money">￥{{tools.fen2yuan(item.reduce_cost,2)}}</view>
+      </view>
+      <view class="date-box">
+        <view class="date">有效期至：{{tools.formatTime(item.use_end,'{y}-{m}-{d}')}}</view>
+        <view class="date-tips">已过期</view>
+      </view>
+    </view>
+    <image src="https://boringcdn.nanningboring.com/molicheng/invalid-icon.png" mode="widthFix" class="invalid-icon"></image>
+  </view>
+  <view class="tips">没有更多券了</view>
+
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

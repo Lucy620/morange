@@ -1,0 +1,67 @@
+<template name="private">
+  <view class="box">
+    <image src="https://boringcdn.nanningboring.com/molicheng/bg-icon.png" mode="widthFix" class="bg-icon"></image>
+    <view class="list-text">
+      <view class="title">{{course.name}}</view>
+      <view class="coach-name">教练：{{courseDate.coach.name}}</view>
+      <view class="address">地点:{{courseDate.store.address}}</view>
+    </view>
+
+    <view class="row-box">
+      <view class="row-text">课时：</view>
+      <view class="row-tab">
+        <view class="tab-item {{number == item.course_num ? 'select-item' : ''}}" wx:for="{{price_list}}" wx:key='index' bindtap="choiceCourseTime" data-num="{{item.course_num}}" data-id="{{item.id}}" data-index="{{index}}">{{item.course_num}}课时
+          <block wx:if="{{item.first_price > 0 && courseDate.first}}">
+            <view class="tab-tips">首次</view>
+            <view class="tri-down"></view>
+          </block>
+        </view>
+      </view>
+    </view>
+
+    <!--私教课-->
+    <view class="row">
+      <view class="row-text">价格: </view>
+      <!--首次体验价-->
+      <view class="row-tab" wx:if="{{price_list[priceIndex].first_price > 0 && courseDate.first}}">
+        <text class="money">￥{{tools.fen2yuan(price_list[priceIndex].price,2)}}元/课时</text>
+        <text class="s-yellow">(首次体验{{tools.fen2yuan(price_list[priceIndex].first_price,2)}}元/课时)</text>
+      </view>
+      <!--非首次体验价-->
+      <view class="row-tab" wx:else>{{tools.fen2yuan(price_list[priceIndex].price,2)}}元/课时</view>
+    </view>
+
+    <view class="row">
+      <view class="row-text">代金券: </view>
+      <view class="row-tab" wx:if="{{coupon_list.length == 0}}">无代金券</view>
+      <view class="row-tab" wx:elif="{{user_coupon_id == 0}}" bindtap="openCoupon">
+        <text>{{coupon_list.length}}张可用</text>
+        <image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+      </view>
+      <!--代金券优惠-->
+      <view class="row-tab" wx:else bindtap="openCoupon">
+        -{{tools.fen2yuan(reduce_cost,2)}}元
+        <image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+      </view>
+    </view>
+
+    <view class="money-box">还需支付
+      <text class="money-text">￥{{reduce_cost == pay_price ? '0.00' :  tools.fen2yuan(pay_price,2)}}</text>
+    </view>
+
+
+    <!--私教课-->
+    <view class="explain">
+      说明:在报名后30天内申请退训，将退还剩余课时数等额的实付款项;报名后30天之后申请退训，将退还剩余课时数的实付款项30%。私教订单有效期为1年，逾期后，无法进行预约、退款等操作。为便于沟通时间安排，购买成功后，您的联系信息将对授课教练可见。
+    </view>
+
+  </view>
+
+  <!--按钮-->
+  <view class="btn" wx:if="{{user.balance < pay_price}}" bindtap="createOrder">确认订单，微信支付</view>
+  <view class="btn" wx:else bindtap="createBuy">{{type == 'give' ? '魔橙卡余额支付，赠送好友' : '确认订单，魔橙卡支付'}}</view>
+
+
+</template>
+
+<wxs module="tools" src="../../../utils/tools.wxs"></wxs>

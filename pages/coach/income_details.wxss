@@ -1,0 +1,67 @@
+/* pages/coach/income_details.wxss */
+
+.head-box {
+  padding: 30rpx 0;
+  background-color: #404040;
+  text-align: center;
+  position: relative;
+}
+
+.date {
+  color: #fff;
+  font-size: 32rpx;
+}
+
+.tips-income {
+  font-size: 24rpx;
+  color: #818181;
+}
+
+.s-yellow {
+  color: #ffae00;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -8rpx;
+  right: 15rpx;
+  width: 24rpx;
+  height: 16rpx;
+}
+
+
+.schedule-row {
+  display: flex;
+  align-items: center;
+  height: 131.3rpx;
+  padding: 0 30rpx;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+  background-color: #141414;
+}
+
+.date-tiem-box {
+  flex: 1;
+}
+
+.tips-tiem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.date {
+  color: #fff;
+}
+
+.tiem {
+  color: #535353;
+  font-size: 20rpx;
+  margin-top: 15rpx;
+}
+
+.time-text {
+  color: #ffae00;
+  font-size: 26rpx;
+}

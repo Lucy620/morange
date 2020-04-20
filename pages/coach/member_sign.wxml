@@ -1,0 +1,265 @@
+<!--pages/coach/member_sign.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+	<view class="bg-box">
+		<!--课程 二维码 课程收入-->
+		<view class="list-box">
+			<image src="https://boringcdn.nanningboring.com/molicheng/MORANGE.png" mode="widthFix" class="logo-text"></image>
+			<view class="title">{{course.course.name}}
+				<text wx:if="{{type == 'camp'}}">{{course.camp.name}}</text>
+			</view>
+			<view class="date-time" wx:if="{{type != 'private'}}"> {{tools.formatTime(course.start_at,'{m}月{d}日')}} {{tools.getWeek(course.start_at)}} {{tools.formatTime(course.start_at,'{h}:{i}')}}-{{tools.formatTime(course.end_at,'{h}:{i}')}}
+				<text wx:if="{{type == 'camp'}}">({{course.item_surplus + '/' + course.item_total}})</text>
+			</view>
+
+			<!--签到扫码-->
+			<block wx:if="{{type != 'income'}}">
+				<image src="{{course.qrcode}}" mode="widthFix" class="qrcode"></image>
+				<view class="tips-box {{course.is_spell == 1 ? 's-tips-box' : ''}}">
+					<view>扫码签到</view>
+					<view>请让学员拿出微信“扫一扫"</view>
+
+					<!--拼课-->
+					<block wx:if="{{course.is_spell == 1}}">
+						<block wx:if="{{course.spell_status == 0}}">
+							<view class="tips-text">是否接单？</view>
+							<view class="btn-box">
+								<view class="tips-btn" bindtap="receipt" data-status="true">是</view>
+								<view class="tips-btn" bindtap="onReceipt">否</view>
+							</view>
+						</block>
+						<view class="ok-text" wx:else>{{course.spell_status == 2 ? '已拒绝接单' :'已成功接单'}}</view>
+					</block>
+				</view>
+			</block>
+
+			<!--课程收入-->
+			<block wx:if="{{type == 'income'}}">
+				<view class="course-income">
+					<view class="course-tips">课程收入明细</view>
+					<view class="course-rwo">
+						<view class="course-text">现金收入:</view>
+						<view class="course-text">{{tools.fen2yuan(income_result.base_income,2)}}元</view>
+					</view>
+					<view class="course-rwo">
+						<view class="course-text">会员提成:</view>
+						<view class="course-text">{{tools.fen2yuan(income_result.people_income,2)}}元</view>
+					</view>
+					<view class="course-rwo line">
+						<view class="course-text">额外奖励:</view>
+						<view class="course-text">{{tools.fen2yuan(income_result.extra_income,2)}}元</view>
+					</view>
+					<view class="course-rwo">
+						<view class="course-text">合计:</view>
+						<view class="course-text">{{tools.fen2yuan(total_income,2)}}元</view>
+					</view>
+					<view class="branch-text">教练积分</view>
+					<view class="course-rwo">
+						<view class="course-text">本次积分:</view>
+						<view class="course-text">{{tools.parseInt(total_income) / 100}}分</view>
+					</view>
+					<view class="course-rwo line">
+						<view class="course-text">累计积分:</view>
+						<view class="course-text">{{course.coach.total_integral}}分</view>
+					</view>
+				</view>
+			</block>
+		</view>
+
+		<!--学员-->
+		<view class="student">
+			<view class="student-title-box">
+				<view class="student-tips">预约人数（{{number}}人/{{course.camp ? course.camp.total_stock : course.total_stock}}人）</view>
+				<view class="student-tips" bindtap="seeStudent">查看新学员></view>
+			</view>
+			<scroll-view scroll-y class="scroll-box  {{course.is_spell == 1 || type == 'private'  ? 'student-box' : ''}}">
+				<view class="student-portrait">
+					<view class="portrait-box" wx:for="{{user}}" wx:key='index'>
+						<image src="{{item.miniprogram.headimgurl}}" mode="widthFix" class="head-portrait">
+							<view class="number" wx:if="{{item.order.course_num > 0}}">{{item.order.course_num}}</view>
+						</image>
+						<view class="mask" wx:if="{{item.sign_at > 0}}">
+							<image src="https://boringcdn.nanningboring.com/molicheng/hook-icon.png" mode="widthFix" class="hook-icon"></image>
+						</view>
+						<view class="student-name">{{item.miniprogram.nickname}}</view>
+					</view>
+				</view>
+			</scroll-view>
+			<image class="mask-bg" src="https://boringcdn.nanningboring.com/molicheng/mask.png" mode="widthFix"></image>
+		</view>
+		<view class="circular"></view>
+		<view class="circular1"></view>
+	</view>
+
+	<!--课程-->
+	<view class="curriculum-box">
+		<view class="row">
+			<view class="name-icon-box">
+				<image src="https://boringcdn.nanningboring.com/molicheng/icon.png" mode="widthFix" class="icon"></image>
+				<view class="row-text">课程: {{course.course.name}}</view>
+			</view>
+			<view class="curriculum-btn" bindtap="seeCourse" data-id="{{course.id}}" data-type="{{course.course.type}}" data-area_id="{{course.store.area_id}}">查看</view>
+		</view>
+		<view class="row-address">
+			<view class="name-icon-box">
+				<image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="address-icon"></image>
+				<view class="row-text">地址：</view>
+			</view>
+			<view class="address">{{course.store.address}}</view>
+			<view class="map-text" bindtap="seeMap" data-latitude="{{course.store.latitude}}" data-longitude="{{course.store.longitude}}" data-name="{{course.store.name}}" data-address="{{course.store.address}}">点击查看地图</view>
+		</view>
+		<view class="info-row">
+			<image src="https://boringcdn.nanningboring.com/molicheng/icon2.png" mode="widthFix" class="icon"></image>
+			<view class="row-text">教练：{{course.coach.name}}</view>
+		</view>
+		<view class="info-row">
+			<image src="https://boringcdn.nanningboring.com/molicheng/icon.png" mode="widthFix" class="icon"></image>
+			<view class="row-text">课程ID: {{course.course.id}}</view>
+		</view>
+		<view class="curriculum-row">
+			<image src="https://boringcdn.nanningboring.com/molicheng/icon4.png" mode="widthFix" class="icon"></image>
+			<view class="row-text">课程照片</view>
+		</view>
+		<view class="course-img-box">
+			<view wx:if="{{upTips}}" class="up-tips">上传中...</view>
+			<block wx:for="{{images}}" wx:key='index'>
+				<!--图片-->
+				<image wx:if="{{item.type == 'img'}}" src="{{item.url}}?imageView2/1/w/140/h/140" mode="widthFix" class="course-img" bindtap="previewImage" data-url="{{item}}" data-imglist="{{images}}"></image>
+				<!--视频-->
+				<block wx:if="{{item.type == 'video'}}">
+					<video wx:if="{{showVideo}}" class="course-img" src='{{videoUrl}}' enable-play-gesture="{{true}}" id='myvideo' bindfullscreenchange="bindfullscreenchange">
+					</video>
+					<view wx:else class="up-tips" bindtap="openVideo" data-url="{{item.url}}">
+						<image src="https://boringcdn.nanningboring.com/molic/play.png" mode="widthFix" class="play"></image>
+					</view>
+				</block>
+			</block>
+			<image src='https://boringcdn.nanningboring.com/molicheng/add-img.png' mode='widthFix' class="course-img" bindtap="optUpType"></image>
+		</view>
+		<!-- <view class="curriculum-img-box">
+      <view class="img-text">点击选择照片</view>
+    </view> -->
+		<view class="save-btn" bindtap="onSave">保存</view>
+
+		<view class="s-btn" bindtap="onClassEnd">
+			<view class="btn-text">结课</view>
+		</view>
+
+		<!--留言板-->
+		<view class="msg-board">
+			<view class="curriculum-row">
+				<image src="https://boringcdn.nanningboring.com/molic/msg-board-cion.png" mode="widthFix" class="icon"></image>
+				<view class="row-text">教练评价</view>
+			</view>
+			<scroll-view scroll-y class="msg-list" bindscrolltolower='getCourseCommentList'>
+				<block wx:if="{{list.length > 0}}">
+					<view class="msg-row" wx:for="{{list}}" wx:key='index'>
+						<image src="{{item.coach.headimgurl}}" mode="widthFix" class="user-icon" wx:if="{{item.type == 'coach'}}"></image>
+						<image src="https://boringcdn.nanningboring.com/molic/comment-icon.png" mode="widthFix" class="user-icon" wx:else></image>
+						<view class="msg-info">
+							<view class="date-box">
+								<view class="date">
+									{{tools.formatTime(item.created_at,'{y}-{m}-{d} {h}:{i}:{s}')}}
+								</view>
+								<view class="star-row" wx:if="{{item.type == 'user'}}">
+									<view class="star {{item.star >= 1 ? 'light-star' : ''}}"></view>
+									<view class="star {{item.star > 1 ? 'light-star' : ''}}"></view>
+									<view class="star {{item.star > 2 ? 'light-star' : ''}}"></view>
+									<view class="star {{item.star > 3 ? 'light-star' : ''}}"></view>
+									<view class="star {{item.star > 4 ? 'light-star' : ''}}"></view>
+								</view>
+							</view>
+							<view class="info">{{item.content}}</view>
+						</view>
+					</view>
+				</block>
+				<view class="no-data-tips" wx:else>暂无评价信息</view>
+			</scroll-view>
+		</view>
+		<view class="ipt-box">
+			<input class="ipt" placeholder="有什么想说的..." bindinput="binKeyVaule"></input>
+			<view class="ipt-btn" bindtap="sendComment">发送</view>
+		</view>
+	</view>
+
+
+
+	<view class="bg" wx:if="{{show}}">
+
+		<!--新学员-->
+		<view class="container-box" wx:if="{{openStudent}}">
+			<image src="https://boringcdn.nanningboring.com/molicheng/close-icon.png" mode="widthFix" class="close-icon" bindtap="closeSee"></image>
+			<view class="container-row-box">
+				<view class="container-left">
+					<view>魔橙新学员</view>
+					<view class="container-tips">首次加入魔力橙的学员</view>
+				</view>
+				<view class="number-tips">{{new_molic}}人/{{user.length}}人</view>
+			</view>
+			<view class="container-row-box">
+				<view class="container-left">
+					<view>课程新学员</view>
+					<view class="container-tips">首次上本次课程学员</view>
+				</view>
+				<view class="number-tips">{{new_course}}人/{{user.length}}人</view>
+			</view>
+			<view class="container-row-box">
+				<view class="container-left">
+					<view>我的新学员</view>
+					<view class="container-tips">首次上我的课程的新学员</view>
+				</view>
+				<view class="number-tips">{{new_coach}}人/{{user.length}}人</view>
+			</view>
+		</view>
+
+		<!--训练营扫码-->
+		<view class="camp-mask-box" wx:if="{{isCode}}">
+			<view class="camp-title">{{tools.formatTime(campData,'{m}月{d}日')}} {{tools.getWeek(campData)}} {{tools.formatTime(campData,'{h}:{i}')}}-{{tools.formatTime(end_at,'{h}:{i}')}}</view>
+			<view class="camp-qrcode">
+				<image src="{{qrcode}}" mode="widthFix"></image>
+			</view>
+			<view class="mask-btn-box">
+				<view class="confirm-btn" bindtap="closeTips">确认</view>
+			</view>
+		</view>
+
+
+		<!--不接单-->
+		<view class="mask-text-box" wx:if="{{isReceipt}}">
+			<view class="mask-text-title">输入理由（想对会员说的话）</view>
+			<view class="input-box">
+				<input placeholder="请输入文字…" bindinput="binKeyVlaue"></input>
+			</view>
+			<view class="mask-btn-box">
+				<view class="mask-btn" bindtap="close">再看看</view>
+				<view class="confirm-btn" bindtap="receipt" data-status="false">确认取消</view>
+			</view>
+		</view>
+
+		<view class="mask-text-box" wx:if="{{isClassEnd}}">
+			<view class="mask-text-title">提示</view>
+			<!--私教课 训练营-->
+			<view class="mask-text-tips">
+				确认结课吗?
+			</view>
+			<view class="mask-btn-box">
+				<view class="mask-btn" bindtap="close">再看看</view>
+				<view class="confirm-btn" bindtap="coachClassEnd">确认</view>
+			</view>
+		</view>
+	</view>
+
+	<!--选择上传类型-->
+	<view class="mask-box" wx:if="{{openType}}">
+		<view class="opt-type-box" animation="{{animation}}">
+			<view class="opt-type-text" catchtap="selectImg">上传图片</view>
+			<view class="opt-type-text" catchtap="chooseVideo">上传视频</view>
+			<view class="cancel-text" bindtap="closeOptType">取消</view>
+		</view>
+	</view>
+
+
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

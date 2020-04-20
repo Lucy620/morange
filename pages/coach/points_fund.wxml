@@ -1,0 +1,40 @@
+<!--pages/coach/points_fund.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <!--tab 栏-->
+  <view class="tab-box">
+    <view class="tab-row">
+      <view class="tab-item">
+        <view class="tab-text {{dataId == 1 ? 'select-tab-item' : ''}}" bindtap="switchTab" data-id="1">积分</view>
+      </view>
+      <view class="tab-item">
+        <view class="tab-text {{dataId == 2 ? 'select-tab-item' : ''}}" bindtap="switchTab" data-id="2">基金</view>
+      </view>
+    </view>
+  </view>
+
+  <block wx:if="{{dataId == 1}}">
+    <view class="tips-box">剩余积分
+      <text class="s-yellow">{{total_integra}}</text> 分</view>
+    <view class="picker-box">
+      <view class="picker-row">
+        <picker mode="date" fields="month" value="{{date}}" bindchange="bindDateChange">
+          <view class="picker">
+            {{date}}
+          </view>
+        </picker>
+        <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="arrow"></image>
+      </view>
+    </view>
+  </block>
+
+  <view class="schedule-row" wx:if="{{dataId == 1}}" wx:for="{{list}}" wx:key='index' bindtap='jumpPage' data-url="pages/coach/member_sign?id={{item.id}}&type=income">
+    <view class="date-tiem-box">{{tools.formatTime(item.created_at,'{m}月{d}日')}}</view>
+    <view class="tips-tiem">{{item.integral}}分</view>
+  </view>
+  <view class="tips" wx:if="{{dataId== 1 && list.length == 0}}">无变动明细</view>
+  <view class="tips" wx:if="{{dataId == 2}}">敬请期待~~</view>
+
+</view>
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

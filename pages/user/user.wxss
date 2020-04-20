@@ -1,0 +1,504 @@
+/* pages/user/user.wxss */
+
+page {
+  background: #262626;
+}
+
+/**已开通 头部**/
+
+.open-head-box {
+  height: 456rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/user-bg.png);
+  background-size: 100%;
+}
+
+.open-box {
+  width: 678rpx;
+  height: 341.3rpx;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 13.3rpx;
+  border: solid 1.3rpx rgba(255, 236, 128, 0.7);
+  position: absolute;
+  top: 25rpx;
+  left: 36rpx;
+}
+
+.user-box {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin: 30rpx 30rpx 0;
+}
+
+.user-btn {
+  padding: 0;
+  margin: 0;
+  height: 160rpx;
+  background: none;
+}
+
+.user-btn::after {
+  border: none;
+}
+
+.user-img {
+  width: 152.7rpx;
+  height: 152.7rpx;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
+  border: solid 4rpx #fff;
+  border-radius: 50%;
+}
+
+.login-btn {
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  width: 180rpx;
+  text-align: center;
+  margin-left: 20rpx;
+}
+
+.box-title {
+  width: 247rpx;
+  height: 38rpx;
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+}
+
+.tips {
+  /* width: 426rpx; */
+  font-size: 28rpx;
+  color: #bcbcbc;
+  margin: 10rpx 30rpx;
+}
+
+.tips text {
+  margin: 0 25rpx;
+}
+
+.balance-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20rpx 30rpx 0;
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+}
+
+.see-icon {
+  width: 35rpx;
+  height: 35rpx;
+  margin-left: 10rpx;
+}
+
+.open-btn {
+  width: 139.3rpx;
+  height: 59.3rpx;
+  text-align: center;
+  line-height: 59.3rpx;
+  background-image: linear-gradient(#d9d9d9, #d9d9d9), linear-gradient(#bcbcbc, #bcbcbc);
+  background-blend-mode: normal, normal;
+  box-shadow: 1.7rpx 2.9rpx 5.3rpx 0rpx rgba(0, 0, 0, 0.25);
+  border-radius: 6.7rpx;
+  opacity: 0.9;
+}
+
+/**未开通 头部**/
+
+.head-box {
+  height: 456rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/head-bg.png);
+  background-size: 100%;
+}
+
+.box {
+  width: 678rpx;
+  height: 341.3rpx;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 13.3rpx;
+  border: solid 2px rgba(255, 255, 255, 0.17);
+  position: absolute;
+  top: 25rpx;
+  left: 36rpx;
+}
+
+.tips-text {
+  color: #fff;
+}
+
+.privilege-text {
+  height: 28.7rpx;
+  text-decoration: underline;
+}
+
+.btn {
+  width: 139.3rpx;
+  height: 59.3rpx;
+  text-align: center;
+  line-height: 59.3rpx;
+  border-radius: 6.7rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/btn.png);
+  background-size: 100%;
+}
+
+/***积分等级**/
+.integral-box {
+  width: 731rpx;
+  height: 197rpx;
+  background-color: #1a1a1a;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
+  border-radius: 13rpx;
+  margin: -55rpx auto 20rpx;
+}
+
+.integral-title-box {
+  display: flex;
+  padding: 5rpx 20rpx;
+}
+
+.integral-text {
+  flex: 1;
+}
+
+.integral-title {
+  font-size: 32rpx;
+  color: #fff;
+  font-weight: 550;
+}
+
+.integral-grade {
+  color: #ff9600;
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.integral-title-tips {
+  color: #848484;
+  font-size: 21rpx;
+}
+
+.see-integral {
+  font-size: 24rpx;
+  color: #fff;
+  padding-top: 25rpx;
+}
+
+.speed-box {
+  width: 695rpx;
+  height: 15rpx;
+  background-color: #000000;
+  border-radius: 7rpx;
+  border: solid 1rpx #2d2d2d;
+  margin: 10rpx auto;
+}
+
+.speed {
+  height: 15rpx;
+  background-image: linear-gradient(90deg,
+      #ff4800 41%,
+      #ff7200 89%,
+      #ffba00 100%),
+    linear-gradient(#000000,
+      #000000);
+  border-radius: 7rpx;
+}
+.integral-ft{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rpx;
+}
+.integral-ft-tips{
+  color: #848484;
+  font-size: 24rpx;
+}
+.integral-ft-num{
+  color: #ffffff;
+	font-size: 32rpx;
+}
+.yellow{
+  color:#ffae00;
+}
+.grade-title-box{
+  display: flex;
+  padding: 15rpx 20rpx;
+}
+.grade-text-title{
+  color: #747474;
+  font-size: 40rpx;
+  font-weight: 550;
+}
+.grade-text-title-tips{
+	font-size: 21rpx;
+  color: #747474;
+}
+.grade-integral{
+  font-size: 24rpx;
+color: #fff;
+padding-top: 18rpx;
+
+}
+.grade-ft{
+  color: #fff;
+	font-size: 24rpx;
+  padding: 15rpx 20rpx;
+  position: relative;
+}
+
+.grade-ft::after {
+  content: " ";
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  border-width: 2px 2px 0 0;
+  border-color: #fff;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+  right: 16px;
+}
+
+/**排名**/
+
+.container-box {
+  width: 678rpx;
+  height: 130rpx;
+  background: url(https://boringcdn.nanningboring.com/molic/ranking-bg.png);
+  background-size: 100%;
+  border-radius: 13.3rpx;
+  margin: 0 auto;
+}
+
+.container-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15rpx 15rpx 0;
+}
+
+.container-text {
+  color: #fff;
+  font-size: 20rpx;
+}
+
+.open-tips {
+  text-align: center;
+  font-size: 24rpx;
+  color: #ffae00;
+  margin-top: 10rpx;
+}
+
+.ranking {
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ffae00;
+}
+
+.time {
+  text-align: center;
+  color: #bcbcbc;
+  font-size: 22rpx;
+}
+
+/**用户item**/
+
+.list-box {
+  padding: 30rpx;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.row-top {
+  position: relative;
+  padding-bottom: 20rpx;
+}
+
+.row-top::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/line.png);
+  background-size: 100%;
+}
+
+.row-hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.row-top-title {
+  color: #fff;
+  flex: 1;
+  margin: 20rpx 0;
+}
+
+.medal-tips {
+  color: #bcbcbc;
+  font-size: 22rpx;
+  margin-left: 10rpx;
+}
+
+.row-title {
+  color: #fff;
+  flex: 1;
+  margin: 40rpx 0;
+}
+
+/* .medal-icon {
+  width: 150rpx;
+  height: 150rpx;
+  margin-top: -60rpx;
+} */
+
+.medal-number {
+  width: 200rpx;
+  text-align: right;
+  color: #bcbcbc;
+}
+
+.medal-box {
+  position: relative;
+}
+
+/* .medal-box::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/line.png);
+  background-size: 100%;
+} */
+
+.scroll-view-box {
+  white-space: nowrap;
+}
+
+.medal-img-box {
+  width: 172rpx;
+  text-align: center;
+  display: inline-block;
+}
+
+.medal-img {
+  display: inline-block;
+  width: 124rpx;
+  height: 136rpx;
+}
+
+.row-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 40rpx 0; */
+  position: relative;
+}
+
+.row-item::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/line.png);
+  background-size: 100%;
+}
+
+.row-arrow {
+  padding-right: 12px;
+}
+
+.row-arrow::after {
+  content: " ";
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  border-width: 2px 2px 0 0;
+  border-color: #bcbcbc;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+  right: 2px;
+}
+
+/**特权**/
+
+.privilege-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+swiper {
+  margin-top: 90rpx;
+  width: 750rpx;
+  height: 700rpx;
+}
+
+.privilege-title {
+  font-size: 50.7rpx;
+  font-stretch: normal;
+  letter-spacing: -1.3rpx;
+  color: #ff8400;
+  font-weight: bold;
+}
+
+.privilege-icon {
+  width: 357.3rpx;
+  height: 294.7rpx;
+  margin-top: 70rpx;
+}
+
+.privilege-tips-title {
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+
+.privilege-tips {
+  width: 550rpx;
+  margin: 0 auto;
+  font-size: 24rpx;
+  line-height: 50rpx;
+}
+
+.privilege-btn {
+  width: 392.7rpx;
+  height: 59.3rpx;
+  line-height: 59.3rpx;
+  margin: 100rpx auto 0;
+  color: #000;
+  font-size: 32rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/privilege-btn.png);
+  background-size: 100%;
+  border-radius: 6.7rpx;
+}

@@ -1,0 +1,29 @@
+<!--pages/user/integralChange.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+	<view class="tips-box">本月累计积分
+		<text class="s-yellow">{{total}}</text> 分
+	</view>
+	<view class="picker-box">
+		<view class="picker-row">
+			<picker mode="date" fields="month" value="{{date}}" bindchange="bindDateChange">
+				<view class="picker">
+					{{date}}
+				</view>
+			</picker>
+			<image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="arrow"></image>
+		</view>
+	</view>
+
+	<view class="schedule-row"  wx:for="{{list}}" wx:key='index'>
+		<view class="date-tiem-box">
+      <view class="name">{{item.content}}</view>
+      <view class="date">{{tools.formatTime(item.created_at,'{y}-{m}-{d} {h}:{i}:{s}')}}</view>
+    </view>
+		<view class="tips-tiem">{{item.integral}}分</view>
+	</view>
+  <view class="no-data" wx:if="{{list.length == 0}}">暂无无变动明细</view>
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

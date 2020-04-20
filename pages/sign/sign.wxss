@@ -1,0 +1,135 @@
+/* pages/sign/sign.wxss */
+
+.box-ok {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  text-align: center;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+}
+
+.text-box {
+  position: absolute;
+  top: 420rpx;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.tips {
+  font-size: 48rpx;
+  color: #000;
+  font-weight: bold;
+  padding-left: 20rpx;
+}
+
+.tips-coach {
+  font-size: 27rpx;
+}
+
+.coach-img-box {
+  width: 173rpx;
+  height: 174rpx;
+  text-align: center;
+  margin-top: 50rpx;
+  margin: 40rpx auto 0;
+  position: relative;
+}
+
+.coach-img {
+  width: 173rpx;
+  height: 174rpx;
+  border-radius: 50%;
+}
+
+.mask {
+  width: 173rpx;
+  height: 174rpx;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hook-icon{
+  width: 80rpx;
+  height: 80rpx;
+}
+.num {
+  position: absolute;
+  bottom: -15rpx;
+  right: 0;
+  border-radius: 50%;
+  width: 53rpx;
+  height: 53rpx;
+  color: #000;
+  text-align: center;
+  line-height: 53rpx;
+  background-color: #fff;
+}
+
+.btn-box {
+  position: fixed;
+  bottom: 20rpx;
+  left: 50%;
+  margin-left: -363rpx;
+  width: 726rpx;
+  height: 86rpx;
+  border-radius: 4px;
+  font-size: 33rpx;
+  background-image: linear-gradient(to bottom, #ffd324, #ff7200);
+  overflow: hidden;
+  padding: 1px;
+}
+
+.btn {
+  line-height: 86rpx;
+  text-align: center;
+  color: #ffae00;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: #000;
+}
+
+
+.home-btn {
+  position: fixed;
+  right: 15rpx;
+  bottom: 200rpx;
+  width: 111rpx;
+  height: 111rpx;
+}
+
+.mask-box{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+.qrcode-box{
+  width: 650rpx;
+}
+.qrcode-box image{
+  width: 100%;
+  height: 100%;
+}

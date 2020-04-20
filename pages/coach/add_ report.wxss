@@ -1,0 +1,74 @@
+/* pages/coach/add_ report.wxss */
+
+page {
+  background: #242424;
+}
+
+.head {
+  height: 82rpx;
+  line-height: 82rpx;
+  text-align: center;
+  font-size: 27rpx;
+  color: #818181;
+  background-color: #1f1f1f;
+}
+
+.row-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+}
+
+.row-title {
+  color: #fff;
+}
+
+.picker-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.picker-lien{
+  color: #fff;
+  padding: 0 10rpx;
+}
+
+.picker {
+  color: #fff;
+}
+
+.arrow {
+  width: 24rpx;
+  height: 15rpx;
+  margin-left: 10rpx;
+  transform: rotate(-90deg);
+}
+
+.picker-box input {
+  height: 100%;
+  text-align: right;
+  color: #fff;
+}
+
+.btn-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.btn-date{
+  color: #818181;
+  font-size: 24rpx;
+  margin-bottom: 25rpx;
+  text-align: center;
+}
+.btn {
+  text-align: center;
+  color: #000;
+  font-size: 32rpx;
+  height: 89rpx;
+  line-height: 89rpx;
+  background-image: linear-gradient(0deg, #ff6e0d 0%, #ffba00 100%);
+}

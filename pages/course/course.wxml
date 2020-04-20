@@ -1,0 +1,232 @@
+<!--pages/league/list.wxml-->
+
+
+<loading wx:if="{{showTab}}"></loading>
+
+
+<view class="wrapper-box" hidden="{{showLoad}}">
+
+	<view class="container-box">
+		<!--轮播-->
+		<view class="swiper-box">
+			<swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000">
+				<block wx:for="{{advList}}" wx:key="index">
+					<swiper-item bindtap='jumpPage' data-url="{{item.url}}">
+						<image src="{{item.img}}" class="slide-image" mode="widthFix"></image>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+		<!--tab栏-->
+		<view class="tab-box">
+			<view class="row-box" bindtap="openAnimation" data-type="screen">
+				<view class="title" wx:if="{{storeNumber == 0}}">{{areaList[areaIndex].name+region[regionIndex].name}}</view>
+				<view class="title" wx:if="{{storeNumber > 0}}">{{storeNumber}}家门店</view>
+				<image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="tab-icon"></image>
+			</view>
+			<view class="row-box" bindtap="openAnimation" data-type="course">
+				<view class="title" wx:if="{{courseNumber == 0}}">筛选课程</view>
+				<view class="title" wx:if="{{courseNumber > 0}}">{{courseNumber}}个课程</view>
+				<image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="tab-icon"></image>
+			</view>
+			<view class="row-box" bindtap="openAnimation" data-type="time">
+				<view class="title" wx:if="{{searchTimeIndex == 0}}">全部时段</view>
+				<view class="title" wx:if="{{searchTimeIndex != 0}}">1个时段</view>
+				<image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="tab-icon"></image>
+			</view>
+		</view>
+		<!--星期-->
+		<view class="week-box">
+			<view class="week-item" wx:for="{{weekList}}" wx:key="index" bindtap="selectDate" data-index="{{index}}">{{item.week}}
+				<view class="select-week-box" wx:if="{{weekIndex == index}}">
+					<view class="select-week">
+						<view class="select-date">{{tools.formatTime(item.time,'{m}.{d}')}}</view>
+						<view class="select-date-tips" wx:if="{{weekIndex <= 2}}">{{weekText[index]}} </view>
+						<view class="select-date-tips" wx:else>{{weekText[index]+ item.week}} </view>
+					</view>
+				</view>
+			</view>
+			<view class="week-item s-line" bindtap='jumpPage' data-url='pages/private_education/list'>私教</view>
+			<view class="week-item" bindtap='jumpPage' data-url='pages/training_camp/list'>训练营</view>
+			<view class="week-item" bindtap='jumpPage' data-url='pages/lesson_collage/lesson_collage'>拼课</view>
+		</view>
+	</view>
+
+	<!--教练 课程-->
+	<view class="coach-store-box">
+		<view class="list">
+			<swiper class="list-swiper-box" duration="{{200}}" current="{{weekIndex}}" bindchange='binSwiper'>
+				<block wx:for="{{courseList}}" wx:key='index'>
+					<swiper-item>
+						<scroll-view scroll-y class="scroll-box" bindscrolltolower="lower" bindscrolltoupper="upper" scroll-top="{{scroll}}">
+							<block wx:for="{{item}}" wx:key='index' wx:for-item="course">
+								<view class="store-row">
+									<view class="store-address">{{course.name}}</view>
+									<view class="map-box">
+										<view class="map-text" bindtap="seeMap" data-name="{{course.name}}" data-address="{{course.address}}" data-latitude="{{course.latitude}}" data-longitude="{{course.longitude}}">查看地图</view>
+										<image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="map-arrow"></image>
+									</view>
+								</view>
+								<view class="coach-info" wx:if="{{course.team.length == 0}}">
+									<view class="coach-img">
+										<image src="https://boringcdn.nanningboring.com/molicheng/user-icon.png" mode="widthFix"></image>
+										<view class="coach-mask">...</view>
+									</view>
+									<view class="coach-info-details">
+										<!--排课中-->
+										<view class="info-tips">小橙子排课中 (每周五22:30发布)</view>
+									</view>
+								</view>
+								<view class="box" wx:if="{{course.team.length > 0}}" wx:for="{{course.team}}" wx:key='index' wx:for-item="teamItem">
+									<image src="{{teamItem.coach.headimgurl}}" mode="aspectFill" class="coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{teamItem.coach.user_id}}'></image>
+									<view class="box-row" bindtap='jumpPage' data-url='pages/league/details?team_id={{teamItem.id}}'>
+										<view class="mid">
+											<view class="title">
+												<!--拼课-->
+												<text wx:if="{{teamItem.is_spell == 1}}">『拼课』</text> {{teamItem.course.name}}
+											</view>
+											<view class="attributes-box">
+												<view class="name" wx:for="{{teamItem.course.attributes}}" wx:key='index' wx:for-item="attributes">
+													<view wx:if="{{index != 0}}" class="garden"></view>{{attributes}}
+												</view>
+											</view>
+											<view class="date">
+												<text class="time">{{tools.formatTime(teamItem.start_at,'{h}:{i}')}}-{{tools.formatTime(teamItem.end_at,'{h}:{i}')}}</text>￥{{tools.fen2yuan(teamItem.price,2)}}(魔橙卡￥{{tools.fen2yuan(teamItem.vip_price,2)}})
+											</view>
+										</view>
+
+										<view class="btn full-btn" wx:if="{{nowtime > teamItem.end_at}}">结束</view>
+										<view class="btn" wx:if="{{nowtime < teamItem.end_at && teamItem.rest_stock > 0}}">{{teamItem.is_spell == 1 ? '拼课' : '预约'}}</view>
+										<view class="coach-btn-box" wx:if="{{teamItem.rest_stock == 0  && nowtime < teamItem.end_at}}">
+											<view class="wait-btn">等候</view>
+										</view>
+										<view class="wrap" wx:if="{{nowtime < teamItem.end_at}}">
+											<view class="silk-ribbon full" wx:if="{{teamItem.rest_stock == 0}}">满员</view>
+											<view class="silk-ribbon" wx:if="{{teamItem.percent <= 60 && teamItem.rest_stock > 0}}">紧张</view>
+											<view class="silk-ribbon" wx:if="{{teamItem.percent > 60 && teamItem.is_new == 1 && teamItem.rest_stock > 0}}">NEW</view>
+										</view>
+									</view>
+								</view>
+							</block>
+							<view class="box refresh-box" wx:if="{{searchTimeIndex >=1 || courseNumber >=1 || storeNumber >=1}}" wx:for="{{4}}" wx:key='index'></view>
+						</scroll-view>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+	</view>
+
+	<!--筛选 课程 门店 时间-->
+	<view class="course-box" wx:if="{{cover}}">
+		<view class="mask-box" bindtap="closeAnimation"></view>
+
+		<!--课程-->
+		<view class="cover" wx:if="{{type == 'course'}}" animation="{{animation}}">
+			<view class="course-title-box">
+				<view class="course-title">
+					<image src="https://boringcdn.nanningboring.com/molicheng/screen-icon.png" mode="widthFix" class="course-icon"></image>
+					<text class="course-title-text">选择课程（可多选）</text>
+				</view>
+				<view class="tips">已选{{courseNumber == 0 ? '1' :courseNumber }}项</view>
+			</view>
+			<view class="course-row">
+				<view class="left">
+					<scroll-view scroll-y class="scroll-view-box">
+						<view class="objective-box">
+							<image src="https://boringcdn.nanningboring.com/molicheng/objective-icon.png" mode="widthFix" class="objective-icon"></image>
+							<view class="objective-text">目的</view>
+						</view>
+
+						<view class="objective-tab-bxo">
+							<block wx:for="{{courseTargetList}}" wx:key='index'>
+								<view class="objective-tab {{item.select ? 'select-objective-tab' : ''}}" style="width:{{item.name.length > 3 ? '139': '93'}}rpx" bindtap="choiceTarget" data-index="{{index}}">{{item.name}}</view>
+							</block>
+						</view>
+
+						<view class="objective-box">
+							<image src="" mode="widthFix" class="objective-icon"></image>
+							<view class="objective-text">类型</view>
+						</view>
+						<view class="objective-tab-bxo">
+							<block wx:for="{{courseCategoryList}}" wx:key='index'>
+								<view class="objective-tab {{item.select ? 'select-objective-tab' :''}}" style="width:{{item.name.length > 3 ? '139': '93'}}rpx" bindtap="choiceCategory" data-index="{{index}}">{{item.name}}</view>
+							</block>
+						</view>
+					</scroll-view>
+
+				</view>
+				<view class="rigth">
+					<scroll-view scroll-y class="scroll-view-box">
+						<view class="course-item" wx:for="{{course}}" wx:key='index' bindtap="choiceCourse" data-index="{{index}}">
+							<view class="item-width  {{item.select ? 'select-course-item' : ''}}">{{item.name}}</view>
+						</view>
+					</scroll-view>
+				</view>
+			</view>
+			<view class="btn-box">
+				<view class="mask-btn" bindtap="onEmpty" data-type="course">清 空</view>
+				<view class="s-mask-btn" bindtap="confirmSelect" data-type="course">确 认</view>
+			</view>
+		</view>
+
+		<!--时间-->
+		<view class="time-box" wx:if="{{type == 'time'}}" animation="{{animation}}">
+			<view class="course-title-box">
+				<view class="course-title">
+					<image src="https://boringcdn.nanningboring.com/molicheng/screen-icon.png" mode="widthFix" class="course-icon"></image>
+					<text class="course-title-text">选择时段</text>
+				</view>
+			</view>
+			<view class="time-slot">
+				<scroll-view scroll-y class="scroll-view-box">
+					<view class="time-item {{searchTimeIndex == index ? 'select-time-item' : ''}}" wx:for="{{searchTimeList}}" wx:key='index' bindtap="choiceTime" data-index="{{index}}">{{item}}
+					</view>
+				</scroll-view>
+			</view>
+			<view class="time-tips-box" bindtap="hiddenEnd">
+				<view class="time-tips-img {{is_hide ? 'select-time-tips' : ''}}">
+					<image src="https://boringcdn.nanningboring.com/molicheng/hook-icon.png" mode="widthFix" class="hook-icon" wx:if="{{is_hide}}"></image>
+				</view>
+				<view class="time-tips-text">隐藏今天已结束的课程</view>
+			</view>
+			<view class="btn-box">
+				<view class="time-btn" bindtap="onEmpty" data-type="time">清 空</view>
+				<view class="s-time-btn" bindtap="confirmSelect" data-type="time">确 认</view>
+			</view>
+		</view>
+
+		<!--门店-->
+		<view class="screen-box" wx:if="{{type == 'screen'}}" animation="{{animation}}">
+			<view class="course-title-box">
+				<view class="course-title">
+					<image src="https://boringcdn.nanningboring.com/molicheng/screen-icon.png" mode="widthFix" class="course-icon"></image>
+					<text class="course-title-text">选择门店（可多选）</text>
+				</view>
+				<view class="tips">已选{{storeNumber == 0 ? '1' : storeNumber}}项</view>
+			</view>
+			<view class="area-box">
+				<scroll-view scroll-y class="scroll-view-box">
+					<view class="area-item {{areaIndex == index ? 'select-area-item' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choiceCity" data-index="{{index}}">{{item.name}}</view>
+				</scroll-view>
+			</view>
+			<view class="area-list">
+				<scroll-view scroll-y class="scroll-view-box">
+					<view class="area-item {{regionIndex == index ? 'select-area-item' : ''}}" wx:for='{{region}}' wx:key='index' bindtap="choiceArea" data-index="{{index}}">{{item.name}}</view>
+				</scroll-view>
+			</view>
+			<view class="theme-box">
+				<scroll-view scroll-y class="scroll-view-box">
+					<view class="theme-item {{item.select ? 'select-theme-item' : ''}}" wx:for="{{storeList}}" wx:key='index' bindtap="choiceStore" data-index="{{index}}">{{item.name}}</view>
+				</scroll-view>
+			</view>
+			<view class="btn-box">
+				<view class="store-btn" bindtap="onEmpty" data-type="store">清 空</view>
+				<view class="s-store-btn" bindtap="confirmSelect" data-type="store">确 认</view>
+			</view>
+		</view>
+	</view>
+
+	<!--转发有礼-->
+	<share isShare="{{isShare}}" id='share'></share>
+</view>
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

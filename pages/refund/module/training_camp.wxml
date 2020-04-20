@@ -1,0 +1,58 @@
+<template name="training_camp">
+  <view class="camp-box">
+    <view class="training-camp-box">
+      <view class="coach">
+        <image src="{{order.data.coach.headimgurl}}" mode="aspectFill" class="user-coach"></image>
+      </view>
+      <view class="camp-course-title">
+        {{order.data.course.name + order.data.name}}
+      </view>
+      <view class="camp-tips-time"> {{tools.formatTime(order.data.start_at,'{m}月{d}日')}} {{tools.getWeek(order.data.start_at)}} {{tools.formatTime(order.data.start_at,'{h}:{i}')}}-{{tools.formatTime(order.data.end_at,'{h}:{i}')}}</view>
+      <view class="camp-tips-box">已取消，退款操作中...</view>
+      <view class="camp-tips">
+        <text wx:if="{{nowtime > start_at}}">不足7天，将收取{{tools.fen2yuan(order.pay_price,2)}}元报名费30%的退营手续费</text>
+        <text wx:else>已申请{{tools.fen2yuan(order.pay_price,2)}}退款至{{order.pay_method == 'card' ? '魔橙卡' : '微信钱包'}}</text>
+      </view>
+      <view class="circular"></view>
+      <view class="circular1"></view>
+    </view>
+    <view class="training-box">
+      <view class="training">
+        <view class="training-camp">
+          <image src="https://boringcdn.nanningboring.com/molicheng/course-icon.png" mode="widthFix" class="training-icon"></image>
+          <view class="training-text">{{order.data.item.length}}课（已签到{{signNum}}节）</view>
+        </view>
+        <view class="training-list">
+          <view class="training-course" wx:for="{{campItem}}" wx:key='index' wx:for-item='course'>{{tools.formatTime(course.start_at,'{m}月{d}日')}} {{tools.getWeek(course.start_at)}} {{tools.formatTime(course.start_at,'{h}:{i}')}}-{{tools.formatTime(course.end_at,'{h}:{i}')}}
+            <text class="s-red {{course.sign_at > 0 ? 's-green' : ''}}">{{course.sign_at > 0 ? '已签到' : '未签到'}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="training-box-row">
+        <view class="left">教练：</view>
+        <view class="right">
+          <view class="friends-box">
+            <view class="friends" wx:if="{{!showWeChat}}" bindtap="addFriends">加好友</view>
+            <view class="wechat-text" wx:if="{{showWeChat}}">
+              <text class="copy-text" bindtap="copy" data-weixin="{{order.data.coach.weixin}}">复制</text> {{order.data.coach.weixin}}
+            </view>
+          </view>
+          <view class="private-name">{{order.data.coach.name}}</view>
+        </view>
+      </view>
+      <view class="training-box-row">
+        <view class="left">应付: </view>
+        <view class="right">{{tools.fen2yuan(order.pay_price,2)}}元</view>
+      </view>
+      <view class="training-box-row">
+        <view class="left">实付: </view>
+        <view class="right">
+          <text class="s-gray">({{order.pay_method == 'card' ? '魔橙卡支付' : '微信支付'}})</text>
+          <text>{{tools.fen2yuan(order.pay_price,2)}}元</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<wxs module="tools" src="../../../utils/tools.wxs"></wxs>

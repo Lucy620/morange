@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "我的预约",
+  "usingComponents": {
+    "number": "/pages/components/number/number",
+    "kcalNumber": "/pages/components/kcalNumber/kcalNumber",
+    "loading": "/pages/components/loading/loading"
+  }
+}

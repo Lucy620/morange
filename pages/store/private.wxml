@@ -1,0 +1,39 @@
+<!--pages/store/private.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <view class="tips-box" wx:if="{{noData}}">
+    <image src="https://boringcdn.nanningboring.com/molicheng/user-icon.png" mode="widthFix" class="tips-img"></image>
+    <view class="tips-text">该门店暂无私教课程</view>
+    <view class="tips-more-box">
+      <view class="line"></view>
+      <view class="tips-more">更多私教课程</view>
+      <view class="line"></view>
+    </view>
+  </view>
+
+  <!--教练-->
+  <view class="box" wx:for="{{list}}" wx:key='index'>
+    <image src="{{item.coach.headimgurl}}" mode="widthFix" class="coach"></image>
+    <view class="box-row" bindtap='jumpPage' data-url='pages/private_education/course?private_id={{item.id}}'>
+       <view class="mid">
+        <view class="title">{{item.course.name}}</view>
+        <view class="attributes-box">
+          <view class="name" wx:for="{{item.course.attributes}}" wx:key='index' wx:for-item="attributes">
+            <view wx:if="{{index != 0}}" class="garden"></view>{{attributes}}</view>
+        </view>
+        <view class="price-box">
+          <text class="s-yellow">￥{{tools.fen2yuan(item.minPrice,2)}}</text>起/课时
+          <text class="first" wx:if="{{item.first_price > 0 && first}}">(首次体验课￥{{tools.fen2yuan(item.first_price,2)}})</text>
+        </view>
+      </view>
+      <view class="btn full-btn" wx:if="{{item.rest_stock == 0}}">满员</view>
+      <view class="btn" wx:if="{{item.rest_stock > 0}}">详情</view>
+      <view class="wrap">
+        <view class="silk-ribbon full" wx:if="{{item.rest_stock == 0}}">满员</view>
+        <view class="silk-ribbon" wx:elif="{{item.percent <= 60}}">紧张</view>
+      </view>
+    </view>
+  </view>
+</view>
+  <wxs module="tools" src="../../utils/tools.wxs"></wxs>

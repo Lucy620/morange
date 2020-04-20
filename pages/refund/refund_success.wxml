@@ -1,0 +1,22 @@
+<!--pages/private_education/refund_success.wxml-->
+<import src="./module/league.wxml" />
+<import src="./module/private_education.wxml" />
+<import src="./module/training_camp.wxml" />
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <!--团课-->
+  <template is="league" wx:if="{{order.data.course.type == 'team'}}" data="{{order,msg,showWeChat,nowtime,start_at}}"></template>
+
+  <!--私教课-->
+  <template is="private_education" wx:if="{{order.data.course.type == 'private'}}" data="{{order,showWeChat,start_at}}"></template>
+
+  <!--训练营-->
+  <template is="training_camp" wx:if="{{order.data.course.type == 'camp'}}" data="{{order,showWeChat,campItem,signNum,nowtime,start_at}}"></template>
+
+  <!--邀请好友-->
+  <give isGive="{{isGive}}" id="give" course_id="{{order.data.id}}" bind:closeGuve='closeGuve'></give>
+
+  <!--转发有礼-->
+  <share isShare="{{isShare}}" id='share'></share>
+
+</view>

@@ -1,0 +1,71 @@
+/* pages/user/integralChange.wxss */
+.tips-box {
+  height: 82rpx;
+  line-height: 82rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+  background-color: #404040;
+}
+
+.s-yellow {
+  color: #ffae00;
+}
+
+.picker-box {
+  height: 62rpx;
+  line-height: 62rpx;
+  color: #fff;
+  background-color: #181818;
+  margin-bottom: 10rpx;
+}
+
+.picker-row {
+  position: relative;
+}
+
+picker {
+  width: 100%;
+  text-align: center;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 20rpx;
+  margin-top: -8rpx;
+  width: 24rpx;
+  height: 16rpx;
+}
+.schedule-row {
+  display: flex;
+  align-items: center;
+  height: 131.3rpx;
+  padding: 0 30rpx;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+  background-color: #141414;
+}
+
+.date-tiem-box {
+  flex: 1;
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.date {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, .7);
+}
+
+.tips-tiem{
+  color: #ffae00;
+}
+
+
+.no-data{
+  text-align: center;
+  color: #999;
+  margin-top: 100rpx;
+}

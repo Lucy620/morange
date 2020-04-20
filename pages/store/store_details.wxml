@@ -1,0 +1,105 @@
+<!--pages/store/store_details.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <!--轮播-->
+  <view class="swiper-box">
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" circular="{{true}}" wx:if="{{show_type == 'slide' || show_type ==  ''}}">
+      <block wx:for="{{storeData.slide_imgs}}" wx:key="{{index}}">
+        <swiper-item bindtap="previewImage" data-url="{{item}}">
+          <image src="{{item}}?imageView2/1/w/730/h/300" class="slide-image" mode="widthFix" />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <!--视频-->
+    <video wx:else src="{{videoUrl.video}}" show-center-play-btn="{{true}}"  poster="{{videoUrl.poster}}?imageView2/1/w/750/h/300" controls="{{true}}" objectFit='fill'></video>
+
+  </view>
+
+  <!--课程分类-->
+  <view class="course-category-box">
+    <view class="course-category">
+      <view class="course-category-row">
+        <view class="course-category-title">课程</view>
+        <view class="course-category-tips">按次预约，满足燃脂、赠肌等需求的多样团体课程</view>
+      </view>
+      <view class="course-category-btn" bindtap='jumpPage' data-url='pages/store/course?store_id={{storeData.id}}&name={{storeData.name}}'>约课</view>
+    </view>
+  </view>
+  <view class="course-category-box">
+    <view class="course-category">
+      <view class="course-category-row">
+        <view class="course-category-title">私教</view>
+        <view class="course-category-tips">MORANGE教练为你定制的1v1专属训练</view>
+      </view>
+      <view class="course-category-btn" bindtap='jumpPage' data-url='pages/store/private?store_id={{storeData.id}}&name={{storeData.name}}'>查看</view>
+    </view>
+  </view>
+  <view class="course-category-box">
+    <view class="course-category">
+      <view class="course-category-row">
+        <view class="course-category-title">训练营</view>
+        <view class="course-category-tips">多节课程打包训练营，循序渐进达成更高训练目标</view>
+      </view>
+      <view class="course-category-btn" bindtap='jumpPage' data-url='pages/store/camp?area_id={{storeData.area_id}}&name={{storeData.name}}'>查看</view>
+    </view>
+  </view>
+
+
+
+  <!--课程简介-->
+  <view class="course-introduction-box">
+    <view class="title-box">
+      <image src="https://boringcdn.nanningboring.com/molicheng/icon-s.png" mode="widthFix" class="icon"></image>
+      <view class="title">场地介绍</view>
+    </view>
+    <view class="introduction">
+      <template is="wxParse" data="{{wxParseData:site_introduction.nodes}}" />
+    </view>
+  </view>
+
+  <!--地址-->
+  <view class="address-introduction-box">
+    <view class="address-title-box">
+      <image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="address-icon"></image>
+      <view class="address-title">地址</view>
+    </view>
+    <view class="address-introduction">
+      <view class="address-text">{{storeData.address}}
+        <text class="s-map" bindtap="seeMap" data-name="{{storeData.name}}" data-address="{{storeData.address}}" data-latitude="{{storeData.latitude}}" data-longitude="{{storeData.longitude}}">查看地图</text>
+      </view>
+      <view class="address-text"  bindtap="onPhone" data-tel="{{storeData.mobile}}">客服电话：
+        <text class="s-map">{{storeData.mobile}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!--事项-->
+  <view class="matter-box">
+    <view class="matter-title">
+      <image src="https://boringcdn.nanningboring.com/molicheng/matter-icon.png" mode="widthFix" class="matter-icon"></image>
+      <view class="title-text">注意事项</view>
+    </view>
+    <view class="matter-introduction">
+      <template is="wxParse" data="{{wxParseData:note.nodes}}" />
+    </view>
+  </view>
+
+  <!--步骤-->
+  <view class="step-box">
+    <view class="step-title">
+      <image src="https://boringcdn.nanningboring.com/molicheng/step-icon.png" mode="widthFix" class="step-icon"></image>
+      <view class="step-title-text">健身步骤</view>
+    </view>
+    <view class="step-row">
+      <template is="wxParse" data="{{wxParseData:step.nodes}}" />
+    </view>
+  </view>
+  <view class="btn-box">
+    <view class="btn" bindtap='jumpPage' data-url='pages/store/course?store_id={{storeData.id}}&name={{storeData.name}}'>立即约课</view>
+  </view>
+
+  <!--转发有礼-->
+  <share isShare="{{isShare}}" id='share'></share>
+</view>

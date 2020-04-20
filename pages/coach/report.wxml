@@ -1,0 +1,23 @@
+<!--pages/coach/report.wxml-->
+
+<view class="wrapper" hidden="{{showLoad}}">
+
+  <view class="tips">---- 以下事项将于{{tools.formatTime(start_at,'{m}月{d}日 {h}:{i}')}}提交后台 ----</view>
+  
+  <!--行程安排-->
+  <view class="list">
+    <view class="schedule-row" wx:for="{{list}}" wx:key='index'>
+      <view class="date-tiem-box">
+        <view class="date">{{tools.formatTime(item.start_at,'{m}月{d}日')}}</view>
+        <view class="tiem">{{tools.formatTime(item.start_at,'{h}:{i}')}} - {{tools.formatTime(item.end_at,'{h}:{i}')}}</view>
+      </view>
+      <view class="tips-tiem">
+        <image src="https://boringcdn.nanningboring.com/molicheng/tiem-icon.png" mode="widthFix" class="tiem-icon"></image>
+        <view class="time-text">{{item.matter}}</view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

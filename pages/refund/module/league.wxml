@@ -1,0 +1,94 @@
+<template name="league">
+  <view class="box">
+    <view class="coach">
+      <image src="{{order.data.coach.headimgurl}}" mode="aspectFill" class="user-coach"></image>
+    </view>
+    <view class="course-title">
+      <!--拼课--->
+      <text wx:if="{{order.data.is_spell == 1}}">『拼课』</text> {{order.data.course.name}}
+      <view class="league-time"> {{tools.formatTime(order.data.start_at,'{m}月{d}日')}} {{tools.getWeek(order.data.start_at)}} {{tools.formatTime(order.data.start_at,'{h}:{i}')}}-{{tools.formatTime(order.data.end_at,'{h}:{i}')}}</view>
+      <!-- <view class="league-btn" bindtap='jumpPage' data-url='pages/league/details?team_id={{order.data.course.id}}'>查看详情＞</view> -->
+
+      <!--正常订单-->
+      <block wx:if="{{order.type == 'buy'}}">
+        <block wx:if="{{order.data.is_spell == 1}}">
+          <view class="tips-box" wx:if="{{order.data.spell_status == 4}}">
+            拼课人数已满6人，拼课成功，可取消，但不退款。
+          </view>
+          <view class="tips-box" wx:else>
+            已取消并退款：款项已退回至
+            <text wx:if="{{order.pay_method == 'weixin'}}">微信钱包</text>
+            <text wx:if="{{order.pay_method == 'card'}}">魔橙卡</text>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="tips-box" wx:if="{{nowtime < start_at || order.status == 'queue'}}">
+            已取消并退款：款项已退回至
+            <text wx:if="{{order.pay_method == 'weixin'}}">微信钱包</text>
+            <text wx:if="{{order.pay_method == 'card'}}">魔橙卡</text>
+          </view>
+          <view class="tips-box" wx:else>
+            本次取消不支持退款
+          </view>
+        </block>
+      </block>
+
+
+      <!--赠送订单-->
+      <view class="give-box" wx:if="{{order.type == 'give'}}">
+        <block wx:if="{{order.give_user_id == 0}}">
+          <block wx:if="{{order.cancel_at == 0}}">
+            <view class="give-tips">未被领取</view>
+            <view class="give-time">{{msg}}后无人领取，会自动取消并退款，
+              <text class="cancel-order" bindtap="applyRefund">取消订单</text>
+            </view>
+            <button open-type='share' open-type='share' class="give-btn" data-type='give'>赠送</button>
+          </block>
+          <block wx:else>
+            <view class="give-tips s-give">订单已取消</view>
+          </block>
+        </block>
+        <block wx:if="{{order.give_user_id > 0}}">
+          <view class="give-tips s-give">好友已领取课程</view>
+        </block>
+      </view>
+    </view>
+
+    <view class="list-box">
+      <view class="row">
+        <view class="title">教练:</view>
+        <view class="title">
+          <view class="friends-box">
+            <view class="friends" wx:if="{{!showWeChat}}" bindtap="addFriends">加好友</view>
+            <view class="wechat-text" wx:if="{{showWeChat}}">
+              <text class="copy-text" bindtap="copy" data-weixin="{{order.data.coach.weixin}}">复制</text> {{order.data.coach.weixin}}
+            </view>
+          </view>
+          {{order.data.coach.name}}
+        </view>
+      </view>
+      <view class="row">
+        <view class="title">人数:</view>
+        <view class="title">
+          {{order.course_num}}人
+        </view>
+      </view>
+      <view class="row">
+        <view class="title">应付:</view>
+        <view class="title">
+          {{tools.fen2yuan(order.pay_price,2)}}元
+        </view>
+      </view>
+      <view class="row">
+        <view class="title">实付:</view>
+        <view class="title">
+          <text wx:if="{{order.pay_method == 'weixin'}}">(微信支付)</text>
+          <text wx:if="{{order.pay_method == 'card'}}">(魔橙卡支付)</text> {{tools.fen2yuan(order.pay_price,2)}}元
+        </view>
+      </view>
+    </view>
+  </view>
+  <image src="https://boringcdn.nanningboring.com/molicheng/share-img.png" mode="widthFix" class="share-img" bindtap="onGive"></image>
+</template>
+
+<wxs module="tools" src="../../../utils/tools.wxs"></wxs>

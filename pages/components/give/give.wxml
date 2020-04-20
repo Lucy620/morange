@@ -1,0 +1,9 @@
+<!--pages/components/forwarding/forwarding.wxml-->
+
+<view class="box-mask" wx:if="{{isGive}}">
+  <view class="content-box">
+    <view class="row" bindtap='jumpPage' data-url='pages/league/details?team_id={{course_id}}'>再次预约，赠送好友</view>
+     <button open-type='share' open-type='share' class="row" data-type="invite">推荐本节课给好友</button>
+    <view class="row" bindtap="closeGuve">取消</view>
+  </view>
+</view>

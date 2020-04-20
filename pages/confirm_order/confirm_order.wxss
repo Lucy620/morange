@@ -1,0 +1,314 @@
+/* pages/private_education/confirm_order.wxss */
+
+.box {
+  width: 697rpx;
+  min-height: 994rpx;
+  margin: 0 auto;
+  background: url(https://boringcdn.nanningboring.com/molicheng/bg1.png);
+  background-size: 100% 100%;
+  position: relative;
+}
+
+.bg-icon {
+  position: absolute;
+  top: 20rpx;
+  right: 40rpx;
+  width: 169rpx;
+  height: 169rpx;
+}
+
+.list-text {
+  padding: 55rpx 50rpx 0;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  color: #ffae00;
+  font-size: 33rpx;
+}
+
+.coach-name {
+  font-size: 27rpx;
+  color: #cdcdcd;
+  margin-top: 20rpx;
+}
+
+.training-camp-date {
+  color: #fff;
+  font-size: 27rpx;
+}
+
+.training-camp-time {
+  font-size: 27rpx;
+  color: #cdcdcd;
+  margin-top: 20rpx;
+}
+
+.address {
+  font-size: 27rpx;
+  margin-top: 10rpx;
+  color: #cdcdcd;
+}
+
+.wait-box {
+  width: 663rpx;
+  margin: 50rpx auto 0;
+  border-top: dashed 3rpx #6c6c6c;
+  text-align: center;
+}
+
+.wait-title {
+  font-size: 33rpx;
+  color: #fff;
+}
+
+.wait-people {
+  color: #ffbc0f;
+  font-size: 67rpx;
+  font-weight: bold;
+}
+
+.wait-tips {
+  color: #a5a5a5;
+  font-size: 24rpx;
+}
+
+.wait-money {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  color: #fff;
+}
+
+.row-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 80rpx 30rpx 0;
+  padding: 30rpx 5rpx;
+  border-bottom: 2rpx solid #6c6c6c;
+}
+
+.row-text {
+  color: #fff;
+}
+
+.row-tab {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.tab-text {
+  text-align: left;
+}
+
+.s-yellow {
+  color: #ffae00;
+}
+
+.arrow {
+  right: 0;
+  width: 21.3rpx;
+  height: 27.3rpx;
+  transform: rotate(-90deg);
+}
+
+.tab-item {
+  width: 113rpx;
+  text-align: center;
+  line-height: 66rpx;
+  height: 66rpx;
+  margin-right: 20rpx;
+  color: #cdcdcd;
+  border-radius: 7rpx;
+  position: relative;
+  background-image: linear-gradient(#5e5e5e, #5e5e5e);
+}
+
+.select-item {
+  color: #000;
+  background: #ffae00;
+}
+
+.s-gray {
+  color: #a5a5a5;
+  background: #222;
+}
+
+.tab-item:last-child {
+  margin: 0;
+}
+
+.tab-tips {
+  position: absolute;
+  top: -50rpx;
+  right: 0;
+  color: #fff;
+  width: 59rpx;
+  height: 33rpx;
+  text-align: center;
+  line-height: 33rpx;
+  font-size: 20rpx;
+  background-image: linear-gradient(#ff5858, #ff5858);
+  border-radius: 7rpx;
+}
+
+.tri-down {
+  position: absolute;
+  top: -20rpx;
+  right: 20rpx;
+  width: 0;
+  height: 0;
+  border-left: 10rpx solid transparent;
+  border-right: 10rpx solid transparent;
+  border-top: 10rpx solid #ff5858;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 30rpx;
+  padding: 30rpx 5rpx;
+  color: #fff;
+  border-bottom: 2rpx solid #6c6c6c;
+}
+
+.money {
+  text-decoration: line-through;
+}
+
+.s-yellow {
+  color: #ffae00;
+  margin-left: 20rpx;
+}
+
+.money-box {
+  text-align: center;
+  font-size: 25rpx;
+  color: #fff;
+  margin-top: 35rpx;
+}
+
+.money-text {
+  color: #ffae00;
+  font-size: 53rpx;
+  font-weight: bold;
+}
+
+.explain {
+  width: 600rpx;
+  font-size: 20rpx;
+  color: #cdcdcd;
+  margin: 15rpx auto 0;
+  text-align: left;
+}
+
+.s-explain {
+  padding-bottom: 80rpx;
+}
+
+.spell-text {
+  margin-bottom: 10rpx;
+}
+
+.btn {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  text-align: center;
+  height: 89rpx;
+  line-height: 89rpx;
+  font-size: 32rpx;
+  color: #000;
+  font-weight: bold;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background-size: 100%;
+}
+
+.mask-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.mask-text-box {
+  width: 590rpx;
+  background-color: #fffbe6;
+  border-radius: 5rpx;
+  position: relative;
+}
+
+.mask-text-title {
+  font-size: 32rpx;
+  text-align: center;
+  padding: 30rpx 0;
+  color: #000;
+}
+
+.camp-text-tips {
+  width: 532rpx;
+  height: 750rpx;
+  margin: 0 auto 120rpx;
+  text-align: justify;
+  line-height: 40rpx;
+  color: #676767;
+  font-size: 28rpx;
+}
+
+.mask-text-tips {
+  width: 420rpx;
+  margin: 0 auto 120rpx;
+  line-height: 40rpx;
+  color: #676767;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.scroll-box {
+  height: 100%;
+}
+
+.mask-btn-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  height: 108rpx;
+  line-height: 108rpx;
+}
+
+.mask-btn {
+  flex: 1;
+  text-align: center;
+  font-size: 32rpx;
+  color: #000;
+  border-top: 2rpx solid #a5a5a5;
+}
+
+.confirm-btn {
+  flex: 1;
+  text-align: center;
+  font-size: 32rpx;
+  color: #000;
+  border-top: 2rpx solid #ffbc0f;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background-size: 100% 100%;
+}

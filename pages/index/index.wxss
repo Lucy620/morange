@@ -1,0 +1,214 @@
+/**index.wxss**/
+
+/***轮播**/
+
+.swiper-box {
+  height: 200rpx;
+  background: #3d3d3d;
+}
+
+swiper {
+  height: 100%;
+}
+
+.slide-image {
+  width: 100%;
+}
+
+/***tab栏**/
+
+.tab-box {
+  display: flex;
+  align-items: center;
+  height: 95.3rpx;
+  background-color: #181818;
+}
+
+.row-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 26rpx;
+  color: #fff;
+}
+
+.tab-icon {
+  width: 25rpx;
+  height: 25rpx;
+  margin-left: 10rpx;
+}
+
+/***门店**/
+
+.store-box {
+  width: 730rpx;
+  height: 292rpx;
+  margin: 0 auto 20rpx;
+  background-color: #5c5c5c;
+  box-shadow: 0rpx 0.7rpx 6.7rpx 0rpx rgba(0, 0, 0, 0.7), inset 0rpx 0rpx 106.7rpx 0rpx #000;
+  border-radius: 4rpx;
+  position: relative;
+}
+
+.store {
+  width: 100%;
+  height: 100%;
+}
+
+.store-title {
+  position: absolute;
+  bottom: 10rpx;
+  left: 40rpx;
+  color: #fff;
+}
+
+.store-name {
+  font-size: 26rpx;
+}
+
+.store-address {
+  font-size: 22rpx;
+}
+
+.heart {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  bottom: 20rpx;
+  right: 40rpx;
+}
+.phone{
+  width: 44rpx;
+  height: 44rpx;
+  position: absolute;
+  bottom: 10rpx;
+  right: 80rpx;
+}
+
+.tip-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 15rpx;
+  font-size: 24rpx;
+  text-align: center;
+  color: #fff;
+}
+
+/**筛选门店 门店主题-**/
+
+.screen-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.cover-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.box {
+  width: 392.7rpx;
+  position: absolute;
+  top: 0;
+  left: -750px;
+  bottom: 0;
+  z-index: 2;
+  background-color: #262626;
+}
+
+.screen-title-box {
+  display: flex;
+  align-items: center;
+  height: 89.3rpx;
+  line-height: 89.3rpx;
+  background-color: #0d0d0d;
+  padding-left: 30rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.screen-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.screen-title {
+  margin-left: 15rpx;
+  color: #fff;
+}
+
+.area-box {
+  position: absolute;
+  top: 89.3rpx;
+  bottom: 0;
+  width: 132.7rpx;
+  text-align: center;
+  background-color: #131313;
+}
+
+.scroll-view-box {
+  height: 100%;
+}
+
+.area-item {
+  font-size: 24rpx;
+  padding: 30rpx 0;
+  color: #5e5e5e;
+}
+
+.select-area-item {
+  color: #ffae00;
+}
+
+.area-list {
+  flex: 1;
+}
+
+.area-list {
+  position: absolute;
+  top: 89.3rpx;
+  left: 132.7rpx;
+  width: 260rpx;
+  bottom: 0;
+  text-align: center;
+}
+
+.theme-box {
+  position: absolute;
+  top: 89.3rpx;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+}
+
+.theme-item {
+  width: 332rpx;
+  height: 52.7rpx;
+  line-height: 52.7rpx;
+  border-radius: 6.7rpx;
+  margin: 50rpx auto;
+  color: #b1b1b1;
+  border: solid 2rpx #b1b1b1;
+}
+
+.select-theme-item {
+  color: #000;
+  font-weight: bold;
+  background-image: linear-gradient(#ff9c00, #ff9c00);
+  border-radius: 6.7rpx;
+  border: solid 2rpx #ff9c00;
+}
