@@ -96,7 +96,7 @@ Page({
    * 打开城市、主题动画
    */
   translate: function () {
-    this.animation.translateX(750).step();
+    this.animation.translateY(-400).step();
     this.setData({
       animation: this.animation.export()
     })
@@ -107,7 +107,7 @@ Page({
    */
   closeAnimation: function () {
     let that = this
-    that.animation.translateX(-750).step();
+    that.animation.translateY(400).step();
     that.setData({
       animation: that.animation.export()
     })
@@ -126,6 +126,12 @@ Page({
     })
   },
 
+  /**
+   * 选择确定按钮
+   */
+  choice: function (e) {
+    this.getData()
+  },
 
   /**
    * 选择城市
@@ -153,7 +159,6 @@ Page({
       storeList: [],
       area_ids: area_ids
     })
-    this.getData()
   },
 
   /**
@@ -179,7 +184,6 @@ Page({
       themeIndex: 0,
       storeList: [],
     })
-    this.getData()
   },
 
   /**
@@ -195,7 +199,6 @@ Page({
       page: 1,
       storeList: [],
     })
-    this.getData()
   },
 
   /***
@@ -278,7 +281,8 @@ Page({
           lastPage: (list.length < limit) ? true : false,
           page: page,
           showLoad: false,
-          showTab: false
+          showTab: false,
+          cover: false
         })
         app.showTab = false
         wx.showTabBar({})

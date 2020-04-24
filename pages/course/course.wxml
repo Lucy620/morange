@@ -196,7 +196,7 @@
 		</view>
 
 		<!--门店-->
-		<view class="screen-box" wx:if="{{type == 'screen'}}" animation="{{animation}}">
+		<view class="select-box" wx:if="{{type == 'screen'}}" animation="{{animation}}">
 			<view class="course-title-box">
 				<view class="course-title">
 					<image src="https://boringcdn.nanningboring.com/molicheng/screen-icon.png" mode="widthFix" class="course-icon"></image>

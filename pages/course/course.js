@@ -225,7 +225,7 @@ Page({
    * 打开城市、课程、时段动画
    */
   translate: function() {
-    this.animation.translateX(750).step();
+    this.animation.translateX(-400).step();
     this.setData({
       animation: this.animation.export()
     })
@@ -236,7 +236,7 @@ Page({
    */
   closeAnimation: function() {
     let that = this
-    that.animation.translateX(-750).step();
+    that.animation.translateX(400).step();
     that.setData({
       animation: that.animation.export()
     })
