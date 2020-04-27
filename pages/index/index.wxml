@@ -3,8 +3,8 @@
 <loading wx:if="{{showTab}}"></loading>
 
 <view class="wrapper" hidden="{{showLoad}}">
-	<!--轮播-->
-	<!-- <view class="swiper-box">
+  <!--轮播-->
+  <!-- <view class="swiper-box">
     <swiper indicator-dots="{{true}}" autoplay="{{true}}" circular="{{true}}">
       <block wx:for="{{advList}}" wx:key="{{index}}">
         <swiper-item bindtap='jumpPage' data-url="{{item.url}}">
@@ -14,65 +14,67 @@
     </swiper>
   </view> -->
 
-	<!--tab栏-->
-	<view class="tab-box">
-		<view class="row-box" bindtap="openAnimation" data-type="screen">
-			<view class="title">{{areaList[areaIndex].name+region[regionIndex].name}}</view>
-			<image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="tab-icon"></image>
-		</view>
-		<view class="row-box" bindtap="openAnimation" data-type="theme">
-			<view class="title">{{themeList[themeIndex].name}}</view>
-			<image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="tab-icon"></image>
-		</view>
-	</view>
+  <!--tab栏-->
+  <view class="tab-box">
+    <view class="row-box" bindtap="openAnimation" data-type="screen">
+      <view class="title">{{areaList[areaIndex].name+region[regionIndex].name}}</view>
+      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="tab-icon"></image>
+    </view>
+    <view class="row-box" bindtap="openAnimation" data-type="theme">
+      <view class="title">{{themeList[themeIndex].name}}</view>
+      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="tab-icon"></image>
+    </view>
+  </view>
 
-	<!--门店-->
-	<view class="store-box" wx:for="{{storeList}}" wx:key='index'>
-		<image src="{{item.main_img}}?imageView2/1/w/730/h/300" mode="widthFix" class="store" bindtap='jumpPage' data-url='pages/store/store_details?store_id={{item.id}}'></image>
-		<view class="store-title">
-			<view class="store-name">{{item.name}}</view>
-			<view class="store-address">{{item.address}}</view>
-		</view>
-		<image src="{{!item.is_favorite ? 'https://boringcdn.nanningboring.com/molicheng/heart.png':'https://boringcdn.nanningboring.com/molicheng/s-heart.png'}}" mode="widthFix" class="heart" bindtap="collection" data-status="{{item.is_favorite}}" data-store_id="{{item.id}}"></image>
-		<image src="https://boringcdn.nanningboring.com/molic/phone.png" mode="widthFix" class="phone" bindtap="onPhone" data-tel="{{item.mobile}}"></image>
-	</view>
-	<view class="store-box">
-		<image src="https://boringcdn.nanningboring.com/molicheng/logo-bg.png" mode="widthFix" class="store"></image>
-		<view class="tip-title">敬请期待…</view>
-	</view>
+  <!--门店-->
+  <view class="store-box" wx:for="{{storeList}}" wx:key='index'>
+    <image src="{{item.main_img}}?imageView2/1/w/730/h/300" mode="widthFix" class="store" bindtap='jumpPage' data-url='pages/store/store_details?store_id={{item.id}}'></image>
+    <view class="store-title">
+      <view class="store-name">{{item.name}}</view>
+      <view class="store-address">{{item.address}}</view>
+    </view>
+    <image src="{{!item.is_favorite ? 'https://boringcdn.nanningboring.com/molicheng/heart.png':'https://boringcdn.nanningboring.com/molicheng/s-heart.png'}}" mode="widthFix" class="heart" bindtap="collection" data-status="{{item.is_favorite}}" data-store_id="{{item.id}}"></image>
+    <image src="https://boringcdn.nanningboring.com/molic/phone.png" mode="widthFix" class="phone" bindtap="onPhone" data-tel="{{item.mobile}}"></image>
+  </view>
+  <view class="store-box">
+    <image src="https://boringcdn.nanningboring.com/molicheng/logo-bg.png" mode="widthFix" class="store"></image>
+    <view class="tip-title">敬请期待…</view>
+  </view>
 
-	<!--筛选门店 门店主题-->
-	<view class="screen-box" wx:if="{{cover}}">
-		<view class="cover-box" bindtap="closeAnimation"></view>
-		<!--门店筛选-->
-		<view class="select-box" animation="{{animation}}">
-			<view class="screen-title-box">
-				<text class="screen-title {{type == 'screen'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="screen">地区</text>
-				<text class="screen-title {{type == 'theme'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="theme">主题</text>
-				<text class="button-confirm" bindtap="choice">确定</text>
-			</view>
-			<!--门店地区-->
-			<view class="area-box" wx:if="{{type == 'screen'}}">
-				<scroll-view scroll-y class="scroll-view-box">
-					<view class="area-item text-white">城市</view>
-					<view class="area-item {{areaIndex == index ? 'select-area-item' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choiceCity" data-index="{{index}}">{{item.name}}</view>
-				</scroll-view>
-			</view>
-			<view class="area-list" wx:if="{{type == 'screen'}}">
-				<scroll-view scroll-y class="scroll-view-box">
-					<view class="area-item text-white">选择区域</view>
-					<view class="area-item {{regionIndex == index ? 'select-area-item' : ''}}" wx:for='{{region}}' wx:key='index' bindtap="choiceArea" data-index="{{index}}">{{item.name}}</view>
-				</scroll-view>
-			</view>
+  <!--筛选门店 门店主题-->
+  <view class="select-screen" wx:if="{{cover}}">
+    <view class="select-box-cover" bindtap="closeAnimation"></view>
+    <!--门店筛选-->
+    <view class="select-box" animation="{{animation}}">
+      <view class="select-box-title">
+        <text class="screen-title {{type == 'screen'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="screen">地区</text>
+        <text class="screen-title {{type == 'theme'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="theme">主题</text>
+        <text class="button-confirm" bindtap="choice">确定</text>
+      </view>
+      <!--门店地区-->
+      <view class="select-row">
+        <view class="box-left" wx:if="{{type == 'screen'}}">
+          <scroll-view scroll-y class="scroll-view-box">
+            <view class="area-item text-white">城市</view>
+            <view class="area-item {{areaIndex == index ? 'select-area-item' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choiceCity" data-index="{{index}}">{{item.name}}</view>
+          </scroll-view>
+        </view>
+        <view class="box-right" wx:if="{{type == 'screen'}}">
+          <scroll-view scroll-y class="scroll-view-box">
+            <view class="area-item text-white">选择区域</view>
+            <view class="area-item {{regionIndex == index ? 'select-area-item' : ''}}" wx:for='{{region}}' wx:key='index' bindtap="choiceArea" data-index="{{index}}">{{item.name}}</view>
+          </scroll-view>
+        </view>
+      </view>
 
-			<!--门店主题-->
-			<view class="theme-box" wx:if="{{type == 'theme'}}">
-					<view class="theme-item {{themeIndex == index ? 'select-theme-item' : ''}}" wx:for="{{themeList}}" wx:key='index' bindtap="choiceTheme" data-index="{{index}}">{{item.name}}</view>
-			</view>
-		</view>
+      <!--门店主题-->
+      <view class="theme-box" wx:if="{{type == 'theme'}}">
+        <view class="theme-item {{themeIndex == index ? 'select-theme-item' : ''}}" wx:for="{{themeList}}" wx:key='index' bindtap="choiceTheme" data-index="{{index}}">{{item.name}}</view>
+      </view>
+    </view>
 
-		<!--门店主题-->
-		<!-- <view class="box" wx:if="{{type == 'theme'}}" animation="{{animation}}">
+    <!--门店主题-->
+    <!-- <view class="box" wx:if="{{type == 'theme'}}" animation="{{animation}}">
       <view class="screen-title-box">
         <image src="https://boringcdn.nanningboring.com/molicheng/screen-icon.png" mode="widthFix" class="screen-icon"></image>
         <text class="screen-title">门店主题</text>
@@ -83,8 +85,8 @@
         </scroll-view>
       </view>
     </view> -->
-	</view>
+  </view>
 
-	<!--转发有礼-->
-	<share isShare="{{isShare}}" id='share'></share>
+  <!--转发有礼-->
+  <share isShare="{{isShare}}" id='share'></share>
 </view>

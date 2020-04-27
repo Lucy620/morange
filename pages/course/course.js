@@ -66,7 +66,12 @@ Page({
     }],
     nowtime: '',
     isShare: false,
-    course_ids: []
+    course_ids: [],
+
+  /***
+   *  私教
+   */
+
   },
 
   /***
@@ -214,6 +219,7 @@ Page({
   openAnimation: function(e) {
     let that = this
     let type = e.currentTarget.dataset.type
+    console.log(type)
     that.setData({
       cover: true,
       type: type
@@ -225,7 +231,7 @@ Page({
    * 打开城市、课程、时段动画
    */
   translate: function() {
-    this.animation.translateX(-400).step();
+    this.animation.translateY(-500).step();
     this.setData({
       animation: this.animation.export()
     })
@@ -236,7 +242,7 @@ Page({
    */
   closeAnimation: function() {
     let that = this
-    that.animation.translateX(400).step();
+    that.animation.translateY(500).step();
     that.setData({
       animation: that.animation.export()
     })

@@ -10,7 +10,7 @@ export default {
     tabPages: ['/pages/index/index', '/pages/course/course', '/pages/reservation/my_reservation', '/pages/user/user'] // tabBar菜单页面url
   },
   SYSTEM: {
-    debug: true // 是否开启本地调试 上线false, 本地true
+    debug: false // 是否开启本地调试 上线false, 本地true
   },
   AJAX: {
     load: '正在加载...',
