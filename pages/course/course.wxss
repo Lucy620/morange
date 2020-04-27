@@ -798,3 +798,117 @@ swiper {
   font-size: 24rpx;
   margin-right: 4rpx
 }
+
+/* 私教列表样式 */
+.pri-box {
+  display: flex;
+  align-items: center;
+  height: 162rpx;
+  padding: 0 25rpx;
+  background-color: #181818;
+  margin-bottom: 5rpx;
+  position: relative;
+}
+
+.pri-coach {
+  width: 96.7rpx;
+  height: 96.7rpx;
+  background-color: #272727;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.pri-box-row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.pri-mid {
+  flex: 1;
+  margin-left: 25rpx;
+}
+
+.pri-attributes-box {
+  display: flex;
+  align-items: center;
+  margin: 10rpx 0;
+}
+
+.pri-name {
+  display: flex;
+  align-items: center;
+  color: #bcbcbc;
+  font-size: 20rpx;
+}
+
+.pri-garden {
+  width: 10rpx;
+  height: 10rpx;
+  margin: 0 10rpx;
+  border-radius: 50%;
+  background: #bcbcbc;
+}
+
+.pri-price-box {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.pri-s-yellow {
+  color: #ffae00;
+  margin-right: 10rpx;
+}
+
+.pri-btn {
+  width: 99rpx;
+  height: 52rpx;
+  text-align: center;
+  line-height: 52rpx;
+  border-radius: 6.7rpx;
+  background: url(https://boringcdn.nanningboring.com/molicheng/curriculum-btn.png);
+  background-size: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.pri-wrap {
+  width: 150rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.pri-silk-ribbon {
+  display: inline-block;
+  text-align: center;
+  width: 155rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  position: absolute;
+  top: 10rpx;
+  right: -55rpx;
+  transform: rotate(43deg);
+  -ms-transform: rotate(43deg);
+  -moz-transform: rotate(43deg);
+  -webkit-transform: rotate(43deg);
+  -o-transform: rotate(43deg);
+  background: #ff6a1f;
+  color: #fff777;
+  font-size: 18rpx;
+  overflow: hidden;
+}
+
+.pri-full {
+  background: #424242;
+  color: #bcbcbc;
+}
+
+.pri-full-btn {
+  background: none;
+  border-radius: 10rpx;
+  border: solid 3rpx #424242;
+  color: #bcbcbc;
+}

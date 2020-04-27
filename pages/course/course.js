@@ -67,11 +67,9 @@ Page({
     nowtime: '',
     isShare: false,
     course_ids: [],
+    curTab: 'general_course',
 
-  /***
-   *  私教
-   */
-
+    priCourseList: [], //私教列表
   },
 
   /***
@@ -219,13 +217,40 @@ Page({
   openAnimation: function(e) {
     let that = this
     let type = e.currentTarget.dataset.type
-    console.log(type)
     that.setData({
       cover: true,
       type: type
     })
     this.translate()
   },
+
+  /**
+   * 切换顶部tab
+   *
+   */
+  onTabChange: function(e) {
+    let that = this
+    let tab = e.currentTarget.dataset.type
+    that.setData({
+      curTab: tab
+    })
+    switch(tab){
+        case 'general_course': 
+
+        break
+        case 'private_course': 
+          that.getCoursePrivateList()
+        break
+        case 'camp': 
+
+        break
+        case 'joint_course': 
+
+        break
+        default:
+    }
+  },
+
 
   /**
    * 打开城市、课程、时段动画
@@ -901,6 +926,45 @@ Page({
       path: '/pages/course/course',
       imageUrl: ''
     }
-  }
+  },
+
+  //私教
+
+  /**
+   * 获取私教列表
+   */
+  getCoursePrivateList: function() {
+    let that = this
+    let store_ids = []
+    let course_ids = []
+    ajax.post(api.getCoursePrivateList, {
+      'store_ids': store_ids,
+      'course_ids': course_ids
+    }, ({
+      data
+    }) => {
+      if (data.code == 200) {
+        let list = data.obj.list
+        list = that.countPercent(list)
+        for (let item of list) {
+          let arr = []
+          let temp = []
+          for (let val of item.price) {
+            arr.push(val.price)
+            if (val.first_price > 0) {
+              temp.push(val.first_price)
+            }
+          }
+          item.min_price = Math.min.apply('', arr)
+          item.first_price = Math.min.apply('', temp)
+        }
+        that.setData({
+          list: list,
+          first: data.obj.first,
+          showLoad: false
+        })
+      }
+    })
+  },
 
 })

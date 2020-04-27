@@ -36,19 +36,20 @@
       </view>
     </view> -->
 
+    <!--tab-->
     <view class="tab-title-box">
-      <text class="select-box-title-text {{type == 'screen'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="screen">团课</text>
-      <text class="select-box-title-text {{type == 'course'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="course">私教</text>
-      <text class="select-box-title-text {{type == 'time'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="time">训练营</text>
-      <text class="select-box-title-text {{type == 'time'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="time">拼课</text>
-      <view class='box-filter' bindtap="">
-        <text class="text-filter" bindtap="openAnimation" data-type="screen">筛选</text>
+      <text class="select-box-title-text {{curTab == 'general_course'? 'screen-title-select': ''}}" bindtap="onTabChange" data-type="general_course">团课</text>
+      <text class="select-box-title-text {{curTab == 'private_course'? 'screen-title-select': ''}}" bindtap="onTabChange" data-type="private_course">私教</text>
+      <text class="select-box-title-text {{curTab == 'camp'? 'screen-title-select': ''}}" bindtap="onTabChange" data-type="camp">训练营</text>
+      <text class="select-box-title-text {{curTab == 'joint_course'? 'screen-title-select': ''}}" bindtap="onTabChange" data-type="joint_course">拼课</text>
+      <view class='box-filter' bindtap="openAnimation">
+        <text class="text-filter" data-type="screen">筛选</text>
         <image class='icon-filter' src='/assets/image/filtrate.png' />
       </view>
     </view>
 
-    <!--星期-->
-    <view class="week-box">
+    <!--团课-->
+    <view class="week-box" wx:if="{{curTab == 'general_course'}}">
       <view class="week-item" wx:for="{{weekList}}" wx:key="index" bindtap="selectDate" data-index="{{index}}">{{item.week}}
         <view class="select-week-box" wx:if="{{weekIndex == index}}">
           <view class="select-week">
@@ -64,8 +65,7 @@
     </view>
   </view>
 
-  <!--教练 课程-->
-  <view class="coach-store-box">
+  <view class="coach-store-box" wx:if="{{curTab == 'general_course'}}">
     <view class="list">
       <swiper class="list-swiper-box" duration="{{200}}" current="{{weekIndex}}" bindchange='binSwiper'>
         <block wx:for="{{courseList}}" wx:key='index'>
@@ -86,7 +86,7 @@
                   </view>
                   <view class="coach-info-details">
                     <!--排课中-->
-                    <view class="info-tips">小橙子排课中 (每周五22:30发布)</view>
+                    <view class="info-tips">小橙子排课中 (每周五22:00发布)</view>
                   </view>
                 </view>
                 <view class="box" wx:if="{{course.team.length > 0}}" wx:for="{{course.team}}" wx:key='index' wx:for-item="teamItem">
@@ -129,7 +129,34 @@
   </view>
 </view>
 
-<!--筛选 课程 门店 时间-->
+<!--私教-->
+<view class="pri-box" wx:for="{{priCourseList}}" wx:key='index'>
+    <image src="{{item.coach.headimgurl}}" mode="aspectFill" class="pri-coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{item.coach.user_id}}'></image>
+    <view class="pri-box-row" bindtap='jumpPage' data-url='pages/private_education/course?private_id={{item.id}}'>
+      <view class="pri-mid">
+        <view class="title">{{item.course.name}}</view>
+        <view class="pri-attributes-box">
+          <view class="pri-name" wx:for="{{item.course.attributes}}" wx:key='index' wx:for-item="attributes">
+            <view wx:if="{{index != 0}}" class="pri-garden"></view>{{attributes}}</view>
+        </view>
+        <view class="pri-price-box">
+          <text class="pri-s-yellow">￥{{tools.fen2yuan(item.min_price,2)}}</text>起/课时
+          <text class="first" wx:if="{{item.first_price > 0 && first}}">(首次体验课￥{{tools.fen2yuan(item.first_price,2)}})</text>
+        </view>
+      </view>
+      <view class="pri-btn pri-full-btn" wx:if="{{item.rest_stock == 0}}">满员</view>
+      <view class="pri-btn" wx:if="{{item.rest_stock > 0}}">详情</view>
+      <view class="pri-wrap">
+        <view class="pri-silk-ribbon pri-full" wx:if="{{item.rest_stock == 0}}">满员</view>
+        <view class="pri-silk-ribbon" wx:elif="{{item.percent <= 60}}">紧张</view>
+      </view>
+    </view>
+  </view>
+
+<!--训练营-->
+
+<!--拼客-->
+
 
 
 <!--筛选modal-->
