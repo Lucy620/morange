@@ -69,7 +69,13 @@ Page({
     course_ids: [],
     curTab: 'general_course',
 
-    priCourseList: [], //私教列表
+    priCourseList: [], //私教列表,
+    priList: [],
+    priStoreList: [],
+    priCoverList: [],
+
+    campList: [],  //训练营列表，
+    campTagList: []
   },
 
   /***
@@ -236,16 +242,21 @@ Page({
     })
     switch(tab){
         case 'general_course': 
-
+          //团课
         break
         case 'private_course': 
-          that.getCoursePrivateList()
+          //私教
+          this.getStoreAreaList()
+          this.getCoursePrivateCourseList()
         break
+
         case 'camp': 
-
+          //训练营
+          this.getCampStoreAreaList()
         break
+        
         case 'joint_course': 
-
+          this.getJointData()
         break
         default:
     }
@@ -931,12 +942,40 @@ Page({
   //私教
 
   /**
+   *  获取门店列表
+   */
+  getStoreAreaList: function() {
+    let that = this
+
+    ajax.post(api.getStoreAreaList, {}, ({
+      data
+    }) => {
+      if (data.code == 200) {
+        let list = data.obj.list
+        let region = [{
+          id: 0,
+          name: '全城'
+        }]
+        region = region.concat(list[0].children)
+        let storeList = that.selectAllCity(list, 0)
+        that.setData({
+          areaList: list,
+          region: region,
+          priStoreList: storeList
+        })
+        that.getCoursePrivateList()
+      }
+    })
+  },
+
+  /**
    * 获取私教列表
    */
   getCoursePrivateList: function() {
     let that = this
-    let store_ids = []
-    let course_ids = []
+    let store_ids = that.getScreenData(that.data.priStoreList)
+    let course_ids = that.getScreenData(that.data.priCoverList)
+    console.log('store_ids'+that.data.priStoreList,that.data.priCoverList)
     ajax.post(api.getCoursePrivateList, {
       'store_ids': store_ids,
       'course_ids': course_ids
@@ -959,12 +998,156 @@ Page({
           item.first_price = Math.min.apply('', temp)
         }
         that.setData({
-          list: list,
+          priList: list,
           first: data.obj.first,
           showLoad: false
         })
       }
     })
+  },
+  /**
+   * 获取私教筛选条件
+   */
+  getScreenData: function(arr) {
+    let that = this
+    let isAll = false
+    let arr_ids = []
+
+    // 显示选择门店课程
+    for (let item of arr) {
+      if (item.select && item.id != 0) {
+        arr_ids.push(item.id)
+      }
+      if (item.select && item.id == 0) {
+        isAll = true
+      }
+    }
+    console.log(arr_ids)
+    // 显示全部门店课程
+    if (isAll) {
+      for (let item of arr) {
+        item.id != 0 && arr_ids.push(item.id)
+      }
+    }
+    return arr_ids
+  },
+  /**
+   *  获取私教课科目列表
+   */
+  getCoursePrivateCourseList: function() {
+    let that = this
+    ajax.post(api.getCoursePrivateCourseList, {}, ({
+      data
+    }) => {
+      if (data.code == 200) {
+        let list = data.obj.list
+        let temp = [{
+          id: 0,
+          name: '全部',
+          select: true
+        }]
+        for (let item of list) {
+          temp.push({
+            id: item.id,
+            name: item.name,
+            select: false
+          })
+        }
+        that.setData({
+          priCoverList: temp,
+        })
+      }
+    })
+  },
+
+  //训练营
+  /**
+   *  获取区域列表
+   */
+  getCampStoreAreaList: function() {
+    let that = this
+    ajax.post(api.getStoreAreaList, {}, ({
+      data
+    }) => {
+      if (data.code == 200) {
+        let list = data.obj.list
+        that.setData({
+          areaList: list
+        })
+        that.getCourseCamp('first')
+      }
+    })
+  },
+  /**
+   *  获取训练营列表
+   */
+  getCourseCamp: function(type) {
+    let that = this
+    let areaList = that.data.areaList
+    let areaIndex = that.data.areaIndex
+    let area_ids = []
+    let tags = that.data.tags
+    for (let item of areaList[areaIndex].children) {
+      area_ids.push(item.id)
+    }
+
+    ajax.post(api.getCourseCampList, {
+      'area_ids': area_ids,
+      'tags': tags
+    }, ({
+      data
+    }) => {
+      if (data.code == 200) {
+
+        if (type == 'first') {
+          let tags = data.obj.course_tags
+          let temp = [{
+            id: 0,
+            name: '全部标签',
+            select: true
+          }]
+          for (let index in tags) {
+            temp.push({
+              id: parseInt(index) + 1,
+              name: tags[index],
+              select: false
+            })
+            that.setData({
+              campTagList: temp
+            })
+          }
+        }
+
+        that.setData({
+          campList: data.obj.list,
+          showLoad: false
+        })
+      }
+    })
+  },
+
+  /*
+  *拼课
+  */
+ /**
+   * 初始化数据
+   */
+  getJointData: function() {
+    let that = this
+    ajax.post(api.getSpellCoachSelectNew, {}, ({
+      data
+    }) => {
+      if (data.code == 200) {
+        let coach = data.obj.coach
+        that.setData({
+          jointStoreList: data.obj.store,
+          coachList: coach
+        })
+        that.getCourse(coach[0].user_id)
+      }
+    }, 'auth', true)
+
+
   },
 
 })

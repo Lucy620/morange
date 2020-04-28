@@ -1,6 +1,6 @@
 /* pages/league/list.wxss */
 
-.wrapper-box{
+.wrapper-box {
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -10,17 +10,26 @@
 
 .container-box {
   z-index: 1;
-  
+
 }
 
 /***轮播**/
 
 .swiper-box {
-  height: 200rpx;
+  height: 160rpx;
 }
 
 swiper {
   height: 100%;
+}
+
+.tab-title {
+  color: #676767;
+  margin-right: 48rpx;
+}
+
+.tab-title-active {
+  color: #FF9C00;
 }
 
 .slide-image {
@@ -50,8 +59,10 @@ swiper {
 }
 
 .title {
-  font-size: 24rpx;
+  font-size: 22rpx;
   color: #fff;
+  line-height: 24rpx;
+  margin-top: 12rpx;
 }
 
 .tab-icon {
@@ -63,8 +74,6 @@ swiper {
 /**星期**/
 
 .week-box {
-  height: 62rpx;
-  line-height: 62rpx;
   background-color: #181818;
   display: flex;
   align-items: center;
@@ -76,6 +85,9 @@ swiper {
   color: #818181;
   font-size: 24rpx;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .s-line {
@@ -94,38 +106,46 @@ swiper {
 }
 
 .select-week-box {
-  position: absolute;
-  top: -7rpx;
-  left: 50%;
-  margin-left: -33rpx;
-  width: 66rpx;
-  height: 66rpx;
   z-index: 1;
-  border-radius: 50%;
-  background-image: linear-gradient(to bottom, #ffd324, #ff7200);
-  padding: 5rpx;
+  margin-top: 8rpx;
+  margin-bottom: 24rpx;
 }
 
 .select-week {
-  width: 66rpx;
-  height: 66rpx;
+  width: 48rpx;
+  height: 48rpx;
   background-color: #252525;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #282828;
+}
+
+.week-active {
+  color: #000;
+}
+
+.time-week-active {
+  background-image: linear-gradient(to bottom, #ffd324, #ff7200);
+}
+
+.time-date-active {
+  color: #FF9C00;
 }
 
 .select-date {
   padding-top: 12rpx;
   width: 100%;
-  font-size: 20rpx;
-  color: #818181;
+  font-size: 16rpx;
   text-align: center;
   line-height: 1.2;
 }
 
 .select-date-tips {
   width: 100%;
-  font-size: 22rpx;
-  color: #fff;
+  font-size: 24rpx;
+  color: #676767;
   text-align: center;
   line-height: 1.2;
 }
@@ -228,13 +248,14 @@ swiper {
 .box {
   display: flex;
   align-items: center;
-  height: 162rpx;
+  height: 148rpx;
   padding: 0 20rpx;
   background-color: #181818;
   margin-bottom: 5rpx;
   position: relative;
 }
-.refresh-box{
+
+.refresh-box {
   margin: 0;
 }
 
@@ -260,7 +281,7 @@ swiper {
 
 .title {
   color: #fff;
-  font-size: 26.7rpx;
+  font-size: 24rpx;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
@@ -270,14 +291,13 @@ swiper {
 .attributes-box {
   display: flex;
   align-items: center;
-  margin: 10rpx 0;
 }
 
 .name {
   display: flex;
   align-items: center;
   color: #bcbcbc;
-  font-size: 20rpx;
+  font-size: 14rpx;
 }
 
 .garden {
@@ -290,12 +310,13 @@ swiper {
 
 .date {
   color: #fff;
-  font-size: 22rpx;
+  font-size: 20rpx;
 }
 
 .time {
   color: #ffae00;
   margin-right: 10rpx;
+  font-size: 22rpx;
 }
 
 .btn {
@@ -321,12 +342,21 @@ swiper {
   overflow: hidden;
 }
 
+.wrap-left {
+  width: 150rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
 .silk-ribbon {
   display: inline-block;
   text-align: center;
   width: 155rpx;
-  height: 35rpx;
-  line-height: 35rpx;
+  height: 24rpx;
+  line-height: 24rpx;
   position: absolute;
   top: 10rpx;
   right: -55rpx;
@@ -336,7 +366,27 @@ swiper {
   -moz-transform: rotate(43deg);
   -webkit-transform: rotate(43deg);
   -o-transform: rotate(43deg);
-  background: #ff6a1f;
+  background: #C30000;
+  color: #fff777;
+  font-size: 18rpx;
+}
+
+.silk-ribbon-left {
+  display: inline-block;
+  text-align: center;
+  width: 155rpx;
+  height: 24rpx;
+  line-height: 24rpx;
+  position: absolute;
+  top: 10rpx;
+  left: -55rpx;
+  overflow: hidden;
+  transform: rotate(-43deg);
+  -ms-transform: rotate(-43deg);
+  -moz-transform: rotate(-43deg);
+  -webkit-transform: rotate(-43deg);
+  -o-transform: rotate(-43deg);
+  background: #C30000;
   color: #fff777;
   font-size: 18rpx;
 }
@@ -478,11 +528,11 @@ swiper {
 }
 
 .objective-tab {
-  flex-grow:1;
+  flex-grow: 1;
   height: 53rpx;
   line-height: 53rpx;
   border-radius: 7rpx;
-  margin:20rpx 25rpx 20rpx 0;
+  margin: 20rpx 25rpx 20rpx 0;
   font-size: 25rpx;
   color: #b1b1b1;
   border: solid 2rpx #b1b1b1;
@@ -565,10 +615,9 @@ swiper {
   display: flex;
   flex: 1;
   padding-top: 48rpx
-
 }
 
-.item-time{
+.item-time {
   margin-bottom: 48rpx
 }
 
@@ -767,7 +816,7 @@ swiper {
   background-size: 100% 100%;
 }
 
-.item-normal{
+.item-normal {
   background: transparent;
   margin: 0
 }
@@ -775,10 +824,11 @@ swiper {
 .tab-title-box {
   display: flex;
   align-items: center;
-  padding-left: 0 20rpx;
+  padding-left: 20rpx;
   position: relative;
   z-index: 1;
   height: 100rpx;
+  background-color: #181818;
 }
 
 .icon-filter {
@@ -810,12 +860,30 @@ swiper {
   position: relative;
 }
 
+.kcal {
+  height: 24rpx;
+  border-radius: 12rpx;
+  background-color: #515151;
+  color: #C2C2C2;
+  padding: 0 24rpx;
+  font-size: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin-top: 8rpx;
+}
+
 .pri-coach {
-  width: 96.7rpx;
-  height: 96.7rpx;
+  width: 122rpx;
+  height: 122rpx;
   background-color: #272727;
   box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
   border-radius: 50%;
+}
+
+.list-space {
+  margin-top: 12rpx;
 }
 
 .pri-box-row {
@@ -881,34 +949,124 @@ swiper {
   overflow: hidden;
 }
 
-.pri-silk-ribbon {
-  display: inline-block;
-  text-align: center;
-  width: 155rpx;
-  height: 35rpx;
-  line-height: 35rpx;
-  position: absolute;
-  top: 10rpx;
-  right: -55rpx;
-  transform: rotate(43deg);
-  -ms-transform: rotate(43deg);
-  -moz-transform: rotate(43deg);
-  -webkit-transform: rotate(43deg);
-  -o-transform: rotate(43deg);
-  background: #ff6a1f;
-  color: #fff777;
-  font-size: 18rpx;
-  overflow: hidden;
-}
-
-.pri-full {
-  background: #424242;
-  color: #bcbcbc;
-}
-
 .pri-full-btn {
   background: none;
   border-radius: 10rpx;
   border: solid 3rpx #424242;
   color: #bcbcbc;
+}
+
+.camp-box {}
+
+.camp-row {
+  width: 710rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.camp-row-item {
+  margin-bottom: 20rpx;
+}
+
+.training-camp-box {
+  width: 345rpx;
+  text-align: center;
+  background: #323232;
+  position: relative;
+  border-radius: 10rpx;
+}
+
+.training-camp1 {
+  width: 345rpx;
+  height: 233rpx;
+  border-top-right-radius: 10rpx;
+  border-top-left-radius: 10rpx;
+}
+
+.training-camp-name {
+  height: 59rpx;
+  line-height: 59rpx;
+  font-size: 24rpx;
+  box-shadow: 2rpx 5rpx 20rpx #000;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.ranking-tab {
+  width: 43rpx;
+  height: 58rpx;
+  position: absolute;
+  top: -1rpx;
+  color: #000;
+  font-size: 32rpx;
+  right: 0;
+  text-align: center;
+  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-tab-bg.png);
+  background-size: 100% 100%;
+}
+
+.coach-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.coach-row {
+  width: 33vw;
+  margin: 15rpx 0;
+}
+
+.coach-row-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coach-img {
+  width: 127rpx;
+  height: 127rpx;
+  border-radius: 50%;
+  border: 2px solid #131313;
+}
+
+.coach-name {
+  text-align: center;
+  color: #000;
+  position: relative;
+  width: 64rpx;
+  text-align: center;
+  background-color: #FF9C00;
+  font-size: 20rpx;
+  height: 32rpx;
+  border-radius: 32rpx;
+  padding: 0 8rpx;
+  margin-left: -40rpx;
+  margin-top: -126rpx;
+}
+
+.coach-name:after {
+  content: "\00a0";
+  width: 0;
+  height: 0;
+}
+
+.coach-name:after {
+  display: block;
+  border-style: solid;
+  border-width: 20rpx;
+  border-color: #f3961c transparent transparent transparent;
+}
+
+.coach-name:after {
+  position: absolute;
+  z-index: 2;
+  bottom: 2rpx;
+  right: 50rpx;
+  transform: rotate(-190deg);
 }
