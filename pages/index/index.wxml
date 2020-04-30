@@ -3,16 +3,7 @@
 <loading wx:if="{{showTab}}"></loading>
 
 <view class="wrapper" hidden="{{showLoad}}">
-  <!--轮播-->
-  <!-- <view class="swiper-box">
-    <swiper indicator-dots="{{true}}" autoplay="{{true}}" circular="{{true}}">
-      <block wx:for="{{advList}}" wx:key="{{index}}">
-        <swiper-item bindtap='jumpPage' data-url="{{item.url}}">
-          <image src="{{item.img}}" class="slide-image" mode="widthFix"></image>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view> -->
+
 
   <!--tab栏-->
   <view class="tab-box">

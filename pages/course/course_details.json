@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "give": "/pages/components/give/give",
-    "share": "/pages/components/share/share"
+    "share": "/pages/components/share/share",
+    "navigationStyle":"custom"
   }
 }

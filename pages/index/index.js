@@ -156,7 +156,6 @@ Page({
       page: 1,
       theme_id: 0,
       themeIndex: 0,
-      storeList: [],
       area_ids: area_ids
     })
   },
@@ -182,7 +181,6 @@ Page({
       page: 1,
       theme_id: 0,
       themeIndex: 0,
-      storeList: [],
     })
   },
 
@@ -197,7 +195,6 @@ Page({
       theme_id: themeList[index].id,
       lastPage: false,
       page: 1,
-      storeList: [],
     })
   },
 

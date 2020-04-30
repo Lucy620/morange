@@ -81,7 +81,8 @@ Page({
     coach_id: 0,
     coachIndex: 0,
     coachCourseList: [],
-    jointCover:false
+    jointCover:false,
+    time: ''
   },
 
   /***
@@ -295,16 +296,18 @@ Page({
   },
 
   /***
-     * 关闭城市、课程、时段动画
+     * 关闭拼课动画
      */
-  closeJonitAnimation: function () {
+  closeJointtAnimation: function () {
     let that = this
     that.jointAnimation.translateY(500).step();
     that.setData({
-      jonitAnimation: that.jonitAnimation.export()
+      jointAnimation: that.jointAnimation.export()
     })
     setTimeout(function () {
-      that.close()
+      that.setData({
+        jointCover: false,
+      })
     }, 200)
   },
   /**
@@ -558,7 +561,6 @@ Page({
       arr: arr,
       index: index,
       number: 0
-
     }
     //选择其他课程
     for (let i in obj.arr) {
@@ -640,7 +642,7 @@ Page({
   /**
    * 确认已选
    */
-  confirmSelect: function(e) {
+  onGeneralCourseChoice: function(e) {
     let pageArr = this.data.pageArr
     for (let item of pageArr) {
       item.lastPage = false
@@ -1177,6 +1179,8 @@ Page({
       coachIndex: index,
       coach_id: coachList[index].user_id
     })
+    let timeStamp = new Date(new Date().setHours(0, 0, 0, 0)) / 1000 + 86400
+    this.formatDate(timeStamp)
     this.getCourseOfCoach()
   },
   /***
@@ -1202,6 +1206,56 @@ Page({
         }
       })
 
+  },
+
+    /**
+   * 选择日期
+   */
+  bindDateChange: function(e) {
+    let date = e.detail.value
+    date = date.replace(/\-/g, "/")
+    this.setData({
+      date: new Date(date).getTime() / 1000
+    })
+  },
+   /**
+   * 选择时间
+   */
+  bindTimeChange: function(e) {
+    this.setData({
+      time: e.detail.value
+    })
+  },
+  /**
+   * 选择门店
+   */
+  bindPickerChange: function(e) {
+    this.setData({
+      storeIndex: e.detail.value
+    })
+  },
+
+    /**
+   * 第二天凌晨 日期
+   */
+  formatDate: function(now) {
+    let date = new Date(now * 1000)
+    let year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+    let hour = date.getHours()
+    let minute = date.getMinutes()
+    month = (month < 10 ? "0" + month : month)
+    minute = (minute < 10 ? "0" + minute : minute)
+    hour = (hour < 10 ? "0" + hour : hour)
+    let mydate = (year.toString() + '/' + month.toString() + '/' + day.toString())
+    let time = (hour.toString() + ':' + minute.toString())
+    let start = (year.toString() + '-' + month.toString() + '-' + day.toString())
+    this.setData({
+      time: time,
+      date: new Date(mydate).getTime() / 1000,
+      start: start,
+    })
   },
 
 })
