@@ -23,6 +23,10 @@ swiper {
   height: 100%;
 }
 
+.list-container{
+  height: 100%
+}
+
 .tab-title {
   color: #676767;
   margin-right: 48rpx;
@@ -166,6 +170,7 @@ swiper {
 
 .scroll-box {
   height: 100%;
+  display: flex
 }
 
 .store-row {
@@ -614,7 +619,8 @@ swiper {
   background-color: #262626;
   display: flex;
   flex: 1;
-  padding-top: 48rpx
+  padding-top: 48rpx;
+  height: 100%
 }
 
 .item-time {
@@ -1017,6 +1023,11 @@ swiper {
   flex-wrap: wrap;
 }
 
+.select-coach-box {
+  background-color: #262626;
+  height: 100%;
+}
+
 .coach-row {
   width: 33vw;
   margin: 15rpx 0;
@@ -1028,6 +1039,11 @@ swiper {
   justify-content: center;
 }
 
+.coach-row-item-selected {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .coach-img {
   width: 127rpx;
   height: 127rpx;
@@ -1035,12 +1051,12 @@ swiper {
   border: 2px solid #131313;
 }
 
+
 .coach-name {
   text-align: center;
   color: #000;
   position: relative;
   width: 64rpx;
-  text-align: center;
   background-color: #FF9C00;
   font-size: 20rpx;
   height: 32rpx;
@@ -1048,6 +1064,12 @@ swiper {
   padding: 0 8rpx;
   margin-left: -40rpx;
   margin-top: -126rpx;
+  z-index: 1
+}
+
+.coach-name-selected {
+  margin-left: auto;
+  margin-right: auto
 }
 
 .coach-name:after {
@@ -1065,8 +1087,58 @@ swiper {
 
 .coach-name:after {
   position: absolute;
-  z-index: 2;
+  z-index: -1;
   bottom: 2rpx;
   right: 50rpx;
   transform: rotate(-190deg);
+}
+
+.coach-img-selected {
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #FF9C00;
+  margin-bottom: 27rpx
+}
+
+.course-coach-box{
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: -48rpx
+}
+
+.coach-box {
+  background-color: #262626;
+  height: 100%;
+}
+
+.course-coach {
+  background-color: #515151;
+  width: 31vw;
+  height: 68rpx;
+  border-radius: 34rpx;
+  font-size: 22rpx;
+  margin:0 1vw;
+  margin-top: 48rpx
+}
+
+.coach-title-box {
+  display: flex;
+  justify-content: center;
+  height: 64rpx;
+  align-items: center;
+  margin: auto
+}
+
+.coach-line {
+  height: 2rpx;
+  width: 24vw;
+  background-color: #515151
+}
+
+.coach-title {
+  font-size: 20rpx;
+  color: #fff;
+  width: 200rpx
 }

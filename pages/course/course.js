@@ -15,7 +15,7 @@ Page({
   data: {
     showLoad: true,
     cover: false, //遮罩
-    type: '', // 动画类型
+    type: 'screen', // 动画类型
     region: [], // 门店区域
     regionIndex: 0,
     areaList: [], // 门店城市
@@ -75,7 +75,13 @@ Page({
     priCoverList: [],
 
     campList: [],  //训练营列表，
-    campTagList: []
+    campTagList: [],
+
+    coachList: [],
+    coach_id: 0,
+    coachIndex: 0,
+    coachCourseList: [],
+    jointCover:false
   },
 
   /***
@@ -114,6 +120,7 @@ Page({
    */
   onLoad: function(options) {
     this.animation = wx.createAnimation()
+    this.jointAnimation = wx.createAnimation()
     let curDate = new Date()
     let weekList = []
     for (let i = 0; i <= 5; i++) {
@@ -287,6 +294,19 @@ Page({
     }, 200)
   },
 
+  /***
+     * 关闭城市、课程、时段动画
+     */
+  closeJonitAnimation: function () {
+    let that = this
+    that.jointAnimation.translateY(500).step();
+    that.setData({
+      jonitAnimation: that.jonitAnimation.export()
+    })
+    setTimeout(function () {
+      that.close()
+    }, 200)
+  },
   /**
    * 关闭城市、课程、时段
    */
@@ -1143,10 +1163,44 @@ Page({
           jointStoreList: data.obj.store,
           coachList: coach
         })
-        that.getCourse(coach[0].user_id)
       }
     }, 'auth', true)
 
+
+  },
+
+  // 选定教练
+  choiceCoach: function(e) {
+    let index = e.currentTarget.dataset.index
+    let coachList = this.data.coachList
+    this.setData({
+      coachIndex: index,
+      coach_id: coachList[index].user_id
+    })
+    this.getCourseOfCoach()
+  },
+  /***
+   * 获取教练的课程
+   */
+  getCourseOfCoach: function (user_id) {
+    let that = this
+    let coach_id = that.data.coach_id
+    ajax.post(api.getSpellCourseSelectNew, {
+      'coach_id': coach_id > 0 ? coach_id : user_id
+    }, ({
+      data
+    }) => {
+        if (data.code == 200) {
+          this.jointAnimation.translateY(-500).step();
+          console.log(data.obj.course)
+          that.setData({
+            coachCourseList: data.obj.course,
+            showLoad: false,
+            jointAnimation: this.jointAnimation.export(),
+            jointCover: true
+          })
+        }
+      })
 
   },
 
