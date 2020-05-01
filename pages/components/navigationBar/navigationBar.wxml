@@ -1,0 +1,23 @@
+<view class="header">
+		<!-- 官方自定义导航栏抽取出来的模块 -->
+		<view class="navigation">
+			<view class="weui-navigation-bar {{extClass}}">
+				<view class="weui-navigation-bar__placeholder {{ios ? 'ios' : 'android'}}" style="padding-top: {{statusBarHeight}}px;visibility: hidden;"></view>
+				<view class="weui-navigation-bar__inner {{ios ? 'ios' : 'android'}}" style="padding-top: {{statusBarHeight}}px; color: {{color}};background: {{background}};{{displayStyle}};{{innerPaddingRight}};{{innerWidth}};">
+					<view class='weui-navigation-bar__left' style="{{leftWidth}}"  bindtap="back">
+						<view class="weui-navigation-bar__buttons">
+							<!-- <view class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></view> -->
+              <slot name="btn-left"></slot>
+						</view>
+					</view>
+					<view class='weui-navigation-bar__center'>
+						<!-- 自定义导航标题 -->
+						<view class="navigation-title">
+							<!-- 从这里开始就是写自己的代码了 -->
+							<slot name="title"></slot>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>

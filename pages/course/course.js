@@ -14,6 +14,7 @@ Page({
    */
   data: {
     showLoad: true,
+    showCities: true,
     cover: false, //遮罩
     type: 'screen', // 动画类型
     region: [], // 门店区域

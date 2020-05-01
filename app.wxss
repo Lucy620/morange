@@ -170,3 +170,6 @@ image{
   color: #AAAAAA
 }
 
+.bar-title{
+  color: #fff
+}

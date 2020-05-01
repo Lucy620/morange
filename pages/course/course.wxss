@@ -1,5 +1,26 @@
 /* pages/league/list.wxss */
 
+.bar-city {
+  color: #fff
+}
+
+.city-modal {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  position: fixed 
+}
+
+.city-select {
+  width: 95%;
+  height: 100%;
+  background-color: #262626;
+  border-radius: 28rpx;
+  margin: auto;
+  left: 0;
+  right: 0
+}
+
 .wrapper-box {
   position: fixed;
   display: flex;
