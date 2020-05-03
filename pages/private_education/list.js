@@ -216,7 +216,7 @@ Page({
       coverList: obj.arr,
       courseNumber: obj.number
     })
-  },
+  },          
 
   /**
    * 打开城市、课程

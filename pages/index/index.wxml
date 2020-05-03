@@ -2,9 +2,11 @@
 
 <loading wx:if="{{showTab}}"></loading>
 
+<navigationBar>
+	<view slot="title" class="bar-title">MORANGE</view>
+</navigationBar>
+
 <view class="wrapper" hidden="{{showLoad}}">
-
-
   <!--tab栏-->
   <view class="tab-box">
     <view class="row-box" bindtap="openAnimation" data-type="screen">

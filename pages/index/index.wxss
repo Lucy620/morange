@@ -215,11 +215,6 @@ swiper {
 }
 
 .theme-box {
-  position: absolute;
-  top: 100rpx;
-  bottom: 0;
-  right: 0;
-  left: 0;
   background-color: #262626;
   flex-wrap: wrap;
   width: 100%;
@@ -240,6 +235,12 @@ swiper {
 }
 
 .select-theme-item {
+  color: #000;
+  font-weight: bold;
+  background-image: linear-gradient(#ff9c00, #FFBA00);
+}
+
+.selected-theme-item {
   color: #000;
   font-weight: bold;
   background-image: linear-gradient(#ff9c00, #FFBA00);

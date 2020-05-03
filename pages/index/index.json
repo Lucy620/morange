@@ -2,6 +2,7 @@
   "navigationBarTitleText": "MORANGE",
   "usingComponents": {
     "share": "/pages/components/share/share",
-    "loading": "/pages/components/loading/loading"
+    "loading": "/pages/components/loading/loading",
+    "navigationBar": "/pages/components/navigationBar/navigationBar"
   }
 }

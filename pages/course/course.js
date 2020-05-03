@@ -14,10 +14,10 @@ Page({
    */
   data: {
     showLoad: true,
-    showCities: true,
+    showCities: false,
     cover: false, //遮罩
     type: 'screen', // 动画类型
-    region: [], // 门店区域
+    generalRegion: [], // 门店区域
     regionIndex: 0,
     areaList: [], // 门店城市
     areaIndex: 0,
@@ -75,28 +75,136 @@ Page({
     priStoreList: [],
     priCoverList: [],
 
-    campList: [],  //训练营列表，
+    campList: [], //训练营列表，
     campTagList: [],
 
     coachList: [],
     coach_id: 0,
     coachIndex: 0,
     coachCourseList: [],
-    jointCover:false,
-    time: ''
+    jointCover: false,
+    time: '',
+    cities: [],
+    curCity: {},
+    priAreaIndex: 0,
+    genAreaIndex: 0,
+    campAreaIndex: 1
   },
 
   /***
    *  scroll-view 滚动底部触发
    */
-  lower: function() {
+  lower: function () {
     this.getCourseTeam()
   },
+
+  /***
+   *  显示城市选择
+   */
+  onShowCities: function () {
+    this.loadCities(true)
+  },
+
+
+
+  /***
+   *  隐藏城市选择
+   */
+  onHideCities: function () {
+    this.setData({
+      showCities: false
+    })
+  },
+
+  /***
+   *  加载城市
+   */
+  loadCities: function (isSelect) {
+    let that = this
+    ajax.post(api.getStoreAreaList, {}, ({
+      data
+    }) => {
+      if (data.code == 200) {
+        let list = data.obj.list
+        let area_ids = []
+        for (let item of list[0].children) {
+          item.id != 0 && area_ids.push(item.id)
+        }
+
+        if (isSelect) {
+          that.setData({
+            showCities: true
+          })
+        } else {
+          let areas = [{
+            id: 0,
+            name: "全城"
+          }].concat(list[0].children)
+          that.setData({
+            cities: list,
+            curCity: list.children[0],
+            areaList: areas,
+            curArea: 0,
+            storeList: this.selectAllCity(list[0].children, 1),
+          })
+        }
+      }
+    }, 'noauth')
+  },
+  /***
+   *  选择城市
+   */
+  onCitySelected: function (e) {
+    let city = e.currentTarget.dataset.city
+    let index = e.currentTarget.dataset.index
+    let data = this.data
+  
+    console.log('onCitySelected--->', data.curCity, city.id)
+    if (data.curCity.id != city.id) {
+      this.setData({
+        areaList: [{
+          id: 0,
+          name: '全城'
+        }].concat(data.cities[index].children),
+        curArea: {
+          id: 0,
+          name: '全城'
+        },
+        storeList: this.selectAllCity(data.cities[index].children, index),
+      })
+      switch (data.curTab) {
+        case 'general_course':
+          //团课
+          this.getCourseTeamCourse()
+          break
+        case 'private_course':
+          //私教
+          this.getCoursePrivateCourseList()
+          break
+
+        case 'camp':
+          //训练营
+          this.getCampStoreAreaList()
+          break
+
+        case 'joint_course':
+          this.getJointData()
+          break
+        default:
+
+      }
+    }
+    this.setData({
+      showCities: false,
+      curCity: city,
+    })
+  },
+
 
   /**
    * scroll-view 滚动顶部触发
    */
-  upper: function() {
+  upper: function () {
     let pageArr = this.data.pageArr
     for (let item of pageArr) {
       item.lastPage = false
@@ -112,7 +220,7 @@ Page({
    * 
    * @param {触摸刷新} options 
    */
-  listTouchStart:function(e) {
+  listTouchStart: function (e) {
     console.log('触摸刷新')
   },
 
@@ -120,9 +228,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.animation = wx.createAnimation()
     this.jointAnimation = wx.createAnimation()
+    this.bannerAnimation = wx.createAnimation()
+    //this.loadCities(false)
     let curDate = new Date()
     let weekList = []
     for (let i = 0; i <= 5; i++) {
@@ -142,7 +252,7 @@ Page({
   /**
    * 获取当前星期
    */
-  getWeek: function(date) {
+  getWeek: function (date) {
     let week;
     if (date.getDay() == 0) week = "日"
     if (date.getDay() == 1) week = "一"
@@ -157,7 +267,7 @@ Page({
   /**
    * 跳转页面
    */
-  jumpPage: function(e) {
+  jumpPage: function (e) {
     var url = e.currentTarget.dataset.url || ''
     var index = config.BASE.tabPages.indexOf('/' + url)
 
@@ -184,7 +294,7 @@ Page({
   /**
    * 查看位置
    */
-  seeMap: function(e) {
+  seeMap: function (e) {
     let latitude = e.currentTarget.dataset.latitude
     let longitude = e.currentTarget.dataset.longitude
     let name = e.currentTarget.dataset.name
@@ -200,7 +310,7 @@ Page({
   /**
    * 选择星期
    */
-  selectDate: function(e) {
+  selectDate: function (e) {
     let index = e.currentTarget.dataset.index
     this.setData({
       weekIndex: index
@@ -210,7 +320,7 @@ Page({
   /**
    * 滑动选择
    */
-  binSwiper: function(e) {
+  binSwiper: function (e) {
     this.setData({
       weekIndex: e.detail.current
     })
@@ -219,7 +329,7 @@ Page({
   /**
    * 显示隐藏 结束时间段
    */
-  hiddenEnd: function() {
+  hiddenEnd: function () {
     this.setData({
       is_hide: !this.data.is_hide
     })
@@ -229,7 +339,7 @@ Page({
    * 打开城市、课程、时段
    *
    */
-  openAnimation: function(e) {
+  openAnimation: function (e) {
     let that = this
     let type = e.currentTarget.dataset.type
     that.setData({
@@ -243,31 +353,36 @@ Page({
    * 切换顶部tab
    *
    */
-  onTabChange: function(e) {
+  onTabChange: function (e) {
     let that = this
     let tab = e.currentTarget.dataset.type
     that.setData({
       curTab: tab
     })
-    switch(tab){
-        case 'general_course': 
-          //团课
+    switch (tab) {
+      case 'general_course':
+        //团课
+        this.openBanner()
         break
-        case 'private_course': 
-          //私教
-          this.getStoreAreaList()
-          this.getCoursePrivateCourseList()
+      case 'private_course':
+        //私教
+        this.openBanner()
+         this.getCoursePrivateCourseList()
+         that.getCoursePrivateList()
         break
 
-        case 'camp': 
-          //训练营
-          this.getCampStoreAreaList()
+      case 'camp':
+        //训练营
+        this.openBanner()
+        this.getCourseCamp('first')
         break
-        
-        case 'joint_course': 
-          this.getJointData()
+
+      case 'joint_course':
+        this.closeBanner()
+        this.getJointData()
         break
-        default:
+      default:
+
     }
   },
 
@@ -275,7 +390,7 @@ Page({
   /**
    * 打开城市、课程、时段动画
    */
-  translate: function() {
+  translate: function () {
     this.animation.translateY(-500).step();
     this.setData({
       animation: this.animation.export()
@@ -285,20 +400,20 @@ Page({
   /***
    * 关闭城市、课程、时段动画
    */
-  closeAnimation: function() {
+  closeAnimation: function () {
     let that = this
     that.animation.translateY(500).step();
     that.setData({
       animation: that.animation.export()
     })
-    setTimeout(function() {
+    setTimeout(function () {
       that.close()
     }, 200)
   },
 
   /***
-     * 关闭拼课动画
-     */
+   * 关闭拼课动画
+   */
   closeJointtAnimation: function () {
     let that = this
     that.jointAnimation.translateY(500).step();
@@ -314,7 +429,7 @@ Page({
   /**
    * 关闭城市、课程、时段
    */
-  close: function() {
+  close: function () {
     this.setData({
       cover: false,
       type: 'screen'
@@ -322,9 +437,31 @@ Page({
   },
 
   /***
+   * 显示banner
+   */
+  openBanner: function () {
+    let that = this
+    that.bannerAnimation.translateY(0).step();
+    that.setData({
+      bannerAnimation: that.bannerAnimation.export()
+    })
+  },
+
+  /***
+   * 关闭banner
+   */
+  closeBanner: function () {
+    let that = this
+    that.bannerAnimation.translateY(-74).step();
+    that.setData({
+      bannerAnimation: that.bannerAnimation.export()
+    })
+  },
+
+  /***
    *选择筛选数据
    */
-  choiceData: function(arr, index) {
+  choiceData: function (arr, index) {
     let obj = {
       arr: arr,
       index: index,
@@ -376,11 +513,11 @@ Page({
   /**
    * 判断是取消所有
    */
-  cancelAll: function(arr) {
+  cancelAll: function (arr) {
     if (arr.length == 0) {
       return false
     }
-    return arr.every(function(element) {
+    return arr.every(function (element) {
       if (element.select == false) {
         return true
       } else {
@@ -393,7 +530,7 @@ Page({
   /***
    * 选择时间段
    */
-  choiceTime: function(e) {
+  choiceTime: function (e) {
     let index = e.currentTarget.dataset.index
     this.setData({
       searchTimeIndex: index
@@ -403,7 +540,7 @@ Page({
   /**
    *清空，默认选中第一
    **/
-  onEmptyDefault: function(arr) {
+  onEmptyDefault: function (arr) {
     for (let item of arr) {
       if (item.id == 0) {
         item.select = true
@@ -417,7 +554,7 @@ Page({
   /**
    * 筛选 全选，单选 课程 门店
    */
-  screenArr: function(arr) {
+  screenArr: function (arr) {
     let ids = []
     let isAll = false
     // 显示选择门店课程
@@ -442,7 +579,7 @@ Page({
   /**
    * 选择城市
    */
-  choiceCity: function(e) {
+  choiceCity: function (e) {
     let index = e.currentTarget.dataset.index
     let areaList = this.data.areaList
     let region = [{
@@ -462,7 +599,7 @@ Page({
   /**
    * 选择区域
    */
-  choiceArea: function(e) {
+  choiceArea: function (e) {
     let index = e.currentTarget.dataset.index
     let region = this.data.region
     let areaList = this.data.areaList
@@ -482,7 +619,7 @@ Page({
   /**
    * 选择门店
    */
-  choiceStore: function(e) {
+  choiceStore: function (e) {
     let that = this
     let index = e.currentTarget.dataset.index
     let storeList = that.data.storeList
@@ -496,7 +633,7 @@ Page({
   /**
    * 选择科目目的
    */
-  choiceTarget: function(e) {
+  choiceTarget: function (e) {
     let index = e.currentTarget.dataset.index
     let courseTargetList = this.data.courseTargetList
     courseTargetList[index].select = !courseTargetList[index].select
@@ -516,7 +653,7 @@ Page({
   /**
    * 选择科目类型
    */
-  choiceCategory: function(e) {
+  choiceCategory: function (e) {
     let index = e.currentTarget.dataset.index
     let courseCategoryList = this.data.courseCategoryList
     courseCategoryList[index].select = !courseCategoryList[index].select
@@ -536,7 +673,7 @@ Page({
   /**
    * 选择科目
    */
-  choiceCourse: function(e) {
+  choiceCourse: function (e) {
     let that = this
     let index = e.currentTarget.dataset.index
     let course = that.data.course
@@ -557,7 +694,7 @@ Page({
   /***
    *选择筛选数据
    */
-  choiceData: function(arr, index) {
+  choiceData: function (arr, index) {
     let obj = {
       arr: arr,
       index: index,
@@ -607,7 +744,7 @@ Page({
   /**
    * 门店数组加 true false
    */
-  arrAddStatus: function(arr) {
+  arrAddStatus: function (arr) {
     let storeList = [{
       id: 0,
       name: '全城',
@@ -623,14 +760,15 @@ Page({
   /**
    * 选择全城
    */
-  selectAllCity: function(arr, index) {
+  selectAllCity: function (arr, index) {
     let storeList = [{
       id: 0,
       name: '全城',
       select: true
     }]
     let temp = []
-    for (let item of arr[index].children) {
+    console.log('selectAllCity--->', arr, index)
+    for (let item of arr) {
       temp = temp.concat(item.store)
     }
     for (let item of temp) {
@@ -643,7 +781,7 @@ Page({
   /**
    * 确认已选
    */
-  onGeneralCourseChoice: function(e) {
+  onGeneralCourseChoice: function (e) {
     let pageArr = this.data.pageArr
     for (let item of pageArr) {
       item.lastPage = false
@@ -660,7 +798,7 @@ Page({
   /**
    * 清空
    */
-  onEmpty: function(e) {
+  onEmpty: function (e) {
     let type = e.currentTarget.dataset.type
     let that = this
     let storeList = that.data.storeList
@@ -706,23 +844,26 @@ Page({
   /**
    *  获取门店区域列表
    */
-  getStoreArea: function() {
+  getStoreArea: function () {
     let that = this
     ajax.post(api.getStoreAreaList, {}, ({
       data
     }) => {
       if (data.code == 200) {
         let list = data.obj.list
+        console.log(data.obj)
         let region = [{
           id: 0,
           name: '全城'
         }]
         region = region.concat(list[0].children)
-        let storeList = that.selectAllCity(list, 0)
+        let storeList = that.selectAllCity(list[0].children, 0)
         that.setData({
-          areaList: list,
-          region: region,
-          storeList: storeList
+          cities: list,
+          curCity: list[0],
+          areaList: region,
+          storeList: storeList,
+          priStoreList: storeList
         })
         that.getCourseCategoryList()
       }
@@ -732,7 +873,7 @@ Page({
   /**
    * 获取目的 类型 科目
    */
-  getCourseCategoryList: function() {
+  getCourseCategoryList: function () {
     let that = this
     ajax.post(api.getCourseCategoryList, {}, ({
       data
@@ -760,7 +901,7 @@ Page({
   /**
    * 获取筛选科目
    */
-  getCourseTeamCourse: function() {
+  getCourseTeamCourse: function () {
     let that = this
     let target_ids = that.data.target_ids
     let category_ids = that.data.category_ids
@@ -793,7 +934,7 @@ Page({
   /**
    * 课目 数组加 true false
    */
-  courseStatus: function(arr) {
+  courseStatus: function (arr) {
     for (let item of arr) {
       item.select = false
     }
@@ -803,7 +944,7 @@ Page({
   /**
    * 获取全部团课
    */
-  getCourseTeamListAll: function() {
+  getCourseTeamListAll: function () {
     let that = this
     let is_hide = that.data.is_hide
     let weekList = that.data.weekList
@@ -847,7 +988,7 @@ Page({
   /**
    * 预约人数百分比（剩余）
    */
-  countPercent: function(arr) {
+  countPercent: function (arr) {
     for (let item of arr) {
       item.percent = (parseInt(item.rest_stock)) / parseInt(item.total_stock) * 100
     }
@@ -857,7 +998,7 @@ Page({
   /**
    * 获取单日团课
    */
-  getCourseTeam: function() {
+  getCourseTeam: function () {
     let that = this
     let is_hide = that.data.is_hide
     let weekList = that.data.weekList
@@ -890,7 +1031,7 @@ Page({
     }) => {
       if (data.code == 200) {
         pageArr[weekIndex].page++
-          let list = data.obj.list
+        let list = data.obj.list
         for (let i in list) {
           for (let item of list[i]) {
             item.team = that.countPercent(item.team)
@@ -913,45 +1054,45 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {},
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {},
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     let that = this
     that.share = that.selectComponent("#share")
     that.share.showTips()
@@ -965,40 +1106,13 @@ Page({
   //私教
 
   /**
-   *  获取门店列表
-   */
-  getStoreAreaList: function() {
-    let that = this
-
-    ajax.post(api.getStoreAreaList, {}, ({
-      data
-    }) => {
-      if (data.code == 200) {
-        let list = data.obj.list
-        let region = [{
-          id: 0,
-          name: '全城'
-        }]
-        region = region.concat(list[0].children)
-        let storeList = that.selectAllCity(list, 0)
-        that.setData({
-          areaList: list,
-          region: region,
-          priStoreList: storeList
-        })
-        that.getCoursePrivateList()
-      }
-    })
-  },
-
-  /**
    * 获取私教列表
    */
-  getCoursePrivateList: function() {
+  getCoursePrivateList: function () {
     let that = this
     let store_ids = that.getScreenData(that.data.priStoreList)
     let course_ids = that.getScreenData(that.data.priCoverList)
-    console.log('store_ids'+that.data.priStoreList,that.data.priCoverList)
+    console.log('store_ids' + that.data.priStoreList, that.data.priCoverList)
     ajax.post(api.getCoursePrivateList, {
       'store_ids': store_ids,
       'course_ids': course_ids
@@ -1031,7 +1145,7 @@ Page({
   /**
    * 获取私教筛选条件
    */
-  getScreenData: function(arr) {
+  getScreenData: function (arr) {
     let that = this
     let isAll = false
     let arr_ids = []
@@ -1057,7 +1171,7 @@ Page({
   /**
    *  获取私教课科目列表
    */
-  getCoursePrivateCourseList: function() {
+  getCoursePrivateCourseList: function () {
     let that = this
     ajax.post(api.getCoursePrivateCourseList, {}, ({
       data
@@ -1076,6 +1190,7 @@ Page({
             select: false
           })
         }
+        
         that.setData({
           priCoverList: temp,
         })
@@ -1083,34 +1198,18 @@ Page({
     })
   },
 
-  //训练营
-  /**
-   *  获取区域列表
-   */
-  getCampStoreAreaList: function() {
-    let that = this
-    ajax.post(api.getStoreAreaList, {}, ({
-      data
-    }) => {
-      if (data.code == 200) {
-        let list = data.obj.list
-        that.setData({
-          areaList: list
-        })
-        that.getCourseCamp('first')
-      }
-    })
-  },
+  
   /**
    *  获取训练营列表
    */
-  getCourseCamp: function(type) {
+  getCourseCamp: function (type) {
     let that = this
     let areaList = that.data.areaList
-    let areaIndex = that.data.areaIndex
+    let areaIndex = that.data.campAreaIndex
     let area_ids = []
     let tags = that.data.tags
-    for (let item of areaList[areaIndex].children) {
+    console.log('camp',areaList[areaIndex],)
+    for (let item of areaList) {
       area_ids.push(item.id)
     }
 
@@ -1150,12 +1249,12 @@ Page({
   },
 
   /*
-  *拼课
-  */
- /**
+   *拼课
+   */
+  /**
    * 初始化数据
    */
-  getJointData: function() {
+  getJointData: function () {
     let that = this
     ajax.post(api.getSpellCoachSelectNew, {}, ({
       data
@@ -1173,7 +1272,7 @@ Page({
   },
 
   // 选定教练
-  choiceCoach: function(e) {
+  choiceCoach: function (e) {
     let index = e.currentTarget.dataset.index
     let coachList = this.data.coachList
     this.setData({
@@ -1195,34 +1294,34 @@ Page({
     }, ({
       data
     }) => {
-        if (data.code == 200) {
-          this.jointAnimation.translateY(-500).step();
-          console.log(data.obj.course)
-          that.setData({
-            coachCourseList: data.obj.course,
-            showLoad: false,
-            jointAnimation: this.jointAnimation.export(),
-            jointCover: true
-          })
-        }
-      })
+      if (data.code == 200) {
+        this.jointAnimation.translateY(-500).step();
+        console.log(data.obj.course)
+        that.setData({
+          coachCourseList: data.obj.course,
+          showLoad: false,
+          jointAnimation: this.jointAnimation.export(),
+          jointCover: true
+        })
+      }
+    })
 
   },
 
-    /**
+  /**
    * 选择日期
    */
-  bindDateChange: function(e) {
+  bindDateChange: function (e) {
     let date = e.detail.value
     date = date.replace(/\-/g, "/")
     this.setData({
       date: new Date(date).getTime() / 1000
     })
   },
-   /**
+  /**
    * 选择时间
    */
-  bindTimeChange: function(e) {
+  bindTimeChange: function (e) {
     this.setData({
       time: e.detail.value
     })
@@ -1230,16 +1329,16 @@ Page({
   /**
    * 选择门店
    */
-  bindPickerChange: function(e) {
+  bindPickerChange: function (e) {
     this.setData({
       storeIndex: e.detail.value
     })
   },
 
-    /**
+  /**
    * 第二天凌晨 日期
    */
-  formatDate: function(now) {
+  formatDate: function (now) {
     let date = new Date(now * 1000)
     let year = date.getFullYear()
     let month = date.getMonth() + 1

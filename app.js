@@ -18,6 +18,7 @@ App({
     fundebug: fundebug,
     minisession: '',
     openid: '',
+    cities: []
   },
   shoppingList: '', // 购物清单(下单)
   couponList: '', // 代金券(下单)
