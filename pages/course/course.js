@@ -23,7 +23,7 @@ Page({
     areaIndex: 0,
     storeNumber: 0, // 已选门店数量
     advList: [], // 轮播
-    storeList: [], // 店面
+    storeList: [], // 店面,
     storeIndex: 0,
     is_hide: false, //是否显示过期
     search_time: [], //时段
@@ -88,7 +88,10 @@ Page({
     curCity: {},
     priAreaIndex: 0,
     genAreaIndex: 0,
-    campAreaIndex: 1
+    campAreaIndex: 1,
+    priStoresSelected: [],
+    genStoresSelected: [],
+    priSelectedStoreCount: []
   },
 
   /***
@@ -145,7 +148,7 @@ Page({
             curCity: list.children[0],
             areaList: areas,
             curArea: 0,
-            storeList: this.selectAllCity(list[0].children, 1),
+            storeList: this.selectAllCity(list[0].children),
           })
         }
       }
@@ -170,7 +173,7 @@ Page({
           id: 0,
           name: '全城'
         },
-        storeList: this.selectAllCity(data.cities[index].children, index),
+        storeList: this.selectAllCity(data.cities[index].children),
       })
       switch (data.curTab) {
         case 'general_course':
@@ -577,49 +580,45 @@ Page({
   },
 
   /**
-   * 选择城市
+   * 选择私教地区
    */
-  choiceCity: function (e) {
+  choicePriArea: function (e) {
     let index = e.currentTarget.dataset.index
     let areaList = this.data.areaList
-    let region = [{
-      id: 0,
-      name: '全城'
-    }]
-    region = region.concat(areaList[index].children)
-    let storeList = this.selectAllCity(areaList, index)
+    let storeList = []
+    if (index == 0) {
+      storeList = this.selectAllCity(areaList)
+    } else {
+      storeList = this.arrAddStatus(areaList[index].store)
+    }
     this.setData({
-      areaIndex: index,
-      region: region,
-      storeList: storeList,
-      regionIndex: 0
+      priAreaIndex: index,
+      priStoreList: storeList
     })
   },
 
   /**
-   * 选择区域
+   * 团课选择区域
    */
-  choiceArea: function (e) {
+  choiceGenArea: function (e) {
     let index = e.currentTarget.dataset.index
-    let region = this.data.region
     let areaList = this.data.areaList
-    let areaIndex = this.data.areaIndex
     let storeList = []
-    if (region[index].id == 0) {
-      storeList = this.selectAllCity(areaList, areaIndex)
+    if (index == 0) {
+      storeList = this.selectAllCity(areaList)
     } else {
-      storeList = this.arrAddStatus(region[index].store)
+      storeList = this.arrAddStatus(areaList[index].store)
     }
     this.setData({
-      regionIndex: index,
+      genAreaIndex: index,
       storeList: storeList
     })
   },
 
   /**
-   * 选择门店
+   * 选择团课门店
    */
-  choiceStore: function (e) {
+  choiceGenStore: function (e) {
     let that = this
     let index = e.currentTarget.dataset.index
     let storeList = that.data.storeList
@@ -627,6 +626,20 @@ Page({
     that.setData({
       storeList: obj.arr,
       storeNumber: obj.number
+    })
+  },
+
+  /**
+   * 选择私教门店
+   */
+  choicePriStore: function (e) {
+    let that = this
+    let index = e.currentTarget.dataset.index
+    let storeList = that.data.priStoreList
+    let obj = that.choiceData(storeList, index)
+    that.setData({
+      priStoreList: storeList,
+      priSelectedStoreCount: obj.number
     })
   },
 
@@ -760,17 +773,17 @@ Page({
   /**
    * 选择全城
    */
-  selectAllCity: function (arr, index) {
+  selectAllCity: function (arr) {
     let storeList = [{
       id: 0,
       name: '全城',
       select: true
     }]
     let temp = []
-    console.log('selectAllCity--->', arr, index)
     for (let item of arr) {
-      temp = temp.concat(item.store)
+      if (item.store) temp = temp.concat(item.store) 
     }
+
     for (let item of temp) {
       item.select = false
     }
@@ -857,7 +870,7 @@ Page({
           name: '全城'
         }]
         region = region.concat(list[0].children)
-        let storeList = that.selectAllCity(list[0].children, 0)
+        let storeList = that.selectAllCity(list[0].children)
         that.setData({
           cities: list,
           curCity: list[0],

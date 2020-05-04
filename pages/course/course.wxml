@@ -223,13 +223,13 @@
 			<view class="box-left">
 				<scroll-view scroll-y class="scroll-view-box">
 					<view class="box-item item-left item-normal">地区</view>
-					<view class="box-item item-left {{regionIndex == index ? 'box-item-acitve' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choiceArea" data-index="{{index}}">{{item.name}}</view>
+					<view class="box-item item-left {{genAreaIndex == index ? 'box-item-acitve' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choiceGenArea" data-index="{{index}}">{{item.name}}</view>
 				</scroll-view>
 			</view>
 			<view class="box-right" wx:if="{{type == 'screen'}}">
 				<scroll-view scroll-y class="scroll-view-box">
 					<view class="box-item item-left item-normal">选择门店（可多选）</view>
-					<view class="box-item item-right {{item.select ? 'box-item-acitve' : ''}}" wx:for="{{storeList}}" wx:key='index' bindtap="choiceStore" data-index="{{index}}">{{item.name}}</view>
+					<view class="box-item item-right {{item.select ? 'box-item-acitve' : ''}}" wx:for="{{storeList}}" wx:key='index' bindtap="choiceGenStore" data-index="{{index}}">{{item.name}}</view>
 				</scroll-view>
 			</view>
 		</view>
@@ -277,7 +277,7 @@
 		<view class="select-box-title" wx:if="{{curTab == 'private_course'}}">
 			<text class="select-box-title-text {{type == 'screen'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="screen">地区</text>
 			<text class="select-box-title-text {{type == 'pri_course'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="pri_course">课程</text>
-			<text class="select-box-button-confirm" bindtap="onPrichoice">确定</text>
+			<text class="select-box-button-confirm" bindtap="getCoursePrivateList">确定</text>
 		</view>
 
 		<!-- 私教地区 -->
@@ -285,13 +285,13 @@
 			<view class="box-left" wx:if="{{type == 'screen'}}">
 				<scroll-view scroll-y class="scroll-view-box">
 					<view class="box-item item-left item-normal">区域</view>
-					<view class="box-item item-left {{areaIndex == index ? 'box-item-acitve' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choiceCity" data-index="{{index}}">{{item.name}}</view>
+					<view class="box-item item-left {{priAreaIndex == index ? 'box-item-acitve' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choicePriArea" data-index="{{index}}">{{item.name}}</view>
 				</scroll-view>
 			</view>
 			<view class="box-right" wx:if="{{type == 'screen'}}">
 				<scroll-view scroll-y class="scroll-view-box">
 					<view class="box-item item-right item-normal">门店</view>
-					<view class="box-item item-right {{regionIndex == index ? 'box-item-acitve' : ''}}" wx:for='{{priStoreList}}' wx:key='index' bindtap="choiceArea" data-index="{{index}}">{{item.name}}</view>
+					<view class="box-item item-right {{item.select ? 'box-item-acitve' : ''}}" wx:for='{{priStoreList}}' wx:key='index' bindtap="choicePriStore" data-index="{{index}}">{{item.name}}</view>
 				</scroll-view>
 			</view>
 
