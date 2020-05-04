@@ -308,20 +308,22 @@
 		<!--训练营筛选 -->
 		<view class="select-box-title" wx:if="{{curTab == 'camp'}}">
 			<text class="select-box-title-text {{type == 'screen'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="screen">城市</text>
-			<text class="select-box-title-text {{type == 'pri_course'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="tag">标签</text>
+			<text class="select-box-title-text {{type == 'tag'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="tag">标签</text>
 			<text class="select-box-button-confirm" bindtap="onPrichoice">确定</text>
 		</view>
 
+    <!-- 城市 -->
 		<view class="select-row" wx:if="{{curTab == 'camp'}}">
 			<view class="time-box" wx:if="{{type == 'screen' && curTab == 'camp'}}">
 				<scroll-view scroll-y class="scroll-view-box">
-					<view class="item-left box-item item-time {{searchTimeIndex == index ? 'box-item-acitve' : ''}}" wx:for="{{cities}}" wx:key='index' bindtap="choiceTime" data-index="{{index}}">{{item.name}}
+					<view class="item-left box-item item-time {{searchTimeIndex == index ? 'box-item-acitve' : ''}}" wx:for="{{cities}}" wx:key='index' bindtap="onChoiceCampCity" data-index="{{index}}">{{item.name}}
 					</view>
 				</scroll-view>
 			</view>
 
+      <!-- 标签 -->
 			<view class="select-row-box" wx:if="{{type == 'tag' && curTab == 'camp'}}">
-        <view class="select-row-item {{themeIndex == index ? 'selected-row-item' : ''}}" wx:for="{{campTagList}}" wx:key='index' bindtap="choiceTheme" data-index="{{index}}">{{item.name}}</view>
+        <view class="select-row-item {{themeIndex == index ? 'selected-row-item' : ''}}" wx:for="{{campTagList}}" wx:key='index' bindtap="onChoiceCampTag" data-index="{{index}}">{{item.name}}</view>
       </view>
 		</view>
 
