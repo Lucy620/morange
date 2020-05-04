@@ -3,6 +3,7 @@
   "usingComponents": {
     "number": "/pages/components/number/number",
     "kcalNumber": "/pages/components/kcalNumber/kcalNumber",
-    "loading": "/pages/components/loading/loading"
+    "loading": "/pages/components/loading/loading",
+    "navigationBar": "/pages/components/navigationBar/navigationBar"
   }
 }

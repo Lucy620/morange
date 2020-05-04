@@ -1100,6 +1100,7 @@ swiper {
 .select-coach-box {
   background-color: #262626;
   height: 100%;
+  width: 100%;
 }
 
 .coach-row {
@@ -1270,4 +1271,9 @@ swiper {
   height: 100%;
   line-height: 60rpx;
   color: #fff;
+}
+
+.course-coach-selected {
+  color: #131313;
+  background-image: linear-gradient(#ff9c00, #FFBA00);
 }

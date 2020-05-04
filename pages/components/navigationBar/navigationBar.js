@@ -10,6 +10,10 @@ Component({
     title: {
       type: String,
       value: ''
+    },
+    hasBackIcon: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -45,6 +49,9 @@ Component({
           });
         }
       });
+    },
+    back: function(){
+      wx.navigateBack({ changed: true })
     }
 
   }

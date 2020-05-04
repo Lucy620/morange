@@ -2,7 +2,17 @@
 <import src="./module/league.wxml" />
 <import src="./module/private_education.wxml" />
 <import src="./module/training_camp.wxml" />
+
+<navigationBar>
+	<view slot="btn-left" class="bar-city">
+		<image bindtap="onHideCities" class="img-cancel" mode="aspectFit" src="/assets/image/cancel.png"></image>
+	</view>
+
+	<view slot="title" class="bar-title">title</view>
+</navigationBar>
+
 <view class="wrapper" hidden="{{showLoad}}">
+
 
   <!--团课-->
   <template is="league" wx:if="{{courseData.data.course.type == 'team'}}" data="{{courseData,note,number,msg,showWeChat,time,min,start_at}}"></template>

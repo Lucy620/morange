@@ -308,20 +308,20 @@
 		<!--训练营筛选 -->
 		<view class="select-box-title" wx:if="{{curTab == 'camp'}}">
 			<text class="select-box-title-text {{type == 'screen'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="screen">城市</text>
-			<text class="select-box-title-text {{type == 'pri_course'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="tag">标签</text>
-			<text class="select-box-button-confirm" bindtap="onPrichoice">确定</text>
+			<text class="select-box-title-text {{type == 'tag'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="tag">标签</text>
+			<text class="select-box-button-confirm" bindtap="getCourseCamp">确定</text>
 		</view>
 
 		<view class="select-row" wx:if="{{curTab == 'camp'}}">
 			<view class="time-box" wx:if="{{type == 'screen' && curTab == 'camp'}}">
 				<scroll-view scroll-y class="scroll-view-box">
-					<view class="item-left box-item item-time {{searchTimeIndex == index ? 'box-item-acitve' : ''}}" wx:for="{{cities}}" wx:key='index' bindtap="choiceTime" data-index="{{index}}">{{item.name}}
+					<view class="item-left box-item item-time {{campCityIndex == index ? 'box-item-acitve' : ''}}" wx:for="{{cities}}" wx:key='index' bindtap="onCampCityChoice" data-index="{{index}}">{{item.name}}
 					</view>
 				</scroll-view>
 			</view>
 
 			<view class="select-row-box" wx:if="{{type == 'tag' && curTab == 'camp'}}">
-        <view class="select-row-item {{themeIndex == index ? 'selected-row-item' : ''}}" wx:for="{{campTagList}}" wx:key='index' bindtap="choiceTheme" data-index="{{index}}">{{item.name}}</view>
+        <view class="select-row-item {{item.select ? 'selected-row-item' : ''}}" wx:for="{{campTagList}}" wx:key='index' bindtap="onTagChoice" data-index="{{index}}">{{item.name}}</view>
       </view>
 		</view>
 
@@ -333,8 +333,8 @@
 	<view class="select-box" animation="{{jointAnimation}}">
 
 		<view class="select-box-title" wx:if="{{curTab == 'joint_course'}}">
-			<text class="select-box-button-cancel" bindtap="choice">取消</text>
-			<text class="select-box-button-confirm" bindtap="choice">确认</text>
+			<text class="select-box-button-cancel" bindtap="closeJointtAnimation">取消</text>
+			<text class="select-box-button-confirm" bindtap="toJointCouser">确认</text>
 			<view class="coach-row-item coach-row-item-selected">
 				<image src="{{coachList[coachIndex].headimgurl}}" mode="aspectFill" class="coach-img coach-img-selected"></image>
 				<view class="coach-name ">{{coachList[coachIndex].name}}</view>
@@ -349,7 +349,7 @@
 					<view class="coach-line"></view>
 				</view>
 				<view class="course-coach-box">
-					<view class="course-coach" wx:for="{{coachCourseList}}" wx:key='index'>{{item.name}}</view>
+					<view class="course-coach {{jointCourseIndex == index? 'course-coach-selected': ''}}" wx:for="{{coachCourseList}}" wx:key='index' data-index="{{index}}" bindtap="choiceJointCourse">{{item.name}}</view>
 				</view>
 
 				<view class="coach-title-box" style="margin-top:48rpx">
@@ -363,28 +363,28 @@
 					<view class="coach-time-box">
 						<view class="coach-time">
 							<view class="coach-time-row coach-time-date">
-								<picker mode="date" value="{{date}}" start="{{start}}" bindchange="bindDateChange">
+								<picker mode="date" value="{{jointDate}}" start="{{start}}" bindchange="bindDateChange">
 									<view class="picker">
-										{{tools.formatTime(date,'{y}年{m}月{d}日')}}
+										{{tools.formatTime(jointDate,'{y}年{m}月{d}日')}}
 									</view>
 								</picker>
 							</view>
 							<view class="coach-time-row">
-								<picker mode="time" value="{{time}}" bindchange="bindTimeChange">
+								<picker mode="time" value="{{jointTime}}" bindchange="bindTimeChange">
 									<view class="picker">
-										{{time}}
+										{{jointTime}}
 									</view>
 								</picker>
 							</view>
 						</view>
 						<view class="coach-store-box-selected">
-							<picker value="{{storeIndex}}" range="{{storeList}}" range-key="name" bindchange="bindPickerChange">
+							<picker value="{{jointStoreIndex}}" range="{{jointStoreList}}" range-key="name" bindchange="bindPickerChange">
 								<view class="coach-time-row">
-									<view class="picker" wx:if="{{storeIndex == -1}}">
+									<view class="picker" wx:if="{{jointStoreIndex == -1}}">
 										请选择门店
 									</view>
 									<view class="picker" wx:else>
-										{{storeList[storeIndex].name}}
+										{{jointStoreList[jointStoreIndex].name}}
 									</view>
 								</view>
 							</picker>

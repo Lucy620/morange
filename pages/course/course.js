@@ -83,15 +83,22 @@ Page({
     coachIndex: 0,
     coachCourseList: [],
     jointCover: false,
+    jointStoreList: [],
+    jointCourseList: [],
+    jointStoreIndex: -1,
+    jointCourseIndex: 0,
     time: '',
     cities: [],
     curCity: {},
     priAreaIndex: 0,
     genAreaIndex: 0,
-    campAreaIndex: 1,
+    campCityIndex: 0,
     priStoresSelected: [],
     genStoresSelected: [],
-    priSelectedStoreCount: []
+    priSelectedStoreCount: [],
+    tagSelectedCount: 0,
+    jointDate: '',
+    jointTime: ''
   },
 
   /***
@@ -1217,12 +1224,11 @@ Page({
    */
   getCourseCamp: function (type) {
     let that = this
-    let areaList = that.data.areaList
-    let areaIndex = that.data.campAreaIndex
+    let cityList = that.data.cities
+    let cityIndex = that.data.campCityIndex
     let area_ids = []
     let tags = that.data.tags
-    console.log('camp',areaList[areaIndex],)
-    for (let item of areaList) {
+    for (let item of cityList[cityIndex].children) {
       area_ids.push(item.id)
     }
 
@@ -1261,11 +1267,71 @@ Page({
     })
   },
 
+  /**
+   * 选择标签
+   */
+  onTagChoice: function(e) {
+    let index = e.currentTarget.dataset.index
+    let tagList = this.data.campTagList
+    let tagNumber = 0
+
+    //选择其他标签
+    for (let i in tagList) {
+      if (i == index && tagList[i].id != 0) {
+        tagList[i].select = !tagList[i].select
+      }
+      if (tagList[i].id == 0) {
+        tagList[i].select = false
+      }
+    }
+
+    // 取消所有选择全部标签
+    if (this.cancelAll(tagList)) {
+      for (let item of tagList) {
+        if (item.id == 0) {
+          item.select = true
+        } else {
+          item.select = false
+        }
+      }
+    }
+
+    // 选择全部标签
+    if (tagList[index].id == 0) {
+      for (let item of tagList) {
+        if (item.id == 0) {
+          item.select = true
+        } else {
+          item.select = false
+        }
+      }
+    }
+
+    // 已选数量
+    for (let item of tagList) {
+      if (item.select && item.id != 0) {
+        tagNumber++
+      }
+    }
+
+    this.setData({
+      campTagList: tagList,
+      tagSelectedCount: tagNumber
+    })
+  },
+
+  onCampCityChoice: function(e) {
+    let index = e.currentTarget.dataset.index
+    this.setData({
+      campCityIndex: index
+    })
+  },
+
   /*
    *拼课
    */
   /**
-   * 初始化数据
+   * 初始化拼课数据
    */
   getJointData: function () {
     let that = this
@@ -1280,9 +1346,8 @@ Page({
         })
       }
     }, 'auth', true)
-
-
   },
+
 
   // 选定教练
   choiceCoach: function (e) {
@@ -1321,6 +1386,16 @@ Page({
 
   },
 
+   /**
+   * 选择拼课课程
+   */
+  choiceJointCourse: function(e) {
+    let index = e.currentTarget.dataset.index
+    this.setData({
+      jointCourseIndex: index
+    })
+  },
+
   /**
    * 选择日期
    */
@@ -1328,7 +1403,7 @@ Page({
     let date = e.detail.value
     date = date.replace(/\-/g, "/")
     this.setData({
-      date: new Date(date).getTime() / 1000
+      jointDate: new Date(date).getTime() / 1000
     })
   },
   /**
@@ -1336,7 +1411,7 @@ Page({
    */
   bindTimeChange: function (e) {
     this.setData({
-      time: e.detail.value
+      jointTime: e.detail.value
     })
   },
   /**
@@ -1344,8 +1419,75 @@ Page({
    */
   bindPickerChange: function (e) {
     this.setData({
-      storeIndex: e.detail.value
+      jointStoreIndex: e.detail.value
     })
+  },
+
+   /**
+   * 确认创建
+   */
+  toJointCouser: function() {
+    let that = this
+    let storeList = that.data.jointStoreList
+    let courseList = that.data.coachCourseList
+    let coachList = that.data.coachList
+    let coachIndex = that.data.coachIndex
+    let storeIndex = that.data.jointStoreIndex
+    let courseIndex = that.data.jointCourseIndex
+    let date = that.data.jointDate
+    let time = that.data.jointTime
+    let tempData = new Date(date)
+    let timeStamp = that.transformTime(tempData) + ' ' + time
+    if (storeIndex == -1) {
+      wx.showToast({
+        title: '请选择门店',
+        icon: 'none'
+      })
+      return
+    }
+    let course_json = {
+      'store_id': storeList[storeIndex].id,
+      'course_id': courseList[courseIndex].id,
+      'coach_id': coachList[coachIndex].user_id,
+      'start_at': new Date(timeStamp).getTime() / 1000
+    }
+    ajax.post(api.createSpellCourse, {
+      'course_json': course_json
+    }, ({
+      data
+    }) => {
+      if (data.code == 200) {
+        let obj = data.obj.course_team
+        let cart = {
+          id: obj.id,
+          type: 'team',
+          amount: 1,
+          order_type: 'buy'
+        }
+        app.shoppingList = cart
+        wx.navigateTo({
+          url: '/pages/confirm_order/confirm_order?type=' + 'buy'
+        })
+      } else {
+        wx.showToast({
+          title: data.msg,
+          icon: 'none'
+        })
+      }
+    })
+  },
+
+   /**
+   * 日期转换
+   */
+  transformTime: function(now) {
+    let date = new Date(now * 1000)
+    let year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+    month = (month < 10 ? "0" + month : month)
+    let mydate = (year.toString() + '/' + month.toString() + '/' + day.toString())
+    return mydate
   },
 
   /**
@@ -1364,9 +1506,9 @@ Page({
     let mydate = (year.toString() + '/' + month.toString() + '/' + day.toString())
     let time = (hour.toString() + ':' + minute.toString())
     let start = (year.toString() + '-' + month.toString() + '-' + day.toString())
-    this.setData({
-      time: time,
-      date: new Date(mydate).getTime() / 1000,
+    this.setData({  
+      jointTime: time,
+      jointDate: new Date(mydate).getTime() / 1000,
       start: start,
     })
   },

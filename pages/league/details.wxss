@@ -207,3 +207,7 @@ video{
   color: #a5a5a5;
   background: #818181;
 }
+
+.weui-navigation-bar__placeholder {
+  background-color: transparent;
+}

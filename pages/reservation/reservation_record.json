@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "预约记录",
-  "usingComponents": {}
+  "usingComponents": {
+    "navigationBar": "/pages/components/navigationBar/navigationBar"
+  }
 }

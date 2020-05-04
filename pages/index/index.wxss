@@ -2,6 +2,14 @@
 
 /***轮播**/
 
+.wrapper-box {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%
+}
+
 .swiper-box {
   height: 200rpx;
   background: #3d3d3d;
@@ -52,6 +60,12 @@ swiper {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.scroll-box {
+  height: 100%;
+  display: flex;
+  padding-bottom: 150rpx;
 }
 
 .store {
@@ -245,3 +259,5 @@ swiper {
   font-weight: bold;
   background-image: linear-gradient(#ff9c00, #FFBA00);
 }
+
+
