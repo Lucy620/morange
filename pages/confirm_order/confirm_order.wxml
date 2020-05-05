@@ -4,8 +4,11 @@
 <import src="./module/private.wxml" />
 <import src="./module/training.wxml" />
 
-<view class="wrapper" hidden="{{showLoad}}">
+<navigationBar hasBackIcon>
+	<view slot="title" class="bar-title">确认订单信息</view>
+</navigationBar>
 
+<view class="wrapper" hidden="{{showLoad}}">
   <!--团课-->
   <template is="league" wx:if="{{course.type == 'team'}}" data="{{courseDate,course,user,type,coupon_list,activity,number,dataId,reduce_cost,pay_price,coupon_type,showTips,coupon_list,user_coupon_id,discount_price,queue_order,teamNumber,spellNumber}}"></template>
 

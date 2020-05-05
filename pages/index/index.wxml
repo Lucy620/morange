@@ -3,10 +3,10 @@
 <loading wx:if="{{showTab}}"></loading>
 
 <navigationBar>
-	<view slot="title" class="bar-title">MORANGE</view>
+  <view slot="title" class="bar-title">MORANGE</view>
 </navigationBar>
 
-<view class="wrapper" hidden="{{showLoad}}">
+<view class="wrapper-box" hidden="{{showLoad}}">
   <!--tab栏-->
   <view class="tab-box">
     <view class="row-box" bindtap="openAnimation" data-type="screen">
@@ -20,19 +20,25 @@
   </view>
 
   <!--门店-->
-  <view class="store-box" wx:for="{{storeList}}" wx:key='index'>
-    <image src="{{item.main_img}}?imageView2/1/w/730/h/300" mode="widthFix" class="store" bindtap='jumpPage' data-url='pages/store/store_details?store_id={{item.id}}'></image>
-    <view class="store-title">
-      <view class="store-name">{{item.name}}</view>
-      <view class="store-address">{{item.address}}</view>
+  <scroll-view scroll-y class="scroll-box">
+    <view class="store-box" wx:for="{{storeList}}" wx:key='index'>
+      <image src="{{item.main_img}}?imageView2/1/w/730/h/300" mode="widthFix" class="store" bindtap='jumpPage' data-url='pages/store/store_details?store_id={{item.id}}'></image>
+      <view class="store-title">
+      <view class="icon-box">
+          <image src="/assets/image/phone.png" mode="widthFix" class="phone" bindtap="onPhone" data-tel="{{item.mobile}}"></image>
+          <image src="{{!item.is_favorite ? '/assets/image/heart.png':'/assets/image/heart.png'}}" mode="widthFix" class="heart" bindtap="collection" data-status="{{item.is_favorite}}" data-store_id="{{item.id}}"></image>
+        </view>
+        <view class="store-name">{{item.name}}</view>
+        <view class="store-address">{{item.address}}</view>
+        
+      </view>
+
     </view>
-    <image src="{{!item.is_favorite ? 'https://boringcdn.nanningboring.com/molicheng/heart.png':'https://boringcdn.nanningboring.com/molicheng/s-heart.png'}}" mode="widthFix" class="heart" bindtap="collection" data-status="{{item.is_favorite}}" data-store_id="{{item.id}}"></image>
-    <image src="https://boringcdn.nanningboring.com/molic/phone.png" mode="widthFix" class="phone" bindtap="onPhone" data-tel="{{item.mobile}}"></image>
-  </view>
-  <view class="store-box">
-    <image src="https://boringcdn.nanningboring.com/molicheng/logo-bg.png" mode="widthFix" class="store"></image>
-    <view class="tip-title">敬请期待…</view>
-  </view>
+    <view class="store-box">
+      <image src="https://boringcdn.nanningboring.com/molicheng/logo-bg.png" mode="widthFix" class="store"></image>
+      <view class="tip-title">敬请期待…</view>
+    </view>
+  </scroll-view>
 
   <!--筛选门店 门店主题-->
   <view class="select-screen" wx:if="{{cover}}">
@@ -46,7 +52,7 @@
       </view>
       <!--门店地区-->
       <view class="select-row" wx:if="{{type == 'screen'}}">
-        <view class="box-left" >
+        <view class="box-left">
           <scroll-view scroll-y class="scroll-view-box">
             <view class="area-item text-white">城市</view>
             <view class="area-item {{areaIndex == index ? 'select-area-item' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choiceCity" data-index="{{index}}">{{item.name}}</view>

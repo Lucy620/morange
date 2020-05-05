@@ -18,7 +18,9 @@ App({
     fundebug: fundebug,
     minisession: '',
     openid: '',
-    cities: []
+    cities: [],
+    systeminfo: {}, // 系统信息
+    headerBtnPosi: {} // 胶囊按钮位置信息
   },
   shoppingList: '', // 购物清单(下单)
   couponList: '', // 代金券(下单)
@@ -33,6 +35,13 @@ App({
    * 小程序初始化完成时（全局只触发一次）
    */
   onLaunch: function(options) {
+    wx.getSystemInfo({
+      success: (res) => {
+        this.globalData.systeminfo = res
+      },
+    })
+    // 获得胶囊按钮位置信息
+    this.globalData.headerBtnPosi = wx.getMenuButtonBoundingClientRect()
     wx.hideTabBar({})
     // 检测新版本
     const updateManager = wx.getUpdateManager()

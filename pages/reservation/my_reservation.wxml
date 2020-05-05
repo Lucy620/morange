@@ -2,6 +2,9 @@
 
 
 <loading wx:if="{{showTab}}"></loading>
+<navigationBar>
+	<view slot="title" class="bar-title">我的预约</view>
+</navigationBar>
 
 <view class="wrapper" hidden="{{showLoad}}">
 

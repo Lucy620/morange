@@ -1,8 +1,8 @@
 <!--pages/private_education/confirm_order.wxml-->
 
 
-<view class="wrapper" hidden="{{showLoad}}">
 
+<view class="wrapper" hidden="{{showLoad}}">
   <view class="box">
     <image src="https://boringcdn.nanningboring.com/molicheng/bg-icon.png" mode="widthFix" class="bg-icon"></image>
     <view class="list-text">

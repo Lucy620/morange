@@ -1,5 +1,9 @@
 <!--pages/my_ reservation/reservation_record.wxml-->
 
+<navigationBar hasBackIcon>
+	<view slot="title" class="bar-title">预约记录</view>
+</navigationBar>
+
 <view class="wrapper" hidden="{{showLoad}}">
 
   <!--记录存在-->
