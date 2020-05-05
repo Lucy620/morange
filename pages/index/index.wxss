@@ -77,17 +77,21 @@ swiper {
   width: 100%;
   color: #fff;
   background-color: #292929;
-  padding: 12rpx 12rpx;
   position: relative
 }
 
 .store-name {
   font-size: 26rpx;
+  margin-top: 12rpx;
+  margin-left: 12rpx;
 }
 
 .store-address {
   font-size: 20rpx;
   line-height: 32rpx;
+  margin-bottom: 12rpx;
+  margin-left: 12rpx;
+
 }
 
 .heart {
