@@ -998,7 +998,6 @@ Page({
           nowtime: Math.round(new Date().getTime() / 1000)
         })
         app.showTab = false
-        wx.showTabBar({})
       }
     }, 'noauth')
   },
@@ -1072,12 +1071,21 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {},
+  onReady: function () {
+    
+  },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () {
+    if (typeof this.getTabBar === 'function' &&
+        this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 1
+        })
+      }
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

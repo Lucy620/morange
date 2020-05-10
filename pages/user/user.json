@@ -1,7 +1,8 @@
 {
   "navigationBarTitleText": "魔橙卡",
   "usingComponents": {
-    "loading": "/pages/components/loading/loading"
+    "loading": "/pages/components/loading/loading",
+    "navigationBar": "/pages/components/navigationBar/navigationBar"
   },
   "navigationStyle":"custom"
 }

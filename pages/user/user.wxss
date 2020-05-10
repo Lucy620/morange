@@ -118,6 +118,9 @@ page {
   height: 456rpx;
   background: url(https://boringcdn.nanningboring.com/molicheng/head-bg.png);
   background-size: 100%;
+  display: flex;
+  padding-top: 24rpx;
+  justify-content: center;
 }
 
 .box {
@@ -126,9 +129,7 @@ page {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 13.3rpx;
   border: solid 2px rgba(255, 255, 255, 0.17);
-  position: absolute;
-  top: 25rpx;
-  left: 36rpx;
+  position: relative;
 }
 
 .tips-text {

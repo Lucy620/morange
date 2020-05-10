@@ -1,6 +1,5 @@
 <!--pages/league/list.wxml-->
 
-
 <loading wx:if="{{showTab}}"></loading>
 
 <navigationBar>

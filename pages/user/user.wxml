@@ -3,6 +3,10 @@
 
 <loading wx:if="{{showTab}}"></loading>
 
+<navigationBar>
+	<view slot="title" class="bar-title">魔橙卡</view>
+</navigationBar>
+
 <view class="wrapper" hidden="{{showLoad}}">
 
 	<!--已开通-->

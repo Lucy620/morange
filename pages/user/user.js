@@ -190,7 +190,6 @@ Page({
           showTab: false
         })
         app.showTab = false
-        wx.showTabBar({})
       }
     }, 'noauth')
   },
@@ -215,6 +214,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if (typeof this.getTabBar === 'function' &&
+        this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 3
+        })
+      }
     var that = this
     that.getData()
     var authUser = false

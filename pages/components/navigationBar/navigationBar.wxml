@@ -10,7 +10,7 @@
 
 
             <view class="navbar-icon" wx:if="{{hasBack}}" style="top:{{navbarBtn.top + statusBarHeight}}px;left:{{navbarBtn.right}}px;height:{{navbarBtn.height}}px;">
-              <image bindtap="back" class="floatL" src="/assets/image/back.png"></image>
+              <image mode="aspectFit" bindtap="back" class="floatL" src="/assets/image/back.png"></image>
               <view class="floatL" style="border-color:{{navbarData.borderColor ? navbarData.borderColor : 'rgba(0,0,0,0.3)'}}"></view>
               <image bindtap="goHome" src="/assets/image/home.png"></image>
             </view>

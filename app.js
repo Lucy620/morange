@@ -20,7 +20,8 @@ App({
     openid: '',
     cities: [],
     systeminfo: {}, // 系统信息
-    headerBtnPosi: {} // 胶囊按钮位置信息
+    headerBtnPosi: {}, // 胶囊按钮位置信息
+    tabIndex: 1
   },
   shoppingList: '', // 购物清单(下单)
   couponList: '', // 代金券(下单)
@@ -42,7 +43,7 @@ App({
     })
     // 获得胶囊按钮位置信息
     this.globalData.headerBtnPosi = wx.getMenuButtonBoundingClientRect()
-    wx.hideTabBar({})
+
     // 检测新版本
     const updateManager = wx.getUpdateManager()
     updateManager.onUpdateReady(function() {
