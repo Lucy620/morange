@@ -1,9 +1,10 @@
 <!--pages/training_camp/details.wxml-->
 
 <import src="../../wxParse/wxParse.wxml" />
+
+<navigationBar hasBack background="transparent"></navigationBar>
+
 <view class="wrapper" hidden="{{showLoad}}">
-
-
   <!--轮播-->
   <view class="swiper-box" id='posterHeight'>
     <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000" wx:if="{{show_type == 'slide' || show_type == '' }}">

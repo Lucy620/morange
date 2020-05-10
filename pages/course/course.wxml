@@ -350,7 +350,7 @@
 					<view class="coach-line"></view>
 				</view>
 				<view class="course-coach-box">
-					<view class="course-coach {{jointCourseIndex == index? 'course-coach-selected': ''}}" wx:for="{{coachCourseList}}" wx:key='index' data-index="{{index}}" bindtap="choiceJointCourse">{{item.name}}</view>
+					<text class="course-coach {{jointCourseIndex == index? 'course-coach-selected': ''}}" wx:for="{{coachCourseList}}" wx:key='index' data-index="{{index}}" bindtap="choiceJointCourse">{{item.name}}</text>
 				</view>
 
 				<view class="coach-title-box" style="margin-top:48rpx">

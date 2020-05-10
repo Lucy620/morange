@@ -1,6 +1,9 @@
 <!--pages/private_education/course.wxml-->
 
 <import src="../../wxParse/wxParse.wxml" />
+
+<navigationBar hasBack background="transparent"></navigationBar>
+
 <view class="wrapper" hidden="{{showLoad}}">
 
   <!--轮播-->

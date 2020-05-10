@@ -1,6 +1,6 @@
 <view class="header">
   <!-- 官方自定义导航栏抽取出来的模块 -->
-  <view class="navigation">
+  <view class="navigation" style="position:{{hasBack? 'absolute': 'relative'}}">
     <view class="weui-navigation-bar {{extClass}}" style="background: {{background}};">
       <view class="weui-navigation-bar__placeholder {{ios ? 'ios' : 'android'}}" style="padding-top: {{statusBarHeight}}px;visibility: hidden;position: {{hasBackIcon? absolute: 'relative'}};background: {{background}};"></view>
       <view class="weui-navigation-bar__inner {{ios ? 'ios' : 'android'}}" style="padding-top: {{statusBarHeight}}px; color: {{color}};background: {{background}};{{displayStyle}};{{innerPaddingRight}};{{innerWidth}};">

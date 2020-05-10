@@ -1201,6 +1201,10 @@ swiper {
   margin:0 1vw;
   margin-top: 64rpx;
   color: #AAAAAA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap
 }
 
 .coach-title-box {
