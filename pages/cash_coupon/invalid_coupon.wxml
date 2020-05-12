@@ -1,5 +1,9 @@
 <!--pages/cash_coupon/invalid_.wxml-->
 
+<navigationBar hasBack background="{{showTitle? '#000': 'transparent'}}">
+ <view slot="title"  class="bar-title">代金券</view>
+</navigationBar>
+
 <view class="wrapper" hidden="{{showLoad}}">
 
   <view class="coupon-row" wx:for="{{list}}" wx:key='index'>

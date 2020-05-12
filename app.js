@@ -21,7 +21,6 @@ App({
     cities: [],
     systeminfo: {}, // 系统信息
     headerBtnPosi: {}, // 胶囊按钮位置信息
-    tabIndex: 1
   },
   shoppingList: '', // 购物清单(下单)
   couponList: '', // 代金券(下单)

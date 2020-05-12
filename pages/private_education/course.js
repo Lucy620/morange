@@ -20,7 +20,8 @@ Page({
     list: '',
     show_type: '',
     videoUrl: '',
-    isShare: false
+    isShare: false,
+    showTitle: false
   },
 
 
@@ -173,6 +174,21 @@ Page({
   onReachBottom: function() {
 
   },
+
+  /**
+   * 页面滚动事件的处理函数
+   */
+  onPageScroll: function(e) {
+    console.log('scroll',e)
+    const showTitle = this.data.showTitle
+    let value = e.scrollTop
+    if(value > 138 && !showTitle){
+        this.setData({showTitle: true})
+    }else if(value < 138 && showTitle){
+      this.setData({showTitle: false})
+    }
+  },
+
 
   /**
    * 用户点击右上角分享

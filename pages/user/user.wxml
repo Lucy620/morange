@@ -3,7 +3,7 @@
 
 <loading wx:if="{{showTab}}"></loading>
 
-<navigationBar>
+<navigationBar background="{{showTitle? '#000': 'transparent'}}" style="position:absolute">
 	<view slot="title" class="bar-title">魔橙卡</view>
 </navigationBar>
 

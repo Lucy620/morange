@@ -170,11 +170,6 @@ swiper {
   border-bottom: 2rpx transparent solid;
 }
 
-.screen-title-select {
-  color: #ffae00;
-  border-bottom: 2rpx #ffae00 solid;
-}
-
 
 .area-box {
   top: 0;

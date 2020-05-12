@@ -1,7 +1,9 @@
 <!--pages/league/details.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
 
-<navigationBar hasBack background="transparent"></navigationBar>
+<navigationBar hasBack background="{{showTitle? '#000': 'transparent'}}">
+ <view slot="title" wx:if="{{showTitle}}" class="bar-title">{{list.coach.name}}</view>
+</navigationBar>
 
 <view class="wrapper" hidden="{{showLoad}}">
   <!--轮播-->

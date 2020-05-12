@@ -1,6 +1,6 @@
 <!--pages/my_ reservation/reservation_record.wxml-->
 
-<navigationBar hasBackIcon>
+<navigationBar hasBack>
 	<view slot="title" class="bar-title">预约记录</view>
 </navigationBar>
 

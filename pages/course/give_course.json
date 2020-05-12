@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "我的赠送",
-  "usingComponents": {}
+  "usingComponents": {
+    "navigationBar": "/pages/components/navigationBar/navigationBar"
+  }
 }

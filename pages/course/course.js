@@ -4,8 +4,6 @@ import {
   config,
   api,
   ajax,
-  util,
-  wxPromise
 } from '../../utils/myapp.js'
 Page({
 
@@ -34,6 +32,7 @@ Page({
     course: [], // 筛选的课程
     target_ids: [], // 选择目的ID
     category_ids: [], // 选择类型ID
+    showBanners: true, //控制banner显隐
     search_time: '全部时段',
     weekText: {
       '0': '今天',
@@ -449,7 +448,7 @@ Page({
    */
   openBanner: function () {
     let that = this
-    that.bannerAnimation.translateY(0).step();
+    that.bannerAnimation.translateY(0).step({duration: 500});
     that.setData({
       bannerAnimation: that.bannerAnimation.export()
     })
@@ -460,7 +459,7 @@ Page({
    */
   closeBanner: function () {
     let that = this
-    that.bannerAnimation.translateY(-74).step();
+    that.bannerAnimation.translateY(-74).step({duration: 500});
     that.setData({
       bannerAnimation: that.bannerAnimation.export()
     })

@@ -33,7 +33,8 @@ Page({
       'privilege_tips': '满员课程，魔橙卡预支付等候，自动补排空位，若未排上自动退款',
     }],
     showPrivilege: false, // 特权
-    isShow: false
+    isShow: false,
+    showTitle: false
   },
 
   /**
@@ -254,6 +255,19 @@ Page({
    */
   onPullDownRefresh: function () {
 
+  },
+
+   /**
+   * 页面滚动事件的处理函数
+   */
+  onPageScroll: function(e) {
+    const showTitle = this.data.showTitle
+    let value = e.scrollTop
+    if(value > 138 && !showTitle){
+        this.setData({showTitle: true})
+    }else if(value < 138 && showTitle){
+      this.setData({showTitle: false})
+    }
   },
 
   /**

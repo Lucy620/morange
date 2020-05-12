@@ -4,6 +4,8 @@ page {
   background: #262626;
 }
 
+
+
 /**已开通 头部**/
 
 .open-head-box {
@@ -18,9 +20,7 @@ page {
   background: rgba(0, 0, 0, 0.4);
   border-radius: 13.3rpx;
   border: solid 1.3rpx rgba(255, 236, 128, 0.7);
-  position: absolute;
-  top: 25rpx;
-  left: 36rpx;
+  margin: auto;
 }
 
 .user-box {

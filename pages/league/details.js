@@ -22,6 +22,7 @@ Page({
     queue_order: 0,
     show_type: '',
     videoUrl: '',
+    showTitle: false
   },
 
   /**
@@ -207,6 +208,19 @@ Page({
    */
   onReachBottom: function() {
 
+  },
+
+  /**
+   * 页面滚动事件的处理函数
+   */
+  onPageScroll: function(e) {
+    const showTitle = this.data.showTitle
+    let value = e.scrollTop
+    if(value > 138 && !showTitle){
+        this.setData({showTitle: true})
+    }else if(value < 138 && showTitle){
+      this.setData({showTitle: false})
+    }
   },
 
   /**

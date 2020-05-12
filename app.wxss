@@ -90,22 +90,24 @@ image{
 }
 
 .screen-title-select {
-  color: #ffae00;
-  border-bottom: 2rpx #ffae00 solid;
+  color: #FF9C00;
+  border-bottom: 2rpx #FF9C00 solid;
 }
 
 .select-row {
   z-index: 3;
-  display: flex;
   text-align: center;
-  flex: 1
+  flex: 1;
+  background-color: #262626;
+  height: 100%;
+  display: flex;
 }
 
 .box-left {
   width: 40vw;
   height: 100%;
   text-align: center;
-  background-color: #262626;
+  
   border-right: 4rpx #343434 solid;
 }
 
@@ -121,6 +123,7 @@ image{
   background-color: #515151;
   box-shadow:0px 6px 8px 0px rgba(0, 0, 0, 0.5);
 }
+
 
 .item-left{
   margin-left: 24rpx;
@@ -154,6 +157,13 @@ image{
   margin-top: 4vw;
 }
 
+.item-normal {
+  background: transparent;
+  margin: 0;
+  color: #fff;
+  box-shadow: none;
+}
+
 .select-box-button-cancel{
   position: absolute;
   left: 4vw;
@@ -175,7 +185,7 @@ image{
   width: 28vw;
   line-height: 52.7rpx;
   color: #696969;
-  border-radius: 12rpx;
+  border-radius: 34rpx;
   height: 68rpx;
   display: inline-flex;
   align-items: center;
@@ -208,4 +218,24 @@ image{
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='24' viewBox='0 0 12 24'%3E  %3Cpath fill-opacity='.9' fill-rule='evenodd' d='M10 19.438L8.955 20.5l-7.666-7.79a1.02 1.02 0 0 1 0-1.42L8.955 3.5 10 4.563 2.682 12 10 19.438z'/%3E%3C/svg%3E");
   background-position: 50% 50%;
   background-size: cover
+}
+
+.btn-active {
+  width: 102rpx;
+  height: 58rpx;
+  text-align: center;
+  line-height: 58rpx;
+  border-radius: 29rpx;
+  font-size: 27rpx;
+  color: #000;
+  background:linear-gradient(0deg,rgba(255,135,28,1),rgba(255,167,14,1));
+  box-shadow:0px 6px 8px 0px rgba(0, 0, 0, 0.5);
+  background-size: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-default {
+  background: #515151;
+  color: #AAAAAA;
 }

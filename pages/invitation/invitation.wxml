@@ -1,4 +1,9 @@
 <!--pages/Invitation/Invitation.wxml-->
+
+<navigationBar hasBack background="{{showTitle? '#000': 'transparent'}}">
+ 
+</navigationBar>
+
 <view class="wrapper" hidden="{{showLoad}}">
 
   <!--邀请海报-->

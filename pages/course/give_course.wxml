@@ -1,7 +1,10 @@
 <!--pages/course/give_course.wxml-->
 
-<view class="wrapper" hidden="{{showLoad}}">
+<navigationBar hasBack background="{{showTitle? '#000': 'transparent'}}">
+ <view slot="title"  class="bar-title">赠课记录</view>
+</navigationBar>
 
+<view class="wrapper" style="margin-top:68px" hidden="{{showLoad}}">
 
   <!--时间选择-->
   <view class="date-box">

@@ -46,22 +46,22 @@
     <!--门店筛选-->
     <view class="select-box" animation="{{animation}}">
       <view class="select-box-title">
-        <text class="screen-title {{type == 'screen'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="screen">地区</text>
-        <text class="screen-title {{type == 'theme'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="theme">主题</text>
-        <text class="button-confirm" bindtap="choice">确定</text>
+        <text class="select-box-title-text {{type == 'screen'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="screen">地区</text>
+        <text class="select-box-title-text {{type == 'theme'? 'screen-title-select': ''}}" bindtap="openAnimation" data-type="theme">主题</text>
+        <text class="select-box-button-confirm" bindtap="choice">确定</text>
       </view>
       <!--门店地区-->
       <view class="select-row" wx:if="{{type == 'screen'}}">
         <view class="box-left">
           <scroll-view scroll-y class="scroll-view-box">
-            <view class="area-item text-white">城市</view>
-            <view class="area-item {{areaIndex == index ? 'select-area-item' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choiceCity" data-index="{{index}}">{{item.name}}</view>
+            <view class="box-item item-left item-normal">城市</view>
+            <view class="box-item item-left {{areaIndex == index ? 'box-item-acitve' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choiceCity" data-index="{{index}}">{{item.name}}</view>
           </scroll-view>
         </view>
         <view class="box-right">
           <scroll-view scroll-y class="scroll-view-box">
-            <view class="area-item text-white">选择区域</view>
-            <view class="area-item {{regionIndex == index ? 'select-area-item' : ''}}" wx:for='{{region}}' wx:key='index' bindtap="choiceArea" data-index="{{index}}">{{item.name}}</view>
+            <view class="box-item item-right item-normal">选择区域</view>
+            <view class="box-item item-right {{regionIndex == index ? 'box-item-acitve' : ''}}" wx:for='{{region}}' wx:key='index' bindtap="choiceArea" data-index="{{index}}">{{item.name}}</view>
           </scroll-view>
         </view>
       </view>

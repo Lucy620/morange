@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "邀请有礼",
   "usingComponents": {
-    "number": "/pages/components/number/number"
+    "number": "/pages/components/number/number",
+    "navigationBar": "/pages/components/navigationBar/navigationBar"
   }
 }

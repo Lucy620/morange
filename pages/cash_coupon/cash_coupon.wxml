@@ -1,6 +1,10 @@
 <!--pages/cash_coupon/cash_coupon.wxml-->
 
-<view class="wrapper" hidden="{{showLoad}}">
+<navigationBar hasBack background="{{showTitle? '#000': 'transparent'}}">
+ <view slot="title"  class="bar-title">代金券</view>
+</navigationBar>
+
+<view class="wrapper" style="margin-top:64px" hidden="{{showLoad}}">
 
   <!--搜索-->
   <view class="search-wrapper">

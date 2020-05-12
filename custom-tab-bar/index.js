@@ -38,7 +38,6 @@ Component({
       const url = data.path
       const index = data.index
       wx.switchTab({url})
-      app.globalData.tabIndex = index
       this.setData({
         selected: index
       })
