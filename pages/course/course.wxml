@@ -11,6 +11,8 @@
 	<view slot="title" class="bar-title">{{showCities? '选择城市': 'MORANGE'}}</view>
 </navigationBar>
 
+<view  class="tip">双击这里，刷新课表</view>
+
 <view wx:if="{{showCities}}" class="city-modal">
 	<view class="city-select">
 		<view class="selected">
@@ -77,7 +79,7 @@
 			<swiper class="list-swiper-box" duration="{{200}}" current="{{weekIndex}}" bindchange='binSwiper'>
 				<block wx:for="{{courseList}}" wx:key='index'>
 					<swiper-item>
-						<view class="scroll-box">
+						<view class="scroll-box" bindtouchmove="onListTouch">
 							<block wx:for="{{item}}" wx:key='index' wx:for-item="course">
 								<view class="store-row">
 									<view style="display:flex">

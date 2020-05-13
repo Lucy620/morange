@@ -7,6 +7,7 @@
   background: black;
   display: flex;
   padding-bottom: env(safe-area-inset-bottom);
+  overflow: auto;
 }
 
 .tab-bar-border {
@@ -36,3 +37,7 @@
 .tab-bar-item cover-view {
   font-size: 10px;
 }
+
+
+
+

@@ -1296,3 +1296,41 @@ swiper {
   background:linear-gradient(0deg,rgba(255,135,28,1),rgba(255,167,14,1));
   box-shadow:0px 6px 8px 0px rgba(0, 0, 0, 0.5);
 }
+
+.tip {
+  position: absolute;
+  padding: 0rpx 40rpx;
+  bottom: 60px;
+  font-size: 24rpx;
+  height: 64rpx;
+  color: #000;
+  background:linear-gradient(0deg,rgba(255,140,37,1),rgba(255,166,25,1));
+  box-shadow:0px 0px 6px 0px rgba(0, 0, 0, 0.36);
+  border-radius: 32rpx;
+  display: flex;
+  align-items: center;
+  left: 20vw;
+  width: fit-content;
+  z-index: 1;
+}
+
+.tip:after {
+  content: "\00a0";
+  width: 0;
+  height: 0;
+}
+
+.tip:after {
+  display: block;
+  border-style: solid;
+  border-width: 20rpx;
+  border-color: #FF8C25 transparent transparent transparent;
+}
+
+.tip:after {
+  position: absolute;
+  z-index: -1;
+  bottom: -50%;
+  right: 50%;
+  transform: rotate(360deg);
+}

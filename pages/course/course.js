@@ -97,7 +97,8 @@ Page({
     priSelectedStoreCount: [],
     tagSelectedCount: 0,
     jointDate: '',
-    jointTime: ''
+    jointTime: '',
+    scrollTop: 5 
   },
 
   /***
@@ -1066,12 +1067,23 @@ Page({
       }
     }, 'noauth')
   },
+  onListTouch: function (e) {
+    console.log('onListTouch--->',e)
+  },
+  onPageScroll: function (e){
+    console.log('onPageScroll--->',e)
+  },
+
+  onTabItemTap: function (e) {
+    console.log('onTabItemTap--->',e)
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    this.navigation = this.selectComponent('#navigation')
   },
 
   /**

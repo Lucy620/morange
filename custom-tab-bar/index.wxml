@@ -6,3 +6,5 @@
     <cover-view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</cover-view>
   </cover-view>
 </cover-view>
+
+

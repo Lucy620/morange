@@ -1,3 +1,5 @@
+
+
 .navigation {
   --height: 44px;
   --right: 190rpx;
@@ -15,7 +17,7 @@
 }
 
 .weui-navigation-bar__inner {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   z-index: 5001;
