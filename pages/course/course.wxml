@@ -11,7 +11,7 @@
 	<view slot="title" class="bar-title">{{showCities? '选择城市': 'MORANGE'}}</view>
 </navigationBar>
 
-<view  class="tip">双击这里，刷新课表</view>
+<view class="tip">双击这里，刷新课表</view>
 
 <view wx:if="{{showCities}}" class="city-modal">
 	<view class="city-select">
@@ -150,32 +150,46 @@
 	<!--私教-->
 
 	<view scroll-y class="scroll-box" scroll-top="{{scroll}}" wx:if="{{curTab == 'private_course'}}">
-		<view class="box" wx:for="{{priList}}" wx:key='index'>
-			<image src="{{item.coach.headimgurl}}" mode="aspectFill" class="coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{item.coach.user_id}}'></image>
-			<view class="box-row" bindtap='jumpPage' data-url='pages/private_education/course?private_id={{item.id}}'>
-				<view class="mid">
-					<view class="title">{{item.course.name}}</view>
-					<view class="time-kcal">
-						<text class="kcal">{{item.course.calories}}</text>
-					</view>
-					<view class="attributes-box">
-						<view class="name" wx:for="{{item.course.attributes}}" wx:key='index' wx:for-item="attributes">
-							<view wx:if="{{index != 0}}" class="garden"></view>{{attributes}}
-						</view>
-					</view>
-					<view class="date">
-						<text class="time">￥{{tools.fen2yuan(item.min_price,2)}}</text>起/课时
-						<text class="first" wx:if="{{item.first_price > 0 && first}}">(首次体验课￥{{tools.fen2yuan(item.first_price,2)}})</text>
-					</view>
+	
+		<block wx:key='index' wx:for="{{storeList}}" wx:if="{{index != 0}}">
+			<view class="store-row" >
+				<view style="display:flex">
+					<image class="heart-store" mode="aspectFit" src="/assets/image/heart.png"></image>
+					<view style="margin-left:20rpx" class="store-address">{{item.name}}</view>
 				</view>
-				<view class="btn-active btn-default" wx:if="{{item.rest_stock == 0}}">满员</view>
-				<view class="btn-active" wx:if="{{item.rest_stock > 0}}">详情</view>
-				<view class="wrap">
-					<view class="silk-ribbon full" wx:if="{{item.rest_stock == 0}}">满员</view>
-					<view class="silk-ribbon" wx:elif="{{item.percent <= 60}}">紧张</view>
+				<view class="map-box">
+					<view class="map-text" bindtap="seeMap" data-name="{{course.name}}" data-address="{{course.address}}" data-latitude="{{course.latitude}}" data-longitude="{{course.longitude}}">查看地图</view>
+					<image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="map-arrow"></image>
 				</view>
 			</view>
-		</view>
+			<view class="box" wx:for="{{priList}}" wx:for-item="course" wx:key='index' wx:if="{{item.id == course.store.id }}">
+				<image src="{{course.coach.headimgurl}}" mode="aspectFill" class="coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{course.coach.user_id}}'></image>
+				<view class="box-row" bindtap='jumpPage' data-url='pages/private_education/course?private_id={{course.id}}'>
+					<view class="mid">
+						<view class="title">{{course.course.name}}</view>
+						<view class="time-kcal">
+							<text class="kcal">{{course.calories}}</text>
+						</view>
+						<view class="attributes-box">
+							<view class="name" wx:for="{{course.course.attributes}}" wx:key='index' wx:for-item="attributes">
+								<view wx:if="{{index != 0}}" class="garden"></view>{{attributes}}
+							</view>
+						</view>
+						<view class="date">
+							<text class="time">￥{{tools.fen2yuan(course.min_price,2)}}</text>起/课时
+							<text class="first" wx:if="{{item.first_price > 0 && first}}">(首次体验课￥{{tools.fen2yuan(course.first_price,2)}})</text>
+						</view>
+					</view>
+					<view class="btn-active btn-default" wx:if="{{course.rest_stock == 0}}">满员</view>
+					<view class="btn-active" wx:if="{{course.rest_stock > 0}}">详情</view>
+					<view class="wrap">
+						<view class="silk-ribbon full" wx:if="{{course.rest_stock == 0}}">满员</view>
+						<view class="silk-ribbon" wx:elif="{{course.percent <= 60}}">紧张</view>
+					</view>
+				</view>
+			</view>
+
+		</block>
 	</view>
 
 	<!--训练营-->
