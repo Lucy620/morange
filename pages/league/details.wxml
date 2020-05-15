@@ -20,6 +20,19 @@
     <video wx:else src="{{videoUrl.video}}" show-center-play-btn="{{true}}"  poster="{{videoUrl.poster}}?imageView2/1/w/750/h/300" controls="{{true}}" objectFit='fill'></video>
   </view>
 
+  <view class="detail-position-box">
+
+    <!--tab栏-->
+    <view class="detail-tab-box {{scroll ? 'position-tab-box ' : ''}}">
+      <view class="row-box {{dataId == 1 ? 'select-tab' : ''}}" bindtap="switchTab" data-id="1">
+        近期营期
+      </view>
+      <view class="row-box {{dataId == 2 ? 'select-tab' : ''}}" bindtap="switchTab" data-id="2">
+        课程介绍
+      </view>
+    </view>
+  </view>
+
   <!--教练故事-->
   <view class="coach-story">
     <view class="story-box">

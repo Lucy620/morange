@@ -239,3 +239,22 @@ image{
   background: #515151;
   color: #AAAAAA;
 }
+
+.detail-position-box {
+  height: 80rpx;
+  width: 100%;
+}
+
+.detail-tab-box {
+  width: 50%;
+  height: 100%;
+  display: flex
+}
+
+.row-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #676767
+}
