@@ -22,7 +22,7 @@
   <view class="position-box">
 
     <!--tab栏-->
-    <view class="tab-box {{scroll ? 'position-tab-box ' : ''}}">
+    <view class="tab-box {{scroll ? '#000' : 'position-tab-box'}}">
       <view class="row-box {{dataId == 1 ? 'select-tab' : ''}}" bindtap="switchTab" data-id="1">
         近期营期
       </view>

@@ -1,7 +1,7 @@
 
 
 .navigation {
-  --height: 44px;
+  --height: 64px;
   --right: 190rpx;
   position: relative;
   background-color: transparent
@@ -13,11 +13,11 @@
 
 .weui-navigation-bar .android {
   --height: 48px;
-  --right: 222rpx
+  --right: 222rpx;
 }
 
 .weui-navigation-bar__inner {
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 5001;
@@ -57,7 +57,7 @@
 }
 
 .weui-navigation-bar__inner .weui-navigation-bar__left .weui-navigation-bar__btn_goback:active {
-  opacity: .5
+  opacity: .5;
 }
 
 .weui-navigation-bar__inner .weui-navigation-bar__center {
@@ -71,7 +71,8 @@
   align-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
-  justify-content: center
+  justify-content: center;
+  margin-top: 20px;
 }
 .weui-navigation-bar__placeholder {
   height: var(--height);

@@ -1,5 +1,9 @@
 /* pages/league/details.wxss */
 
+.wrapper {
+  background-color: #2A2A2A;
+}
+
 /***轮播**/
 
 .swiper-box {
@@ -25,8 +29,16 @@ video{
   width: 720rpx;
   background-color: #1c1c1c;
   border-radius: 13.3rpx;
-  margin: 15rpx auto;
+  margin: 0rpx auto;
+  padding-top: 20rpx;
 }
+
+.divider {
+  height: 2rpx;
+  background-color: #2c2c2c;
+  width: 90%;
+  margin: auto;
+ }
 
 .story-box {
   display: flex;
@@ -36,7 +48,13 @@ video{
 .details-box {
   flex: 1;
   padding: 20rpx 0 20rpx 20rpx;
-  text-align: center;
+}
+
+.coach-title {
+  color: white;
+  font-size: 32rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
 }
 
 .coach-name {
@@ -77,7 +95,6 @@ video{
 .list-row {
   display: flex;
   padding: 30rpx 20rpx;
-  border-bottom: 1rpx solid #2c2c2c;
 }
 
 .list-row:last-child {
@@ -150,26 +167,29 @@ video{
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: #ff6f0d;
+  bottom: 100rpx;
+  width: 80vw;
+  margin: auto;
 }
 
 .btn {
   display: flex;
   align-items: center;
   text-align: center;
-  height: 95rpx;
-  line-height: 95rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   font-size: 32rpx;
   z-index: 1;
   color: #333;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
   background-size: 100%;
 }
 
 .btn-text {
   flex: 1;
   position: relative;
+  border-top-right-radius: 40rpx;
+  border-bottom-right-radius: 40rpx;
+  background:linear-gradient(0deg,rgba(255,135,28,1),rgba(255,167,14,1));
 }
 
 .btn-text::after {
@@ -194,18 +214,23 @@ video{
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;
-  height: 95rpx;
-  line-height: 95rpx;
+  bottom: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   background-color: #333;
   color: #fff;
   text-align: center;
+  width: 40vw;
+  border-radius: 40rpx;
+  margin: auto;
 }
 
 .gray-btn {
   flex: 1;
   color: #a5a5a5;
   background: #818181;
+  border-top-left-radius: 40rpx;
+  border-bottom-left-radius: 40rpx;
 }
 
 .weui-navigation-bar__placeholder {

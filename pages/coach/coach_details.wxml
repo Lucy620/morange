@@ -2,16 +2,45 @@
 
 <view class="wrapper" hidden="{{showLoad}}">
 
+	<navigationBar hasBack background="transparent">
+	</navigationBar>
+
 	<!--教练-->
 	<view id="posterHeight" class="coach-box" wx:if="{{show_type == 'slide' || show_type == ''}}">
 		<view class="mask" bindtap="previewImage" data-url="{{coach.slide_imgs[0]}}"></view>
 		<image wx:if="{{coach.slide_imgs.length > 0}}" src="{{coach.slide_imgs[0]}}?imageView2/1/w/750/h/300" class="coach-bg"></image>
-		<view class="follow-box" bindtap="openTips">
-			<view class="heart">
-				<image src="{{is_attention ? 'https://boringcdn.nanningboring.com/molic/heart.png' : 'https://boringcdn.nanningboring.com/molic/heart-icon.png'}}" mode="widthFix" class="heart-icon"></image>
+
+		<view class="story-box">
+			<view class="details-box" bindtap="openStory">
+				<view class="coach-name">{{coach.name}}
+					<image class="coach-heart" mode="aspectFit" src="{{is_attention ? '/assets/image/heart-active.png': '/assets/image/heart.png'}}" bindtap="openTips"></image>
+				</view>
+				<view class="story">{{coach.introduction}}</view>
 			</view>
-			<view class="follow-text">关注教练</view>
+
+			<!--时间记录-->
+			<view class="date-record-box" id='courseHeight'>
+				<view class="detail-row-box">
+					<image src="https://boringcdn.nanningboring.com/molicheng/date-icon.png" mode="widthFix" class="icon"></image>
+					<view class="record-text">
+						<text class="date">{{tools.formatTime(nowtime,'{m}月')}}</text> (截止{{tools.formatTime(nowtime,'{d}日')}}00:00)</view>
+				</view>
+				<view class="detail-row-box">
+					<image src="https://boringcdn.nanningboring.com/molicheng/record-icon.png" mode="widthFix" class="icon"></image>
+					<view class="record-text">我已签到参与{{coach.name}}教练共
+						<text class="s-yellow">{{user_course.total_course}}</text> 节课，总计
+						<text class="s-yellow">{{user_course.total_minute}}</text> 分钟</view>
+				</view>
+				<view class="detail-row-box" bindtap='jumpPage' data-url='pages/coach/student?coach_id={{coach.user_id}}'>
+					<image src="https://boringcdn.nanningboring.com/molicheng/ranking-icon.png" mode="widthFix" class="icon"></image>
+					<view class="record-text">在{{coach.name}}的好友中排名：
+						<text class="s-yellow">No.{{user_course.rank}}</text> (上月No.{{user_course.last_rank}})</view>
+				</view>
+			</view>
+
 		</view>
+
+
 	</view>
 
 	<!--视频-->
@@ -19,45 +48,20 @@
 		<video src="{{videoUrl.video}}" show-center-play-btn="{{true}}" poster="{{videoUrl.poster}}?imageView2/1/w/750/h/300" controls="{{true}}" objectFit='fill'></video>
 	</view>
 
-	<view id="tabHeight" class="coach-tab {{menuFix ? 'position-coach-tab' :''}}">
-		<view class="tab {{dataId == 1 ? 'select-tab' : ''}}" bindtap="switchTab" data-id="1">教练故事</view>
-		<view class="tab {{dataId == 2 ? 'select-tab' : ''}}" bindtap="switchTab" data-id="2">教练排名</view>
-		<view class="tab {{dataId == 3 ? 'select-tab' : ''}}" bindtap="switchTab" data-id="3">教练课程</view>
-		<view class="tab {{dataId == 4 ? 'select-tab' : ''}}" bindtap="switchTab" data-id="4">教练评价</view>
-	</view>
-
-	<!--教练故事-->
-	<view class="coach-story" id="coachHeight">
-		<view class="story-box">
-			<view class="details-box" bindtap="openStory">
-				<view class="coach-name">{{coach.name}}</view>
-				<view class="story" style="height:{{storyHeight}}rpx;">{{coach.introduction}}</view>
-				<image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow" wx:if="{{storyHeight == '90'}}"></image>
-			</view>
-			<image src="{{coach.headimgurl}}" mode="aspectFill" class="user-coach"></image>
-		</view>
-	</view>
-
-	<!--时间记录-->
-	<view class="date-record-box" id='courseHeight'>
-		<view class="row-box">
-			<image src="https://boringcdn.nanningboring.com/molicheng/date-icon.png" mode="widthFix" class="icon"></image>
-			<view class="record-text">
-				<text class="date">{{tools.formatTime(nowtime,'{m}月')}}</text> (截止{{tools.formatTime(nowtime,'{d}日')}}00:00)</view>
-		</view>
-		<view class="row-box">
-			<image src="https://boringcdn.nanningboring.com/molicheng/record-icon.png" mode="widthFix" class="icon"></image>
-			<view class="record-text">我已签到参与{{coach.name}}教练共
-				<text class="s-yellow">{{user_course.total_course}}</text> 节课，总计
-				<text class="s-yellow">{{user_course.total_minute}}</text> 分钟</view>
-		</view>
-		<view class="row-box" bindtap='jumpPage' data-url='pages/coach/student?coach_id={{coach.user_id}}'>
-			<image src="https://boringcdn.nanningboring.com/molicheng/ranking-icon.png" mode="widthFix" class="icon"></image>
-			<view class="record-text">在{{coach.name}}的好友中排名：
-				<text class="s-yellow">No.{{user_course.rank}}</text> (上月No.{{user_course.last_rank}})</view>
-		</view>
-	</view>
 	<view class="position-box" id='evaluateHeight' style="height: {{clientHeight - 80}}rpx">
+
+		<view class="detail-position-box" style="height:120rpx;background:#181818">
+			<!--tab栏-->
+			<view class="detail-tab-box">
+				<view class="row-box row-box-active">
+					教练课程
+				</view>
+				<view class="row-box" bindtap="onShowComment">
+					课程评价
+				</view>
+			</view>
+		</view>
+
 		<!--星期-->
 		<view class="week-box {{weekFix ? 'week-box-fix' :''}}">
 			<view class="week-item" wx:for="{{weekList}}" wx:key="index" bindtap="selectDate" data-index="{{index}}">{{item.week}}
@@ -83,7 +87,7 @@
 									<view class="coach-mask">...</view>
 								</view>
 								<view class="coach-info-details">
-									<view class="info-tips">小橙子排课中 (每周五22:30发布)</view>
+									<view class="info-tips">小橙子排课中 (每周五22:00发布)</view>
 								</view>
 							</view>
 						</block>
@@ -130,8 +134,29 @@
 			</swiper>
 		</view>
 	</view>
+
+	<!--关注提示-->
+	<view class="mask-box" wx:if="{{openFollow}}">
+		<view class="con-box">
+			<view class="con-title">提示</view>
+			<view class="con-text">{{is_attention ? '是否确认取消关注该教练？' : '是否确认关注该教练？'}}</view>
+			<view class="mask-btn-box">
+				<view class="mask-btn" bindtap="openTips">再看看</view>
+				<view class="mask-btn confirm-btn" bindtap="attention">{{is_attention ? '确认取消' : '确认关注'}}</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<!--教练评价-->
+<view class="select-screen" wx:if="{{cover}}">
+	<view class="select-box-cover" bindtap="onHideComment"></view>
 	<!--教练评价-->
-	<view class="evaluate-box">
+	<view class="evaluate-box" animation="{{animation}}">
+		<view class="evaluate-top">
+		教练评价
+		<image class="evaluate-down" src="/assets/image/down.png" mode="aspectFit" bindtap="onHideComment"></image>
+		</view>
 		<view class="evaluate-row" wx:for="{{commentList}}" wx:key='index' wx:if="{{commentList.length > 0}}">
 			<block wx:if="{{item.type == 'coach'}}">
 				<view class="coach-evaluate">
@@ -164,18 +189,9 @@
 				</view>
 			</block>
 		</view>
-		<view class="no-evaluate">暂无评价信息</view>
+		<view class="no-evaluate">暂无更多评价信息</view>
 	</view>
-	<!--关注提示-->
-	<view class="mask-box" wx:if="{{openFollow}}">
-		<view class="con-box">
-			<view class="con-title">提示</view>
-			<view class="con-text">{{is_attention ? '是否确认取消关注该教练？' : '是否确认关注该教练？'}}</view>
-			<view class="mask-btn-box">
-				<view class="mask-btn" bindtap="openTips">再看看</view>
-				<view class="mask-btn confirm-btn" bindtap="attention">{{is_attention ? '确认取消' : '确认关注'}}</view>
-			</view>
-		</view>
-	</view>
+
 </view>
+
 <wxs module="tools" src="../../utils/tools.wxs"></wxs>

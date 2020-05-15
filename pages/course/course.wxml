@@ -150,9 +150,9 @@
 	<!--私教-->
 
 	<view scroll-y class="scroll-box" scroll-top="{{scroll}}" wx:if="{{curTab == 'private_course'}}">
-	
+
 		<block wx:key='index' wx:for="{{storeList}}" wx:if="{{index != 0}}">
-			<view class="store-row" >
+			<view class="store-row">
 				<view style="display:flex">
 					<image class="heart-store" mode="aspectFit" src="/assets/image/heart.png"></image>
 					<view style="margin-left:20rpx" class="store-address">{{item.name}}</view>

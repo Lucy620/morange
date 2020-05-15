@@ -6,6 +6,7 @@ page {
 
 .wrapper {
   padding: 0;
+  background-color: #181818;
 }
 
 /**教练**/
@@ -15,7 +16,7 @@ video {
 }
 
 .coach-box {
-  height: 300rpx;
+  height: 500px;
   position: relative;
 }
 
@@ -26,12 +27,11 @@ video {
   left: 0;
   z-index: 1;
   bottom: 0;
-  box-shadow: inset 0rpx 0rpx 66.7rpx 0rpx #000;
 }
 
 .coach-bg {
   width: 100%;
-  height: 300rpx;
+  height: 500px;
 }
 
 .follow-box {
@@ -78,8 +78,7 @@ video {
   height: 80rpx;
   line-height: 80rpx;
   background-color: #181818;
-  position: absolute;
-  top: 300rpx;
+  top: 500rpx;
   left: 0;
   right: 0;
 }
@@ -128,26 +127,44 @@ video {
 
 .story-box {
   display: flex;
-  min-height: 221.3rpx;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  background-image:linear-gradient(0deg,rgba(0,0,0,0.5),rgba(255,255,255,0));
 }
 
 .details-box {
   flex: 1;
-  padding: 20rpx 0 20rpx 20rpx;
   text-align: center;
 }
 
 .coach-name {
   color: #fff;
   text-align: left;
+  background:rgba(0,0,0,0.2);
+  height: 52rpx;
+  display: flex;
+  align-items: center;
+  border-top-right-radius: 32rpx;
+  border-bottom-right-radius: 32rpx;
+  padding-left: 30rpx;
+  width: fit-content;
+  padding-right: 20rpx;
+}
+
+.coach-heart {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 10rpx;
+  z-index: 1;
 }
 
 .story {
   text-align: left;
   overflow: hidden;
   font-size: 20rpx;
-  margin-top: 30rpx;
-  color: #818181;
+  margin: 30rpx;
+  color: #fff;
 }
 
 .arrow {
@@ -166,22 +183,23 @@ video {
 
 .date-record-box {
   width: 720rpx;
-  height: 221.3rpx;
-  background-color: #1c1c1c;
+  height: 220rpx;
+  background-color: #252525;
   border-radius: 13.3rpx;
-  margin: 30rpx auto;
+  margin: auto;
+  margin-bottom: -110rpx;
+  z-index: 1;
 }
 
-.row-box {
+.detail-row-box {
   display: flex;
   align-items: center;
   color: #fff;
   height: 74rpx;
   padding-left: 15rpx;
-  border-bottom: 1px solid #2c2c2c;
 }
 
-.row-box:last-child {
+.detail-row-box:last-child {
   border: none;
 }
 
@@ -208,16 +226,11 @@ video {
 
 .position-box {
   position: relative;
-  height: 1500rpx;
-  padding-top: 76rpx;
   box-sizing: border-box;
+  margin-top: 110rpx;
 }
 
 .week-box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   height: 76rpx;
   line-height: 76rpx;
   z-index: 1;
@@ -372,7 +385,7 @@ video {
   right: 0;
   bottom: 0;
   background-color: #fff;
-  box-shadow: 0rpx 0rpx 5.3rpx 0rpx rgba(0, 0, 0, 0.5);
+  box-shadow: 0rpx 2rpx 0rpx -5rpx rgba(0, 0, 0, 0.5);
   opacity: 0.5;
   color: #818181;
   font-size: 50rpx;
@@ -516,9 +529,37 @@ video {
 
 
 .evaluate-box {
-  padding: 30rpx 0;
-  min-height: 1500rpx;
+  width: 100%;
+  height: 500px;
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background-color: #181818;
+  border-top-left-radius: 32rpx;
+  border-top-right-radius: 32rpx;
+  overflow: hidden;
 }
+
+.evaluate-top {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FF9C00;
+  background-color: #252525;
+}
+
+.evaluate-down {
+  width: 24rpx;
+  height: 24rpx;
+  position: absolute;
+  right: 32rpx;
+}
+
 
 .evaluate-row {
   width: 723rpx;
@@ -602,8 +643,9 @@ video {
 }
 .con-box{
   width: 590rpx;
-	background-color: #fffbe6;
-	border-radius: 5rpx;
+	background-color: #fff;
+  border-radius: 12rpx;
+  overflow: hidden;
 }
 .con-title{
   color: #000;
@@ -612,7 +654,7 @@ video {
   padding: 25rpx;
 }
 .con-text{
-  color:#949494;
+  color:#000;
   font-size: 24rpx;
   line-height: 1.5;
   text-align: center;
@@ -630,9 +672,10 @@ video {
   color: #000;
   font-weight: 600;
   border-top: 1rpx solid #d1d1d1;
+  background-color: #fff;
 }
 .confirm-btn{
   border:none;
-  background: url(https://boringcdn.nanningboring.com/molic/confirm-btn.png);
+  background-image:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
   background-size: 100%;
 }

@@ -14,6 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    cover: false,
     star: 4,
     storyHeight: '90',
     weekList: [],
@@ -171,6 +172,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.animation = wx.createAnimation()
     let curDate = new Date()
     let weekList = []
     for (let i = 0; i <= 5; i++) {
@@ -237,25 +239,25 @@ Page({
         })
 
         //获取tab的距离顶部高度
-        setTimeout(function () {
-          const query = wx.createSelectorQuery()
-          query.select('#posterHeight').boundingClientRect(function (res) {
-            that.data.place.posterHeight = res.height
-          })
-          query.select('#tabHeight').boundingClientRect(function (res) {
-            that.data.place.tabHeight = res.height
-          })
-          query.select('#coachHeight').boundingClientRect(function (res) {
-            that.data.place.coachHeight = res.height
-          })
-          query.select('#courseHeight').boundingClientRect(function (res) {
-            that.data.place.courseHeight = res.height
-          })
-          query.select('#evaluateHeight').boundingClientRect(function (res) {
-            that.data.place.evaluateHeight = res.height
-          })
-          query.exec()
-        }, 10)
+        // setTimeout(function () {
+        //   const query = wx.createSelectorQuery()
+        //   query.select('#posterHeight').boundingClientRect(function (res) {
+        //     that.data.place.posterHeight = res.height
+        //   })
+        //   query.select('#tabHeight').boundingClientRect(function (res) {
+        //     that.data.place.tabHeight = res.height
+        //   })
+        //   query.select('#coachHeight').boundingClientRect(function (res) {
+        //     that.data.place.coachHeight = res.height
+        //   })
+        //   query.select('#courseHeight').boundingClientRect(function (res) {
+        //     that.data.place.courseHeight = res.height
+        //   })
+        //   query.select('#evaluateHeight').boundingClientRect(function (res) {
+        //     that.data.place.evaluateHeight = res.height
+        //   })
+        //   query.exec()
+        // }, 10)
       }
     })
   },
@@ -419,6 +421,31 @@ Page({
       clientWidth: clientWidth * ratio,
       clientHeight: clientHeight * ratio
     })
+  },
+
+  /**
+   * 打开评论动画
+   */
+  onShowComment: function () {
+    this.animation.translateY(-500).step();
+    this.setData({
+      cover: true,
+      animation: this.animation.export()
+    })
+  },
+
+  /***
+   * 关闭评论动画
+   */
+  onHideComment: function () {
+    let that = this
+    that.animation.translateY(500).step();
+    that.setData({
+      animation: that.animation.export()
+    })
+    setTimeout(function () {
+      that.setData({cover: false})
+    }, 200)
   },
 
   /**
