@@ -1,5 +1,12 @@
 /* pages/private_education/confirm_order.wxss */
 
+.wrapper {
+  padding-bottom: 150rpx;
+  display: flex;
+  flex-direction: column;
+
+}
+
 .box {
   width: 697rpx;
   min-height: 994rpx;
@@ -7,6 +14,7 @@
   background: url(https://boringcdn.nanningboring.com/molicheng/bg1.png);
   background-size: 100% 100%;
   position: relative;
+  margin-top: 80px
 }
 
 .bg-icon {
@@ -132,7 +140,7 @@
 
 .select-item {
   color: #000;
-  background: #ffae00;
+  background: #FF9C00;
 }
 
 .s-gray {
@@ -184,7 +192,7 @@
 }
 
 .s-yellow {
-  color: #ffae00;
+  color: #FF9C00;
   margin-left: 20rpx;
 }
 
@@ -219,19 +227,20 @@
 
 .btn {
   position: fixed;
-  width: 100%;
+  width: 80%;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 80rpx;
   z-index: 1;
   text-align: center;
-  height: 89rpx;
-  line-height: 89rpx;
+  height: 100rpx;
+  line-height: 100rpx;
   font-size: 32rpx;
   color: #000;
   font-weight: bold;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
-  background-size: 100%;
+  border-radius: 50rpx;
+  background:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
+  margin: auto
 }
 
 .mask-box {
@@ -247,19 +256,6 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.mask-text-box {
-  width: 590rpx;
-  background-color: #fffbe6;
-  border-radius: 5rpx;
-  position: relative;
-}
-
-.mask-text-title {
-  font-size: 32rpx;
-  text-align: center;
-  padding: 30rpx 0;
-  color: #000;
-}
 
 .camp-text-tips {
   width: 532rpx;
@@ -284,31 +280,3 @@
   height: 100%;
 }
 
-.mask-btn-box {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  height: 108rpx;
-  line-height: 108rpx;
-}
-
-.mask-btn {
-  flex: 1;
-  text-align: center;
-  font-size: 32rpx;
-  color: #000;
-  border-top: 2rpx solid #a5a5a5;
-}
-
-.confirm-btn {
-  flex: 1;
-  text-align: center;
-  font-size: 32rpx;
-  color: #000;
-  border-top: 2rpx solid #ffbc0f;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
-  background-size: 100% 100%;
-}

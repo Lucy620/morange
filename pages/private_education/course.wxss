@@ -2,9 +2,8 @@
 
 /***轮播**/
 
-.swiper-box {
-  height: 300rpx;
-  background-color: #3d3d3d;
+.wrapper {
+  background-color: #2A2A2A;
 }
 
 swiper {
@@ -22,10 +21,18 @@ video{
 /**教练故事**/
 
 .coach-story {
-  width: 723.3rpx;
+  width: 720rpx;
   background-color: #1c1c1c;
   border-radius: 13.3rpx;
-  margin: 20rpx auto 0;
+  margin: 0rpx auto;
+  padding-top: 20rpx;
+}
+
+.coach-title {
+  color: white;
+  font-size: 32rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
 }
 
 .story-box {
@@ -76,13 +83,19 @@ video{
 
 .list-row {
   display: flex;
-  padding: 30rpx;
-  border-bottom: 1rpx solid #2c2c2c;
+  padding: 30rpx 20rpx;
 }
 
 .list-row:last-child {
   border: none;
 }
+
+.divider {
+  height: 2rpx;
+  background-color: #2c2c2c;
+  width: 90%;
+  margin: auto;
+ }
 
 .course-icon {
   width: 31rpx;
@@ -110,8 +123,9 @@ video{
 
 .wxParse-box {
   width: 723rpx;
-  margin: 0 auto;
+  margin: 15rpx auto;
   color: #818181;
+  border-radius: 13.3
 }
 
 .title-box {
@@ -149,12 +163,15 @@ video{
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 80rpx;
   text-align: center;
-  height: 110.7rpx;
-  line-height: 110.7rpx;
+  height: 100rpx;
+  line-height: 100rpx;
   font-size: 36rpx;
+  width: 90vw;
   color: #000;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  border-radius: 50rpx;
+  margin: auto;
+  background:linear-gradient(0deg,rgba(255,135,28,1),rgba(255,167,14,1));
   background-size: 100%;
 }

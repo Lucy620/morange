@@ -21,7 +21,14 @@ Page({
     show_type: '',
     videoUrl: '',
     isShare: false,
-    showTitle: false
+    showTitle: false,
+    scroll: false,
+    dataId: 1,
+    place: {
+      posterHeight: 236,
+      camphHeight: 236,
+      courseHeight: 236,
+    }
   },
 
 
@@ -178,15 +185,36 @@ Page({
   /**
    * 页面滚动事件的处理函数
    */
-  onPageScroll: function(e) {
-    console.log('scroll',e)
-    const showTitle = this.data.showTitle
-    let value = e.scrollTop
-    if(value > 138 && !showTitle){
-        this.setData({showTitle: true})
-    }else if(value < 138 && showTitle){
-      this.setData({showTitle: false})
+  onPageScroll: function (e) {
+    let that = this
+    //tab的吸顶效果
+    if (e.scrollTop <= 0) {
+      return
     }
+    let tabTop = that.data.place.posterHeight
+    let camphHeight = that.data.place.posterHeight + that.data.place.camphHeight
+    if (!that.data.scroll && e.scrollTop > tabTop) {
+      that.setData({
+        scroll: true
+      })
+    }
+    if (that.data.scroll && e.scrollTop < tabTop) {
+      that.setData({
+        scroll: false,
+        dataId: 1
+      })
+    }
+    if (that.data.dataId == 1 && e.scrollTop > camphHeight) {
+      that.setData({
+        dataId: 2
+      })
+    }
+    if (that.data.dataId == 2 && e.scrollTop < camphHeight) {
+      that.setData({
+        dataId: 1
+      })
+    }
+
   },
 
 

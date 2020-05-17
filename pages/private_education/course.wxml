@@ -2,8 +2,8 @@
 
 <import src="../../wxParse/wxParse.wxml" />
 
-<navigationBar hasBack background="{{showTitle? '#000': 'transparent'}}">
- <view slot="title" wx:if="{{showTitle}}" class="bar-title">{{list.coach.name}}</view>
+<navigationBar hasBack background="{{scroll? '#000': 'transparent'}}">
+  <view slot="title" wx:if="{{scroll}}" class="bar-title">{{list.coach.name}}</view>
 </navigationBar>
 
 <view class="wrapper" hidden="{{showLoad}}">
@@ -12,49 +12,77 @@
   <view class="swiper-box">
     <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000" wx:if="{{show_type == 'slide' || show_type == ''}}">
       <block wx:for="{{list.course.slide_imgs}}" wx:key="{{index}}">
-        <swiper-item  bindtap="previewImage" data-url="{{item}}">
+        <swiper-item bindtap="previewImage" data-url="{{item}}">
           <image src="{{item}}" class="slide-image" mode="widthFix" />
         </swiper-item>
       </block>
     </swiper>
-    
+
     <!--视频-->
-    <video wx:else src="{{videoUrl.video}}" show-center-play-btn="{{true}}"  poster="{{videoUrl.poster}}?imageView2/1/w/750/h/300" controls="{{true}}" objectFit='fill'></video>
+    <video wx:else src="{{videoUrl.video}}" show-center-play-btn="{{true}}" poster="{{videoUrl.poster}}?imageView2/1/w/750/h/300" controls="{{true}}" objectFit='fill'></video>
   </view>
+
+  <view class="detail-position-box {{scroll ? 'position-tab-box' : ''}}">
+    <!--tab栏-->
+    <view class="detail-tab-box ">
+      <view class="row-box {{dataId == 1 ? 'row-box-active' : ''}}" bindtap="switchTab" data-id="1">
+        近期营期
+      </view>
+      <view class="row-box {{dataId == 2 ? '.row-box-active' : ''}}" bindtap="switchTab" data-id="2">
+        课程介绍
+      </view>
+    </view>
+  </view>
+
 
   <!--教练故事-->
   <view class="coach-story">
-    <view class="story-box">
+    <!-- <view class="story-box">
       <view class="details-box" bindtap="openStory">
         <view class="coach-name">{{list.coach.name}}</view>
         <view class="story" style="height:{{storyHeight}}rpx;">{{list.coach.introduction}}</view>
         <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow" wx:if="{{storyHeight == '70'}}"></image>
       </view>
       <image src="{{list.coach.headimgurl}}" mode="aspectFill" class="user-coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{list.coach.user_id}}'></image>
-    </view>
-  </view>
-
-  <!--课时 时间 门店-->
-  <view class="list-box">
-    <view class="list-row">
-      <image src="https://boringcdn.nanningboring.com/molicheng/$.png" mode="widthFix" class="course-icon"></image>
-      <view class="list-details">
-        <view wx:for="{{list.price}}" wx:key='index'>{{item.course_num}}课时：￥{{tools.fen2yuan(item.price,2)}}/课时
-          <text class="s-yellow" wx:if="{{item.first_price > 0 && first}}">(首次体验课￥{{tools.fen2yuan(item.first_price,2)}}/课时)</text>
-        </view>
+    </view> -->
+    <text class="coach-title">{{list.course.name}}</text>
+    <view class="story-box">
+      <image src="{{list.coach.headimgurl}}" mode="aspectFill" class="user-coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{list.coach.user_id}}'></image>
+      <view class="details-box" bindtap="openStory">
+        <view class="coach-name">{{list.coach.name}}</view>
+        <view class="story" style="height:{{storyHeight}}rpx;">{{list.coach.introduction}}</view>
+        <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow" wx:if="{{storyHeight == '70'}}"></image>
       </view>
     </view>
-    <view class="list-row">
-      <image src="https://boringcdn.nanningboring.com/molicheng/tiem-ixon.png" mode="widthFix" class="course-icon"></image>
-      <view class="list-details">时间：与教练预约授课时间</view>
+
+    <!--课时 时间 门店-->
+    <view class="list-box">
+      <view class="list-row">
+        <image src="https://boringcdn.nanningboring.com/molicheng/$.png" mode="widthFix" class="course-icon"></image>
+        <view class="list-details">
+          <view wx:for="{{list.price}}" wx:key='index'>{{item.course_num}}课时：￥{{tools.fen2yuan(item.price,2)}}/课时
+            <text class="s-yellow" wx:if="{{item.first_price > 0 && first}}">(首次体验课￥{{tools.fen2yuan(item.first_price,2)}}/课时)</text>
+          </view>
+        </view>
+      </view>
+      	<view class="divider"></view>
+
+      <view class="list-row">
+        <image src="https://boringcdn.nanningboring.com/molicheng/tiem-ixon.png" mode="widthFix" class="course-icon"></image>
+        <view class="list-details">时间：与教练预约授课时间</view>
+      </view>
+      	<view class="divider"></view>
+        
+      <view class="list-row">
+        <image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="address-icon"></image>
+        <view class="list-details">门店: {{list.store.name}}</view>
+      </view>
     </view>
-    <view class="list-row">
-      <image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="address-icon"></image>
-      <view class="list-details">门店: {{list.store.name}}</view>
-    </view>
+
+
   </view>
 
-  
+
   <!--简介-->
   <view class="wxParse-box">
     <view class="title-box">
@@ -62,8 +90,8 @@
       <view class="title">课程简介</view>
     </view>
     <view class="introduction">
-    <template is="wxParse" data="{{wxParseData:introduce.nodes}}" />
-  </view>
+      <template is="wxParse" data="{{wxParseData:introduce.nodes}}" />
+    </view>
   </view>
 
   <!--注意事项-->
@@ -73,25 +101,25 @@
       <view class="title">注意事项</view>
     </view>
     <view class="introduction">
-    <template is="wxParse" data="{{wxParseData:note.nodes}}" />
-  </view>
+      <template is="wxParse" data="{{wxParseData:note.nodes}}" />
+    </view>
   </view>
 
-    <!--健身步骤-->
+  <!--健身步骤-->
   <view class="wxParse-box">
     <view class="title-box">
       <image src="https://boringcdn.nanningboring.com/molicheng/step-icon.png" mode="widthFix" class="icon"></image>
       <view class="title">健身步骤</view>
     </view>
     <view class="introduction">
-    <template is="wxParse" data="{{wxParseData:step.nodes}}" />
-  </view>
+      <template is="wxParse" data="{{wxParseData:step.nodes}}" />
+    </view>
   </view>
 
-  <view class="btn"  bindtap="confirmOrder"  data-order_type="buy">果断报名</view>
+  <view class="btn" bindtap="confirmOrder" data-order_type="buy">果断报名</view>
 
   <!--转发有礼-->
   <share isShare="{{isShare}}" id='share'></share>
 </view>
 
-  <wxs module="tools" src="../../utils/tools.wxs"></wxs>
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>

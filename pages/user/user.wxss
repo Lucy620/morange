@@ -9,9 +9,10 @@ page {
 /**已开通 头部**/
 
 .open-head-box {
-  height: 456rpx;
+  height: 300px;
   background: url(https://boringcdn.nanningboring.com/molicheng/user-bg.png);
-  background-size: 100%;
+  background-size: cover;
+
 }
 
 .open-box {
@@ -21,6 +22,7 @@ page {
   border-radius: 13.3rpx;
   border: solid 1.3rpx rgba(255, 236, 128, 0.7);
   margin: auto;
+  margin-top: 82px
 }
 
 .user-box {
@@ -28,6 +30,7 @@ page {
   /* justify-content: space-between; */
   align-items: center;
   margin: 30rpx 30rpx 0;
+  position: relative
 }
 
 .user-btn {
@@ -65,8 +68,8 @@ page {
   width: 247rpx;
   height: 38rpx;
   position: absolute;
-  top: 30rpx;
-  right: 30rpx;
+  top: 0;
+  right: 0;
 }
 
 .tips {

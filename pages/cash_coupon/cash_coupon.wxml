@@ -1,10 +1,10 @@
 <!--pages/cash_coupon/cash_coupon.wxml-->
 
 <navigationBar hasBack background="{{showTitle? '#000': 'transparent'}}">
- <view slot="title"  class="bar-title">代金券</view>
+  <view slot="title" class="bar-title">代金券</view>
 </navigationBar>
 
-<view class="wrapper"hidden="{{showLoad}}">
+<view class="wrapper" hidden="{{showLoad}}">
 
   <image src="http://qad81djlf.bkt.clouddn.com/coupon_background.png" class="coupon-top-bg" mode="widthFix"></image>
 
@@ -26,14 +26,25 @@
   <!--代金券-->
   <view class="coupon-box" wx:for="{{list}}" wx:key='index'>
     <view class="coupon-box-row">
-      <view class="coupon-details">
+      <view class="coupon-row-left"></view>
+      <view class="coupon-line">
+        <view class="coupon-line-circle"></view>
+        <view class="coupon-line-circle"></view>
+        <view class="coupon-line-circle"></view>
+        <view class="coupon-line-circle"></view>
+        <view class="coupon-line-circle"></view>
+        <view class="coupon-line-circle"></view>
+        <view class="coupon-line-line"></view>
+      </view>
+      <view class="coupon-row-right"></view>
+      <!-- <view class="coupon-details">
         <view class="coupon-text">{{item.name}}</view>
         <view class="coupon-text-tips" bindtap="openExplain" data-name="{{item.name}}" data-notice="{{item.notice}}">查看可用范围</view>
       </view>
       <view class="coupon-money" wx:if="{{item.reduce_cost > 0}}">¥ {{tools.fen2yuan(item.reduce_cost,2)}}</view>
     </view>
     <view class="coupon-box-date">
-      <view class="coupon-date">有效期至：{{tools.formatTime(item.use_end,'{y}-{m}-{d}')}}</view>
+      <view class="coupon-date">有效期至：{{tools.formatTime(item.use_end,'{y}-{m}-{d}')}}</view> -->
     </view>
   </view>
 

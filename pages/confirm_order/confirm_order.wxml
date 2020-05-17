@@ -4,7 +4,7 @@
 <import src="./module/private.wxml" />
 <import src="./module/training.wxml" />
 
-<navigationBar hasBackIcon>
+<navigationBar hasBack background="#000">
 	<view slot="title" class="bar-title">确认订单信息</view>
 </navigationBar>
 

@@ -27,9 +27,9 @@ Page({
     show_type: '',
     videoUrl: '',
     place: {
-      posterHeight: 0,
-      camphHeight: 0,
-      courseHeight: 0,
+      posterHeight: 236,
+      camphHeight: 236,
+      courseHeight: 236,
     }
   },
 
@@ -103,7 +103,11 @@ Page({
     })
   },
 
-  onPageScroll: function(e) {
+  /**
+  * 页面滚动事件的处理函数
+  */
+  onPageScroll: function (e) {
+    console.log('scroll',e.scrollTop)
     let that = this
     //tab的吸顶效果
     if (e.scrollTop <= 0) {
@@ -133,29 +137,6 @@ Page({
       })
     }
 
-  },
-
-
-  /**
-   * tab 选择 滚动条位置
-   */
-  switchTab: function(e) {
-    let that = this
-    let id = e.currentTarget.dataset.id
-    let place = that.data.place
-    let courseHeight = that.data.place.posterHeight + that.data.place.camphHeight
-    if (id == 1) {
-      wx.pageScrollTo({
-        scrollTop: place.posterHeight,
-        duration: 300
-      })
-    }
-    if (id == 2) {
-      wx.pageScrollTo({
-        scrollTop: courseHeight + 50,
-        duration: 300
-      })
-    }
   },
 
   /**

@@ -6,10 +6,7 @@
 
 /***轮播**/
 
-.swiper-box {
-  height: 300px;
-  background-color: #3d3d3d;
-}
+
 
 swiper {
   height: 300px;
@@ -176,8 +173,8 @@ video{
   display: flex;
   align-items: center;
   text-align: center;
-  height: 80rpx;
-  line-height: 80rpx;
+  height: 100rpx;
+  line-height: 100rpx;
   font-size: 32rpx;
   z-index: 1;
   color: #333;
@@ -187,9 +184,16 @@ video{
 .btn-text {
   flex: 1;
   position: relative;
-  border-top-right-radius: 40rpx;
-  border-bottom-right-radius: 40rpx;
   background:linear-gradient(0deg,rgba(255,135,28,1),rgba(255,167,14,1));
+}
+
+.btn-left {
+  border-top-left-radius: 50rpx;
+  border-bottom-left-radius: 50rpx;
+}
+.btn-right {
+  border-top-right-radius: 50rpx;
+  border-bottom-right-radius: 50rpx;
 }
 
 .btn-text::after {
@@ -212,16 +216,16 @@ video{
 
 .end-btn {
   position: fixed;
-  left: 0;
-  right: 0;
+  left: 20rpx;
+  right: 20rpx;
   bottom: 80rpx;
-  height: 80rpx;
-  line-height: 80rpx;
+  height: 100rpx;
+  line-height: 100rpx;
   background-color: #333;
   color: #fff;
   text-align: center;
-  width: 40vw;
-  border-radius: 40rpx;
+  width: vw;
+  border-radius: 50rpx;
   margin: auto;
 }
 

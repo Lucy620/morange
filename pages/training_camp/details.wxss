@@ -2,11 +2,6 @@
 
 /***轮播**/
 
-.swiper-box {
-  height: 300rpx;
-  background-color: #3d3d3d;
-}
-
 swiper {
   height: 100%;
 }
@@ -25,34 +20,6 @@ video{
   position: relative;
 }
 
-.tab-box {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  display: flex;
-  align-items: center;
-  height: 62rpx;
-  z-index: 2;
-  background-color: #181818;
-}
-
-.position-tab-box {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-}
-
-.row-box {
-  flex: 1;
-  text-align: center;
-  font-size: 24rpx;
-  height: 100%;
-  line-height: 62rpx;
-  color: #959595;
-  border-right: 1px solid #272727;
-}
 
 .select-tab {
   color: #fff;
@@ -252,15 +219,16 @@ video{
 
 .tips-btn {
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: 20rpx;
+  right: 20rpx;
+  bottom: 80rpx;
   text-align: center;
-  height: 111rpx;
-  line-height: 111rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 50rpx;
   font-size: 36rpx;
   color: #000;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+ background:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
   background-size: 100%;
 }
 

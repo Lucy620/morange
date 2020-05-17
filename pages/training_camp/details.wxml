@@ -2,7 +2,9 @@
 
 <import src="../../wxParse/wxParse.wxml" />
 
-<navigationBar hasBack background="transparent"></navigationBar>
+<navigationBar hasBack background="{{scroll? '#000': 'transparent'}}">
+  <view slot="title" wx:if="{{scroll}}" class="bar-title">{{list.name}}</view>
+</navigationBar>
 
 <view class="wrapper" hidden="{{showLoad}}">
   <!--轮播-->
@@ -14,19 +16,18 @@
         </swiper-item>
       </block>
     </swiper>
-    
+
     <!--视频-->
-    <video wx:else src="{{videoUrl.video}}" show-center-play-btn="{{true}}"  poster="{{videoUrl.poster}}?imageView2/1/w/750/h/300" controls="{{true}}" objectFit='fill'></video>
+    <video wx:else src="{{videoUrl.video}}" show-center-play-btn="{{true}}" poster="{{videoUrl.poster}}?imageView2/1/w/750/h/300" controls="{{true}}" objectFit='fill'></video>
   </view>
 
-  <view class="position-box">
-
+  <view class="detail-position-box {{scroll ? 'position-tab-box' : ''}}">
     <!--tab栏-->
-    <view class="tab-box {{scroll ? '#000' : 'position-tab-box'}}">
-      <view class="row-box {{dataId == 1 ? 'select-tab' : ''}}" bindtap="switchTab" data-id="1">
+    <view class="detail-tab-box ">
+      <view class="row-box {{dataId == 1 ? 'row-box-active' : ''}}" bindtap="switchTab" data-id="1">
         近期营期
       </view>
-      <view class="row-box {{dataId == 2 ? 'select-tab' : ''}}" bindtap="switchTab" data-id="2">
+      <view class="row-box {{dataId == 2 ? '.row-box-active' : ''}}" bindtap="switchTab" data-id="2">
         课程介绍
       </view>
     </view>

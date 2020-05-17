@@ -112,8 +112,8 @@
 		<block wx:if="{{nowtime < list.end_at && list.is_spell == 0}}">
 			<!--正常-->
 			<view class="btn" wx:if="{{list.rest_stock > 0}}">
-				<view class="{{nowtime > start_at ? 'gray-btn' : 'btn-text'}}" bindtap="confirmOrder" data-order_type="give">赠课给好友</view>
-				<view class="btn-text" bindtap="confirmOrder" data-order_type="buy">立即约课</view>
+				<view class="{{nowtime > start_at ? 'gray-btn' : 'btn-text'}} btn-left"  bindtap="confirmOrder" data-order_type="give">赠课给好友</view>
+				<view class="btn-text btn-right" bindtap="confirmOrder" data-order_type="buy">立即约课</view>
 			</view>
 			<!--等候-->
 			<view class="btn" wx:if="{{list.rest_stock == 0}}">

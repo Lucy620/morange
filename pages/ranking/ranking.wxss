@@ -8,6 +8,11 @@
   background-size: 100%;
 }
 
+row-box {
+  display: flex;
+  flex-direction: column
+}
+
 .row {
   display: flex;
   align-items: center;
