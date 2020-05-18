@@ -30,13 +30,15 @@ Page({
       posterHeight: 236,
       camphHeight: 236,
       courseHeight: 236,
-    }
+    },
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**
    * 预览图片
    */
-  previewImage: function(e) {
+  previewImage: function (e) {
     let url = e.currentTarget.dataset.url
     let imglist = this.data.list.slide_imgs
     wx.previewImage({
@@ -49,7 +51,7 @@ Page({
   /**
    * 确认订单
    */
-  confirmOrder: function(e) {
+  confirmOrder: function (e) {
     let list = this.data.list
     let order_type = e.currentTarget.dataset.order_type
     let id = e.currentTarget.dataset.id
@@ -66,12 +68,32 @@ Page({
     })
   },
 
-
+  /**
+   * tab 选择 滚动条位置
+   */
+  switchTab: function (e) {
+    let that = this
+    let id = e.currentTarget.dataset.id
+    let place = that.data.place
+    let courseHeight = that.data.place.posterHeight + that.data.place.camphHeight
+    if (id == 1) {
+      wx.pageScrollTo({
+        scrollTop: place.posterHeight,
+        duration: 300
+      })
+    }
+    if (id == 2) {
+      wx.pageScrollTo({
+        scrollTop: courseHeight + 50,
+        duration: 300
+      })
+    }
+  },
 
   /**
    *选择城市
    */
-  bindPickerChange: function(e) {
+  bindPickerChange: function (e) {
     let that = this
     let cityLindex = e.detail.value
     that.setData({
@@ -104,10 +126,10 @@ Page({
   },
 
   /**
-  * 页面滚动事件的处理函数
-  */
+   * 页面滚动事件的处理函数
+   */
   onPageScroll: function (e) {
-    console.log('scroll',e.scrollTop)
+    console.log('scroll', e.scrollTop)
     let that = this
     //tab的吸顶效果
     if (e.scrollTop <= 0) {
@@ -142,7 +164,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.setData({
       course_id: options.course_id || 0,
       area_id: options.area_id || 0,
@@ -154,7 +176,7 @@ Page({
   /**
    * 查看位置
    */
-  seeMap: function(e) {
+  seeMap: function (e) {
     let latitude = e.currentTarget.dataset.latitude
     let longitude = e.currentTarget.dataset.longitude
     let name = e.currentTarget.dataset.name
@@ -170,7 +192,7 @@ Page({
   /**
    * 点击a标签跳转链接
    */
-  wxParseTagATap: function(e) {
+  wxParseTagATap: function (e) {
     var url = e.currentTarget.dataset.src
     console.log(url)
     wx.navigateTo({
@@ -181,7 +203,7 @@ Page({
   /**
    *  获取区域列表
    */
-  getStoreAreaList: function() {
+  getStoreAreaList: function () {
     let that = this
     let area_id = that.data.area_id
     ajax.post(api.getStoreAreaList, {}, ({
@@ -211,7 +233,7 @@ Page({
    * 初始化数据
    * 
    */
-  getData: function() {
+  getData: function () {
     let that = this
     let course_id = that.data.course_id
     ajax.post(api.getCourseCampDetail, {
@@ -235,12 +257,12 @@ Page({
           showLoad: false
         })
         //获取tab的距离顶部高度
-        setTimeout(function() {
+        setTimeout(function () {
           const query = wx.createSelectorQuery()
-          query.select('#posterHeight').boundingClientRect(function(res) {
+          query.select('#posterHeight').boundingClientRect(function (res) {
             that.data.place.posterHeight = res.height
           }).exec()
-          query.select('#camphHeight').boundingClientRect(function(res) {
+          query.select('#camphHeight').boundingClientRect(function (res) {
             that.data.place.camphHeight = res.height
           }).exec()
         }, 1)
@@ -251,7 +273,7 @@ Page({
   /**
    * 新的一期提醒
    */
-  reserveCourse: function() {
+  reserveCourse: function () {
     let that = this
     let course_id = that.data.course_id
     let reserve = that.data.reserve
@@ -276,49 +298,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     this.getStoreAreaList()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     let that = this
     that.share = that.selectComponent("#share")
     that.share.showTips()

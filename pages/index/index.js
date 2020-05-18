@@ -25,7 +25,9 @@ Page({
     limit: 10,
     page: 1,
     lastPage: false, // 是否最后一页
-    isShare: false
+    isShare: false,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**

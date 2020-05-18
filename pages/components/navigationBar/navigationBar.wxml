@@ -3,8 +3,8 @@
 	<view class="navigation" style="position:{{hasBack? 'absolute': 'relative'}}">
 		<view class="weui-navigation-bar {{extClass}}">
 			<view class="weui-navigation-bar__placeholder {{ios ? 'ios' : 'android'}}" style="position: {{hasBackIcon? absolute: 'relative'}};background: {{background}};">
-				<view class="weui-navigation-bar__inner {{ios ? 'ios' : 'android'}}" style="color: {{color}};background: {{background}};{{displayStyle}};{{innerPaddingRight}};{{innerWidth}};padding-top:{{ios? 0: 20}}px">
-					<view class='weui-navigation-bar__left' style="{{leftWidth}};margin-top:{{ios ? 20: 0}}px" bindtap="back">
+				<view class="weui-navigation-bar__inner {{ios ? 'ios' : 'android'}}" style="color: {{color}};background: {{background}};{{displayStyle}};{{innerPaddingRight}};{{innerWidth}};padding-top:{{ios? statusBarHeight-20: statusBarHeight}}px">
+					<view class='weui-navigation-bar__left' style="{{leftWidth}};" bindtap="back">
 						<view class="weui-navigation-bar__buttons">
 							<view class="navbar-icon" wx:if="{{hasBack}}" style="top:{{navbarBtn.top + statusBarHeight}}px;left:{{navbarBtn.right}}px;height:{{navbarBtn.height}}px;">
 								<image mode="aspectFit" bindtap="back" class="floatL" src="/assets/image/back.png"></image>

@@ -40,11 +40,10 @@
   margin: 150rpx 0 0;
   text-align: center;
   line-height: 80rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
-  background-size: 100%;
+  background:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
   color: #000;
   font-size: 30rpx;
-  border-radius: 6rpx;
+  border-radius: 40rpx;
   border: 0;
 }
 .wrapper .btn-cancel {
@@ -57,6 +56,6 @@
   background-size: 100%;
   color: #000;
   font-size: 30rpx;
-  border-radius: 6rpx;
+  border-radius: 40rpx;
   border: 0;
 }

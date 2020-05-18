@@ -107,7 +107,6 @@ image{
   width: 40vw;
   height: 100%;
   text-align: center;
-  
   border-right: 4rpx #343434 solid;
 }
 
@@ -221,11 +220,11 @@ image{
 }
 
 .btn-active {
-  width: 102rpx;
-  height: 58rpx;
+  width: 120rpx;
+  height: 60rpx;
   text-align: center;
   line-height: 58rpx;
-  border-radius: 29rpx;
+  border-radius: 30rpx;
   font-size: 27rpx;
   color: #000;
   background:linear-gradient(0deg,rgba(255,135,28,1),rgba(255,167,14,1));
@@ -241,7 +240,7 @@ image{
 }
 
 .detail-position-box {
-  height: 80rpx;
+  height: 100rpx;
   width: 100%;
   background-color: #2A2A2A;
   display: flex;
@@ -271,7 +270,6 @@ image{
   position: fixed;
   left: 0;
   right: 0;
-  top: 64px;
   z-index: 100;
 }
 
@@ -350,13 +348,42 @@ image{
 
 .coupon-row-left {
   height: 100%;
-  flex: 1
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
 }
 
 .coupon-row-right {
   width: 186rpx;
   height: 100%;
-  background-color: #FFA01C
+  background-color: #FFA01C;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.coupon-price {
+  width: 186rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64rpx;
+  font-weight: 900;
+}
+
+.coupon-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.coupon-name {
+  font-size: 36rpx;
 }
 
 .coupon-line {
@@ -364,25 +391,77 @@ image{
   width: 16rpx;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   position: relative;
-  align-items: center
+  align-items: center;
+  position: absolute;
+  right: 179rpx;
 }
 
 .coupon-line-line {
-  left: 0;
-  right: 0;
+  left: auto;
+  right: auto;
   position: absolute;
   height: 100%;
   background-color: #2A2A2A;
-  display: flex;
-  flex-direction: column;
-  width: 8rpx
+  width: 2rpx
 }
 
 .coupon-line-circle {
-  width: 24rpx;
+  width: 16rpx;
   height: 16rpx;
   border-radius: 8rpx;
   background-color: #2A2A2A;
+  z-index: 1;
+}
+
+.cro {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 12rpx;
+  background-color: #2A2A2A;
+  position: absolute;
+}
+
+.left-top {
+  left: -12rpx;
+  top: -12rpx;
+}
+
+.left-bottom {
+  left: -12rpx;
+  bottom: -12rpx;
+}
+
+.right-top {
+  right: -12rpx;
+  top: -12rpx;
+}
+
+.right-bottom {
+  right: -12rpx;
+  bottom: -12rpx;
+}
+
+.coupon-btn-use {
+  width: 148rpx;
+  height: 80rpx;
+  background-color: #DC7200;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 12rpx;
+}
+
+.coupon-date {
+  color: #747474;
+  font-size: 24rpx;
+}
+
+.coupon-use-text {
+  color: #8B4800;
+   text-decoration: underline;
+   text-decoration-color: #8B4800;
+   font-size: 20rpx;
+   margin-top: 10rpx;
 }

@@ -2,6 +2,7 @@
 
 .wrapper {
   position: fixed;
+  width: 100%;
 }
 
 /**搜索**/
@@ -16,6 +17,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: auto;
+  margin-top: -60rpx;
+  margin-bottom: 24rpx;
 }
 
 .input-box {
@@ -108,11 +112,6 @@
   background-size: 100%;
 }
 
-.coupon-date {
-  padding-left: 20rpx;
-  font-size: 20rpx;
-  color: #000;
-}
 
 /**无代金券提示**/
 
@@ -200,3 +199,5 @@
 .coupon-top-bg {
   width: 100%;
 }
+
+

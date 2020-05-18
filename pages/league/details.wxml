@@ -20,14 +20,14 @@
 		<video wx:else src="{{videoUrl.video}}" show-center-play-btn="{{true}}" poster="{{videoUrl.poster}}?imageView2/1/w/750/h/300" controls="{{true}}" objectFit='fill'></video>
 	</view>
 
-	<view class="detail-position-box {{scroll ? 'position-tab-box' : ''}}">
+	<view class="detail-position-box {{scroll ? 'position-tab-box' : ''}}" style="top: {{statusBarHeight+44}}px">
 		<!--tab栏-->
 		<view class="detail-tab-box ">
 			<view class="row-box {{dataId == 1 ? 'row-box-active' : ''}}" bindtap="switchTab" data-id="1">
-				近期营期
+				课程信息
 			</view>
 			<view class="row-box {{dataId == 2 ? '.row-box-active' : ''}}" bindtap="switchTab" data-id="2">
-				课程介绍
+				注意事项
 			</view>
 		</view>
 	</view>
@@ -72,7 +72,7 @@
 
 
 	<!--简介-->
-	<view class="wxParse-box">
+	<view class="wxParse-box" id='posterHeight'>
 		<view class="title-box">
 			<image src="https://boringcdn.nanningboring.com/molicheng/icon.png" mode="widthFix" class="icon"></image>
 			<view class="title">课程简介</view>
@@ -83,7 +83,7 @@
 	</view>
 
 	<!--注意事项-->
-	<view class="wxParse-box">
+	<view class="wxParse-box" id='camphHeight'>
 		<view class="title-box">
 			<image src="https://boringcdn.nanningboring.com/molicheng/matter-icon.png" mode="widthFix" class="icon"></image>
 			<view class="title">注意事项</view>

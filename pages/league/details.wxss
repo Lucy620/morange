@@ -222,6 +222,8 @@ video{
   height: 100rpx;
   line-height: 100rpx;
   background-color: #333;
+  box-shadow:0 0rpx 0rpx 2rpx #333;
+  -webkit-box-shadow:0px 0px 0px 1px #333;
   color: #fff;
   text-align: center;
   width: vw;
@@ -233,8 +235,8 @@ video{
   flex: 1;
   color: #a5a5a5;
   background: #818181;
-  border-top-left-radius: 40rpx;
-  border-bottom-left-radius: 40rpx;
+  border-top-left-radius: 50rpx;
+  border-bottom-left-radius: 50rpx;
 }
 
 .weui-navigation-bar__placeholder {

@@ -72,13 +72,11 @@
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  margin-top: 20px;
 }
 .weui-navigation-bar__placeholder {
   height: var(--height);
   background: transparent;
   position: relative;
-  z-index: 50;
 }
 
 /* 上面的是WeUI的代码 */

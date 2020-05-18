@@ -140,6 +140,7 @@ swiper {
   margin-top: 12rpx;
 }
 
+
 .tab-icon {
   width: 25rpx;
   height: 25rpx;
@@ -152,6 +153,7 @@ swiper {
   background-color: #181818;
   display: flex;
   align-items: center;
+  box-shadow:0px 6px 8px 0px rgba(0, 0, 0, 0.5);
 }
 
 .week-item {
@@ -240,9 +242,9 @@ swiper {
 
 .scroll-box {
   height: 100%;
-  display: flex;
   flex-direction: column;
-  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overflow: scroll;
   background-color: #262626;
   padding-bottom: 148px;
 }
@@ -333,7 +335,6 @@ swiper {
 .box {
   display: flex;
   align-items: center;
-  height: 148rpx;
   padding: 20rpx 20rpx;
   background-color: #181818;
   margin-bottom: 2rpx;
@@ -348,8 +349,8 @@ swiper {
 }
 
 .coach {
-  width: 122rpx;
-  height: 122rpx;
+  width: 150rpx;
+  height: 150rpx;
   background-color: #272727;
   box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
   border-radius: 50%;
@@ -365,16 +366,38 @@ swiper {
   flex: 1;
   margin-left: 20rpx;
   margin-right: 20rpx;
+  align-content: space-around;
+  display: flex;
+  flex-direction: column;
+  height: 150rpx;
+  justify-content: space-around;
 }
 
 .title {
   color: #fff;
-  font-size: 24rpx;
+  font-size: 32rpx;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
   overflow: hidden;
+  line-height: 36rpx;
 }
+
+.pri-title {
+  color: #fff;
+  font-size: 32rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: 36rpx;
+  display: flex;
+  align-items: center;
+}
+
+
 
 .attributes-box {
   display: flex;
@@ -385,7 +408,7 @@ swiper {
   display: flex;
   align-items: center;
   color: #bcbcbc;
-  font-size: 14rpx;
+  font-size: 18rpx;
 }
 
 .garden {
@@ -398,13 +421,13 @@ swiper {
 
 .date {
   color: #fff;
-  font-size: 20rpx;
+  font-size: 24rpx;
 }
 
 .time {
   color: #FF9C00;
   margin-right: 10rpx;
-  font-size: 22rpx;
+  font-size: 24rpx;
 }
 
 .btn {
@@ -503,7 +526,6 @@ swiper {
 .time-kcal{
   display: flex;
   align-items: center;
-  margin: 4rpx 0;
 }
 
 .wait-btn {

@@ -21,6 +21,8 @@ App({
     cities: [],
     systeminfo: {}, // 系统信息
     headerBtnPosi: {}, // 胶囊按钮位置信息
+    statusBarHeight: 0,
+    ios: false
   },
   shoppingList: '', // 购物清单(下单)
   couponList: '', // 代金券(下单)
@@ -37,7 +39,10 @@ App({
   onLaunch: function(options) {
     wx.getSystemInfo({
       success: (res) => {
+        var ios = !!(res.system.toLowerCase().search('ios') + 1);
         this.globalData.systeminfo = res
+        this.globalData.statusBarHeight = res.statusBarHeight
+        this.globalData.ios = ios
       },
     })
     // 获得胶囊按钮位置信息

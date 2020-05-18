@@ -4,14 +4,65 @@
 
 .poster-box {
   position: relative;
-  height: 880rpx;
-  box-shadow: inset 0rpx 0rpx 133.3rpx 33.3rpx rgba(0, 0, 0, 0.8);
 }
 
 .poster {
-  width: 750rpx;
-  height: 880rpx;
+  width: 100%;
 }
+
+.share-btn-box {
+  display: flex;
+  flex-direction: column;
+  width: 86%;
+  padding: 20rpx;
+  background-color: #FFF6C1;
+  box-shadow:0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 12rpx;
+  color: #000;
+  text-align: center;
+  margin: auto;
+  margin-top: -140rpx;
+  z-index: 1;
+}
+
+.icon-box {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 64rpx;
+}
+
+.icon-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  margin-bottom: 20rpx;
+  width: 84rpx;
+  height: 84rpx;
+  background-color: transparent;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+button::after {
+  border: none;
+}
+
+.wechat {
+  background-image: url(https://assets.morangefitness.com/wechat.png);
+}
+
+.wechat-circle {
+  background-image: url(https://assets.morangefitness.com/wechat_circle.png);
+}
+
+.title {
+
+}
+
+
 .btn {
   width: 709.3rpx;
   height: 99.3rpx;
@@ -34,6 +85,7 @@
   box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0, 0, 0, 0.5);
   border-radius: 13.3rpx;
   margin: 0 auto;
+  margin-top: 64rpx;
 }
 
 .record-title-box {

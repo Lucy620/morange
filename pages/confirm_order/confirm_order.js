@@ -13,6 +13,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    title: "dd",
+    tip: {
+      title: '提示',
+      content: '',
+      confirmFun: () => {},
+      cancelFun: () => {}
+    },
+    ordersn: '',
     showLoad: true,
     cart: '', // 购物清单
     type: 'buy', // 按钮类型
@@ -56,14 +64,14 @@ Page({
       {
         id: 6,
         status: true
-      }
+      },
     ] // 拼课选择人数
   },
 
   /**
    * 跳转页面
    */
-  jumpPage: function(e) {
+  jumpPage: function (e) {
     var url = e.currentTarget.dataset.url || ''
     var index = config.BASE.tabPages.indexOf('/' + url)
     if (index != -1) {
@@ -77,20 +85,38 @@ Page({
     }
   },
 
-  /***
-   * 打开赠送
-   */
-  openGive: function() {
+
+  openGive: function () {
+    this.setModalContent('提示', '赠送的课程被领取后，双方均不可取消该订单', this.createOrder)
     this.setData({
       showTips: true,
     })
+  },
+  /***
+   * modal 确认按钮事件
+   */
+  onConfirm: function () {
+    this.data.tip.confirmFun()
+  },
 
+  /***
+   * 设置 modal 内容
+   */
+  setModalContent: function (title, content, confirmFun) {
+    let tip = this.data.tip
+    tip.title = title
+    tip.content = content
+    tip.confirmFun = confirmFun
+    this.setData({
+      tip,
+      showTips: true,
+    })
   },
 
   /***
    * 打开训练营
    */
-  openCamp: function() {
+  openCamp: function () {
     this.setData({
       showTips: true,
     })
@@ -100,7 +126,7 @@ Page({
   /**
    * 关闭提示
    */
-  closeTips: function() {
+  closeTips: function () {
     this.setData({
       showTips: false,
     })
@@ -109,7 +135,7 @@ Page({
   /**
    * 打开优惠券
    */
-  openCoupon: function() {
+  openCoupon: function () {
     let dataId = this.data.dataId
     let coupon_list = this.data.coupon_list
     let user_coupon_id = this.data.user_coupon_id
@@ -123,7 +149,7 @@ Page({
   /**
    * 私教选择课时
    */
-  choiceCourseTime: function(e) {
+  choiceCourseTime: function (e) {
     let num = e.currentTarget.dataset.num
     let id = e.currentTarget.dataset.id
     let index = e.currentTarget.dataset.index
@@ -146,7 +172,7 @@ Page({
   /**
    * 团课选择人数 拼课
    **/
-  choiceNumber: function(e) {
+  choiceNumber: function (e) {
     let id = e.currentTarget.dataset.id
     let activity = this.data.activity
     let couponAll = this.data.couponAll
@@ -180,7 +206,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.setData({
       type: options.type || []
     })
@@ -192,7 +218,7 @@ Page({
   /**
    *  初始化数据
    */
-  getData: function() {
+  getData: function () {
     let that = this
     let cart = app.shoppingList
     let teamNumber = that.data.teamNumber
@@ -283,7 +309,7 @@ Page({
           })
         }
       })
-    }).catch(function(err) {
+    }).catch(function (err) {
       wx.showModal({
         title: '提示',
         content: '网络出错',
@@ -296,7 +322,7 @@ Page({
   /**
    * 计算团课应付价
    */
-  teamPayPirce: function(courseDate, num, user, activity) {
+  teamPayPirce: function (courseDate, num, user, activity) {
     let pay_price = 0
     if (activity.two && num == 2) {
       // 普通价
@@ -324,7 +350,7 @@ Page({
   /***
    * 计算私教应付价
    */
-  privatePayPirce: function(arr, id, courseDate, user) {
+  privatePayPirce: function (arr, id, courseDate, user) {
     let number = 1
     let priceIndex = 0
     let pay_price = 0
@@ -353,7 +379,7 @@ Page({
   /**
    * 确认购买
    */
-  createBuy: function() {
+  createBuy: function () {
     let that = this
     let type = that.data.type
     let course = that.data.course
@@ -371,7 +397,7 @@ Page({
   /**
    * 创建订单
    */
-  createOrder: function() {
+  createOrder: function () {
     let that = this
     let cart = that.data.cart
     let user = that.data.user
@@ -396,29 +422,24 @@ Page({
         }
         if (user.balance >= pay_price) {
           pay_price = pay_price / 100
-          wx.showModal({
-            title: '提示',
-            content: '支付' + pay_price + '元',
-            success(res) {
-              if (res.confirm) {
-                that.cardPaynotify(data.obj.order_result.ordersn)
-              }
-            }
+          this.setModalContent('提示', '支付' + pay_price + '元', that.cardPaynotify)
+          this.setData({
+            ordersn: data.obj.order_result.ordersn,
+            showTips: true,
           })
         } else {
           that.wxPay(data.obj.order_result.ordersn)
         }
       } else if (data.code == 501) {
-        wx.showModal({
-          content: '库存不足',
-          success(res) {
-            if (res.confirm) {
-             wx.navigateBack({
-               delta: 1,
-             })
-            }
-          }
+        this.setModalContent('提示', '库存不足', ()=>{
+          wx.navigateBack({
+            delta: 1,
+          })
         })
+        this.setData({
+          showTips: true,
+        })
+
       } else {
         wx.showToast({
           title: data.msg,
@@ -451,7 +472,7 @@ Page({
             'package': data.obj.config.package,
             'signType': 'MD5',
             'paySign': data.obj.config.paySign,
-            'success': function(res) {
+            'success': function (res) {
               if (type == 'give') {
                 wx.redirectTo({
                   url: '/pages/confirm_order/payment_success?give_expired=' + give_expired + '&ordersn=' + ordersn + '&user_name=' + user.miniprogram.nickname
@@ -462,12 +483,12 @@ Page({
                 })
               }
             },
-            'fail': function(res) {
+            'fail': function (res) {
               wx.showModal({
                 content: '离支付成功只差一步,怎么能轻易放弃？',
                 cancelText: '放弃支付',
                 confirmText: '继续支付',
-                success: function(res) {
+                success: function (res) {
                   if (res.confirm) {
                     that.wxPay(ordersn)
                   } else if (res.cancel) {
@@ -490,9 +511,10 @@ Page({
   /**
    * 魔橙卡支付
    */
-  cardPaynotify: function(ordersn) {
+  cardPaynotify: function () {
     let that = this
     let type = that.data.type
+    let ordersn = that.data.ordersn
     let give_expired = that.data.give_expired
     let user = that.data.user
     ajax.post(api.cardPay, {
@@ -523,39 +545,38 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {},
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
-  },
+  onUnload: function () {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 

@@ -2,7 +2,11 @@
 
 .row-box {
   padding: 0 25rpx;
+  display: flex;
+  flex-direction: column;
+  margin-top: 68px;
 }
+
 
 .row {
   display: flex;

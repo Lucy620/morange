@@ -237,7 +237,6 @@
   line-height: 100rpx;
   font-size: 32rpx;
   color: #000;
-  font-weight: bold;
   border-radius: 50rpx;
   background:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
   margin: auto

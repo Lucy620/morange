@@ -65,7 +65,7 @@
     "navigationStyle": "custom"
   },
   "tabBar": {
-    "custom": true,
+    "custom": false,
     "color": "#424242",
     "selectedColor": "#FF9C00",
     "backgroundColor": "#000",

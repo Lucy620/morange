@@ -34,7 +34,9 @@ Page({
     }],
     showPrivilege: false, // 特权
     isShow: false,
-    showTitle: false
+    showTitle: false,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**

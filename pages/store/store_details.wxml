@@ -1,7 +1,11 @@
 <!--pages/store/store_details.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
-<view class="wrapper" hidden="{{showLoad}}">
 
+<navigationBar hasBack background="transparent">
+	<view slot="title" class="bar-title">{{storeData.name}}</view>
+</navigationBar>
+
+<view class="wrapper" hidden="{{showLoad}}">
   <!--轮播-->
   <view class="swiper-box">
     <swiper indicator-dots="{{true}}" autoplay="{{true}}" circular="{{true}}" wx:if="{{show_type == 'slide' || show_type ==  ''}}">

@@ -6,7 +6,7 @@
   <view slot="title" class="bar-title">MORANGE</view>
 </navigationBar>
 
-<view class="wrapper-box" hidden="{{showLoad}}">
+<view class="wrapper-box" hidden="{{showLoad}}" style="margin-top: {{ios? statusBarHeight-20: statusBarHeight}}px">
   <!--tab栏-->
   <view class="tab-box">
     <view class="row-box" bindtap="openAnimation" data-type="screen">

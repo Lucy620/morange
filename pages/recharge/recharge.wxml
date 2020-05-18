@@ -1,4 +1,8 @@
 <!--pages/recharge/recharge.wxml-->
+<navigationBar hasBack background="#000">
+	<view slot="title" class="bar-title">充值</view>
+</navigationBar>
+
 <view class="wrapper" hidden="{{showLoad}}">
 
   <view class="row-box">

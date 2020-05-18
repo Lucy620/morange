@@ -57,7 +57,7 @@
 					教练课程
 				</view>
 				<view class="row-box" bindtap="onShowComment">
-					课程评价
+					教练评价
 				</view>
 			</view>
 		</view>

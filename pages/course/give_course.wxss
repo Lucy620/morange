@@ -86,11 +86,12 @@
   text-align: center;
   line-height: 52rpx;
   border-radius: 6.7rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/curriculum-btn.png);
-  background-size: 100%;
+  background:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
    position: relative;
   z-index: 1;
 }
+
+
 
 .tips-box {
   position: absolute;

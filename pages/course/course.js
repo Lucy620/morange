@@ -98,7 +98,9 @@ Page({
     tagSelectedCount: 0,
     jointDate: '',
     jointTime: '',
-    scrollTop: 5 
+    scrollTop: 5 ,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /***
@@ -975,6 +977,7 @@ Page({
     if (searchTimeList.length > 0) {
       search_time = searchTimeList[searchTimeIndex]
     }
+    wx.showNavigationBarLoading();
     ajax.post(api.getCourseTeamListAll, {
       'store_ids': store_ids,
       'course_ids': course_ids,
@@ -984,6 +987,8 @@ Page({
     }, ({
       data
     }) => {
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
       if (data.code == 200) {
         let list = data.obj.list
         for (let i in list) {
@@ -1068,14 +1073,14 @@ Page({
     }, 'noauth')
   },
   onListTouch: function (e) {
-    console.log('onListTouch--->',e)
+
   },
   onPageScroll: function (e){
-    console.log('onPageScroll--->',e)
+
   },
 
   onTabItemTap: function (e) {
-    console.log('onTabItemTap--->',e)
+
   },
 
 
@@ -1116,7 +1121,21 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    let curTab = this.data.curTab
+    switch(curTab){
+        case 'general_course':
+          this.getCourseTeamListAll()
+          break
+          case 'private_course':
+            this.getCoursePrivateList()
+          break
+          case 'camp':
+            this.getCourseCamp('first')
+          break
+          case 'joint_course':
+            this.getJointData()
+            break
+    }
   },
 
   /**
@@ -1149,13 +1168,15 @@ Page({
     let that = this
     let store_ids = that.getScreenData(that.data.priStoreList)
     let course_ids = that.getScreenData(that.data.priCoverList)
-    console.log('store_ids' + that.data.priStoreList, that.data.priCoverList)
+    wx.showNavigationBarLoading();
     ajax.post(api.getCoursePrivateList, {
       'store_ids': store_ids,
       'course_ids': course_ids
     }, ({
       data
     }) => {
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
       if (data.code == 200) {
         let list = data.obj.list
         list = that.countPercent(list)
@@ -1248,15 +1269,16 @@ Page({
     for (let item of cityList[cityIndex].children) {
       area_ids.push(item.id)
     }
-
+    wx.showNavigationBarLoading();
     ajax.post(api.getCourseCampList, {
       'area_ids': area_ids,
       'tags': tags
     }, ({
       data
     }) => {
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
       if (data.code == 200) {
-
         if (type == 'first') {
           let tags = data.obj.course_tags
           let temp = [{
@@ -1352,9 +1374,12 @@ Page({
    */
   getJointData: function () {
     let that = this
+    wx.showNavigationBarLoading();
     ajax.post(api.getSpellCoachSelectNew, {}, ({
       data
     }) => {
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
       if (data.code == 200) {
         let coach = data.obj.coach
         that.setData({

@@ -29,6 +29,30 @@ Page({
       posterHeight: 236,
       camphHeight: 236,
       courseHeight: 236,
+    },
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
+  },
+
+  /**
+   * tab 选择 滚动条位置
+   */
+  switchTab: function (e) {
+    let that = this
+    let id = e.currentTarget.dataset.id
+    let place = that.data.place
+    let courseHeight = that.data.place.posterHeight + that.data.place.camphHeight
+    if (id == 1) {
+      wx.pageScrollTo({
+        scrollTop: place.posterHeight,
+        duration: 300
+      })
+    }
+    if (id == 2) {
+      wx.pageScrollTo({
+        scrollTop: courseHeight + 84,
+        duration: 300
+      })
     }
   },
 
@@ -104,6 +128,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this
+    setTimeout(function(){
+      const query = wx.createSelectorQuery()
+      query.select('#camphHeight').boundingClientRect(function (res) {
+        that.data.place.camphHeight = res.height
+      }).exec()
+    },1000)
     this.setData({
       team_id: options.team_id || 0,
       nowtime: Math.round(new Date().getTime() / 1000)

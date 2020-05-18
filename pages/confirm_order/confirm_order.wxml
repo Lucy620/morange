@@ -10,7 +10,7 @@
 
 <view class="wrapper" hidden="{{showLoad}}">
   <!--团课-->
-  <template is="league" wx:if="{{course.type == 'team'}}" data="{{courseDate,course,user,type,coupon_list,activity,number,dataId,reduce_cost,pay_price,coupon_type,showTips,coupon_list,user_coupon_id,discount_price,queue_order,teamNumber,spellNumber}}"></template>
+  <template is="league" wx:if="{{course.type == 'team'}}" data="{{tip,courseDate,course,user,type,coupon_list,activity,number,dataId,reduce_cost,pay_price,coupon_type,showTips,coupon_list,user_coupon_id,discount_price,queue_order,teamNumber,spellNumber}}"></template>
 
   <!--私教-->
   <template is="private" wx:if="{{course.type == 'private'}}" data="{{courseDate,course,user,price_list,coupon_list,user_coupon_id,coupon_type,reduce_cost,priceIndex,number,pay_price}}"></template>

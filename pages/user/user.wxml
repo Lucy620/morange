@@ -13,7 +13,7 @@
 	<block wx:if="{{user.type == 'vip'}}">
 		<!--头部-->
 		<view class="open-head-box">
-			<view class="open-box">
+			<view class="open-box" style="margin-top: {{statusBarHeight+64}}px">
 				<view class="user-box">
 					<block wx:if="{{authUser}}">
 						<image src="{{user.miniprogram.headimgurl}}" catchtap="onGotUserInfo" mode="widthFix" class="user-img"></image>
@@ -44,8 +44,8 @@
 		<!--头部-->
 		<view class="head-box">
 			<view class="box">
-				<image src="https://boringcdn.nanningboring.com/molicheng/MORANGE-icon.png" mode="widthFix" class="box-title"></image>
 				<view class="user-box">
+				<image src="https://boringcdn.nanningboring.com/molicheng/MORANGE-icon.png" mode="widthFix" class="box-title"></image>
 					<!--未登录 不可同步-->
 					<block wx:if="{{!user.type}}">
 						<image src="{{user.miniprogram.headimgurl}}" mode="widthFix" class="user-img"></image>
@@ -69,7 +69,7 @@
 					<view class="tips-text">开通魔橙卡专享特权
 						<text class="privilege-text" bindtap="openPrivilege">查看特权</text>
 					</view>
-					<view class="btn" bindtap='jumpPage' data-url='pages/recharge/recharge?type=normal'>开 通</view>
+					<view class="btn" bindtap='jumpPage' data-url='pages/recharge/recharge?type=normal'>开通</view>
 				</view>
 			</view>
 		</view>
@@ -152,8 +152,9 @@
 		<view class="row-item row-arrow" bindtap='jumpPage' data-url='pages/course/give_course'>
 			<view class="row-title">我的赠送</view>
 		</view>
-		<view class="row-item row-arrow" bindtap='jumpPage' data-url='pages/invitation/invitation'>
-			<view class="row-title">邀请有礼</view>
+		<view class="share-item" bindtap='jumpPage' data-url='pages/invitation/invitation'>
+			<!-- <view class="row-title">邀请有礼</view> -->
+			<image src="https://assets.morangefitness.com/share_line.png" class="share-line" mode="widthFix"></image>
 		</view>
 		<view class="row-item row-arrow" bindtap='jumpPage' data-url='pages/coach/curriculum?dataId=2' wx:if="{{user.coach}}">
 			<view class="row-title">我是教练</view>

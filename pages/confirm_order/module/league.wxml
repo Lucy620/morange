@@ -1,143 +1,136 @@
 <template name="league">
-  <view class="box">
-    <image src="https://boringcdn.nanningboring.com/molicheng/bg-icon.png" mode="widthFix" class="bg-icon"></image>
-    <view class="list-text">
-      <view class="title">
-        <!--拼课--->
-        <text wx:if="{{courseDate.is_spell == 1}}">『拼课』</text> {{course.name}}({{courseDate.coach.name}})
-      </view>
+	<view class="box">
+		<image src="https://boringcdn.nanningboring.com/molicheng/bg-icon.png" mode="widthFix" class="bg-icon"></image>
+		<view class="list-text">
+			<view class="title">
+				<!--拼课--->
+				<text wx:if="{{courseDate.is_spell == 1}}">『拼课』</text> {{course.name}}({{courseDate.coach.name}})
+			</view>
 
-      <view class="coach-name">时间: {{tools.formatTime(courseDate.start_at,'{m}月{d}日')}} {{tools.formatTime(courseDate.start_at,'{h}:{i}')}}-{{tools.formatTime(courseDate.end_at,'{h}:{i}')}}</view>
+			<view class="coach-name">时间: {{tools.formatTime(courseDate.start_at,'{m}月{d}日')}} {{tools.formatTime(courseDate.start_at,'{h}:{i}')}}-{{tools.formatTime(courseDate.end_at,'{h}:{i}')}}</view>
 
-      <view class="address">地点:{{courseDate.store.address}}</view>
+			<view class="address">地点:{{courseDate.store.address}}</view>
 
-    </view>
+		</view>
 
-    <!--团课等待-->
-    <view class="wait-box" wx:if="{{courseDate.rest_stock == 0}}">
-      <view class="wait-title">当前等候
-        <text class="wait-people">{{queue_order}}</text>人</view>
-      <view class="wait-tips">注意:加入等候队列后，若有空位，将自动加入课程；</view>
-      <view class="wait-tips">若取消等候或未排上，预付金自动退回魔橙卡；</view>
-    </view>
+		<!--团课等待-->
+		<view class="wait-box" wx:if="{{courseDate.rest_stock == 0}}">
+			<view class="wait-title">当前等候
+				<text class="wait-people">{{queue_order}}</text>人</view>
+			<view class="wait-tips">注意:加入等候队列后，若有空位，将自动加入课程；</view>
+			<view class="wait-tips">若取消等候或未排上，预付金自动退回魔橙卡；</view>
+		</view>
 
-    <view class="row-box">
-      <view class="row-text">人数：</view>
-      <view class="row-tab">
+		<view class="row-box">
+			<view class="row-text">人数：</view>
+			<view class="row-tab">
 
-        <!--团课-->
-        <block wx:if="{{type == 'buy' && courseDate.rest_stock > 0 && courseDate.is_spell == 0}}">
-          <view class="tab-item {{dataId == item.id ? 'select-item' : !item.status ? 's-gray' : ''}}" bindtap="{{item.status ? 'choiceNumber': ''}}" data-id='{{item.id}}' wx:for="{{teamNumber}}" wx:key='index'>{{item.id}}人</view>
-        </block>
+				<!--团课-->
+				<block wx:if="{{type == 'buy' && courseDate.rest_stock > 0 && courseDate.is_spell == 0}}">
+					<view class="tab-item {{dataId == item.id ? 'select-item' : !item.status ? 's-gray' : ''}}" bindtap="{{item.status ? 'choiceNumber': ''}}" data-id='{{item.id}}' wx:for="{{teamNumber}}" wx:key='index'>{{item.id}}人</view>
+				</block>
 
-        <!--拼课-->
-        <block wx:if="{{courseDate.is_spell == 1}}">
-          <view class="tab-item {{dataId == item.id ? 'select-item' : ''}}" bindtap="choiceNumber" data-id='{{item.id}}' wx:for="{{spellNumber}}" wx:key='index'>{{item.id}}人</view>
-        </block>
+				<!--拼课-->
+				<block wx:if="{{courseDate.is_spell == 1}}">
+					<view class="tab-item {{dataId == item.id ? 'select-item' : ''}}" bindtap="choiceNumber" data-id='{{item.id}}' wx:for="{{spellNumber}}" wx:key='index'>{{item.id}}人</view>
+				</block>
 
-        <!--等待-->
-        <block wx:if="{{type == 'give' || courseDate.rest_stock == 0}}">
-          <view class="tab-item select-item">1人</view>
-        </block>
+				<!--等待-->
+				<block wx:if="{{type == 'give' || courseDate.rest_stock == 0}}">
+					<view class="tab-item select-item">1人</view>
+				</block>
 
-      </view>
-    </view>
-
-
-    <view class="row">
-      <view class="row-text">总价: </view>
-      <!--两人同行一人免单-->
-      <view class="row-tab" wx:if="{{activity.two && number == 2}}">
-        {{tools.fen2yuan(courseDate.price,2)}}元
-      </view>
-      <view class="row-tab" wx:else>
-        {{tools.fen2yuan(courseDate.price * number,2)}}元
-      </view>
-    </view>
+			</view>
+		</view>
 
 
-    <view class="row">
-      <view class="row-text">魔橙卡折后价: </view>
-      <view class="row-tab">
-        <text class="s-yellow" wx:if="{{user.type == 'vip'}}">{{tools.fen2yuan(discount_price,2)}}元</text>
-        <block wx:if="{{user.type == 'user'}}">
-          <text class="s-yellow" bindtap='jumpPage' data-url='pages/recharge/recharge'>尚未开通，点击开通</text>
-          <image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
-        </block>
-      </view>
-    </view>
+		<view class="row">
+			<view class="row-text">总价: </view>
+			<!--两人同行一人免单-->
+			<view class="row-tab" wx:if="{{activity.two && number == 2}}">
+				{{tools.fen2yuan(courseDate.price,2)}}元
+			</view>
+			<view class="row-tab" wx:else>
+				{{tools.fen2yuan(courseDate.price * number,2)}}元
+			</view>
+		</view>
 
 
-    <view class="row" wx:if="{{courseDate.no_activity == 0 && courseDate.is_spell == 0}}">
-      <view class="row-text">代金券: </view>
-      <view class="row-tab" wx:if="{{coupon_list.length == 0}}">无代金券</view>
-      <view class="row-tab" wx:elif="{{user_coupon_id == 0}}" bindtap="openCoupon">
-        <text>{{coupon_list.length}}张可用</text>
-        <image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
-      </view>
-      <!--代金券优惠-->
-      <view class="row-tab" wx:else bindtap="openCoupon">
-        -{{coupon_type == 'week' || coupon_type == 'gift' ? tools.fen2yuan(pay_price,2) : tools.fen2yuan(reduce_cost,2)}}元
-        <image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
-      </view>
-    </view>
-
-    <view class="money-box" wx:if="{{type=='buy' && courseDate.rest_stock > 0 || type=='give' && courseDate.rest_stock > 0 }}">还需支付
-      <text class="money-text" wx:if="{{coupon_type == 'normal'}}">￥{{reduce_cost == pay_price ? '0.00' :  tools.fen2yuan(pay_price,2)}}</text>
-      <!--免单券 赠课券-->
-      <text class="money-text" wx:if="{{coupon_type == 'week' || coupon_type == 'gift'}}">￥0</text>
-    </view>
+		<view class="row">
+			<view class="row-text">魔橙卡折后价: </view>
+			<view class="row-tab">
+				<text class="s-yellow" wx:if="{{user.type == 'vip'}}">{{tools.fen2yuan(discount_price,2)}}元</text>
+				<block wx:if="{{user.type == 'user'}}">
+					<text class="s-yellow" bindtap='jumpPage' data-url='pages/recharge/recharge'>尚未开通，点击开通</text>
+					<image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+				</block>
+			</view>
+		</view>
 
 
-    <!--团课等待-->
-    <view class="wait-money" wx:if="{{courseDate.rest_stock == 0}}">
-      <view class="tab-text">还需支付</view>
-      <view class="row-tab">{{reduce_cost == pay_price ? '0.00' : tools.fen2yuan(pay_price,2)}}元</view>
-    </view>
+		<view class="row" wx:if="{{courseDate.no_activity == 0 && courseDate.is_spell == 0}}">
+			<view class="row-text">代金券: </view>
+			<view class="row-tab" wx:if="{{coupon_list.length == 0}}">无代金券</view>
+			<view class="row-tab" wx:elif="{{user_coupon_id == 0}}" bindtap="openCoupon">
+				<text>{{coupon_list.length}}张可用</text>
+				<image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+			</view>
+			<!--代金券优惠-->
+			<view class="row-tab" wx:else bindtap="openCoupon">
+				-{{coupon_type == 'week' || coupon_type == 'gift' ? tools.fen2yuan(pay_price,2) : tools.fen2yuan(reduce_cost,2)}}元
+				<image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+			</view>
+		</view>
 
-    <!--拼课-->
-    <view class="explain s-explain" wx:if="{{courseDate.is_spell == 1}}">
-      <view class="spell-text">1、此课程为拼课课程，拼课发起后，教练员即收到通知，2小时内进行确认；</view>
-      <view class="spell-text">2、若教练员未接单或在2小时内不确认接单，则系统默认拼课失败，预付款原路返回；</view>
-      <view class="spell-text">3、若距拼课时间开始前3小时还未拼够6人，则系统默认拼课失败，预付款原路返回；</view>
-      <view class="spell-text">4、教练确认接单后后可以继续发起拼人，并在正常课表显示；当参与拼课人数满6人时，即拼课成功，不可取消，也不退款。 </view>
-    </view>
-
-
-    <!--团课 团课等待-->
-    <view class="explain {{courseDate.rest_stock == 0 ? 's-explain' : ''}}" wx:if="{{type == 'buy' && courseDate.is_spell == 0}}">
-      温馨提示:开始时间前6个小时前取消预约，支持全额退款;开始时间前6小时后取消预约，不支持退款。
-    </view>
-
-    <!--赠课-->
-    <view class="explain" wx:if="{{type == 'give' && courseDate.rest_stock > 0}}">
-      温馨提示：课程赠出并被领取后，不可退回；赠送者和领取者均不可取消该订单。
-    </view>
+		<view class="money-box" wx:if="{{type=='buy' && courseDate.rest_stock > 0 || type=='give' && courseDate.rest_stock > 0 }}">还需支付
+			<text class="money-text" wx:if="{{coupon_type == 'normal'}}">￥{{reduce_cost == pay_price ? '0.00' :  tools.fen2yuan(pay_price,2)}}</text>
+			<!--免单券 赠课券-->
+			<text class="money-text" wx:if="{{coupon_type == 'week' || coupon_type == 'gift'}}">￥0</text>
+		</view>
 
 
-  </view>
+		<!--团课等待-->
+		<view class="wait-money" wx:if="{{courseDate.rest_stock == 0}}">
+			<view class="tab-text">还需支付</view>
+			<view class="row-tab">{{reduce_cost == pay_price ? '0.00' : tools.fen2yuan(pay_price,2)}}元</view>
+		</view>
 
-  <block>
-    <block wx:if="{{(user.type == 'user' && type == 'give') || (user.type == 'user' && courseDate.rest_stock == 0) }}">
-      <view class="btn" bindtap='jumpPage' data-url='pages/recharge/recharge?type=normal'>{{courseDate.rest_stock > 0 ? '开通魔橙卡才能赠课，点击开通' : '魔橙卡用户等候，点击开通（随时可退）'}}</view>
-    </block>
-    <block wx:else>
-      <view class="btn" wx:if="{{user.balance < pay_price}}" bindtap="createBuy">确认订单，微信支付</view>
-      <view class="btn" wx:else bindtap="createBuy">{{type == 'give' ? '魔橙卡余额支付，赠送好友' : '确认订单，魔橙卡支付'}}</view>
-    </block>
-  </block>
+		<!--拼课-->
+		<view class="explain s-explain" wx:if="{{courseDate.is_spell == 1}}">
+			<view class="spell-text">1、此课程为拼课课程，拼课发起后，教练员即收到通知，2小时内进行确认；</view>
+			<view class="spell-text">2、若教练员未接单或在2小时内不确认接单，则系统默认拼课失败，预付款原路返回；</view>
+			<view class="spell-text">3、若距拼课时间开始前3小时还未拼够6人，则系统默认拼课失败，预付款原路返回；</view>
+			<view class="spell-text">4、教练确认接单后后可以继续发起拼人，并在正常课表显示；当参与拼课人数满6人时，即拼课成功，不可取消，也不退款。 </view>
+		</view>
 
 
-  <view class="mask-box" wx:if="{{showTips}}">
-    <view class="mask-text-box">
-      <view class="mask-text-title">提示</view>
-      <view class="mask-text-tips">赠送的课程被领取后，双方均不可取消该订单。</view>
-      <view class="mask-btn-box">
-        <view class="mask-btn" bindtap="closeTips">再想想</view>
-        <view class="confirm-btn" bindtap="createOrder">确定赠送</view>
-      </view>
-    </view>
-  </view>
+		<!--团课 团课等待-->
+		<view class="explain {{courseDate.rest_stock == 0 ? 's-explain' : ''}}" wx:if="{{type == 'buy' && courseDate.is_spell == 0}}">
+			温馨提示:开始时间前6个小时前取消预约，支持全额退款;开始时间前6小时后取消预约，不支持退款。
+		</view>
+
+		<!--赠课-->
+		<view class="explain" wx:if="{{type == 'give' && courseDate.rest_stock > 0}}">
+			温馨提示：课程赠出并被领取后，不可退回；赠送者和领取者均不可取消该订单。
+		</view>
+
+
+	</view>
+
+	<block>
+		<block wx:if="{{(user.type == 'user' && type == 'give') || (user.type == 'user' && courseDate.rest_stock == 0) }}">
+			<view class="btn" bindtap='jumpPage' data-url='pages/recharge/recharge?type=normal'>{{courseDate.rest_stock > 0 ? '开通魔橙卡才能赠课，点击开通' : '魔橙卡用户等候，点击开通（随时可退）'}}</view>
+		</block>
+		<block wx:else>
+			<view class="btn" wx:if="{{user.balance < pay_price}}" bindtap="createBuy">确认订单，微信支付</view>
+			<view class="btn" wx:else bindtap="createBuy">{{type == 'give' ? '魔橙卡余额支付，赠送好友' : '确认订单，魔橙卡支付'}}</view>
+		</block>
+	</block>
+
+	<modal show="{{showTips}}" bindcancel="{{tip.cancelFun}}" bindconfirm='onConfirm' title="{{tip.title}}" content="{{tip.content}}">
+
+	</modal>
+
 </template>
 
 <wxs module="tools" src="../../../utils/tools.wxs"></wxs>

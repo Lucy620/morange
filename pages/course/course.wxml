@@ -3,7 +3,7 @@
 <loading wx:if="{{showTab}}"></loading>
 
 <navigationBar>
-	<view slot="btn-left" class="bar-city">
+	<view slot="btn-left" class="bar-city" style="margin-top: {{ios? 20: 0}}px">
 		<text wx:if="{{!showCities}}" bindtap="onShowCities">{{curCity.name}}</text>
 		<image wx:if="{{!showCities}}" class="img-city" mode="aspectFit" src="/assets/image/down.png"></image>
 		<image wx:if="{{showCities}}" bindtap="onHideCities" class="img-cancel" mode="aspectFit" src="/assets/image/cancel.png"></image>
@@ -11,7 +11,7 @@
 	<view slot="title" class="bar-title">{{showCities? '选择城市': 'MORANGE'}}</view>
 </navigationBar>
 
-<view class="tip">双击这里，刷新课表</view>
+<!-- <view class="tip">双击这里，刷新课表</view> -->
 
 <view wx:if="{{showCities}}" class="city-modal">
 	<view class="city-select">
@@ -36,7 +36,7 @@
 	</view>
 </view>
 
-<view wx:else class="wrapper-box" hidden="{{showLoad}}" animation="{{bannerAnimation}}">
+<view wx:else class="wrapper-box" hidden="{{showLoad}}" animation="{{bannerAnimation}}" style="margin-top: {{ios? statusBarHeight-20: statusBarHeight}}px">
 	<view class="container-box">
 		<!--轮播-->
 		<view class="swiper-box" wx:if="{{showBanners}}">
@@ -166,10 +166,7 @@
 				<image src="{{course.coach.headimgurl}}" mode="aspectFill" class="coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{course.coach.user_id}}'></image>
 				<view class="box-row" bindtap='jumpPage' data-url='pages/private_education/course?private_id={{course.id}}'>
 					<view class="mid">
-						<view class="title">{{course.course.name}}</view>
-						<view class="time-kcal">
-							<text class="kcal">{{course.calories}}</text>
-						</view>
+						<view class="pri-title">{{course.course.name}}<text class="kcal" style="margin-left:8rpx">600kcal</text></view>
 						<view class="attributes-box">
 							<view class="name" wx:for="{{course.course.attributes}}" wx:key='index' wx:for-item="attributes">
 								<view wx:if="{{index != 0}}" class="garden"></view>{{attributes}}
@@ -418,6 +415,7 @@
 
 	</view>
 </view>
+
 
 <!--转发有礼-->
 <share isShare="{{isShare}}" id='share'></share>

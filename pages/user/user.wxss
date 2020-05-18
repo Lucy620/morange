@@ -22,7 +22,6 @@ page {
   border-radius: 13.3rpx;
   border: solid 1.3rpx rgba(255, 236, 128, 0.7);
   margin: auto;
-  margin-top: 82px
 }
 
 .user-box {
@@ -68,7 +67,7 @@ page {
   width: 247rpx;
   height: 38rpx;
   position: absolute;
-  top: 0;
+  top: 20rpx;
   right: 0;
 }
 
@@ -104,21 +103,21 @@ page {
 }
 
 .open-btn {
-  width: 139.3rpx;
-  height: 59.3rpx;
+  width: 120rpx;
+  height: 60rpx;
   text-align: center;
-  line-height: 59.3rpx;
+  line-height: 60rpx;
   background-image: linear-gradient(#d9d9d9, #d9d9d9), linear-gradient(#bcbcbc, #bcbcbc);
   background-blend-mode: normal, normal;
   box-shadow: 1.7rpx 2.9rpx 5.3rpx 0rpx rgba(0, 0, 0, 0.25);
-  border-radius: 6.7rpx;
+  border-radius: 630rpx;
   opacity: 0.9;
 }
 
 /**未开通 头部**/
 
 .head-box {
-  height: 456rpx;
+  height: 300px;
   background: url(https://boringcdn.nanningboring.com/molicheng/head-bg.png);
   background-size: 100%;
   display: flex;
@@ -133,6 +132,7 @@ page {
   border-radius: 13.3rpx;
   border: solid 2px rgba(255, 255, 255, 0.17);
   position: relative;
+  margin-top: 68px
 }
 
 .tips-text {
@@ -145,13 +145,12 @@ page {
 }
 
 .btn {
-  width: 139.3rpx;
-  height: 59.3rpx;
+  width: 120rpx;
+  height: 60rpx;
   text-align: center;
-  line-height: 59.3rpx;
-  border-radius: 6.7rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/btn.png);
-  background-size: 100%;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  background:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
 }
 
 /***积分等级**/
@@ -319,7 +318,7 @@ padding-top: 18rpx;
 /**用户item**/
 
 .list-box {
-  padding: 30rpx;
+
 }
 
 .row {
@@ -349,6 +348,7 @@ padding-top: 18rpx;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  padding: 0 30rpx;
 }
 
 .row-top-title {
@@ -418,6 +418,11 @@ padding-top: 18rpx;
   justify-content: space-between;
   /* padding: 40rpx 0; */
   position: relative;
+  padding: 0 30rpx;
+}
+
+.share-item {
+  width: 100%;
 }
 
 .row-item::before {
@@ -447,7 +452,7 @@ padding-top: 18rpx;
   position: absolute;
   top: 50%;
   margin-top: -5px;
-  right: 2px;
+  right: 34rpx;
 }
 
 /**特权**/
@@ -502,7 +507,10 @@ swiper {
   margin: 100rpx auto 0;
   color: #000;
   font-size: 32rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/privilege-btn.png);
-  background-size: 100%;
+  background:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
   border-radius: 6.7rpx;
+}
+
+.share-line {
+  width: 100%;
 }
