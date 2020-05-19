@@ -61,7 +61,8 @@
   <view class="btn" wx:if="{{user.balance < pay_price}}" bindtap="createOrder">确认订单，微信支付</view>
   <view class="btn" wx:else bindtap="createBuy">{{type == 'give' ? '魔橙卡余额支付，赠送好友' : '确认订单，魔橙卡支付'}}</view>
 
-
+<modal show="{{showTips}}" bindcancel="{{tip.cancelFun}}" bindconfirm='onConfirm' title="{{tip.title}}" content="{{tip.content}}">
+</modal>
 </template>
 
 <wxs module="tools" src="../../../utils/tools.wxs"></wxs>

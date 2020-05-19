@@ -346,6 +346,7 @@ Page({
   onShow: function () {
     if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
+          console.log('tag---')
         this.getTabBar().setData({
           selected: 0
         })

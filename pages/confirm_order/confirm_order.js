@@ -415,7 +415,8 @@ Page({
     }) => {
       if (data.code == 200) {
         that.setData({
-          showTips: false
+          showTips: false,
+          ordersn: data.obj.order_result.ordersn
         })
         if (that.data.coupon_type == 'week' || that.data.coupon_type == 'gift' || reduce_cost == pay_price) {
           pay_price = 0
@@ -428,7 +429,7 @@ Page({
             showTips: true,
           })
         } else {
-          that.wxPay(data.obj.order_result.ordersn)
+          that.wxPay()
         }
       } else if (data.code == 501) {
         this.setModalContent('提示', '库存不足', ()=>{
@@ -452,9 +453,10 @@ Page({
   /**
    * 微信支付
    */
-  wxPay(ordersn) {
+  wxPay() {
     let that = this
     let type = that.data.type
+    let ordersn = that.data.ordersn
     let give_expired = that.data.give_expired
     let user = that.data.user
     //发起微信支付
@@ -484,18 +486,24 @@ Page({
               }
             },
             'fail': function (res) {
-              wx.showModal({
-                content: '离支付成功只差一步,怎么能轻易放弃？',
-                cancelText: '放弃支付',
-                confirmText: '继续支付',
-                success: function (res) {
-                  if (res.confirm) {
-                    that.wxPay(ordersn)
-                  } else if (res.cancel) {
-
-                  }
-                },
+              this.setModalContent('提示', '离支付成功只差一步,怎么能轻易放弃？', that.wxPay)
+              this.setData({
+                showTips: true,
               })
+
+
+              // wx.showModal({
+              //   content: '离支付成功只差一步,怎么能轻易放弃？',
+              //   cancelText: '放弃支付',
+              //   confirmText: '继续支付',
+              //   success: function (res) {
+              //     if (res.confirm) {
+              //       that.wxPay(ordersn)
+              //     } else if (res.cancel) {
+
+              //     }
+              //   },
+              // })
             }
           })
         } else {

@@ -11,6 +11,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    touchStartTime: 0,
+    touchEndTime: 0,
+    lastTapTime: 0,
+    lastTapTimeoutFunc: null,
     showLoad: true,
     showCities: false,
     cover: false, //遮罩
@@ -98,7 +102,7 @@ Page({
     tagSelectedCount: 0,
     jointDate: '',
     jointTime: '',
-    scrollTop: 5 ,
+    scrollTop: 5,
     statusBarHeight: app.globalData.statusBarHeight,
     ios: app.globalData.ios
   },
@@ -377,8 +381,8 @@ Page({
       case 'private_course':
         //私教
         this.openBanner()
-         this.getCoursePrivateCourseList()
-         that.getCoursePrivateList()
+        this.getCoursePrivateCourseList()
+        that.getCoursePrivateList()
         break
 
       case 'camp':
@@ -451,7 +455,7 @@ Page({
    */
   openBanner: function () {
     let that = this
-    that.bannerAnimation.translateY(0).step({duration: 500});
+    that.bannerAnimation.translateY(0).step({ duration: 500 });
     that.setData({
       bannerAnimation: that.bannerAnimation.export()
     })
@@ -462,7 +466,7 @@ Page({
    */
   closeBanner: function () {
     let that = this
-    that.bannerAnimation.translateY(-74).step({duration: 500});
+    that.bannerAnimation.translateY(-74).step({ duration: 500 });
     that.setData({
       bannerAnimation: that.bannerAnimation.export()
     })
@@ -788,7 +792,7 @@ Page({
     }]
     let temp = []
     for (let item of arr) {
-      if (item.store) temp = temp.concat(item.store) 
+      if (item.store) temp = temp.concat(item.store)
     }
 
     for (let item of temp) {
@@ -931,23 +935,23 @@ Page({
     }, ({
       data
     }) => {
-      if (data.code == 200) {
-        let list = data.obj.list
-        let temp = [{
-          id: 0,
-          name: '全部',
-          select: true
-        }]
-        for (let item of list) {
-          item.select = false
+        if (data.code == 200) {
+          let list = data.obj.list
+          let temp = [{
+            id: 0,
+            name: '全部',
+            select: true
+          }]
+          for (let item of list) {
+            item.select = false
+          }
+          temp = temp.concat(list)
+          that.setData({
+            course: temp,
+            courseNumber: 0
+          })
         }
-        temp = temp.concat(list)
-        that.setData({
-          course: temp,
-          courseNumber: 0
-        })
-      }
-    }, 'noauth')
+      }, 'noauth')
   },
 
 
@@ -987,24 +991,24 @@ Page({
     }, ({
       data
     }) => {
-      wx.hideNavigationBarLoading();
-      wx.stopPullDownRefresh();
-      if (data.code == 200) {
-        let list = data.obj.list
-        for (let i in list) {
-          for (let item of list[i]) {
-            item.team = that.countPercent(item.team)
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh();
+        if (data.code == 200) {
+          let list = data.obj.list
+          for (let i in list) {
+            for (let item of list[i]) {
+              item.team = that.countPercent(item.team)
+            }
           }
+          that.setData({
+            courseList: list,
+            showLoad: false,
+            showTab: false,
+            nowtime: Math.round(new Date().getTime() / 1000)
+          })
+          app.showTab = false
         }
-        that.setData({
-          courseList: list,
-          showLoad: false,
-          showTab: false,
-          nowtime: Math.round(new Date().getTime() / 1000)
-        })
-        app.showTab = false
-      }
-    }, 'noauth')
+      }, 'noauth')
   },
 
   /**
@@ -1051,31 +1055,31 @@ Page({
     }, ({
       data
     }) => {
-      if (data.code == 200) {
-        pageArr[weekIndex].page++
-        let list = data.obj.list
-        for (let i in list) {
-          for (let item of list[i]) {
-            item.team = that.countPercent(item.team)
+        if (data.code == 200) {
+          pageArr[weekIndex].page++
+          let list = data.obj.list
+          for (let i in list) {
+            for (let item of list[i]) {
+              item.team = that.countPercent(item.team)
+            }
           }
+          courseList[weekIndex] = courseList[weekIndex].concat(list)
+          if (list.length < limit) {
+            pageArr[weekIndex].lastPage = true
+          } else {
+            pageArr[weekIndex].lastPage = false
+          }
+          that.setData({
+            courseList: courseList,
+            pageArr: pageArr
+          })
         }
-        courseList[weekIndex] = courseList[weekIndex].concat(list)
-        if (list.length < limit) {
-          pageArr[weekIndex].lastPage = true
-        } else {
-          pageArr[weekIndex].lastPage = false
-        }
-        that.setData({
-          courseList: courseList,
-          pageArr: pageArr
-        })
-      }
-    }, 'noauth')
+      }, 'noauth')
   },
   onListTouch: function (e) {
 
   },
-  onPageScroll: function (e){
+  onPageScroll: function (e) {
 
   },
 
@@ -1094,13 +1098,34 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function (e) {
+    var that = this
     if (typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-        this.getTabBar().setData({
-          selected: 1
-        })
+      this.getTabBar()) {
+         this.getTabBar().setData({
+              selected: 1
+            })
+      // 控制点击事件在350ms内触发，加这层判断是为了防止长按时会触发点击事件
+      if (that.data.touchEndTime - that.data.touchStartTime < 350) {
+        // 当前点击的时间
+        var currentTime = Date.parse(new Date())/1000
+        var lastTapTime = that.data.lastTapTime
+        // 更新最后一次点击时间
+        that.data.lastTapTime = currentTime
+        // 如果两次点击时间在200毫秒内，则认为是双击事件
+        if (currentTime - lastTapTime < 200) {
+          // 双击事件
+          clearTimeout(that.data.lastTapTimeoutFunc);
+          console.log("double click")
+        } else {
+          that.data.lastTapTimeoutFunc = setTimeout(function () {
+            // 单击事件
+            console.log("single click")
+           
+          }, 200);
+        }
       }
+    }
   },
 
   /**
@@ -1122,19 +1147,19 @@ Page({
    */
   onPullDownRefresh: function () {
     let curTab = this.data.curTab
-    switch(curTab){
-        case 'general_course':
-          this.getCourseTeamListAll()
-          break
-          case 'private_course':
-            this.getCoursePrivateList()
-          break
-          case 'camp':
-            this.getCourseCamp('first')
-          break
-          case 'joint_course':
-            this.getJointData()
-            break
+    switch (curTab) {
+      case 'general_course':
+        this.getCourseTeamListAll()
+        break
+      case 'private_course':
+        this.getCoursePrivateList()
+        break
+      case 'camp':
+        this.getCourseCamp('first')
+        break
+      case 'joint_course':
+        this.getJointData()
+        break
     }
   },
 
@@ -1175,30 +1200,30 @@ Page({
     }, ({
       data
     }) => {
-      wx.hideNavigationBarLoading();
-      wx.stopPullDownRefresh();
-      if (data.code == 200) {
-        let list = data.obj.list
-        list = that.countPercent(list)
-        for (let item of list) {
-          let arr = []
-          let temp = []
-          for (let val of item.price) {
-            arr.push(val.price)
-            if (val.first_price > 0) {
-              temp.push(val.first_price)
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh();
+        if (data.code == 200) {
+          let list = data.obj.list
+          list = that.countPercent(list)
+          for (let item of list) {
+            let arr = []
+            let temp = []
+            for (let val of item.price) {
+              arr.push(val.price)
+              if (val.first_price > 0) {
+                temp.push(val.first_price)
+              }
             }
+            item.min_price = Math.min.apply('', arr)
+            item.first_price = Math.min.apply('', temp)
           }
-          item.min_price = Math.min.apply('', arr)
-          item.first_price = Math.min.apply('', temp)
+          that.setData({
+            priList: list,
+            first: data.obj.first,
+            showLoad: false
+          })
         }
-        that.setData({
-          priList: list,
-          first: data.obj.first,
-          showLoad: false
-        })
-      }
-    })
+      })
   },
   /**
    * 获取私教筛选条件
@@ -1248,7 +1273,7 @@ Page({
             select: false
           })
         }
-        
+
         that.setData({
           priCoverList: temp,
         })
@@ -1256,7 +1281,7 @@ Page({
     })
   },
 
-  
+
   /**
    *  获取训练营列表
    */
@@ -1276,40 +1301,40 @@ Page({
     }, ({
       data
     }) => {
-      wx.hideNavigationBarLoading();
-      wx.stopPullDownRefresh();
-      if (data.code == 200) {
-        if (type == 'first') {
-          let tags = data.obj.course_tags
-          let temp = [{
-            id: 0,
-            name: '全部标签',
-            select: true
-          }]
-          for (let index in tags) {
-            temp.push({
-              id: parseInt(index) + 1,
-              name: tags[index],
-              select: false
-            })
-            that.setData({
-              campTagList: temp
-            })
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh();
+        if (data.code == 200) {
+          if (type == 'first') {
+            let tags = data.obj.course_tags
+            let temp = [{
+              id: 0,
+              name: '全部标签',
+              select: true
+            }]
+            for (let index in tags) {
+              temp.push({
+                id: parseInt(index) + 1,
+                name: tags[index],
+                select: false
+              })
+              that.setData({
+                campTagList: temp
+              })
+            }
           }
-        }
 
-        that.setData({
-          campList: data.obj.list,
-          showLoad: false
-        })
-      }
-    })
+          that.setData({
+            campList: data.obj.list,
+            showLoad: false
+          })
+        }
+      })
   },
 
   /**
    * 选择标签
    */
-  onTagChoice: function(e) {
+  onTagChoice: function (e) {
     let index = e.currentTarget.dataset.index
     let tagList = this.data.campTagList
     let tagNumber = 0
@@ -1359,7 +1384,7 @@ Page({
     })
   },
 
-  onCampCityChoice: function(e) {
+  onCampCityChoice: function (e) {
     let index = e.currentTarget.dataset.index
     this.setData({
       campCityIndex: index
@@ -1414,24 +1439,24 @@ Page({
     }, ({
       data
     }) => {
-      if (data.code == 200) {
-        this.jointAnimation.translateY(-500).step();
-        console.log(data.obj.course)
-        that.setData({
-          coachCourseList: data.obj.course,
-          showLoad: false,
-          jointAnimation: this.jointAnimation.export(),
-          jointCover: true
-        })
-      }
-    })
+        if (data.code == 200) {
+          this.jointAnimation.translateY(-500).step();
+          console.log(data.obj.course)
+          that.setData({
+            coachCourseList: data.obj.course,
+            showLoad: false,
+            jointAnimation: this.jointAnimation.export(),
+            jointCover: true
+          })
+        }
+      })
 
   },
 
-   /**
-   * 选择拼课课程
-   */
-  choiceJointCourse: function(e) {
+  /**
+  * 选择拼课课程
+  */
+  choiceJointCourse: function (e) {
     let index = e.currentTarget.dataset.index
     this.setData({
       jointCourseIndex: index
@@ -1465,10 +1490,10 @@ Page({
     })
   },
 
-   /**
-   * 确认创建
-   */
-  toJointCouser: function() {
+  /**
+  * 确认创建
+  */
+  toJointCouser: function () {
     let that = this
     let storeList = that.data.jointStoreList
     let courseList = that.data.coachCourseList
@@ -1498,31 +1523,31 @@ Page({
     }, ({
       data
     }) => {
-      if (data.code == 200) {
-        let obj = data.obj.course_team
-        let cart = {
-          id: obj.id,
-          type: 'team',
-          amount: 1,
-          order_type: 'buy'
+        if (data.code == 200) {
+          let obj = data.obj.course_team
+          let cart = {
+            id: obj.id,
+            type: 'team',
+            amount: 1,
+            order_type: 'buy'
+          }
+          app.shoppingList = cart
+          wx.navigateTo({
+            url: '/pages/confirm_order/confirm_order?type=' + 'buy'
+          })
+        } else {
+          wx.showToast({
+            title: data.msg,
+            icon: 'none'
+          })
         }
-        app.shoppingList = cart
-        wx.navigateTo({
-          url: '/pages/confirm_order/confirm_order?type=' + 'buy'
-        })
-      } else {
-        wx.showToast({
-          title: data.msg,
-          icon: 'none'
-        })
-      }
-    })
+      })
   },
 
-   /**
-   * 日期转换
-   */
-  transformTime: function(now) {
+  /**
+  * 日期转换
+  */
+  transformTime: function (now) {
     let date = new Date(now * 1000)
     let year = date.getFullYear()
     let month = date.getMonth() + 1
@@ -1548,7 +1573,7 @@ Page({
     let mydate = (year.toString() + '/' + month.toString() + '/' + day.toString())
     let time = (hour.toString() + ':' + minute.toString())
     let start = (year.toString() + '-' + month.toString() + '-' + day.toString())
-    this.setData({  
+    this.setData({
       jointTime: time,
       jointDate: new Date(mydate).getTime() / 1000,
       start: start,
