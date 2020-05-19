@@ -15,6 +15,13 @@ Page({
    */
   data: {
     list: '',
+    showTip: false,
+    tip: {
+      title: '提示',
+      content: '',
+      confirmFun: () => {},
+      cancelFun: () => {}
+    },
     showLoad: true,
     team_id: 0,
     storyHeight: '70',
@@ -71,6 +78,13 @@ Page({
         url: '/' + url
       })
     }
+  },
+
+    /***
+   * modal 确认按钮事件
+   */
+  onConfirm: function () {
+    this.data.tip.confirmFun()
   },
 
   /**
@@ -191,21 +205,23 @@ Page({
       order_type: order_type
     }
     if (list.rest_stock == 0 && order_type == 'give') {
-      wx.showModal({
-        content: '满员课程不能赠课好友',
-      })
+      this.setModalContent('提示', '满员课程不能赠课好友', this.onHideTip)
+      this.setData({showTip: true})
       return
     }
     if (nowtime > start_at && order_type == 'give') {
-      wx.showModal({
-        content: '距开课1小时，不能赠课好友',
-      })
+      this.setModalContent('提示', '距开课1小时，不能赠课好友', this.onHideTip)
+      this.setData({showTip: true})
       return
     }
     app.shoppingList = cart
     wx.navigateTo({
       url: '/pages/confirm_order/confirm_order?type=' + order_type
     })
+  },
+
+  onHideTip: function(){
+    this.setData({showTip: false})
   },
 
   /**
@@ -281,6 +297,20 @@ Page({
       })
     }
 
+  },
+
+  /***
+   * 设置 modal 内容
+   */
+  setModalContent: function (title, content, confirmFun) {
+    let tip = this.data.tip
+    tip.title = title
+    tip.content = content
+    tip.confirmFun = confirmFun
+    this.setData({
+      tip,
+      showTips: true,
+    })
   },
 
   /**

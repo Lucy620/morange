@@ -323,6 +323,7 @@ Page({
    * 计算团课应付价
    */
   teamPayPirce: function (courseDate, num, user, activity) {
+    console.log('teamPayPirce', app.globalData.freeCourseList, courseDate.course_id)
     let pay_price = 0
     if (activity.two && num == 2) {
       // 普通价
@@ -336,12 +337,23 @@ Page({
     } else {
       // 普通价
       if (user.type == 'user') {
-        pay_price = courseDate.price * num
+        if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1){
+          pay_price = courseDate.price * (num - 1)
+        }else{
+          pay_price = courseDate.price * num
+        }
       }
       //会员价
       if (user.type == 'vip') {
-        pay_price = courseDate.vip_price * num
+        if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1){
+          pay_price = courseDate.vip_price * (num - 1)
+        }else{
+          pay_price = courseDate.vip_price * num
+        }
+        
       }
+
+
     }
 
     return pay_price
@@ -380,6 +392,7 @@ Page({
    * 确认购买
    */
   createBuy: function () {
+    console.log('create buy',this.data.reduce_cost, this.data.pay_price)
     let that = this
     let type = that.data.type
     let course = that.data.course

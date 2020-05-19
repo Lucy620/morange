@@ -11,10 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    touchStartTime: 0,
-    touchEndTime: 0,
-    lastTapTime: 0,
-    lastTapTimeoutFunc: null,
+    refreshTip: true,
     showLoad: true,
     showCities: false,
     cover: false, //遮罩
@@ -30,6 +27,7 @@ Page({
     is_hide: false, //是否显示过期
     search_time: [], //时段
     searchTimeIndex: 0,
+    freeCourseList: [],
     courseTargetList: [], // 课程目的
     courseCategoryList: [], // 课程类型
     courseNumber: 0, // 已选课程数量
@@ -104,7 +102,8 @@ Page({
     jointTime: '',
     scrollTop: 5,
     statusBarHeight: app.globalData.statusBarHeight,
-    ios: app.globalData.ios
+    ios: app.globalData.ios,
+    status: true
   },
 
   /***
@@ -112,6 +111,18 @@ Page({
    */
   lower: function () {
     this.getCourseTeam()
+  },
+
+  getFreeCourseList: function() {
+    var that = this
+    ajax.post(api.getFreeCourseList, {}, ({
+      data
+    }) => {
+      if (data.code == 200) {
+        that.setData({freeCourseList: data.obj.list? data.obj.list: []})
+        app.globalData.freeCourseList = data.obj.list? data.obj.list: []
+      }
+    })
   },
 
   /***
@@ -814,7 +825,6 @@ Page({
       pageArr: pageArr,
       nowtime: Math.round(new Date().getTime() / 1000)
     })
-
     this.getCourseTeamListAll()
     this.closeAnimation()
   },
@@ -898,6 +908,7 @@ Page({
    * 获取目的 类型 科目
    */
   getCourseCategoryList: function () {
+    this.getFreeCourseList()
     let that = this
     ajax.post(api.getCourseCategoryList, {}, ({
       data
@@ -1080,7 +1091,18 @@ Page({
 
   },
   onPageScroll: function (e) {
+   
+  },
 
+  onPageTouch: function(e) {
+    if(!status){
+      if(this.data.refreshTip){
+        wx.setStorageSync('STATUS', false)
+        this.setData({refreshTip: false})
+      }
+    }
+    
+    
   },
 
   onTabItemTap: function (e) {
@@ -1093,6 +1115,8 @@ Page({
    */
   onReady: function () {
     this.navigation = this.selectComponent('#navigation')
+    let status = wx.getStorageSync('STATUS')
+    this.setData({status})
   },
 
   /**
@@ -1105,26 +1129,6 @@ Page({
          this.getTabBar().setData({
               selected: 1
             })
-      // 控制点击事件在350ms内触发，加这层判断是为了防止长按时会触发点击事件
-      if (that.data.touchEndTime - that.data.touchStartTime < 350) {
-        // 当前点击的时间
-        var currentTime = Date.parse(new Date())/1000
-        var lastTapTime = that.data.lastTapTime
-        // 更新最后一次点击时间
-        that.data.lastTapTime = currentTime
-        // 如果两次点击时间在200毫秒内，则认为是双击事件
-        if (currentTime - lastTapTime < 200) {
-          // 双击事件
-          clearTimeout(that.data.lastTapTimeoutFunc);
-          console.log("double click")
-        } else {
-          that.data.lastTapTimeoutFunc = setTimeout(function () {
-            // 单击事件
-            console.log("single click")
-           
-          }, 200);
-        }
-      }
     }
   },
 

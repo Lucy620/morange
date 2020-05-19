@@ -1,0 +1,9 @@
+var utils = {
+  checkStatus: function(courseID, courseList){
+    return courseList.indexOf(courseID) == -1 ? '预约' : '免单'
+  }
+}
+
+module.exports = {
+  checkStatus: utils.checkStatus
+}

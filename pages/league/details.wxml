@@ -134,4 +134,7 @@
 
 </view>
 
+<modal show="{{showTip}}" bindcancel="{{tip.cancelFun}}" bindconfirm='onConfirm' title="{{tip.title}}" content="{{tip.content}}">
+	</modal>
+
 <wxs module="tools" src="../../utils/tools.wxs"></wxs>

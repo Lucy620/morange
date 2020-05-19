@@ -15,6 +15,7 @@ var fundebug = require('utils/fundebug.1.3.1.min.js')
 })
 App({
   globalData: {
+    freeCourseList: [],
     fundebug: fundebug,
     minisession: '',
     openid: '',
@@ -111,7 +112,6 @@ App({
    * 更新用户信息
    */
   updateUserInfo: function(userInfo, page) {
-    console.log(page)
     let that = this
     let user = wx.getStorageSync('userInfo') || ''
     if (JSON.stringify(userInfo) != user && that.globalData.minisession) {

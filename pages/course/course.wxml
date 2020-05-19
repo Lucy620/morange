@@ -1,4 +1,5 @@
 <!--pages/league/list.wxml-->
+<wxs module="utils" src="./utils.wxs"></wxs>
 
 <loading wx:if="{{showTab}}"></loading>
 
@@ -11,7 +12,7 @@
 	<view slot="title" class="bar-title">{{showCities? '选择城市': 'MORANGE'}}</view>
 </navigationBar>
 
-<!-- <view class="tip">双击这里，刷新课表</view> -->
+<!-- <view wx:if="{{refreshTip}}" class="tip">双击这里，刷新课表</view> -->
 
 <view wx:if="{{showCities}}" class="city-modal">
 	<view class="city-select">
@@ -36,7 +37,7 @@
 	</view>
 </view>
 
-<view wx:else class="wrapper-box" hidden="{{showLoad}}" animation="{{bannerAnimation}}" style="margin-top: {{ios? statusBarHeight-20: statusBarHeight}}px">
+<view touchstart="onPageTouch" wx:else class="wrapper-box" hidden="{{showLoad}}" animation="{{bannerAnimation}}" style="margin-top: {{ios? statusBarHeight-20: statusBarHeight}}px">
 	<view class="container-box">
 		<!--轮播-->
 		<view class="swiper-box" wx:if="{{showBanners}}">
@@ -79,7 +80,7 @@
 			<swiper class="list-swiper-box" duration="{{200}}" current="{{weekIndex}}" bindchange='binSwiper'>
 				<block wx:for="{{courseList}}" wx:key='index'>
 					<swiper-item>
-						<view class="scroll-box" bindtouchmove="onListTouch">
+						<view id="course_box" class="scroll-box" bindtouchmove="onListTouch">
 							<block wx:for="{{item}}" wx:key='index' wx:for-item="course">
 								<view class="store-row">
 									<view style="display:flex">
@@ -101,7 +102,7 @@
 										<view class="info-tips">小橙子排课中 (每周五22:00发布)</view>
 									</view>
 								</view>
-								<view class="box" wx:if="{{course.team.length > 0}}" wx:for="{{course.team}}" wx:key='index' wx:for-item="teamItem">
+								<view bindtouchmove="onPageTouch" class="box" wx:if="{{course.team.length > 0}}" wx:for="{{course.team}}" wx:key='index' wx:for-item="teamItem">
 									<image src="{{teamItem.coach.headimgurl}}" mode="aspectFill" class="coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{teamItem.coach.user_id}}'></image>
 									<view class="box-row" bindtap='jumpPage' data-url='pages/league/details?team_id={{teamItem.id}}'>
 										<view class="mid">
@@ -122,7 +123,7 @@
 										</view>
 
 										<view class="btn-active btn-default" wx:if="{{nowtime > teamItem.end_at}}">结束</view>
-										<view class="btn-active" wx:if="{{nowtime < teamItem.end_at && teamItem.rest_stock > 0}}">{{teamItem.is_spell == 1 ? '拼课' : '预约'}}</view>
+										<view class="btn-active" wx:if="{{nowtime < teamItem.end_at && teamItem.rest_stock > 0}}">{{teamItem.is_spell == 1 ? '拼课' : utils.checkStatus(teamItem.course_id, freeCourseList)}}</view>
 										<view class="coach-btn-box" wx:if="{{teamItem.rest_stock == 0  && nowtime < teamItem.end_at}}">
 											<view class="wait-btn">等候</view>
 										</view>
