@@ -7,8 +7,8 @@
 
 	<!--教练-->
 	<view id="posterHeight" class="coach-box" wx:if="{{show_type == 'slide' || show_type == ''}}">
-		<view class="mask" bindtap="previewImage" data-url="{{coach.slide_imgs[0]}}"></view>
-		<image wx:if="{{coach.slide_imgs.length > 0}}" src="{{coach.slide_imgs[0]}}?imageView2/1/w/750/h/300" class="coach-bg"></image>
+		<view class="header-mask" bindtap="previewImage" data-url="{{coach.slide_imgs[0]}}"></view>
+		<image wx:if="{{coach.slide_imgs.length > 0}}" src="{{coach.slide_imgs[0]}}?imageView2/1/w/750/h/500" class="coach-bg"></image>
 
 		<view class="story-box">
 			<view class="details-box" bindtap="openStory">
@@ -135,17 +135,8 @@
 		</view>
 	</view>
 
-	<!--关注提示-->
-	<view class="mask-box" wx:if="{{openFollow}}">
-		<view class="con-box">
-			<view class="con-title">提示</view>
-			<view class="con-text">{{is_attention ? '是否确认取消关注该教练？' : '是否确认关注该教练？'}}</view>
-			<view class="mask-btn-box">
-				<view class="mask-btn" bindtap="openTips">再看看</view>
-				<view class="mask-btn confirm-btn" bindtap="attention">{{is_attention ? '确认取消' : '确认关注'}}</view>
-			</view>
-		</view>
-	</view>
+<modal show="{{openFollow}}" bindcancel="openTips" bindconfirm='attention' title="提示" content="{{is_attention ? '是否确认取消关注该教练？' : '是否确认关注该教练？'}}">
+	</modal>
 </view>
 
 <!--教练评价-->

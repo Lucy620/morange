@@ -7,7 +7,7 @@
   /* background: url(https://boringcdn.nanningboring.com/molicheng/refund-ok-bg.png); */
   /* background-size: 100%; */
   background: #fffbe6;
-  border-radius: 13rpx;
+  border-radius: 24rpx;
 }
 
 .head-box {
@@ -19,7 +19,7 @@
       #fffbe6);
   background-blend-mode: normal,
     normal;
-  border-radius: 13rpx;
+  border-radius: 24rpx;
   position: relative;
   z-index: 1;
 }
@@ -484,13 +484,15 @@
   font-size: 26rpx;
 }
 .ipt-box {
-  height: 58rpx;
+  height: 60rpx;
   display: flex;
   align-items: center;
   margin: 0 auto;
   background-color: #ffffff;
   border-radius: 5rpx;
   border: solid 1rpx #9e9e9e;
+  border-radius: 30rpx;
+  padding-left: 15rpx;
 }
 
 .ipt {
@@ -501,16 +503,14 @@
 }
 
 .ipt-btn {
-  width: 128rpx;
-  height: 57rpx;
+  width: 120rpx;
+  height: 60rpx;
   line-height: 57rpx;
   text-align: center;
-  background-image: linear-gradient(0deg,
-      #ff6e0d 0%,
-      #ffba00 100%),
-    linear-gradient(#ffffff,
-      #ffffff);
-  border-radius: 5rpx;
+  background:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
+  border-top-right-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
   border-left: solid 1rpx #9e9e9e;
   font-weight: 600;
+  color: #000;
 }

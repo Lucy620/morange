@@ -1,17 +1,18 @@
 <!--pages/Invitation/Invitation.wxml-->
 
-<navigationBar hasBack background="{{showTitle? '#000': 'transparent'}}">
-
+<navigationBar hasBack background="transparent">
+	<view slot="title" wx:if="{{scroll}}" class="bar-title">{{list.coach.name}}</view>
 </navigationBar>
 
 <view class="wrapper" hidden="{{showLoad}}">
 
 	<!--邀请海报-->
 	<view class="poster-box">
-		<image src="https://assets.morangefitness.com/share_db.png" class="poster" mode="widthFix"></image>
+		<image src="https://assets.morangefitness.com/share_top_db.png" class="poster" mode="widthFix"></image>
 	</view>
 	<!-- <button open-type='share' open-type='share' class="btn">立即邀请</button> -->
 	<view class="share-btn-box">
+		<image class="morange_bg" mode="heightFix" src="https://assets.morangefitness.com/morange_blur.png"></image>
 		<text style="font-size:36rpx">分享运动，一起快乐！</text>
 		<text style="font-size:24rpx">给好友送免费健身，TA运动你也得</text>
 

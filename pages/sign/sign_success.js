@@ -23,7 +23,10 @@ Page({
     lastPage: false, // 是否最后一页
     page: 1,
     limit: 10,
-    list:[]
+    list:[],
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios,
+    scroll: false
   },
 
   /**
@@ -338,6 +341,17 @@ Page({
    */
   onPullDownRefresh: function() {
 
+  },
+
+  /**
+   * 页面滚动事件的处理函数
+   */
+  onPageScroll: function(e) {
+    if (e.scrollTop >= this.data.statusBarHeight && !this.data.scroll) {
+      this.setData({scroll: true})
+    }else if(e.scrollTop <= this.data.statusBarHeight && this.data.scroll){
+      this.setData({scroll: false})
+    }
   },
 
   /**

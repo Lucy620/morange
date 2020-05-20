@@ -1095,7 +1095,7 @@ Page({
   },
 
   onPageTouch: function(e) {
-    if(!status){
+    if(!this.data.status){
       if(this.data.refreshTip){
         wx.setStorageSync('STATUS', false)
         this.setData({refreshTip: false})

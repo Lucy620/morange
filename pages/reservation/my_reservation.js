@@ -18,7 +18,9 @@ Page({
     reserve_list: [],
     user: '',
     total_day: [],
-    total_course: []
+    total_course: [],
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
    },
 
 

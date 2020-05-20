@@ -16,6 +16,8 @@ Page({
     showLoad: true,
     date: '',
     list: [],
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**

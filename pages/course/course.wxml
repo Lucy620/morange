@@ -83,7 +83,7 @@
 						<view id="course_box" class="scroll-box" bindtouchmove="onListTouch">
 							<block wx:for="{{item}}" wx:key='index' wx:for-item="course">
 								<view class="store-row">
-									<view style="display:flex">
+									<view style="display:flex; align-items:center">
 										<image class="heart-store" mode="aspectFit" src="/assets/image/heart.png"></image>
 										<view style="margin-left:20rpx" class="store-address">{{course.name}}</view>
 									</view>
@@ -132,6 +132,10 @@
 											<view class="silk-ribbon-left">拼课</view>
 										</view>
 
+										<view class="wrap-left" wx:if="{{teamItem.is_spell != 1 && teamItem.tag}}">
+											<view class="silk-ribbon-left" style="background-color:{{teamItem.tag_color}};color:#000">{{teamItem.tag}}</view>
+										</view>
+
 										<view class="wrap" wx:if="{{nowtime < teamItem.end_at}}">
 											<view class="silk-ribbon full" wx:if="{{teamItem.rest_stock == 0}}">满员</view>
 											<view class="silk-ribbon" wx:if="{{teamItem.percent <= 60 && teamItem.rest_stock > 0}}">紧张</view>
@@ -154,7 +158,7 @@
 
 		<block wx:key='index' wx:for="{{storeList}}" wx:if="{{index != 0}}">
 			<view class="store-row">
-				<view style="display:flex">
+				<view style="display:flex;align-items:center">
 					<image class="heart-store" mode="aspectFit" src="/assets/image/heart.png"></image>
 					<view style="margin-left:20rpx" class="store-address">{{item.name}}</view>
 				</view>
@@ -420,7 +424,7 @@
 <view class='mask' wx:if='{{false}}' bindtap='clickMask'>
 	<view class='modal-content'>
 		<view class='main-content'>
-			<image src="https://assets.morangefitness.com/share_db.png" mode="widthFix"></image>
+			<image src="https://assets.morangefitness.com/welcome.png" mode="widthFix"></image>
 		</view>
 		<view class='modal-btn'>立即领取</view>
 	</view>

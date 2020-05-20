@@ -1,6 +1,10 @@
 <!--pages/sign/sign_success.wxml-->
 
-<view class="wrapper" hidden="{{showLoad}}">
+<navigationBar hasBack background="{{scroll? '#000': 'transparent'}}">
+	<view slot="title" wx:if="{{scroll}}" class="bar-title">签到详情</view>
+</navigationBar>
+
+<view class="wrapper" hidden="{{showLoad}}" style="margin-top: {{iod? 20: statusBarHeight+20}}px">
 	<view class="box">
 		<view class="head-box">
 			<image src="https://boringcdn.nanningboring.com/molicheng/MORANGE.png" mode="widthFix" class="MORANGE"></image>

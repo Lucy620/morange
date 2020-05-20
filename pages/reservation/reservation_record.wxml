@@ -4,7 +4,7 @@
 	<view slot="title" class="bar-title">预约记录</view>
 </navigationBar>
 
-<view class="wrapper" hidden="{{showLoad}}">
+<view class="wrapper" hidden="{{showLoad}}" style="margin-top: {{iod? 0: statusBarHeight}}px">
 
   <!--记录存在-->
   <!--时间选择-->
