@@ -110,7 +110,7 @@
 											<view class="time-kcal">
 												<text class="time">{{tools.formatTime(teamItem.start_at,'{h}:{i}')}}-{{tools.formatTime(teamItem.end_at,'{h}:{i}')}}
 												</text>
-												<text class="kcal">{{teamItem.course.calories}}</text>
+												<text class="kcal">{{teamItem.course.calories}}kcal</text>
 											</view>
 											<view class="attributes-box">
 												<view class="name" wx:for="{{teamItem.course.attributes}}" wx:key='index' wx:for-item="attributes">
@@ -414,6 +414,15 @@
 			</view>
 		</view>
 
+	</view>
+</view>
+
+<view class='mask' wx:if='{{false}}' bindtap='clickMask'>
+	<view class='modal-content'>
+		<view class='main-content'>
+			<image src="https://assets.morangefitness.com/share_db.png" mode="widthFix"></image>
+		</view>
+		<view class='modal-btn'>立即领取</view>
 	</view>
 </view>
 

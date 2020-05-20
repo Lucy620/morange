@@ -2,7 +2,12 @@
 <import src="./module/league.wxml" />
 <import src="./module/private_education.wxml" />
 <import src="./module/training_camp.wxml" />
-<view class="wrapper" hidden="{{showLoad}}">
+
+<navigationBar hasBack background="{{scroll? '#000': 'transparent'}}">
+	<view slot="title"  class="bar-title">领取详情</view>
+</navigationBar>
+
+<view class="wrapper" hidden="{{showLoad}}" style="margin-top: {{statusBarHeight+54}}px" >
 
   <!--团课-->
   <template is="league" wx:if="{{order.data.course.type == 'team'}}" data="{{order,msg,showWeChat,nowtime,start_at}}"></template>

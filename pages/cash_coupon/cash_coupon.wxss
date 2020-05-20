@@ -71,9 +71,10 @@
 }
 
 .tips-btn {
-  margin-top: 10rpx;
+  margin-top: -200rpx;
   color: #ffc119;
   font-size: 26.7rpx;
+  margin-left: 6rpx;
 }
 
 /**代金券**/

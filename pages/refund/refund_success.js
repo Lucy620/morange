@@ -21,7 +21,9 @@ Page({
     msg: '',
     showLoad: true,
     showWeChat: false,
-    campItem: ''
+    campItem: '',
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**

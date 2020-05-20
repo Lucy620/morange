@@ -8,20 +8,17 @@
 
 	<image src="http://qad81djlf.bkt.clouddn.com/coupon_background.png" class="coupon-top-bg" mode="widthFix"></image>
 
+
 	<!--搜索-->
 	<view class="search-wrapper">
+		<!--代金券提示  bindtap='jumpPage' data-url='pages/invitation/invitation'-->
+		<view class="tips-btn" bindtap='jumpPage' data-url='pages/invitation/invitation'>立即查看></view>
 		<input placeholder="点击这里输入兑换码" value="{{code}}" class="input-box" bindinput="binKeyValue"></input>
 		<view class="search-btn" bindtap="exchange">立即兑换</view>
 	</view>
 
-	<!--代金券提示  bindtap='jumpPage' data-url='pages/invitation/invitation'-->
-	<!-- <view class="coupon-tips-box">
-    <image src="https://boringcdn.nanningboring.com/molicheng/coupon-tips.png" mode="widthFix" class="coupon-tips-icon"></image>
-    <view class="tips-box">
-      <view class="tips-title">你还有代金券可领取!</view>
-      <view class="tips-btn" bindtap='jumpPage' data-url='pages/invitation/invitation'>立即查看></view>
-    </view>
-  </view> -->
+
+
 
 	<!--代金券-->
 	<view class="coupon-box" wx:for="{{list}}" wx:key='index'>
