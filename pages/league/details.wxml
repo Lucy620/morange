@@ -33,7 +33,7 @@
 	</view>
 
 	<!--教练故事-->
-	<view class="coach-story">
+	<view class="coach-story" id="infoHeight">
 		<text class="coach-title">{{list.course.name}}</text>
 		<view class="story-box">
 			<image src="{{list.coach.headimgurl}}" mode="aspectFill" class="user-coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{list.coach.user_id}}'></image>

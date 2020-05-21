@@ -233,14 +233,14 @@ image{
   position: relative;
   z-index: 1;
 }
-
+s
 .btn-default {
   background: #515151;
   color: #AAAAAA;
 }
 
 .detail-position-box {
-  height: 100rpx;
+  height: 50px;
   width: 100%;
   background-color: #2A2A2A;
   display: flex;

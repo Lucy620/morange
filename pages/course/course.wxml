@@ -155,7 +155,6 @@
 	<!--私教-->
 
 	<view scroll-y class="scroll-box" scroll-top="{{scroll}}" wx:if="{{curTab == 'private_course'}}">
-
 		<block wx:key='index' wx:for="{{storeList}}" wx:if="{{index != 0}}">
 			<view class="store-row">
 				<view style="display:flex;align-items:center">

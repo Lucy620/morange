@@ -33,14 +33,7 @@
 				<view class="cro left-bottom"></view>
 			</view>
 			<view class="coupon-line">
-				<view class="coupon-line-circle"></view>
-				<view class="coupon-line-circle"></view>
-				<view class="coupon-line-circle"></view>
-				<view class="coupon-line-circle"></view>
-				<view class="coupon-line-circle"></view>
-				<view class="coupon-line-circle"></view>
-				<view class="coupon-line-circle"></view>
-				<view class="coupon-line-circle"></view>
+				<view wx:for="{{7}}" class="coupon-line-circle" wx:key="index"></view>
 				<view class="coupon-line-line"></view>
 			</view>
 			<view class="coupon-row-right">
@@ -49,14 +42,6 @@
 				<view class="cro right-top"></view>
 				<view class="cro right-bottom"></view>
 			</view>
-			<!-- <view class="coupon-details">
-        <view class="coupon-text">{{item.name}}</view>
-        <view class="coupon-text-tips" bindtap="openExplain" data-name="{{item.name}}" data-notice="{{item.notice}}">查看可用范围</view>
-      </view>
-      <view class="coupon-money" wx:if="{{item.reduce_cost > 0}}">¥ {{tools.fen2yuan(item.reduce_cost,2)}}</view>
-    </view>
-    <view class="coupon-box-date">
-      <view class="coupon-date">有效期至：{{tools.formatTime(item.use_end,'{y}-{m}-{d}')}}</view> -->
 		</view>
 	</view>
 

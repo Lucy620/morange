@@ -16,7 +16,9 @@ Page({
   data: {
     coupon_list: [],
     id: 0,
-    showExplain: false
+    showExplain: false,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
 

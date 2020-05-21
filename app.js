@@ -1,6 +1,6 @@
 import config from 'utils/config'
 import api from 'api/api'
-const ald = require('utils/ald-stat.js')
+const ald = require('./utils/ald-stat.js')
 var fundebug = require('utils/fundebug.1.3.1.min.js') 
 !config.SYSTEM.debug && fundebug.init({
   apikey: config.BASE.fundebugApikey,

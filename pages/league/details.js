@@ -33,6 +33,7 @@ Page({
     scroll: false,
     dataId: 1,
     place: {
+      infoHeight: 0,
       posterHeight: 236,
       camphHeight: 236,
       courseHeight: 236,
@@ -48,16 +49,16 @@ Page({
     let that = this
     let id = e.currentTarget.dataset.id
     let place = that.data.place
-    let courseHeight = that.data.place.posterHeight + that.data.place.camphHeight
+    let courseHeight = that.data.place.posterHeight + that.data.place.infoHeight + 300 - that.data.statusBarHeight - 64
     if (id == 1) {
       wx.pageScrollTo({
-        scrollTop: place.posterHeight,
+        scrollTop: 300,
         duration: 300
       })
     }
     if (id == 2) {
       wx.pageScrollTo({
-        scrollTop: courseHeight + 84,
+        scrollTop: courseHeight,
         duration: 300
       })
     }
@@ -147,6 +148,12 @@ Page({
       const query = wx.createSelectorQuery()
       query.select('#camphHeight').boundingClientRect(function (res) {
         that.data.place.camphHeight = res.height
+      }).exec()
+      query.select('#infoHeight').boundingClientRect(function (res) {
+        that.data.place.infoHeight = res.height
+      }).exec()
+      query.select('#posterHeight').boundingClientRect(function (res) {
+        that.data.place.posterHeight = res.height
       }).exec()
     },1000)
     this.setData({
@@ -272,9 +279,9 @@ Page({
     //tab的吸顶效果
     if (e.scrollTop <= 0) {
       return
-    }
-    let tabTop = that.data.place.posterHeight
-    let camphHeight = that.data.place.posterHeight + that.data.place.camphHeight
+    }0
+    let tabTop = 300 - that.data.statusBarHeight - 44
+    let camphHeight = that.data.place.posterHeight  + 20 + that.data.place.infoHeight
     if (!that.data.scroll && e.scrollTop > tabTop) {
       that.setData({
         scroll: true

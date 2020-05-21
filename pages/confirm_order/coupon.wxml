@@ -1,13 +1,42 @@
 <!--pages/confirm_order/coupon.wxml-->
 
-<view class="tips-more-box">
+<navigationBar hasBack background="{{showTitle? '#000': 'transparent'}}">
+	<view slot="title" class="bar-title">代金券</view>
+</navigationBar>
+
+<view class="tips-more-box" style="margin-top: {{statusBarHeight+54}}px">
   <view class="line"></view>
   <view class="tips-more">可用代金券</view>
   <view class="line"></view>
 </view>
 
 <!--代金券-->
-<view class="coupon-box" wx:for="{{coupon_list}}" wx:key='index' bindtap="selectCoupon" data-index="{{index}}">
+	<view class="coupon-box" wx:for="{{coupon_list}}" bindtap="selectCoupon" wx:key="index">
+		<view class="coupon-box-row">
+			<view class="coupon-row-left">
+				<view class="coupon-price">{{tools.fen2yuan(item.reduce_cost,2)}}</view>
+				<view class="coupon-detail">
+					<text class="coupon-name">{{item.name}}</text>
+					<text class="coupon-date">有效期至：{{tools.formatTime(item.use_end,'{y}-{m}-{d}')}}</text>
+				</view>
+				<view class="cro left-top"></view>
+				<view class="cro left-bottom"></view>
+			</view>
+			<view class="coupon-line">
+				<view wx:for="{{7}}" class="coupon-line-circle" wx:key="index"></view>
+				<view class="coupon-line-line"></view>
+			</view>
+			<view class="coupon-row-right">
+				<view class="coupon-btn-use">立即使用</view>
+				<text class="coupon-use-text" bindtap="openExplain" data-name="{{item.name}}" data-notice="{{item.notice}}">查看可用范围</text>
+				<view class="cro right-top"></view>
+				<view class="cro right-bottom"></view>
+			</view>
+		</view>
+	</view>
+
+<!--代金券-->
+<!-- <view class="coupon-box" wx:for="{{coupon_list}}" wx:key='index' bindtap="selectCoupon" data-index="{{index}}">
   <view class="coupon-box-row">
     <view class="coupon-details">
       <view class="coupon-text">{{item.name}}</view>
@@ -23,7 +52,7 @@
       <image src="https://boringcdn.nanningboring.com/molicheng/check-icon.png" class="check-icon" mode="widthFix"></image>
     </view>
   </view>
-</view>
+</view> -->
 
 <view class="mask-box" wx:if="{{showExplain}}">
   <view class="mask-row-box">
