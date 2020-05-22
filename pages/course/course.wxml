@@ -421,12 +421,15 @@
 </view>
 
 <view class='mask' wx:if='{{false}}' bindtap='clickMask'>
-	<view class='modal-content'>
-		<view class='main-content'>
-			<image src="https://assets.morangefitness.com/welcome.png" mode="widthFix"></image>
+	<view class='cuopon-main-content'>
+		<view class='cuopon-content'>
+			<image class="cuopon-img" src="https://assets.morangefitness.com/cuopon_receive_bg.png" mode="heightFix">
+			</image>
+			<!-- <view class='modal-btn'>立即领取</view> -->
 		</view>
-		<view class='modal-btn'>立即领取</view>
+
 	</view>
+
 </view>
 
 

@@ -90,7 +90,8 @@ App({
       })
     })
     try {
-      this.globalData.minisession = wx.getStorageSync(config.BASE.minisessionKey)
+      this.globalData.minisession = wx.getStorageSync
+      (config.BASE.minisessionKey)
       this.globalData.openid = wx.getStorageSync('openid')
     } catch (e) {
       console.log(e)

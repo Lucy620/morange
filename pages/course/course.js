@@ -254,6 +254,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   this.getFreeCourseList()
+   this.getUnreceivedCouponList()
     this.animation = wx.createAnimation()
     this.jointAnimation = wx.createAnimation()
     this.bannerAnimation = wx.createAnimation()
@@ -908,7 +910,6 @@ Page({
    * 获取目的 类型 科目
    */
   getCourseCategoryList: function () {
-    this.getFreeCourseList()
     let that = this
     ajax.post(api.getCourseCategoryList, {}, ({
       data
@@ -1415,6 +1416,26 @@ Page({
           jointStoreList: data.obj.store,
           coachList: coach
         })
+      }
+    }, 'auth', true)
+  },
+
+  
+  /**
+   * 获取未领取优惠券列表
+   */
+  getUnreceivedCouponList: function () {
+    let that = this
+    wx.showNavigationBarLoading();
+    ajax.post(api.getUnreceivedCouponList, {}, ({
+      data
+    }) => {
+      if (data.code == 200) {
+        let coach = data.obj.coach
+        // that.setData({
+        //   jointStoreList: data.obj.store,
+        //   coachList: coach
+        // })
       }
     }, 'auth', true)
   },
