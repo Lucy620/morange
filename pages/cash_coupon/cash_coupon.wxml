@@ -37,7 +37,7 @@
 				<view class="coupon-line-line"></view>
 			</view>
 			<view class="coupon-row-right">
-				<view class="coupon-btn-use">立即使用</view>
+				<view class="coupon-btn-use" bindtap='jumpPage' data-url='pages/course/course'>立即使用</view>
 				<text class="coupon-use-text" bindtap="openExplain" data-name="{{item.name}}" data-notice="{{item.notice}}">查看可用范围</text>
 				<view class="cro right-top"></view>
 				<view class="cro right-bottom"></view>

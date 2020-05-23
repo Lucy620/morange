@@ -4,6 +4,7 @@ import {
   config,
   api,
   ajax,
+  util
 } from '../../utils/myapp.js'
 Page({
 
@@ -11,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    couponList:  [],
     refreshTip: true,
     showLoad: true,
     showCities: false,
@@ -254,6 +256,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.coupon_code) {
+      console.log('options.coupon_code',options.coupon_code)
+        this.checkCouponCode(options.coupon_code)
+    }
+
    this.getFreeCourseList()
    this.getUnreceivedCouponList()
     this.animation = wx.createAnimation()
@@ -277,6 +284,79 @@ Page({
   },
 
   /**
+   * 获取URL参数
+   */
+  getUrlParams(url, key) {
+    var value = '', pair = ''
+    if (url.indexOf("?") == -1) {
+      return value
+    }
+    url = url.split("?");
+    var arr = url[1].split("&");
+    for (var i = 0; i < arr.length; i++) {
+      pair = arr[i].split("=");
+      if (pair[0] == key) { value = pair[1]; }
+    }
+    return value
+  },
+
+   /**
+   * 检验代金券兑换码
+   */
+  checkCouponCode: function (code) {
+    var that = this
+    ajax.post(api.checkCouponCode, {
+      'code': code
+    }, ({
+      data
+    }) => {
+        if (data.code == 200) {
+          
+          var coupon = data.obj.coupon
+          coupon.coupon_code = code
+          console.log('checkCouponCode--->',coupon)
+          that.setData({couponList: that.data.couponList.concat(coupon)})
+        }
+      })
+  },
+
+  /**
+   * 兑换
+   */
+  exchange: function() {
+    let that = this
+    let code_list = that.data.couponList.map(item => {return item.coupon_code})
+    console.log('code_list--->',that.data.couponList)
+    if (util.isEmpty(code_list.length == 0)) {
+      wx.showToast({
+        title: '卡券兑换失败',
+        icon: 'none'
+      })
+      return
+    }
+    ajax.post(api.receiveUserCoupon, {
+      'code_list': code_list
+    }, ({
+      data
+    }) => {
+      if (data.code == 200) {
+        that.setData({
+          couponList: []
+        })
+        wx.showToast({
+          title: '领取成功',
+          icon: 'success'
+        })
+      } else {
+        wx.showToast({
+          title: data.msg,
+          icon: 'none'
+        })
+      }
+    })
+  },
+
+  /**
    * 获取当前星期
    */
   getWeek: function (date) {
@@ -289,6 +369,13 @@ Page({
     if (date.getDay() == 5) week = "五"
     if (date.getDay() == 6) week = "六"
     return week;
+  },
+
+   /**
+   * 隐藏优惠券
+   */
+  hideCouponModal: function () {
+    this.setData({couponList: []})
   },
 
   /**
@@ -1431,11 +1518,10 @@ Page({
       data
     }) => {
       if (data.code == 200) {
-        let coach = data.obj.coach
-        // that.setData({
-        //   jointStoreList: data.obj.store,
-        //   coachList: coach
-        // })
+        let couponList = data.obj.list
+        if(couponList.length != 0){
+          that.setData({couponList: couponList})
+        }
       }
     }, 'auth', true)
   },

@@ -29,7 +29,7 @@ Page({
       wx.switchTab({
         url: app.redirectUrl
       })
-    } else if (!app.redirectUrl || app.redirectUrl == '/pages/login/login') {
+    } else if (index !=1 || !app.redirectUrl || app.redirectUrl == '/pages/login/login') {
       wx.switchTab({
         url: '/pages/course/course'
       })

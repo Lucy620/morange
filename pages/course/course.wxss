@@ -1387,6 +1387,37 @@ swiper {
   height: 500px;
    position: relative;
    overflow: hidden;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+ .receive-coupon-box {
+   height: 300;
+   width: 100%;
+   position: absolute;
+   top: auto;
+   bottom: auto;
+ }
+
+ .coupon {
+   height: 400px;
+   position: absolute;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   justify-content: flex-end;
+ }
+
+ .coupon-tip-text {
+   height: 100rpx;
+   align-items: center;
+   justify-content: center;
+   display: flex;
+ }
+
+ .course-cover {
+   width: 220px;
  }
 
  .cuopon-img {
@@ -1406,4 +1437,11 @@ swiper {
   box-shadow:0px -5px 8px 0px rgba(0, 0, 0, 0.4);
   position: absolute;
   bottom: 0;
+ }
+
+ .coupon-cancel {
+   width: 32rpx;
+   position: fixed;
+   right: 12px;
+   top: 75px;
  }

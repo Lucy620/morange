@@ -114,6 +114,20 @@
 					"pathName": "pages/coach/coach_details",
 					"query": "coach_id=36",
 					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "pages/course/course",
+					"pathName": "pages/course/course",
+					"query": "coupon_code= YS5MHGHXPP",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/course/course",
+					"pathName": "pages/course/course",
+					"query": "coupon_code=1;tag=迪卡侬",
+					"scene": 1011
 				}
 			]
 		}

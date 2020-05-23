@@ -420,12 +420,18 @@
 	</view>
 </view>
 
-<view class='mask' wx:if='{{false}}' bindtap='clickMask'>
+<view class='mask' wx:if='{{couponList.length != 0}}' bindtap='clickMask'>
+	<image class="coupon-cancel" src="/assets/image/cancel.png" mode="widthFix" bindtap="hideCouponModal"></image>
 	<view class='cuopon-main-content'>
-		<view class='cuopon-content'>
+		<view class='cuopon-content' bindtap="exchange">
 			<image class="cuopon-img" src="https://assets.morangefitness.com/cuopon_receive_bg.png" mode="heightFix">
 			</image>
-			<!-- <view class='modal-btn'>立即领取</view> -->
+			<view class="coupon">
+				<image wx:for="{{couponList}}"  class="course-cover" src="{{item.cover}}" mode="widthFix"></image>
+				<view class="coupon-tip-text ">送您2张礼券，马上开始体验吧！</view>
+			</view>
+			<view class="receive-coupon-box">
+			</view>
 		</view>
 
 	</view>
