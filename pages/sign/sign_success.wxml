@@ -7,7 +7,7 @@
 <view class="wrapper" hidden="{{showLoad}}" style="margin-top: {{iod? 20: statusBarHeight+20}}px">
 	<view class="box">
 		<view class="head-box">
-			<image src="https://boringcdn.nanningboring.com/molicheng/MORANGE.png" mode="widthFix" class="MORANGE"></image>
+			<image src="https://assets.morangefitness.com/MORANGE.png" mode="widthFix" class="MORANGE"></image>
 			<view class="coach">
 				<image src="{{order.data.coach.headimgurl}}" mode="aspectFill" class="user-coach"></image>
 			</view>
@@ -80,14 +80,14 @@
 					<!--留言板-->
 					<view class="msg-board">
 						<view class="curriculum-row">
-							<image src="https://boringcdn.nanningboring.com/molic/msg-board-cion.png" mode="widthFix" class="icon"></image>
+							<image src="https://assets.morangefitness.com/msg-board-cion.png" mode="widthFix" class="icon"></image>
 							<view class="row-text">教练评价</view>
 						</view>
 						<scroll-view scroll-y class="msg-list" bindscrolltolower='getCourseCommentList'>
 							<block wx:if="{{list.length > 0}}">
 								<view class="msg-row" wx:for="{{list}}" wx:key='index'>
 									<image src="{{item.coach.headimgurl}}" mode="widthFix" class="user-icon" wx:if="{{item.type == 'coach'}}"></image>
-									<image src="https://boringcdn.nanningboring.com/molic/comment-icon.png" mode="widthFix" class="user-icon" wx:else></image>
+									<image src="https://assets.morangefitness.com/comment-icon.png" mode="widthFix" class="user-icon" wx:else></image>
 									<view class="msg-info">
 										<view class="date-box">
 											<view class="date">
@@ -116,7 +116,7 @@
 					<!--魔橙圈-->
 					<view class="circle-box">
 						<view class="curriculum-row">
-							<image src="https://boringcdn.nanningboring.com/molicheng/icon4.png" mode="widthFix" class="icon"></image>
+							<image src="https://assets.morangefitness.com/icon4.png" mode="widthFix" class="icon"></image>
 							<view class="row-text">课程照片</view>
 						</view>
 						<scroll-view scroll-x class="img-box" wx:if="{{order.data.course_photo.length > 0}}">
@@ -128,7 +128,7 @@
 									<video wx:if="{{showVideo}}" class="img" src='{{videoUrl}}' enable-play-gesture="{{true}}" id='myvideo' bindfullscreenchange="bindfullscreenchange">
 									</video>
 									<image wx:else class="up-tips" bindtap="openVideo" data-url="{{item.url}}">
-										<image class="play" src="https://boringcdn.nanningboring.com/molic/play.png" mode="widthFix"></image>
+										<image class="play" src="https://assets.morangefitness.com/play.png" mode="widthFix"></image>
 									</image>
 								</block>
 							</block>
@@ -137,10 +137,10 @@
 					</view>
 				</block>
 			</view>
-			<image src="https://boringcdn.nanningboring.com/molic/bg.png" mode="widthFix" class="bg"></image>
+			<image src="https://assets.morangefitness.com/bg.png" mode="widthFix" class="bg"></image>
 		</view>
 	</view>
-	<image src="https://boringcdn.nanningboring.com/molicheng/share-img.png" mode="widthFix" class="share-img" bindtap="onGive"></image>
+	<image src="https://assets.morangefitness.com/share-img.png" mode="widthFix" class="share-img" bindtap="onGive"></image>
 </view>
 
 <!--邀请好友-->

@@ -47,6 +47,8 @@ Page({
       'lastPage': false
     }],
     showLoad: true,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios,
   },
 
   /**

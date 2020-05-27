@@ -9,11 +9,11 @@
 <view class="wrapper" hidden="{{showLoad}}">
 
   <!--轮播-->
-  <view class="swiper-box">
-    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000" wx:if="{{show_type == 'slide' || show_type == ''}}">
+  <view class="swiper-box" style="height: {{imgHeights[curImg]}}px">
+    <swiper bindchange="onSwiperChange" indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000" wx:if="{{show_type == 'slide' || show_type == ''}}" style="height: {{imgHeights[curImg]}}px">
       <block wx:for="{{list.course.slide_imgs}}" wx:key="{{index}}">
         <swiper-item bindtap="previewImage" data-url="{{item}}">
-          <image src="{{item}}" class="slide-image" mode="widthFix" />
+          <image bindload="imageLoad" data-index="{{ index }}" style="width:{{ images[index].width }}px; height:{{ images[index].height }}px;" src="{{item}}" class="slide-image" mode="widthFix" />
         </swiper-item>
       </block>
     </swiper>
@@ -41,7 +41,7 @@
       <view class="details-box" bindtap="openStory">
         <view class="coach-name">{{list.coach.name}}</view>
         <view class="story" style="height:{{storyHeight}}rpx;">{{list.coach.introduction}}</view>
-        <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow" wx:if="{{storyHeight == '70'}}"></image>
+        <image src="https://assets.morangefitness.com/arrow1.png" mode="widthFix" class="arrow" wx:if="{{storyHeight == '70'}}"></image>
       </view>
       <image src="{{list.coach.headimgurl}}" mode="aspectFill" class="user-coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{list.coach.user_id}}'></image>
     </view> -->
@@ -51,14 +51,14 @@
       <view class="details-box" bindtap="openStory">
         <view class="coach-name">{{list.coach.name}}</view>
         <view class="story" style="height:{{storyHeight}}rpx;">{{list.coach.introduction}}</view>
-        <image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow" wx:if="{{storyHeight == '70'}}"></image>
+        <image src="https://assets.morangefitness.com/arrow1.png" mode="widthFix" class="arrow" wx:if="{{storyHeight == '70'}}"></image>
       </view>
     </view>
 
     <!--课时 时间 门店-->
     <view class="list-box">
       <view class="list-row">
-        <image src="https://boringcdn.nanningboring.com/molicheng/$.png" mode="widthFix" class="course-icon"></image>
+        <image src="https://assets.morangefitness.com/$.png" mode="widthFix" class="course-icon"></image>
         <view class="list-details">
           <view wx:for="{{list.price}}" wx:key='index'>{{item.course_num}}课时：￥{{tools.fen2yuan(item.price,2)}}/课时
             <text class="s-yellow" wx:if="{{item.first_price > 0 && first}}">(首次体验课￥{{tools.fen2yuan(item.first_price,2)}}/课时)</text>
@@ -68,13 +68,13 @@
       	<view class="divider"></view>
 
       <view class="list-row">
-        <image src="https://boringcdn.nanningboring.com/molicheng/tiem-ixon.png" mode="widthFix" class="course-icon"></image>
+        <image src="https://assets.morangefitness.com/tiem-ixon.png" mode="widthFix" class="course-icon"></image>
         <view class="list-details">时间：与教练预约授课时间</view>
       </view>
       	<view class="divider"></view>
         
       <view class="list-row">
-        <image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="address-icon"></image>
+        <image src="https://assets.morangefitness.com/icon1.png" mode="widthFix" class="address-icon"></image>
         <view class="list-details">门店: {{list.store.name}}</view>
       </view>
     </view>
@@ -86,7 +86,7 @@
   <!--简介-->
   <view class="wxParse-box">
     <view class="title-box">
-      <image src="https://boringcdn.nanningboring.com/molicheng/icon.png" mode="widthFix" class="icon"></image>
+      <image src="https://assets.morangefitness.com/icon.png" mode="widthFix" class="icon"></image>
       <view class="title">课程简介</view>
     </view>
     <view class="introduction">
@@ -97,7 +97,7 @@
   <!--注意事项-->
   <view class="wxParse-box" id='camphHeight'>
     <view class="title-box">
-      <image src="https://boringcdn.nanningboring.com/molicheng/matter-icon.png" mode="widthFix" class="icon"></image>
+      <image src="https://assets.morangefitness.com/matter-icon.png" mode="widthFix" class="icon"></image>
       <view class="title">注意事项</view>
     </view>
     <view class="introduction">
@@ -108,7 +108,7 @@
   <!--健身步骤-->
   <view class="wxParse-box">
     <view class="title-box">
-      <image src="https://boringcdn.nanningboring.com/molicheng/step-icon.png" mode="widthFix" class="icon"></image>
+      <image src="https://assets.morangefitness.com/step-icon.png" mode="widthFix" class="icon"></image>
       <view class="title">健身步骤</view>
     </view>
     <view class="introduction">

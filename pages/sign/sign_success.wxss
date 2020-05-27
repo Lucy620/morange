@@ -4,7 +4,7 @@
   width: 697rpx;
   min-height: 1335rpx;
   margin: 55rpx auto 0;
-  /* background: url(https://boringcdn.nanningboring.com/molicheng/refund-ok-bg.png); */
+  /* background: url(https://assets.morangefitness.com/refund-ok-bg.png); */
   /* background-size: 100%; */
   background: #fffbe6;
   border-radius: 24rpx;
@@ -146,7 +146,7 @@
   width: 697rpx;
   height: 345rpx;
   margin: 60rpx auto 0;
-  background: url(https://boringcdn.nanningboring.com/molicheng/course_details-head.png);
+  background: url(https://assets.morangefitness.com/course_details-head.png);
   background-size: 100%;
   position: relative;
 }
@@ -406,13 +406,13 @@
 .evaluate-star {
   width: 79rpx;
   height: 75rpx;
-  background: url(https://boringcdn.nanningboring.com/molic/large-star.png);
+  background: url(https://assets.morangefitness.com/large-star.png);
   background-size: 100%;
   margin-right: 10rpx;
 }
 
 .evaluate-light-star {
-  background: url(https://boringcdn.nanningboring.com/molic/large-light.png);
+  background: url(https://assets.morangefitness.com/large-light.png);
   background-size: 100%;
 }
 
@@ -457,13 +457,13 @@
 .star {
   width: 25rpx;
   height: 24rpx;
-  background: url(https://boringcdn.nanningboring.com/molic/large-star.png);
+  background: url(https://assets.morangefitness.com/large-star.png);
   background-size: 100%;
   margin-right: 5rpx;
 }
 
 .light-star {
-  background: url(https://boringcdn.nanningboring.com/molic/large-light.png);
+  background: url(https://assets.morangefitness.com/large-light.png);
   background-size: 100%;
 }
 

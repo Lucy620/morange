@@ -37,7 +37,7 @@
 .select-tab-item {
   color: #ffae00;
   border-bottom: 1px solid #ffae00;
-  background: url(https://boringcdn.nanningboring.com/molicheng/tab-bg.png);
+  background: url(https://assets.morangefitness.com/tab-bg.png);
   background-size: 100% 100%;
 }
 

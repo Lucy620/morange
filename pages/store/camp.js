@@ -16,7 +16,9 @@ Page({
     showLoad: false,
     area_id: 0,
     noData: false,
-    list: []
+    list: [],
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios,
   },
 
   /**

@@ -14,7 +14,7 @@
         {{date}}
       </view>
     </picker>
-    <image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+    <image mode="widthFix" src="https://assets.morangefitness.com/arrow.png" class="arrow"></image>
   </view>
 
   <block wx:if="{{list.length > 0}}">

@@ -32,7 +32,10 @@ Page({
       courseHeight: 236,
     },
     statusBarHeight: app.globalData.statusBarHeight,
-    ios: app.globalData.ios
+    ios: app.globalData.ios,
+    curImg: 0,
+    images:[],
+    imgHeights: [],
   },
 
   /**
@@ -44,6 +47,27 @@ Page({
     wx.previewImage({
       current: url, // 当前显示图片的http链接
       urls: imglist // 需要预览的图片http链接列表
+    })
+  },
+
+  imageLoad: function (e) {
+    let width = e.detail.width, //获取图片真实宽度
+      height = e.detail.height,
+      ratio = width / height; //图片的真实宽高比例
+    let viewWidth = app.globalData.screenWidth, //设置图片显示宽度，左右留有16rpx边距
+      viewHeight = viewWidth / ratio; //计算的高度值
+    let image = this.data.images;
+    //将图片的datadata-index作为image对象的key,然后存储图片的宽高值
+    image[e.target.dataset.index] = {
+      width: viewWidth,
+      height: viewHeight
+    }
+
+    let hetights = this.data.imgHeights;
+    hetights[e.target.dataset.index] = viewHeight
+    this.setData({
+      images: image,
+      imgHeights: hetights
     })
   },
 
@@ -129,13 +153,14 @@ Page({
    * 页面滚动事件的处理函数
    */
   onPageScroll: function (e) {
-    console.log('scroll', e.scrollTop)
     let that = this
+    let imgHeights = this.data.imgHeights
+    let curImg = this.data.curImg
     //tab的吸顶效果
     if (e.scrollTop <= 0) {
       return
     }
-    let tabTop = that.data.place.posterHeight
+    let tabTop = imgHeights[curImg] - that.data.statusBarHeight - 44
     let camphHeight = that.data.place.posterHeight + that.data.place.camphHeight
     if (!that.data.scroll && e.scrollTop > tabTop) {
       that.setData({

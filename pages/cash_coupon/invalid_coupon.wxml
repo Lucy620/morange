@@ -20,7 +20,7 @@
         <view class="date-tips">已过期</view>
       </view>
     </view>
-    <image src="https://boringcdn.nanningboring.com/molicheng/invalid-icon.png" mode="widthFix" class="invalid-icon"></image>
+    <image src="https://assets.morangefitness.com/invalid-icon.png" mode="widthFix" class="invalid-icon"></image>
   </view>
   <view class="tips">没有更多券了</view>
 

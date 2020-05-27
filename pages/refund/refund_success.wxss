@@ -4,7 +4,7 @@
   width: 697rpx;
   height: 1335rpx;
   margin: 55rpx auto 0;
-  background: url(https://boringcdn.nanningboring.com/molicheng/refund-ok-bg.png);
+  background: url(https://assets.morangefitness.com/refund-ok-bg.png);
   background-size: 100%;
   position: relative;
 }
@@ -156,7 +156,7 @@
   width: 697rpx;
   height: 345rpx;
   margin: 60rpx auto 0;
-  background: url(https://boringcdn.nanningboring.com/molicheng/course_details-head.png);
+  background: url(https://assets.morangefitness.com/course_details-head.png);
   background-size: 100%;
   position: relative;
 }

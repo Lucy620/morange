@@ -2,12 +2,16 @@
 
 <view class="wrapper" hidden="{{showLoad}}">
 
-  <view class="box-ok">
-    <image src="https://boringcdn.nanningboring.com/molicheng/ok-logo.png" mode="widthFix" class="ok-logo"></image>
-    <view class="tips-title">支付成功</view>
-    <button open-type='share' open-type='share' class="btn">立即赠送</button>
-    <view class="tips">
-      <text class="s-yellow">{{msg}}</text>后无人领取会自动取消并退款
-    </view>
-  </view>
+	<navigationBar hasBack background="transparent">
+		<view slot="title" class="bar-title"></view>
+	</navigationBar>
+
+	<view class="box-ok" style="margin-top: {{statusBarHeight+44}}px">
+		<image src="https://assets.morangefitness.com/ok-logo.png" mode="widthFix" class="ok-logo"></image>
+		<view class="tips-title">支付成功</view>
+		<button open-type='share' open-type='share' class="btn">立即赠送</button>
+		<view class="tips">
+			<text class="s-yellow">{{msg}}</text>后无人领取会自动取消并退款
+		</view>
+	</view>
 </view>

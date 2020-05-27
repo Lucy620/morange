@@ -14,66 +14,66 @@ Page({
    */
   data: {
     background: [
-      'https://boringcdn.nanningboring.com/molic/bronze-bg.png',
-      'https://boringcdn.nanningboring.com/molic/silver-bg.png',
-      'https://boringcdn.nanningboring.com/molic/gold-bg.png',
-      'https://boringcdn.nanningboring.com/molic/masonry-bg.png',
-      'https://boringcdn.nanningboring.com/molic/the_king-bg.png'
+      'https://assets.morangefitness.com/bronze-bg.png',
+      'https://assets.morangefitness.com/silver-bg.png',
+      'https://assets.morangefitness.com/gold-bg.png',
+      'https://assets.morangefitness.com/masonry-bg.png',
+      'https://assets.morangefitness.com/the_king-bg.png'
     ], // 背景
     grade: 0, // 等级
     iconList: {
       '0': [{
           'name': '专属页面',
-          'icon': 'https://boringcdn.nanningboring.com/molic/equity-icon1.png',
+          'icon': 'https://assets.morangefitness.com/equity-icon1.png',
           'type': 'exclusive'
         },
         {
           'name': '更多权益',
-          'icon': 'https://boringcdn.nanningboring.com/molic/equity-icon2.png',
+          'icon': 'https://assets.morangefitness.com/equity-icon2.png',
           'type': 'more'
         }
       ], // 青铜
       '1': [{
           'name': '专属页面',
-          'icon': 'https://boringcdn.nanningboring.com/molic/silver-icon1.png',
+          'icon': 'https://assets.morangefitness.com/silver-icon1.png',
           'type': 'exclusive'
         },
         {
           'name': '更多权益',
-          'icon': 'https://boringcdn.nanningboring.com/molic/silver-icon2.png',
+          'icon': 'https://assets.morangefitness.com/silver-icon2.png',
           'type': 'more'
         }
       ], // 白银
       '2': [{
           'name': '专属页面',
-          'icon': 'https://boringcdn.nanningboring.com/molic/gold-icon1.png',
+          'icon': 'https://assets.morangefitness.com/gold-icon1.png',
           'type': 'exclusive'
         },
         {
           'name': '更多权益',
-          'icon': 'https://boringcdn.nanningboring.com/molic/gold-icon2.png',
+          'icon': 'https://assets.morangefitness.com/gold-icon2.png',
           'type': 'more'
         }
       ], // 黄金
       '3': [{
           'name': '专属页面',
-          'icon': 'https://boringcdn.nanningboring.com/molic/masonry-icon1.png',
+          'icon': 'https://assets.morangefitness.com/masonry-icon1.png',
           'type': 'exclusive'
         },
         {
           'name': '更多权益',
-          'icon': 'https://boringcdn.nanningboring.com/molic/masonry-icon2.png',
+          'icon': 'https://assets.morangefitness.com/masonry-icon2.png',
           'type': ''
         }
       ], // 砖石
       '4': [{
           'name': '专属页面',
-          'icon': 'https://boringcdn.nanningboring.com/molic/the_king-icon1.png',
+          'icon': 'https://assets.morangefitness.com/the_king-icon1.png',
           'type': 'exclusive'
         },
         {
           'name': '更多权益',
-          'icon': 'https://boringcdn.nanningboring.com/molic/the_king-icon2.png',
+          'icon': 'https://assets.morangefitness.com/the_king-icon2.png',
           'type': 'more'
         }
       ] // 王者

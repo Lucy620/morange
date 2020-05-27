@@ -34,7 +34,7 @@ page {
 }
 
 .silver-box {
-  background: url(https://boringcdn.nanningboring.com/molic/silver-title-bg.png);
+  background: url(https://assets.morangefitness.com/silver-title-bg.png);
   background-size: 100%;
 }
 
@@ -136,14 +136,14 @@ page {
 }
 
 .grade-btn {
-  width: 731rpx;
-  height: 99rpx;
-  line-height: 99rpx;
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   margin: -35rpx auto 0;
   text-align: center;
   color: #000;
   font-size: 32rpx;
-  background: url(https://boringcdn.nanningboring.com/molic/grade-btn.png);
+  background-color: #515151;
   background-size: 100%;
 }
 
@@ -199,14 +199,15 @@ page {
 }
 
 .btn {
-  width: 139rpx;
-  height: 53rpx;
+  width: 140rpx;
+  height: 60rpx;
   text-align: center;
-  line-height: 53rpx;
-  border-radius: 7rpx;
+  line-height: 60rpx;
+  border-radius: 30rpx;
   font-size: 27rpx;
   color: #000;
-  background: url(https://boringcdn.nanningboring.com/molic/btn.png);
+  background:linear-gradient(0deg,rgba(255,135,28,1),rgba(255,167,14,1));
+box-shadow:0px 6px 8px 0px rgba(0, 0, 0, 0.5);
   background-size: 100%;
 }
 

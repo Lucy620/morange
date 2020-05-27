@@ -4,7 +4,7 @@
   width: 697rpx;
   height: 1290rpx;
   margin: 0 auto;
-  background: url(https://boringcdn.nanningboring.com/molicheng/refund-bg.png);
+  background: url(https://assets.morangefitness.com/refund-bg.png);
   background-size: 100%;
   position: relative;
 }
@@ -129,7 +129,7 @@
   font-size: 32rpx;
   color: #000;
   border-top: 2rpx solid #ffbc0f;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background: url(https://assets.morangefitness.com/ranking-btn.png);
   background-size: 100% 100%;
 }
 

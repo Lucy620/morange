@@ -20,7 +20,9 @@ Page({
     isShare: false,
     type: 'rank_month',
     showLoad: true,
-    user_info: ''
+    user_info: '',
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
 

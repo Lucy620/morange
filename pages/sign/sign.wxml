@@ -2,14 +2,14 @@
 
 <view class="wrapper" hidden="{{showLoad}}">
   <view class="box-ok">
-    <image src="https://boringcdn.nanningboring.com/molicheng/sign.png" mode="widthFix" class="bg"></image>
+    <image src="https://assets.morangefitness.com/sign.png" mode="widthFix" class="bg"></image>
     <view class="text-box" wx:if="{{coach}}">
       <view class="tips">签到成功！</view>
       <view class="tips-coach">请向{{coach.name}}教练出示本界面</view>
       <view class="coach-img-box">
         <image src="{{user.headimgurl}}" mode="aspectFill" class="coach-img"></image>
         <view class="mask">
-          <image src="https://boringcdn.nanningboring.com/molicheng/hook.png" mode="widthFix" class="hook-icon"></image>
+          <image src="https://assets.morangefitness.com/hook.png" mode="widthFix" class="hook-icon"></image>
         </view>
         <view class="num">{{user.people_num}}</view>
       </view>
@@ -24,9 +24,9 @@
 
   <view class="mask-box" wx:if="{{showCode}}" bindtap="closeCode">
     <view class="qrcode-box" catchtap="previewImage">
-      <image src="https://boringcdn.nanningboring.com/molicheng/code.jpg" mode="widthFix" class="code"></image>
+      <image src="https://assets.morangefitness.com/code.jpg" mode="widthFix" class="code"></image>
     </view>
   </view>
 
-  <image src="https://boringcdn.nanningboring.com/molicheng/home-btn.png" mode="widthFix" class="home-btn" bindtap='jumpPage' data-url='pages/course/course'></image>
+  <image src="https://assets.morangefitness.com/home-btn.png" mode="widthFix" class="home-btn" bindtap='jumpPage' data-url='pages/course/course'></image>
 </view>

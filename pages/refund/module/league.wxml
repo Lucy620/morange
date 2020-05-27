@@ -88,7 +88,7 @@
       </view>
     </view>
   </view>
-  <image src="https://boringcdn.nanningboring.com/molicheng/share-img.png" mode="widthFix" class="share-img" bindtap="onGive"></image>
+  <image src="https://assets.morangefitness.com/share-img.png" mode="widthFix" class="share-img" bindtap="onGive"></image>
 </template>
 
 <wxs module="tools" src="../../../utils/tools.wxs"></wxs>

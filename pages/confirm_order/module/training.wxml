@@ -1,71 +1,74 @@
 <template name="training">
-  <view class="box">
-    <image src="https://boringcdn.nanningboring.com/molicheng/bg-icon.png" mode="widthFix" class="bg-icon"></image>
-    <view class="list-text">
-      <view class="title">{{course.name}}({{courseDate.coach.name}})</view>
-      <view class="coach-name">教练：{{courseDate.coach.name}}</view>
-      <view class="address">地点:{{courseDate.store.address}}</view>
-    </view>
+	<navigationBar hasBack background="#000">
+		<view slot="title" class="bar-title">确认订单信息</view>
+	</navigationBar>
 
-    <view class="row-box">
-      <view class="row-text">人数：</view>
-      <view class="row-tab">
-        <view class="tab-item select-item">1人</view>
-      </view>
-    </view>
+	<view class="box">
+		<image src="https://assets.morangefitness.com/bg-icon.png" mode="widthFix" class="bg-icon"></image>
+		<view class="list-text">
+			<view class="title">{{course.name}}({{courseDate.coach.name}})</view>
+			<view class="coach-name">教练：{{courseDate.coach.name}}</view>
+			<view class="address">地点:{{courseDate.store.address}}</view>
+		</view>
 
-    <view class="row">
-      <view class="row-text">总价: </view>
-      <view class="row-tab">{{tools.fen2yuan(discount_price,2)}}元</view>
-    </view>
+		<view class="row-box">
+			<view class="row-text">人数：</view>
+			<view class="row-tab">
+				<view class="tab-item select-item">1人</view>
+			</view>
+		</view>
 
-    <view class="row">
-      <view class="row-text">代金券: </view>
-      <view class="row-tab" wx:if="{{coupon_list.length == 0}}">无代金券</view>
-      <view class="row-tab" wx:elif="{{user_coupon_id == 0}}" bindtap="openCoupon">
-        <text>{{coupon_list.length}}张可用</text>
-        <image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
-      </view>
-      <!--代金券优惠-->
-      <view class="row-tab" wx:else bindtap="openCoupon">
-        -{{tools.fen2yuan(reduce_cost,2)}}元
-        <image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
-      </view>
-    </view>
+		<view class="row">
+			<view class="row-text">总价: </view>
+			<view class="row-tab">{{tools.fen2yuan(discount_price,2)}}元</view>
+		</view>
 
-    <view class="money-box">还需支付
-      <text class="money-text">￥{{reduce_cost == pay_price ? '0.00' :  tools.fen2yuan(pay_price,2)}}</text>
-    </view>
+		<view class="row">
+			<view class="row-text">代金券: </view>
+			<view class="row-tab" wx:if="{{coupon_list.length == 0}}">无代金券</view>
+			<view class="row-tab" wx:elif="{{user_coupon_id == 0}}" bindtap="openCoupon">
+				<text>{{coupon_list.length}}张可用</text>
+				<image mode="widthFix" src="https://assets.morangefitness.com/arrow.png" class="arrow"></image>
+			</view>
+			<!--代金券优惠-->
+			<view class="row-tab" wx:else bindtap="openCoupon">
+				-{{tools.fen2yuan(reduce_cost,2)}}元
+				<image mode="widthFix" src="https://assets.morangefitness.com/arrow.png" class="arrow"></image>
+			</view>
+		</view>
 
-    <view class="explain s-explain">
-      温馨提示：魔橙卡可支付训练营、私教课程，充值享送更优惠。孕产妇暂不建议 参与，详情请公众号留言咨询。
-      <view>退营须知：距离开营超过7天申请退营，支持全额退款；不足7天，将收取报名费 30%的退营手续费；开营后，不支持退营若使用代金券，代金券不支持退还。</view>
-    </view>
+		<view class="money-box">还需支付
+			<text class="money-text">￥{{reduce_cost == pay_price ? '0.00' :  tools.fen2yuan(pay_price,2)}}</text>
+		</view>
 
-  </view>
+		<view class="explain s-explain">
+			温馨提示：魔橙卡可支付训练营、私教课程，充值享送更优惠。孕产妇暂不建议 参与，详情请公众号留言咨询。
+			<view>退营须知：距离开营超过7天申请退营，支持全额退款；不足7天，将收取报名费 30%的退营手续费；开营后，不支持退营若使用代金券，代金券不支持退还。</view>
+		</view>
+
+	</view>
 
 
-  <view class="btn" wx:if="{{user.balance < pay_price}}" bindtap="createBuy">确认订单，微信支付</view>
-  <view class="btn" wx:else bindtap="createBuy">{{type == 'give' ? '魔橙卡余额支付，赠送好友' : '确认订单，魔橙卡支付'}}</view>
+	<view class="btn" wx:if="{{user.balance < pay_price}}" bindtap="createBuy">确认订单，微信支付</view>
+	<view class="btn" wx:else bindtap="createBuy">{{type == 'give' ? '魔橙卡余额支付，赠送好友' : '确认订单，魔橙卡支付'}}</view>
 
-  <view class="mask-box" wx:if="{{showTips}}">
-    <view class="mask-text-box">
+	<view class="mask-box" wx:if="{{showTips}}">
+		<view class="mask-text-box">
 
-      <view class="mask-text-title">注意</view>
-      <view class="camp-text-tips">
-        <scroll-view scroll-y class="scroll-box">
-          在报名FAT KILLER前，魔力橙想要真切地提醒您，如您的身体有以下任意一种情况，需要您事先咨询医生意见并取得医生的书面同意书后，才能报名参加。1.已诊断有心脏问题; 2.运动时感觉胸口疼痛; 3.过去一个月内，在非运动情况下出现胸口疼痛; 4.半年内多次出现头晕眼花而跌倒甚至昏厥的情况; 5.半年内曾有关节严重受伤， 如关节粉碎性骨折、韧带撕裂、腰椎间盘突出等; 6.有高血压问题;7.有糖尿病问题;8.已怀孕或正在孕阶段; 9.顺产6个月内、 或剖腹产12个月内。温馨提示:如有上述状况但无法提供医生书面同意书，为了让您获得更安全、有效的训练，即使成功报名入营，魔力橙也将会做出合理劝退。退营须知:距离开营超过7天申请退训，支持全额退款;距离开训不足7天，以及开训后，不支持退训;若使用代金券，代金券不支持退还。
+			<view class="mask-text-title">注意</view>
+			<view class="camp-text-tips">
+				<scroll-view scroll-y class="scroll-box">
+					在报名FAT KILLER前，魔力橙想要真切地提醒您，如您的身体有以下任意一种情况，需要您事先咨询医生意见并取得医生的书面同意书后，才能报名参加。1.已诊断有心脏问题; 2.运动时感觉胸口疼痛; 3.过去一个月内，在非运动情况下出现胸口疼痛; 4.半年内多次出现头晕眼花而跌倒甚至昏厥的情况; 5.半年内曾有关节严重受伤， 如关节粉碎性骨折、韧带撕裂、腰椎间盘突出等; 6.有高血压问题;7.有糖尿病问题;8.已怀孕或正在孕阶段; 9.顺产6个月内、 或剖腹产12个月内。温馨提示:如有上述状况但无法提供医生书面同意书，为了让您获得更安全、有效的训练，即使成功报名入营，魔力橙也将会做出合理劝退。退营须知:距离开营超过7天申请退训，支持全额退款;距离开训不足7天，以及开训后，不支持退训;若使用代金券，代金券不支持退还。
 
-        </scroll-view>
-      </view>
-      <view class="mask-btn-box">
-        <view class="mask-btn" bindtap="closeTips">再看看</view>
-        <view class="confirm-btn" bindtap="createOrder">我同意</view>
-      </view>
-    </view>
-  </view>
-  <modal show="{{showTips}}" bindcancel="{{tip.cancelFun}}" bindconfirm='onConfirm' title="{{tip.title}}" content="{{tip.content}}">
-  </modal>
+				</scroll-view>
+			</view>
+			<view class="mask-btn-box">
+				<view class="mask-btn" bindtap="closeTips">再看看</view>
+				<view class="confirm-btn" bindtap="createOrder">我同意</view>
+			</view>
+		</view>
+	</view>
+
 </template>
 
 <wxs module="tools" src="../../../utils/tools.wxs"></wxs>

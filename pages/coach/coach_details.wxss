@@ -16,7 +16,6 @@ video {
 }
 
 .coach-box {
-  height: 500px;
   position: relative;
 }
 
@@ -33,7 +32,6 @@ video {
 
 .coach-bg {
   width: 100%;
-  height: 500px;
 }
 
 .follow-box {
@@ -80,7 +78,6 @@ video {
   height: 80rpx;
   line-height: 80rpx;
   background-color: #181818;
-  top: 500rpx;
   left: 0;
   right: 0;
 }
@@ -593,12 +590,12 @@ video {
 .star {
   width: 35rpx;
   height: 33rpx;
-  background: url(https://boringcdn.nanningboring.com/molic/large-star.png);
+  background: url(https://assets.morangefitness.com/large-star.png);
   background-size: 100%;
 }
 
 .light-star {
-  background: url(https://boringcdn.nanningboring.com/molic/large-light.png);
+  background: url(https://assets.morangefitness.com/large-light.png);
   background-size: 100%;
 }
 

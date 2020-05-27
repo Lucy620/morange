@@ -17,7 +17,9 @@ Page({
     payData: '',
     isGive: false,
     isShare: false,
-    showWeChat: false
+    showWeChat: false,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**

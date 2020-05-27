@@ -91,7 +91,7 @@ button::after {
   text-align: center;
   margin: 20rpx auto 30rpx;
   color: #000;
-  background: url(https://boringcdn.nanningboring.com/molicheng/btn1.png);
+  background: url(https://assets.morangefitness.com/btn1.png);
   background-size: 100%;
   border-radius: 6.7rpx;
 }

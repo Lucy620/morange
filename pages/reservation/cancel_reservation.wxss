@@ -73,7 +73,7 @@
   text-align: center;
   line-height: 52rpx;
   border-radius: 6.7rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/curriculum-btn.png);
+  background: url(https://assets.morangefitness.com/curriculum-btn.png);
   background-size: 100%;
    position: relative;
   z-index: 1;

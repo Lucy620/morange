@@ -39,7 +39,7 @@
 .select-tab-item {
   color: #ffae00;
   border-bottom: 1px solid #ffae00;
-  background: url(https://boringcdn.nanningboring.com/molicheng/tab-bg.png);
+  background: url(https://assets.morangefitness.com/tab-bg.png);
   background-size: 100% 100%;
 }
 
@@ -62,7 +62,7 @@
   padding: 5rpx 30rpx;
   font-size: 24rpx;
   color: #fff;
-  background: url(https://boringcdn.nanningboring.com/molicheng/medal-title-bg.png);
+  background: url(https://assets.morangefitness.com/medal-title-bg.png);
   background-size: 100%;
 }
 

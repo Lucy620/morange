@@ -5,7 +5,7 @@
   <view class="bg-box">
     <!--课程 二维码 课程收入-->
     <view class="list-box">
-      <image src="https://boringcdn.nanningboring.com/molicheng/MORANGE.png" mode="widthFix" class="logo-text"></image>
+      <image src="https://assets.morangefitness.com/MORANGE.png" mode="widthFix" class="logo-text"></image>
       <view class="title">{{course.course.name}}</view>
 
       <!--签到扫码-->
@@ -28,39 +28,39 @@
     <view class="curriculum-box">
       <view class="row">
         <view class="name-icon-box">
-          <image src="https://boringcdn.nanningboring.com/molicheng/icon.png" mode="widthFix" class="icon"></image>
+          <image src="https://assets.morangefitness.com/icon.png" mode="widthFix" class="icon"></image>
           <view class="row-text">课程: {{course.course.name}}</view>
         </view>
         <view class="curriculum-btn" bindtap="seeCourse" data-id="{{course.id}}">查看</view>
       </view>
       <view class="row-address">
         <view class="name-icon-box">
-          <image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="address-icon"></image>
+          <image src="https://assets.morangefitness.com/icon1.png" mode="widthFix" class="address-icon"></image>
           <view class="row-text">地址：</view>
         </view>
         <view class="address">{{course.store.address}}</view>
         <view class="map-text" bindtap="seeMap" data-latitude="{{course.store.latitude}}" data-longitude="{{course.store.longitude}}" data-name="{{course.store.name}}" data-address="{{course.store.address}}">点击查看地图</view>
       </view>
       <view class="info-row">
-        <image src="https://boringcdn.nanningboring.com/molicheng/icon2.png" mode="widthFix" class="icon"></image>
+        <image src="https://assets.morangefitness.com/icon2.png" mode="widthFix" class="icon"></image>
         <view class="row-text">教练：{{course.coach.name}}</view>
       </view>
       <view class="info-row">
-        <image src="https://boringcdn.nanningboring.com/molicheng/icon.png" mode="widthFix" class="icon"></image>
+        <image src="https://assets.morangefitness.com/icon.png" mode="widthFix" class="icon"></image>
         <view class="row-text">课程ID: {{course.course.id}}</view>
       </view>
       <view class="info-row">
-        <image src="https://boringcdn.nanningboring.com/molicheng/course-icon.png" mode="widthFix" class="icon"></image>
+        <image src="https://assets.morangefitness.com/course-icon.png" mode="widthFix" class="icon"></image>
         <view class="row-text">剩余：{{user.surplus}}/{{user.total}}课时
         </view>
       </view>
       <view class="curriculum-row">
-        <image src="https://boringcdn.nanningboring.com/molicheng/icon4.png" mode="widthFix" class="icon"></image>
+        <image src="https://assets.morangefitness.com/icon4.png" mode="widthFix" class="icon"></image>
         <view class="row-text">课程照片</view>
       </view>
       <view class="course-img-box">
         <image src="{{item}}" mode="widthFix" class="course-img" wx:for="{{images}}" wx:key='index' bindtap="previewImage" data-url="{{item}}" data-imglist="{{images}}"></image>
-        <image src='https://boringcdn.nanningboring.com/molicheng/add-img.png' mode='widthFix' class="course-img" bindtap="selectImg"></image>
+        <image src='https://assets.morangefitness.com/add-img.png' mode='widthFix' class="course-img" bindtap="selectImg"></image>
       </view>
       <view class="save-btn" bindtap="onSave">保存图片</view>
     </view>

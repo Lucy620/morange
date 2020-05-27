@@ -55,6 +55,7 @@ Component({
           var ios = !!(res.system.toLowerCase().search('ios') + 1);
           _this.setData({
             ios: ios,
+            screenWidth: res.windowWidth,
             statusBarHeight: res.statusBarHeight,
             innerWidth: isSupport ? 'width:' + rect.left + 'px' : '',
             innerPaddingRight: isSupport ? 'padding-right:' + (res.windowWidth - rect.left) + 'px' : '',
@@ -66,7 +67,7 @@ Component({
       //获取胶囊按钮信息
       let statusBarHeight = app.globalData.systeminfo.statusBarHeight // 状态栏高度
       let headerPosi = app.globalData.headerBtnPosi // 胶囊位置信息
-      console.log('headerPosi',headerPosi)
+
       /**
        * wx.getMenuButtonBoundingClientRect() 坐标信息以屏幕左上角为原点
        * 菜单按键宽度： 87

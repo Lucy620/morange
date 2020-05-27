@@ -1,6 +1,10 @@
 <template name="league">
+	<navigationBar hasBack background="#000">
+		<view slot="title" class="bar-title">确认订单信息</view>
+	</navigationBar>
+
 	<view class="box">
-		<image src="https://boringcdn.nanningboring.com/molicheng/bg-icon.png" mode="widthFix" class="bg-icon"></image>
+		<image src="https://assets.morangefitness.com/bg-icon.png" mode="widthFix" class="bg-icon"></image>
 		<view class="list-text">
 			<view class="title">
 				<!--拼课--->
@@ -62,7 +66,7 @@
 				<text class="s-yellow" wx:if="{{user.type == 'vip'}}">{{tools.fen2yuan(discount_price,2)}}元</text>
 				<block wx:if="{{user.type == 'user'}}">
 					<text class="s-yellow" bindtap='jumpPage' data-url='pages/recharge/recharge'>尚未开通，点击开通</text>
-					<image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+					<image mode="widthFix" src="https://assets.morangefitness.com/arrow.png" class="arrow"></image>
 				</block>
 			</view>
 		</view>
@@ -73,12 +77,12 @@
 			<view class="row-tab" wx:if="{{coupon_list.length == 0}}">无代金券</view>
 			<view class="row-tab" wx:elif="{{user_coupon_id == 0}}" bindtap="openCoupon">
 				<text>{{coupon_list.length}}张可用</text>
-				<image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+				<image mode="widthFix" src="https://assets.morangefitness.com/arrow.png" class="arrow"></image>
 			</view>
 			<!--代金券优惠-->
 			<view class="row-tab" wx:else bindtap="openCoupon">
 				-{{coupon_type == 'week' || coupon_type == 'gift' ? tools.fen2yuan(pay_price,2) : tools.fen2yuan(reduce_cost,2)}}元
-				<image mode="widthFix" src="https://boringcdn.nanningboring.com/molicheng/arrow.png" class="arrow"></image>
+				<image mode="widthFix" src="https://assets.morangefitness.com/arrow.png" class="arrow"></image>
 			</view>
 		</view>
 
@@ -127,8 +131,6 @@
 		</block>
 	</block>
 
-	<modal show="{{showTips}}" bindcancel="{{tip.cancelFun}}" bindconfirm='onConfirm' title="{{tip.title}}" content="{{tip.content}}">
-	</modal>
 
 </template>
 

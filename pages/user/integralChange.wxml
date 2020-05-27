@@ -2,7 +2,11 @@
 
 <view class="wrapper" hidden="{{showLoad}}">
 
-	<view class="tips-box">本月累计积分
+<navigationBar hasBack background="transparent">
+	<view slot="title" class="bar-title">积分详情</view>
+</navigationBar>
+
+	<view class="tips-box" style="margin-top: {{statusBarHeight+44}}px">本月累计积分
 		<text class="s-yellow">{{total}}</text> 分
 	</view>
 	<view class="picker-box">
@@ -12,7 +16,7 @@
 					{{date}}
 				</view>
 			</picker>
-			<image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="arrow"></image>
+			<image src="https://assets.morangefitness.com/arrow.png" mode="widthFix" class="arrow"></image>
 		</view>
 	</view>
 

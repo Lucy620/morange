@@ -17,6 +17,7 @@ App({
   globalData: {
     freeCourseList: [],
     fundebug: fundebug,
+    screenWidth: 0,
     minisession: '',
     openid: '',
     cities: [],
@@ -70,6 +71,7 @@ App({
         this.globalData.systeminfo = res
         this.globalData.statusBarHeight = res.statusBarHeight
         this.globalData.ios = ios
+        this.globalData.screenWidth = res.windowWidth
       },
     })
     // 获得胶囊按钮位置信息

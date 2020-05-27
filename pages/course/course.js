@@ -12,6 +12,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tip: {
+      title: '提示',
+      content: '',
+      confirmFun: () => {},
+      cancelFun: () => {}
+    },
+    showTips: false,
     couponList:  [],
     refreshTip: true,
     showLoad: true,
@@ -257,7 +264,6 @@ Page({
    */
   onLoad: function (options) {
     if (options.coupon_code) {
-      console.log('options.coupon_code',options.coupon_code)
         this.checkCouponCode(options.coupon_code)
     }
 
@@ -300,6 +306,10 @@ Page({
     return value
   },
 
+  hideTip: function(){
+    this.setData({showTips: false})
+  },
+
    /**
    * 检验代金券兑换码
    */
@@ -311,13 +321,29 @@ Page({
       data
     }) => {
         if (data.code == 200) {
-          
           var coupon = data.obj.coupon
           coupon.coupon_code = code
           console.log('checkCouponCode--->',coupon)
           that.setData({couponList: that.data.couponList.concat(coupon)})
+        }else{
+          console.log('checkCouponCode--->error')
+          this.setModalContent('提示', data.msg, that.hideTip)
         }
       })
+  },
+
+  /***
+   * 设置 modal 内容
+   */
+  setModalContent: function (title, content, confirmFun) {
+    let tip = this.data.tip
+    tip.title = title
+    tip.content = content
+    tip.confirmFun = confirmFun
+    this.setData({
+      tip,
+      showTips: true,
+    })
   },
 
   /**

@@ -1,6 +1,6 @@
 <import src="../../../wxParse/wxParse.wxml" />
 <template name="private_education">
-  <view class="box">
+  <view class="box" style="margin-top: {{statusBarHeight}}px">
       <view class="coach">
         <image src="{{courseData.coach.headimgurl}}" mode="aspectFill" class="user-coach"></image>
       </view>
@@ -12,19 +12,19 @@
       <view class="private-tips-box">
         课程安排，请与教练微信沟通
       </view>
-      <image class="mask-bg" src="https://boringcdn.nanningboring.com/molicheng/mask.png" mode="widthFix"></image>
+      <image class="mask-bg" src="https://assets.morangefitness.com/mask.png" mode="widthFix"></image>
     </view>
     <view class="private-list">
       <view class="circular"></view>
       <view class="circular1"></view>
       <view class="private-wrow-top">
-        <image src="https://boringcdn.nanningboring.com/molicheng/icon3.png" mode="widthFix" class="private-icon"></image>
+        <image src="https://assets.morangefitness.com/icon3.png" mode="widthFix" class="private-icon"></image>
         <view class="private-text">入场密码：
           <text class="league-tips">{{courseData.order.open_code}}</text>
         </view>
       </view>
       <view class="private-wrow">
-        <image src="https://boringcdn.nanningboring.com/molicheng/wx-icon.png" mode="widthFix" class="private-icon"></image>
+        <image src="https://assets.morangefitness.com/wx-icon.png" mode="widthFix" class="private-icon"></image>
         <view class="private-text">
           教练：
           <view class="private-name">{{courseData.coach.name}}</view>
@@ -35,30 +35,30 @@
         </view>
       </view>
       <view class="private-wrow">
-        <image src="https://boringcdn.nanningboring.com/molicheng/user-icon3.png" mode="widthFix" class="private-icon"></image>
+        <image src="https://assets.morangefitness.com/user-icon3.png" mode="widthFix" class="private-icon"></image>
         <view class="private-text">名额：1人
         </view>
       </view>
       <view class="private-wrow">
-        <image src="https://boringcdn.nanningboring.com/molicheng/course-icon.png" mode="widthFix" class="private-icon"></image>
+        <image src="https://assets.morangefitness.com/course-icon.png" mode="widthFix" class="private-icon"></image>
         <view class="private-text">剩余：{{courseData.surplus}}/{{courseData.total}}课时
         </view>
       </view>
       <view class="private-wrow">
-        <image src="https://boringcdn.nanningboring.com/molicheng/date-icon1.png" mode="widthFix" class="private-icon"></image>
+        <image src="https://assets.morangefitness.com/date-icon1.png" mode="widthFix" class="private-icon"></image>
         <view class="private-text">有效期至：{{tools.formatTime(courseData.end_at,'{y}年{m}月{d}日{h}:{i}')}}
         </view>
       </view>
       <view class="private-address">
         <view class="private-wrow-address">
-          <image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="address-icon"></image>
+          <image src="hhttps://assets.morangefitness.com/icon1.png" mode="widthFix" class="address-icon"></image>
           <view class="private-text">地址：</view>
         </view>
       </view>
       <view class="private-address-text">{{courseData.store.address}}</view>
       <view class="private-map" bindtap="seeMap" data-latitude="{{courseData.store.latitude}}" data-longitude="{{courseData.store.longitude}}" data-name="{{courseData.store.name}}" data-address="{{courseData.store.address}}">点击查看地图</view>
       <view class="private-wrow">
-        <image src="https://boringcdn.nanningboring.com/molicheng/matter-icon.png" mode="widthFix" class="private-icon"></image>
+        <image src="https://assets.morangefitness.com/matter-icon.png" mode="widthFix" class="private-icon"></image>
         <view class="private-text">注意</view>
       </view>
       <view class="private-text-box">

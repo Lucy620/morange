@@ -3,10 +3,10 @@
 .box {
   width: 697rpx;
   height: 941rpx;
+  margin: auto;
   background-color: #fffbe6;
   border-radius: 13rpx;
-  margin: 150rpx auto 0;
-  background: url(https://boringcdn.nanningboring.com/molicheng/give.png);
+  background: url(https://assets.morangefitness.com/give.png);
   background-size: 100%;
 }
 

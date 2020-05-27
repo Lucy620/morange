@@ -3,7 +3,7 @@
 .wrapper{
   height: 100%;
   text-align: center;
-  background: #000 url(https://boringcdn.nanningboring.com/molicheng/medal-bg.png) no-repeat;
+  background: #000 url(https://assets.morangefitness.com/medal-bg.png) no-repeat;
   background-size: 100%;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .speed-bg {
-  background: url(https://boringcdn.nanningboring.com/molicheng/speed-bg.png);
+  background: url(https://assets.morangefitness.com/speed-bg.png);
   background-size: 100%;
   width: 100%;
   height: 100%;
@@ -136,7 +136,7 @@
   line-height: 81.3rpx;
   margin: 100rpx auto 0;
   color: #000;
-  background: url(https://boringcdn.nanningboring.com/molicheng/medal-btn.png);
+  background: url(https://assets.morangefitness.com/medal-btn.png);
   background-size: 100%;
   border-radius: 40.7rpx;
 }

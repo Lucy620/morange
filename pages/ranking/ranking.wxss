@@ -4,7 +4,7 @@
 
 .head-box {
   height: 295rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-bg.png);
+  background: url(https://assets.morangefitness.com/ranking-bg.png);
   background-size: 100%;
 }
 
@@ -51,7 +51,7 @@ row-box {
   margin: -130rpx auto 0;
   border-radius: 13.3rpx;
   text-align: center;
-  background: url(https://boringcdn.nanningboring.com/molicheng/user-ranking-bg.png);
+  background: url(https://assets.morangefitness.com/user-ranking-bg.png);
   background-size: 100%;
   position: relative;
 }
@@ -90,10 +90,12 @@ row-box {
 .ranking-text {
   font-weight: bold;
 }
-.ranking-tips{
+
+.ranking-tips {
   text-decoration: underline;
   color: #ffae00;
 }
+
 .ranking-date {
   font-weight: bold;
 }
@@ -135,7 +137,7 @@ row-box {
   height: 201.3rpx;
   margin: 30rpx auto;
   text-align: center;
-  background: url(https://boringcdn.nanningboring.com/molicheng/user-list-item-bg.png);
+  background: url(https://assets.morangefitness.com/user-list-item-bg.png);
   background-size: 100%;
 }
 
@@ -165,12 +167,14 @@ row-box {
   height: 112.7rpx;
   border-radius: 50%;
 }
-.user-item-black{
-    width: 112rpx;
+
+.user-item-black {
+  width: 112rpx;
   height: 112.7rpx;
   border-radius: 50%;
   background: #232323;
 }
+
 .brand {
   position: absolute;
   right: 50rpx;
@@ -196,14 +200,16 @@ row-box {
 }
 
 .btn {
-  height: 110.7rpx;
+  width: 696.7rpx;
+  height: 110rpx;
   line-height: 110.7rpx;
   font-size: 32rpx;
   color: #000;
   padding: 0;
-  margin: 0;
-  border-radius: 0rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  margin: auto;
+  border-radius: 55rpx;
+  background: linear-gradient(0deg, rgba(255, 135, 28, 1), rgba(255, 167, 14, 1));
+  box-shadow: 0px 6px 8px 0px rgba(0, 0, 0, 0.5);
   background-size: 100%;
 }
 

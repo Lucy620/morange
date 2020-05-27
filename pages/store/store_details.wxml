@@ -1,17 +1,17 @@
 <!--pages/store/store_details.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
 
-<navigationBar hasBack background="transparent">
-	<view slot="title" class="bar-title">{{storeData.name}}</view>
+<navigationBar hasBack background="{{showTitle? '#000': 'transparent'}}">
+	<view slot="title" class="bar-title">{{showTitle ? storeData.name: ''}}</view>
 </navigationBar>
 
 <view class="wrapper" hidden="{{showLoad}}">
   <!--轮播-->
-  <view class="swiper-box">
-    <swiper indicator-dots="{{true}}" autoplay="{{true}}" circular="{{true}}" wx:if="{{show_type == 'slide' || show_type ==  ''}}">
+  <view class="swiper-box" style="height: {{imgHeights[curImg]}}px">
+    <swiper bindchange="onSwiperChange" indicator-dots="{{true}}" autoplay="{{true}}" circular="{{true}}" wx:if="{{show_type == 'slide' || show_type ==  ''}}">
       <block wx:for="{{storeData.slide_imgs}}" wx:key="{{index}}">
-        <swiper-item bindtap="previewImage" data-url="{{item}}">
-          <image src="{{item}}?imageView2/1/w/730/h/300" class="slide-image" mode="widthFix" />
+        <swiper-item bindtap="previewImage" data-url="{{item}}" style="width:{{ images[index].width }}px; height:{{ images[index].height }}px;">
+          <image  bindload="imageLoad" data-index="{{ index }}"  src="{{item}}?imageView2/1/w/730/h/300" style="width:{{ images[index].width }}px; height:{{ images[index].height }}px;" class="slide-image" mode="widthFix" />
         </swiper-item>
       </block>
     </swiper>
@@ -55,7 +55,7 @@
   <!--课程简介-->
   <view class="course-introduction-box">
     <view class="title-box">
-      <image src="https://boringcdn.nanningboring.com/molicheng/icon-s.png" mode="widthFix" class="icon"></image>
+      <image src="https://assets.morangefitness.com/icon-s.png" mode="widthFix" class="icon"></image>
       <view class="title">场地介绍</view>
     </view>
     <view class="introduction">
@@ -66,7 +66,7 @@
   <!--地址-->
   <view class="address-introduction-box">
     <view class="address-title-box">
-      <image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="address-icon"></image>
+      <image src="https://assets.morangefitness.com/icon1.png" mode="widthFix" class="address-icon"></image>
       <view class="address-title">地址</view>
     </view>
     <view class="address-introduction">
@@ -82,7 +82,7 @@
   <!--事项-->
   <view class="matter-box">
     <view class="matter-title">
-      <image src="https://boringcdn.nanningboring.com/molicheng/matter-icon.png" mode="widthFix" class="matter-icon"></image>
+      <image src="https://assets.morangefitness.com/matter-icon.png" mode="widthFix" class="matter-icon"></image>
       <view class="title-text">注意事项</view>
     </view>
     <view class="matter-introduction">
@@ -93,7 +93,7 @@
   <!--步骤-->
   <view class="step-box">
     <view class="step-title">
-      <image src="https://boringcdn.nanningboring.com/molicheng/step-icon.png" mode="widthFix" class="step-icon"></image>
+      <image src="https://assets.morangefitness.com/step-icon.png" mode="widthFix" class="step-icon"></image>
       <view class="step-title-text">健身步骤</view>
     </view>
     <view class="step-row">

@@ -1,5 +1,10 @@
 <!--pages/user/integralEquity.wxml-->
 <view class="wrapper" hidden="{{showLoad}}">
+
+<navigationBar hasBack background="transparent">
+	<view slot="title" class="bar-title">会员权益</view>
+</navigationBar>
+
 	<swiper indicator-dots="{{true}}" autoplay="{{false}}" interval="5000" duration="500" indicator-active-color="#ff8400" bindchange='binSwiper' current='{{equity}}'>
 		<block wx:for="{{integral}}" wx:key="index">
 			<swiper-item class='swiper-item-box'>
@@ -8,7 +13,7 @@
 					<view class="grade-title">Lv.{{item.grade_id +' '+ item.name}}</view>
 					<view class="grade-num-box"><text class="yellow">{{userType == 'user' ? '0' : user_integral}}</text>/{{item.integral}}</view>
 				</view>
-				<image class="current" wx:if="{{item.grade_id == grade_id}}" src="https://boringcdn.nanningboring.com/molic/current.png"></image>
+				<image class="current" wx:if="{{item.grade_id == grade_id}}" src="https://assets.morangefitness.com/current.png"></image>
 			</swiper-item>
 		</block>
 	</swiper>
@@ -23,7 +28,7 @@
 						<view class="tips">{{item.content}}</view>
 					</view>
 				</view>
-				<image src="https://boringcdn.nanningboring.com/molic/line.png" class="line" mode="widthFix"></image>
+				<image src="https://assets.morangefitness.com/line.png" class="line" mode="widthFix"></image>
 			</view>
 		</view>
 	</view>

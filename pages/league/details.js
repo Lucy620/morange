@@ -39,7 +39,11 @@ Page({
       courseHeight: 236,
     },
     statusBarHeight: app.globalData.statusBarHeight,
-    ios: app.globalData.ios
+    ios: app.globalData.ios,
+    screenWidth: app.globalData.screenWidth,
+    curImg: 0,
+    images:[],
+    imgHeights: [],
   },
 
   /**
@@ -80,6 +84,31 @@ Page({
       })
     }
   },
+
+  imageLoad: function (e) {
+    let width = e.detail.width, //获取图片真实宽度
+      height = e.detail.height,
+      ratio = width / height; //图片的真实宽高比例
+    let viewWidth = app.globalData.screenWidth, //设置图片显示宽度，左右留有16rpx边距
+      viewHeight = viewWidth / ratio; //计算的高度值
+    let image = this.data.images;
+    //将图片的datadata-index作为image对象的key,然后存储图片的宽高值
+    image[e.target.dataset.index] = {
+      width: viewWidth,
+      height: viewHeight
+    }
+
+    let hetights = this.data.imgHeights;
+    hetights[e.target.dataset.index] = viewHeight
+    this.setData({
+      images: image,
+      imgHeights: hetights
+    })
+  },
+
+  onSwiperChange: function(e){
+    this.setData({curImg: e.detail.current})
+},
 
     /***
    * modal 确认按钮事件
@@ -183,12 +212,19 @@ Page({
         WxParse.wxParse('introduce', 'html', obj.course.introduce, that, 5)
         WxParse.wxParse('note', 'html', obj.course.note, that, 5)
         WxParse.wxParse('step', 'html', obj.course.step, that, 5)
+        let height = 0
+        if (obj.course.video) {
+            let screenWidth = that.data.screenWidth
+            height = 720/960*screenWidth
+        }
+        console.log('screenWidth-->',height)
         that.setData({
           list: obj,
           nowtime: Math.round(new Date().getTime() / 1000),
           queue_order: data.obj.queue_order,
           start_at: start_at,
           show_type: obj.course.show_type,
+          imgHeights: [height],
           videoUrl: obj.course.video,
           showLoad: false
         })
@@ -276,11 +312,13 @@ Page({
    */
   onPageScroll: function(e) {
     let that = this
+    let imgHeights = this.data.imgHeights
+    let curImg = this.data.curImg
     //tab的吸顶效果
     if (e.scrollTop <= 0) {
       return
     }0
-    let tabTop = 300 - that.data.statusBarHeight - 44
+    let tabTop = imgHeights[curImg] - that.data.statusBarHeight - 44
     let camphHeight = that.data.place.posterHeight  + 20 + that.data.place.infoHeight
     if (!that.data.scroll && e.scrollTop > tabTop) {
       that.setData({

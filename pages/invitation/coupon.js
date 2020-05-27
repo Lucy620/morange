@@ -20,8 +20,9 @@ Page({
     is_new: 'false',
     send_user: '',
     user: '',
-    isReceive: false
-
+    isReceive: false,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**

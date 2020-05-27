@@ -44,8 +44,8 @@ Page({
  * 预览图片
  */
   previewImage: function () {
-    var url = 'https://boringcdn.nanningboring.com/molicheng/code.jpg'
-    var imglist = ['https://boringcdn.nanningboring.com/molicheng/code.jpg']
+    var url = 'https://assets.morangefitness.com/code.jpg'
+    var imglist = ['https://assets.morangefitness.com/code.jpg']
     wx.previewImage({
       current: url, // 当前显示图片的http链接
       urls: imglist // 需要预览的图片http链接列表

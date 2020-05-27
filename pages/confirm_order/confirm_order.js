@@ -21,6 +21,7 @@ Page({
       cancelFun: () => {}
     },
     ordersn: '',
+    showModalTips: false,
     showLoad: true,
     cart: '', // 购物清单
     type: 'buy', // 按钮类型
@@ -88,9 +89,6 @@ Page({
 
   openGive: function () {
     this.setModalContent('提示', '赠送的课程被领取后，双方均不可取消该订单', this.createOrder)
-    this.setData({
-      showTips: true,
-    })
   },
   /***
    * modal 确认按钮事件
@@ -109,7 +107,7 @@ Page({
     tip.confirmFun = confirmFun
     this.setData({
       tip,
-      showTips: true,
+      showModalTips: true,
     })
   },
 
@@ -323,7 +321,7 @@ Page({
    * 计算团课应付价
    */
   teamPayPirce: function (courseDate, num, user, activity) {
-    console.log('teamPayPirce', app.globalData.freeCourseList, courseDate.course_id)
+    console.log('teamPayPirce', app.globalData.freeCourseList, courseDate)
     let pay_price = 0
     if (activity.two && num == 2) {
       // 普通价
@@ -337,7 +335,7 @@ Page({
     } else {
       // 普通价
       if (user.type == 'user') {
-        if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1){
+        if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1 && courseDate.is_spell != 1){
           pay_price = courseDate.price * (num - 1)
         }else{
           pay_price = courseDate.price * num
@@ -345,7 +343,7 @@ Page({
       }
       //会员价
       if (user.type == 'vip') {
-        if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1){
+        if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1 && courseDate.is_spell != 1){
           pay_price = courseDate.vip_price * (num - 1)
         }else{
           pay_price = courseDate.vip_price * num
@@ -428,19 +426,20 @@ Page({
     }) => {
       if (data.code == 200) {
         that.setData({
-          showTips: false,
+          showModalTips: false,
           ordersn: data.obj.order_result.ordersn
         })
         if (that.data.coupon_type == 'week' || that.data.coupon_type == 'gift' || reduce_cost == pay_price) {
           pay_price = 0
         }
+        console.log('createOrder---->',user.balance, pay_price)
         if (user.balance >= pay_price) {
           pay_price = pay_price / 100
-          this.setModalContent('提示', '支付' + pay_price + '元', that.cardPaynotify)
-          this.setData({
+          that.setData({
             ordersn: data.obj.order_result.ordersn,
-            showTips: true,
           })
+          that.setModalContent('提示', '支付' + pay_price + '元', that.cardPaynotify)
+          
         } else {
           that.wxPay()
         }
@@ -449,9 +448,6 @@ Page({
           wx.navigateBack({
             delta: 1,
           })
-        })
-        this.setData({
-          showTips: true,
         })
 
       } else {
@@ -500,11 +496,7 @@ Page({
             },
             'fail': function (res) {
               this.setModalContent('提示', '离支付成功只差一步,怎么能轻易放弃？', that.wxPay)
-              this.setData({
-                showTips: true,
-              })
-
-
+            
               // wx.showModal({
               //   content: '离支付成功只差一步,怎么能轻易放弃？',
               //   cancelText: '放弃支付',

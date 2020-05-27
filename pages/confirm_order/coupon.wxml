@@ -49,7 +49,7 @@
   </view>
   <view class="wrap" wx:if="{{item.select}}">
     <view class="silk-ribbon">
-      <image src="https://boringcdn.nanningboring.com/molicheng/check-icon.png" class="check-icon" mode="widthFix"></image>
+      <image src="https://assets.morangefitness.com/check-icon.png" class="check-icon" mode="widthFix"></image>
     </view>
   </view>
 </view> -->

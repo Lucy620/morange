@@ -6,9 +6,9 @@
 	</navigationBar>
 
 	<!--教练-->
-	<view id="posterHeight" class="coach-box" wx:if="{{show_type == 'slide' || show_type == ''}}">
+	<view id="posterHeight" style="height: {{sliceHeight}}" class="coach-box" wx:if="{{show_type == 'slide' || show_type == ''}}">
 		<view class="header-mask" bindtap="previewImage" data-url="{{coach.slide_imgs[0]}}"></view>
-		<image wx:if="{{coach.slide_imgs.length > 0}}" src="{{coach.slide_imgs[0]}}?imageView2/1/w/750/h/500" class="coach-bg"></image>
+		<image bindload="slideLode" wx:if="{{coach.slide_imgs.length > 0}}" src="{{coach.slide_imgs[0]}}" class="coach-bg" style="width:{{ sliceImage.width }}px; height:{{ sliceImage.height }}px;"></image>
 
 		<view class="story-box">
 			<view class="details-box" bindtap="openStory">
@@ -21,18 +21,18 @@
 			<!--时间记录-->
 			<view class="date-record-box" id='courseHeight'>
 				<view class="detail-row-box">
-					<image src="https://boringcdn.nanningboring.com/molicheng/date-icon.png" mode="widthFix" class="icon"></image>
+					<image src="https://assets.morangefitness.com/date-icon.png" mode="widthFix" class="icon"></image>
 					<view class="record-text">
 						<text class="date">{{tools.formatTime(nowtime,'{m}月')}}</text> (截止{{tools.formatTime(nowtime,'{d}日')}}00:00)</view>
 				</view>
 				<view class="detail-row-box">
-					<image src="https://boringcdn.nanningboring.com/molicheng/record-icon.png" mode="widthFix" class="icon"></image>
+					<image src="https://assets.morangefitness.com/record-icon.png" mode="widthFix" class="icon"></image>
 					<view class="record-text">我已签到参与{{coach.name}}教练共
 						<text class="s-yellow">{{user_course.total_course}}</text> 节课，总计
 						<text class="s-yellow">{{user_course.total_minute}}</text> 分钟</view>
 				</view>
 				<view class="detail-row-box" bindtap='jumpPage' data-url='pages/coach/student?coach_id={{coach.user_id}}'>
-					<image src="https://boringcdn.nanningboring.com/molicheng/ranking-icon.png" mode="widthFix" class="icon"></image>
+					<image src="https://assets.morangefitness.com/ranking-icon.png" mode="widthFix" class="icon"></image>
 					<view class="record-text">在{{coach.name}}的好友中排名：
 						<text class="s-yellow">No.{{user_course.rank}}</text> (上月No.{{user_course.last_rank}})</view>
 				</view>
@@ -83,7 +83,7 @@
 						<block wx:if="{{item.length == 0}}">
 							<view class="coach-info">
 								<view class="coach">
-									<image src="https://boringcdn.nanningboring.com/molicheng/user-icon.png" mode="widthFix"></image>
+									<image src="hhttps://assets.morangefitness.com/user-icon.png" mode="widthFix"></image>
 									<view class="coach-mask">...</view>
 								</view>
 								<view class="coach-info-details">
@@ -98,7 +98,7 @@
 									<view class="store-address">{{course.name}}</view>
 									<view class="map-box" bindtap="seeMap" data-name="{{course.name}}" data-address="{{course.address}}" data-latitude="{{course.latitude}}" data-longitude="{{course.longitude}}">
 										<view class="map-text">查看地图</view>
-										<image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="map-arrow"></image>
+										<image src="hhttps://assets.morangefitness.com/arrow1.png" mode="widthFix" class="map-arrow"></image>
 									</view>
 								</view>
 								<view class="coach-info" wx:if="{{course.team.length > 0}}" wx:for="{{course.team}}" wx:key='index' wx:for-item="teamItem" bindtap='jumpPage' data-url='pages/league/details?team_id={{teamItem.id}}'>
@@ -175,7 +175,7 @@
 				<view class="text-tips">门店：{{item.data.store.name}}</view>
 				<view class="comment-box">
 					<image src="{{coach.headimgurl}}" mode="widthFix" class="comment-icon" wx:if="{{item.type == 'coach'}}"></image>
-					<image src="https://boringcdn.nanningboring.com/molic/comment-icon.png" class="comment-icon" mode="widthFix" wx:else></image>
+					<image src="https://assets.morangefitness.com/comment-icon.png" class="comment-icon" mode="widthFix" wx:else></image>
 					<view class="commen-text">{{item.content}}</view>
 				</view>
 			</block>

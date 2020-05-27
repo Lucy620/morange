@@ -138,6 +138,7 @@ swiper {
   color: #fff;
   line-height: 24rpx;
   margin-top: 12rpx;
+  height: 32rpx;
 }
 
 
@@ -338,7 +339,7 @@ swiper {
   align-items: center;
   padding: 20rpx 20rpx;
   background-color: #181818;
-  margin-bottom: 2rpx;
+  margin-bottom: 4rpx;
   position: relative;
   margin-left: 10rpx;
   margin-right: 10rpx;
@@ -499,8 +500,8 @@ swiper {
   -moz-transform: rotate(-43deg);
   -webkit-transform: rotate(-43deg);
   -o-transform: rotate(-43deg);
-  background: #C30000;
-  color: #fff777;
+  background: #D200D2;
+  color: #fff;
   font-size: 18rpx;
 }
 
@@ -721,7 +722,7 @@ swiper {
   line-height: 89rpx;
   text-align: center;
   font-weight: bold;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background: url(https://assets.morangefitness.com/ranking-btn.png);
   background-size: 100% 100%;
 }
 
@@ -814,7 +815,7 @@ swiper {
   height: 89rpx;
   line-height: 89rpx;
   text-align: center;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background: url(https://assets.morangefitness.com/ranking-btn.png);
   background-size: 100% 100%;
 }
 
@@ -930,7 +931,7 @@ swiper {
   height: 89rpx;
   line-height: 89rpx;
   text-align: center;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background: url(https://assets.morangefitness.com/ranking-btn.png);
   background-size: 100% 100%;
 }
 
@@ -1049,7 +1050,7 @@ swiper {
   text-align: center;
   line-height: 52rpx;
   border-radius: 6.7rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/curriculum-btn.png);
+  background: url(https://assets.morangefitness.com/curriculum-btn.png);
   background-size: 100%;
   position: relative;
   z-index: 1;
@@ -1401,12 +1402,20 @@ swiper {
  }
 
  .coupon {
-   height: 400px;
+   height: 200px;
    position: absolute;
    display: flex;
    align-items: center;
    flex-direction: column;
    justify-content: flex-end;
+   overflow-y: auto;
+ }
+
+ .coupon-count {
+   color: #ff9c00;
+   padding: 0 8rpx;
+   font-size: 40rpx;
+   margin-top: -10rpx;
  }
 
  .coupon-tip-text {
@@ -1414,6 +1423,9 @@ swiper {
    align-items: center;
    justify-content: center;
    display: flex;
+   color: #d4d4d4;
+   position: absolute;
+   bottom: 100rpx;
  }
 
  .course-cover {
@@ -1444,4 +1456,18 @@ swiper {
    position: fixed;
    right: 12px;
    top: 75px;
+ }
+
+ .coupon-bg {
+    position: absolute;
+    min-height: 200px;
+ }
+
+ .coupon_1 {
+   height: 300rpx;
+   width: 300rpx;
+ }
+
+ .coupon-1 {
+
  }

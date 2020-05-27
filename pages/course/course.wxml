@@ -4,8 +4,8 @@
 <loading wx:if="{{showTab}}"></loading>
 
 <navigationBar>
-	<view slot="btn-left" class="bar-city" style="margin-top: {{ios? 20: 0}}px">
-		<text wx:if="{{!showCities}}" bindtap="onShowCities">{{curCity.name}}</text>
+	<view slot="btn-left" class="bar-city" style="margin-top: {{ios? 20: 0}}px;width:120rpx">
+		<text  wx:if="{{!showCities}}" bindtap="onShowCities">{{curCity.name}}</text>
 		<image wx:if="{{!showCities}}" class="img-city" mode="aspectFit" src="/assets/image/down.png"></image>
 		<image wx:if="{{showCities}}" bindtap="onHideCities" class="img-cancel" mode="aspectFit" src="/assets/image/cancel.png"></image>
 	</view>
@@ -89,12 +89,12 @@
 									</view>
 									<view class="map-box">
 										<view class="map-text" bindtap="seeMap" data-name="{{course.name}}" data-address="{{course.address}}" data-latitude="{{course.latitude}}" data-longitude="{{course.longitude}}">查看地图</view>
-										<image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="map-arrow"></image>
+										<image src="https://assets.morangefitness.com/arrow1.png" mode="widthFix" class="map-arrow"></image>
 									</view>
 								</view>
 								<view class="coach-info" wx:if="{{course.team.length == 0}}">
 									<view class="coach-img">
-										<image src="https://boringcdn.nanningboring.com/molicheng/user-icon.png" mode="widthFix"></image>
+										<image src="https://assets.morangefitness.com/user-icon.png" mode="widthFix"></image>
 										<view class="coach-mask">...</view>
 									</view>
 									<view class="coach-info-details">
@@ -154,7 +154,7 @@
 
 	<!--私教-->
 
-	<view scroll-y class="scroll-box" scroll-top="{{scroll}}" wx:if="{{curTab == 'private_course'}}">
+	<view class="scroll-box" wx:if="{{curTab == 'private_course'}}">
 		<block wx:key='index' wx:for="{{storeList}}" wx:if="{{index != 0}}">
 			<view class="store-row">
 				<view style="display:flex;align-items:center">
@@ -163,14 +163,18 @@
 				</view>
 				<view class="map-box">
 					<view class="map-text" bindtap="seeMap" data-name="{{course.name}}" data-address="{{course.address}}" data-latitude="{{course.latitude}}" data-longitude="{{course.longitude}}">查看地图</view>
-					<image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="map-arrow"></image>
+					<image src="https://assets.morangefitness.com/arrow1.png" mode="widthFix" class="map-arrow"></image>
 				</view>
 			</view>
+			
 			<view class="box" wx:for="{{priList}}" wx:for-item="course" wx:key='index' wx:if="{{item.id == course.store.id }}">
 				<image src="{{course.coach.headimgurl}}" mode="aspectFill" class="coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{course.coach.user_id}}'></image>
 				<view class="box-row" bindtap='jumpPage' data-url='pages/private_education/course?private_id={{course.id}}'>
 					<view class="mid">
-						<view class="pri-title">{{course.course.name}}<text class="kcal" style="margin-left:8rpx">600kcal</text></view>
+						<view class="pri-title">
+							<text class="title">{{course.course.name}}</text>
+							<view class="kcal" style="margin-left:8rpx;word-break:keep-all">600kcal</view>
+						</view>
 						<view class="attributes-box">
 							<view class="name" wx:for="{{course.course.attributes}}" wx:key='index' wx:for-item="attributes">
 								<view wx:if="{{index != 0}}" class="garden"></view>{{attributes}}
@@ -288,7 +292,7 @@
 		</view>
 		<view class="time-tips-box" bindtap="hiddenEnd" wx:if="{{type == 'time'}}">
 			<view class="time-tips-img {{is_hide ? 'select-time-tips' : ''}}">
-				<image src="https://boringcdn.nanningboring.com/molicheng/hook-icon.png" mode="widthFix" class="hook-icon" wx:if="{{is_hide}}"></image>
+				<image src="https://assets.morangefitness.com/hook-icon.png" mode="widthFix" class="hook-icon" wx:if="{{is_hide}}"></image>
 			</view>
 			<view class="time-tips-text">隐藏今天已结束的课程</view>
 		</view>
@@ -427,16 +431,18 @@
 			<image class="cuopon-img" src="https://assets.morangefitness.com/cuopon_receive_bg.png" mode="heightFix">
 			</image>
 			<view class="coupon">
-				<image wx:for="{{couponList}}"  class="course-cover" src="{{item.cover}}" mode="widthFix"></image>
-				<view class="coupon-tip-text ">送您2张礼券，马上开始体验吧！</view>
+				<image wx:for="{{couponList}}" class="course-cover" src="{{item.cover}}" mode="widthFix"></image>
 			</view>
+			<view class="coupon-tip-text ">送您<text class="coupon-count">{{couponList.length}}</text>张礼券，马上开始体验吧！</view>
 			<view class="receive-coupon-box">
 			</view>
 		</view>
 
 	</view>
-
 </view>
+
+<modal show="{{showTips}}" bindcancel="hideTip" bindconfirm="{{tip.confirmFun}}" title="{{tip.title}}" content="{{tip.content}}">
+</modal>
 
 
 <!--转发有礼-->

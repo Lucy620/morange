@@ -34,7 +34,7 @@
     <!--时间-->
     <view class="time-box">
       <view class="time-tips">
-        <image src="https://boringcdn.nanningboring.com/molicheng/tiem-ixon.png" mode="widthFix" class="tiem-icon"></image>
+        <image src="https://assets.morangefitness.com/tiem-ixon.png" mode="widthFix" class="tiem-icon"></image>
         <view class="tips-text">请选择开始时间</view>
       </view>
       <view class="time">
