@@ -84,7 +84,7 @@
   width: 590rpx;
   height: 333rpx;
   background-color: #fffbe6;
-  border-radius: 5rpx;
+  border-radius: 20rpx;
   position: relative;
 }
 
@@ -129,7 +129,7 @@
   font-size: 32rpx;
   color: #000;
   border-top: 2rpx solid #ffbc0f;
-  background: url(https://assets.morangefitness.com/ranking-btn.png);
+  background:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
   background-size: 100% 100%;
 }
 

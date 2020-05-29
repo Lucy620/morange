@@ -13,6 +13,11 @@ Component({
   lifetimes: {
     //组件的生命周期函数
     attached() {
+      let query = this.createSelectorQuery();
+      query.select('#tab-bar').boundingClientRect(function (rect) {
+        app.globalData.barHeight = rect.height
+      }).exec();
+  
       this.setData({
         list: app.globalData.list
       })
@@ -47,7 +52,6 @@ Component({
           } else {
             that.data.lastTapTimeoutFunc = setTimeout(function () {
               // 单击事件
-              console.log("single click")
             }, 200);
           }
         }

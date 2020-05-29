@@ -231,6 +231,9 @@ swiper {
 .coach-store-box {
   flex: 1;
   padding-bottom: 128px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
 }
 
 .list {
@@ -245,9 +248,8 @@ swiper {
   height: 100%;
   flex-direction: column;
   -webkit-overflow-scrolling: touch;
-  overflow: scroll;
+  overflow: auto;
   background-color: #262626;
-  padding-bottom: 148px;
 }
 
 .store-row {
@@ -1404,12 +1406,16 @@ swiper {
  .coupon {
    height: 200px;
    position: absolute;
-   display: flex;
+   text-align: center;
    align-items: center;
    flex-direction: column;
    justify-content: flex-end;
-   overflow-y: auto;
+   padding-top: 48rpx;
+    overflow: auto;
+    display: flex;
  }
+
+ 
 
  .coupon-count {
    color: #ff9c00;
@@ -1430,6 +1436,7 @@ swiper {
 
  .course-cover {
    width: 220px;
+   margin-top: -20rpx;
  }
 
  .cuopon-img {
@@ -1455,7 +1462,7 @@ swiper {
    width: 32rpx;
    position: fixed;
    right: 12px;
-   top: 75px;
+   top: 120px;
  }
 
  .coupon-bg {

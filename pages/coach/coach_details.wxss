@@ -129,7 +129,7 @@ video {
   flex-direction: column;
   position: absolute;
   bottom: 0;
-  background-image:linear-gradient(0deg,rgba(0,0,0,0.5),rgba(255,255,255,0));
+  background-image:linear-gradient(0deg,rgba(0,0,0,1),rgba(255,255,255,0));
 }
 
 .details-box {
@@ -497,7 +497,7 @@ video {
 
 .full-btn {
   background: none;
-  border-radius: 10rpx;
+  border-radius: 30rpx;
   border: solid 3rpx #424242;
   color: #bcbcbc;
 }

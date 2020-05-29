@@ -15,6 +15,7 @@ var fundebug = require('utils/fundebug.1.3.1.min.js')
 })
 App({
   globalData: {
+    hasCoupon: '',
     freeCourseList: [],
     fundebug: fundebug,
     screenWidth: 0,
@@ -25,6 +26,7 @@ App({
     headerBtnPosi: {}, // 胶囊按钮位置信息
     statusBarHeight: 0,
     ios: false,
+    barHeight: 0,
     list: [
       {
         "pagePath": "/pages/index/index",
@@ -96,7 +98,6 @@ App({
       (config.BASE.minisessionKey)
       this.globalData.openid = wx.getStorageSync('openid')
     } catch (e) {
-      console.log(e)
       fundebug.notifyError(e)
     }
   },

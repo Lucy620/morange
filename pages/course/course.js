@@ -12,6 +12,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    hasCoupon: '',
+    barHeight: app.globalData.barHeight,
     tip: {
       title: '提示',
       content: '',
@@ -264,11 +266,14 @@ Page({
    */
   onLoad: function (options) {
     if (options.coupon_code) {
-        this.checkCouponCode(options.coupon_code)
+      app.globalData.hasCoupon = options.coupon_code
+      this.checkCouponCode(options.coupon_code)
     }
-
-   this.getFreeCourseList()
-   this.getUnreceivedCouponList()
+    if(app.globalData.minisession){
+      this.getFreeCourseList()
+      this.getUnreceivedCouponList()
+    }
+   
     this.animation = wx.createAnimation()
     this.jointAnimation = wx.createAnimation()
     this.bannerAnimation = wx.createAnimation()
@@ -288,6 +293,8 @@ Page({
     })
     this.getStoreArea()
   },
+
+  
 
   /**
    * 获取URL参数
@@ -321,12 +328,21 @@ Page({
       data
     }) => {
         if (data.code == 200) {
-          var coupon = data.obj.coupon
-          coupon.coupon_code = code
-          console.log('checkCouponCode--->',coupon)
-          that.setData({couponList: that.data.couponList.concat(coupon)})
+          if(data.obj.coupon){
+            var coupon = data.obj.coupon
+            coupon.coupon_code = code
+            that.setData({couponList: that.data.couponList.concat(coupon)})
+          }else{
+            let list = data.obj.list
+            //coupon.coupon_code = code
+            list = list.map(item => {
+              item.coupon_code = code;
+              return item;
+            })
+            that.setData({couponList: list})
+          }
+          
         }else{
-          console.log('checkCouponCode--->error')
           this.setModalContent('提示', data.msg, that.hideTip)
         }
       })
@@ -366,6 +382,7 @@ Page({
       data
     }) => {
       if (data.code == 200) {
+        app.globalData.hasCoupon = ''
         that.setData({
           couponList: []
         })
@@ -401,6 +418,7 @@ Page({
    * 隐藏优惠券
    */
   hideCouponModal: function () {
+    app.globalData.hasCoupon = ''
     this.setData({couponList: []})
   },
 
@@ -1228,6 +1246,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.setData({
+      barHeight: app.globalData.barHeight
+    })
     this.navigation = this.selectComponent('#navigation')
     let status = wx.getStorageSync('STATUS')
     this.setData({status})
@@ -1237,7 +1258,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (e) {
-    var that = this
+    
+    let hasCoupon = app.globalData.hasCoupon
+    console.log('onShow---->',hasCoupon)
+    if(hasCoupon != ''){
+      this.checkCouponCode(hasCoupon);
+    }
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
          this.getTabBar().setData({

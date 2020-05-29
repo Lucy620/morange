@@ -99,10 +99,10 @@ Component({
     back: function () {
       wx.navigateBack({ changed: true })
     },
-    goHome: function () {
-      wx.navigateTo({
+    goHome: function () {      
+      wx.switchTab({
         url: '/pages/course/course',
-      });
+      })
     }
 
   }

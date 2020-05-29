@@ -3,10 +3,10 @@
 <view class="wrapper">
 
 <navigationBar hasBack background="transparent">
-	<view slot="title" class="bar-title"></view>
+	<view slot="title" class="bar-title">自助退款</view>
 </navigationBar>
 
-  <view class="box" style="margin-top: {{statusBarHeight-20}}px">
+  <view class="box" style="margin-top: {{statusBarHeight+44}}px">
     <view class="coach">
       <image src="{{refundData.coach_img}}" mode="aspectFill" class="user-coach"></image>
     </view>

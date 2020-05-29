@@ -75,7 +75,7 @@
 		</view>
 	</view>
 
-	<view class="coach-store-box" wx:if="{{curTab == 'general_course'}}">
+	<view class="coach-store-box" wx:if="{{curTab == 'general_course'}}" style="padding-bottom: {{barHeight + 84}}px">
 		<view class="list">
 			<swiper class="list-swiper-box" duration="{{200}}" current="{{weekIndex}}" bindchange='binSwiper'>
 				<block wx:for="{{courseList}}" wx:key='index'>
@@ -122,8 +122,8 @@
 											</view>
 										</view>
 
-										<view class="btn-active btn-default" wx:if="{{nowtime > teamItem.end_at}}">结束</view>
-										<view class="btn-active" wx:if="{{nowtime < teamItem.end_at && teamItem.rest_stock > 0}}">{{teamItem.is_spell == 1 ? '拼课' : utils.checkStatus(teamItem.course_id, freeCourseList)}}</view>
+										<view class="btn-active btn-default" wx:if="{{nowtime > teamItem.end_at}}" style="background: #515151; clolr: #AAAAAA">结束</view>
+										<view class="btn-active" wx:if="{{nowtime < teamItem.end_at && teamItem.rest_stock > 0}}">{{teamItem.is_spell == 1 ? '拼课' : utils.checkStatus(teamItem.course_id, freeCourseList, teamItem.svip_free)}}</view>
 										<view class="coach-btn-box" wx:if="{{teamItem.rest_stock == 0  && nowtime < teamItem.end_at}}">
 											<view class="wait-btn">等候</view>
 										</view>
@@ -154,7 +154,7 @@
 
 	<!--私教-->
 
-	<view class="scroll-box" wx:if="{{curTab == 'private_course'}}">
+	<view class="scroll-box" wx:if="{{curTab == 'private_course'}}" style="padding-bottom: {{barHeight + 64}}px">
 		<block wx:key='index' wx:for="{{storeList}}" wx:if="{{index != 0}}">
 			<view class="store-row">
 				<view style="display:flex;align-items:center">
@@ -185,7 +185,7 @@
 							<text class="first" wx:if="{{item.first_price > 0 && first}}">(首次体验课￥{{tools.fen2yuan(course.first_price,2)}})</text>
 						</view>
 					</view>
-					<view class="btn-active btn-default" wx:if="{{course.rest_stock == 0}}">满员</view>
+					<view class="btn-active btn-default" wx:if="{{course.rest_stock == 0}}" style="background: #515151; clolr: #AAAAAA">满员</view>
 					<view class="btn-active" wx:if="{{course.rest_stock > 0}}">详情</view>
 					<view class="wrap">
 						<view class="silk-ribbon full" wx:if="{{course.rest_stock == 0}}">满员</view>
@@ -198,7 +198,7 @@
 	</view>
 
 	<!--训练营-->
-	<view scroll-y class="scroll-box list-space" scroll-top="{{scroll}}" wx:if="{{curTab == 'camp'}}">
+	<view class="scroll-box list-space"  wx:if="{{curTab == 'camp'}}" style="padding-bottom: {{barHeight + 64}}px">
 		<view class="camp-box">
 			<view class="camp-row">
 				<block wx:for="{{campList}}" wx:key='index'>
@@ -215,7 +215,7 @@
 	</view>
 
 	<!--拼课教练列表-->
-	<view scroll-y class="scroll-box" wx:if="{{curTab == 'joint_course'}}">
+	<view scroll-y class="scroll-box" wx:if="{{curTab == 'joint_course'}}" style="margin-bottom: {{barHeight}}px">
 		<view class="coach-box">
 			<view class="coach-list-title">选择教练</view>
 			<view class="coach-row" wx:for="{{coachList}}" wx:key='index' bindtap="choiceCoach" data-index="{{index}}">

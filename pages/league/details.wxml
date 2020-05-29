@@ -118,7 +118,7 @@
 			<!--等候-->
 			<view class="btn" wx:if="{{list.rest_stock == 0}}">
 				<view class="gray-btn">赠课给好友</view>
-				<view class="btn-text" bindtap="confirmOrder" data-order_type="buy">等候({{queue_order}}人等候中)</view>
+				<view class="btn-text" bindtap="confirmOrder" style="border-top-right-radius: 50rpx;border-bottom-right-radius: 50rpx" data-order_type="buy">等候({{queue_order}}人等候中)</view>
 			</view>
 		</block>
 

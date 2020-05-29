@@ -21,6 +21,7 @@
 
 
 	<!--代金券-->
+	<view class="coupon-list">
 	<view class="coupon-box" wx:for="{{list}}" wx:key='index'>
 		<view class="coupon-box-row">
 			<view class="coupon-row-left">
@@ -44,6 +45,7 @@
 			</view>
 		</view>
 	</view>
+	</view>
 
 	<!--无代金券提示-->
 	<view class="no-coupon-tips">
@@ -55,6 +57,7 @@
 
 <view class="mask-box" wx:if="{{showExplain}}">
 	<view class="mask-row-box">
+		<view class="mask-view">
 		<view class="mask-title">代金券使用说明</view>
 		<view class="mask-text-box">
 			<view class="coupon-row">
@@ -67,6 +70,7 @@
 			</view>
 		</view>
 		<image src="https://oppocdn.afxeon.net/close-iocm.png" mode="widthFix" class="close-iocm" bindtap="closeTips"></image>
+		</view>
 	</view>
 </view>
 

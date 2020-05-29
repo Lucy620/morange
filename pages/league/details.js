@@ -217,7 +217,7 @@ Page({
             let screenWidth = that.data.screenWidth
             height = 720/960*screenWidth
         }
-        console.log('screenWidth-->',height)
+
         that.setData({
           list: obj,
           nowtime: Math.round(new Date().getTime() / 1000),

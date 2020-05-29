@@ -321,8 +321,8 @@ Page({
    * 计算团课应付价
    */
   teamPayPirce: function (courseDate, num, user, activity) {
-    console.log('teamPayPirce', app.globalData.freeCourseList, courseDate)
     let pay_price = 0
+    let type = this.data.type
     if (activity.two && num == 2) {
       // 普通价
       if (user.type == 'user') {
@@ -335,7 +335,7 @@ Page({
     } else {
       // 普通价
       if (user.type == 'user') {
-        if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1 && courseDate.is_spell != 1){
+        if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1 && courseDate.is_spell != 1 && !courseDate.svip_free && type == 'buy'){
           pay_price = courseDate.price * (num - 1)
         }else{
           pay_price = courseDate.price * num
@@ -343,7 +343,7 @@ Page({
       }
       //会员价
       if (user.type == 'vip') {
-        if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1 && courseDate.is_spell != 1){
+        if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1 && courseDate.is_spell != 1 && !courseDate.svip_free && type == 'buy'){
           pay_price = courseDate.vip_price * (num - 1)
         }else{
           pay_price = courseDate.vip_price * num

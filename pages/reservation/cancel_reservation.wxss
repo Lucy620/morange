@@ -68,6 +68,7 @@
 }
 
 .btn {
+  display: inline-flex;
   width: 99.3rpx;
   height: 52rpx;
   text-align: center;
