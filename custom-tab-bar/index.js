@@ -9,6 +9,7 @@ Component({
     touchEndTime: 0,
     lastTapTime: 0,
     lastTapTimeoutFunc: null,
+    screenWidth: app.globalData.screenWidth,
   },
   lifetimes: {
     //组件的生命周期函数

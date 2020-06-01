@@ -1727,7 +1727,7 @@ Page({
     let date = new Date(now * 1000)
     let year = date.getFullYear()
     let month = date.getMonth() + 1
-    let day = date.getDate()
+    let day = date.getDate() - 1
     let hour = date.getHours()
     let minute = date.getMinutes()
     month = (month < 10 ? "0" + month : month)

@@ -76,7 +76,6 @@
 	</view>
 
 	<view class="coach-store-box" wx:if="{{curTab == 'general_course'}}" style="padding-bottom: {{barHeight + 84}}px">
-		<view class="list">
 			<swiper class="list-swiper-box" duration="{{200}}" current="{{weekIndex}}" bindchange='binSwiper'>
 				<block wx:for="{{courseList}}" wx:key='index'>
 					<swiper-item>
@@ -149,7 +148,6 @@
 					</swiper-item>
 				</block>
 			</swiper>
-		</view>
 	</view>
 
 	<!--私教-->

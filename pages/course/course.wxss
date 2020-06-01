@@ -234,14 +234,18 @@ swiper {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   box-sizing: border-box;
+  display: flex;
 }
 
 .list {
-  height: 100%
+  height: 100%;
+  flex: 1;
+  display: flex;
 }
 
 .list-swiper-box {
   height: 100%;
+  flex: 1;
 }
 
 .scroll-box {

@@ -20,12 +20,15 @@
 				<text class="s-yellow" wx:if="{{payData.status == 'success' && time < min}}">{{payData.open_code}}</text>
 			</view>
 		</view>
-
-
 	</view>
 
+	<view class="pay-coupon" wx:if="{{payData.pay_method != 'weixin'}}">
+			<image bindtap="clickMask" mode="widthFix" class="pay-coupon-img" src="https://assets.morangefitness.com/pay_coupon.png"></image>
+	</view>
+
+
 	<!--私教 训练-->
-	<view class="coach-box">
+	<view class="coach-box" wx:else>
 		<view class="coach">
 			<image src="{{payData.data.coach.headimgurl}}" mode="aspectFill" class="user-coach"></image>
 			<view class="name-box">
@@ -94,6 +97,19 @@
 	<view class="btn-box">
 		<view class="btn" bindtap="back">返回继续预约</view>
 		<view class="btn s-btn" bindtap='jumpPage' data-url='pages/reservation/my_reservation'>查看我的预约</view>
+	</view>
+
+	<view class='mask' wx:if='{{showContactButton}}' bindtap='clickMask'>
+		<view class='modal-content'>
+			<view scroll-y class='main-content'>
+				<text class="title">如何添加小橙子微信</text>
+				<text class="content">点击[去添加]，在输入框中回复1即可获取小橙子微信</text>
+			</view>
+			<view class='modal-btn-wrapper'>
+				<view class='cancel-btn' style='color:rgba(7,17,27,0.6)' bindtap='cancelMask'>取消</view>
+				<button open-type="contact"  class='confirm-btn' bindtap='confirm'>去添加</button>
+			</view>
+		</view>
 	</view>
 
 	<!--邀请好友-->

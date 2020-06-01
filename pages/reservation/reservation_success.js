@@ -118,6 +118,15 @@ Page({
     })
   },
 
+  clickMask: function () {
+    this.setData({showContactButton: true})
+  },
+
+  cancelMask: function () {
+    this.setData({showContactButton: false}
+      .detail)
+  },
+
   /**
    * 返回继续
    **/
