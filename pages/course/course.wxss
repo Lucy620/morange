@@ -234,7 +234,7 @@ swiper {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   box-sizing: border-box;
-  display: flex;
+  height: 100%;
 }
 
 .list {
@@ -509,6 +509,7 @@ swiper {
   background: #D200D2;
   color: #fff;
   font-size: 18rpx;
+  font-weight: 800;
 }
 
 .full {

@@ -2,9 +2,13 @@
 
 <view class="wrapper" hidden="{{showLoad}}">
 
+<navigationBar hasBack>
+	<view slot="title" class="bar-title">MORANGE教练</view>
+</navigationBar>
+
   <!--海报-->
 
-  <view class="poster-box">
+  <view class="poster-box" style="margin-top: {{statusBarHeight + 44}}px">
     <view class="coach-box">
       <image src="{{list.user.coach.headimgurl}}"  mode="aspectFill" class="user-coach"></image>
       <view class="tag">{{list.user.coach.level.name}}</view>

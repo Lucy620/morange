@@ -77,7 +77,7 @@
 					"id": 2,
 					"name": "会员签到",
 					"pathName": "pages/coach/member_sign",
-					"query": "id=2461&type=team",
+					"query": "id=3204&type=team",
 					"scene": null
 				},
 				{

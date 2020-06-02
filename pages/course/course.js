@@ -269,6 +269,7 @@ Page({
       app.globalData.hasCoupon = options.coupon_code
       this.checkCouponCode(options.coupon_code)
     }
+    
     if(app.globalData.minisession){
       this.getFreeCourseList()
       this.getUnreceivedCouponList()

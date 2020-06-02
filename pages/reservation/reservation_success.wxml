@@ -22,13 +22,13 @@
 		</view>
 	</view>
 
-	<view class="pay-coupon" wx:if="{{payData.pay_method != 'weixin'}}">
+	<!-- <view class="pay-coupon" wx:if="{{payData.hasCoupon}}">
 			<image bindtap="clickMask" mode="widthFix" class="pay-coupon-img" src="https://assets.morangefitness.com/pay_coupon.png"></image>
-	</view>
+	</view> -->
 
 
 	<!--私教 训练-->
-	<view class="coach-box" wx:else>
+	<view class="coach-box">
 		<view class="coach">
 			<image src="{{payData.data.coach.headimgurl}}" mode="aspectFill" class="user-coach"></image>
 			<view class="name-box">

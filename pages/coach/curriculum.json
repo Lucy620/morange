@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "MORANGE教练",
   "usingComponents": {
-    "calendar": "/pages/components/calendar/calendar"
+    "calendar": "/pages/components/calendar/calendar",
+    "navigationBar": "/pages/components/navigationBar/navigationBar"
   }
 }

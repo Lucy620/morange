@@ -2,7 +2,11 @@
 
 <view class="wrapper" hidden="{{showLoad}}">
 
-	<view class="bg-box">
+	<navigationBar hasBack>
+		<view slot="title" class="bar-title">签到</view>
+	</navigationBar>
+
+	<view class="bg-box" style="margin-top: {{statusBarHeight+44}}px">
 		<!--课程 二维码 课程收入-->
 		<view class="list-box">
 			<image src="https://assets.morangefitness.com/MORANGE.png" mode="widthFix" class="logo-text"></image>
