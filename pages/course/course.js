@@ -114,7 +114,8 @@ Page({
     scrollTop: 5,
     statusBarHeight: app.globalData.statusBarHeight,
     ios: app.globalData.ios,
-    status: true
+    status: true,
+    unreceivedCoupons: []
   },
 
   /***
@@ -369,23 +370,18 @@ Page({
   exchange: function() {
     let that = this
     let code_list = that.data.couponList.map(item => {return item.coupon_code})
-    console.log('code_list--->',that.data.couponList)
-    if (util.isEmpty(code_list.length == 0)) {
-      wx.showToast({
-        title: '卡券兑换失败',
-        icon: 'none'
-      })
-      return
-    }
+    let id_list = that.data.unreceivedCoupons.map(item => {return item.coupon_id})
     ajax.post(api.receiveUserCoupon, {
-      'code_list': code_list
+      'code_list': code_list,
+      'id_list': id_list
     }, ({
       data
     }) => {
       if (data.code == 200) {
         app.globalData.hasCoupon = ''
         that.setData({
-          couponList: []
+          couponList: [],
+          unreceivedCoupons: []
         })
         wx.showToast({
           title: '领取成功',
@@ -421,6 +417,7 @@ Page({
   hideCouponModal: function () {
     app.globalData.hasCoupon = ''
     this.setData({couponList: []})
+    this.setData({unreceivedCoupons: []})
   },
 
   /**
@@ -1259,11 +1256,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (e) {
-    
     let hasCoupon = app.globalData.hasCoupon
-    console.log('onShow---->',hasCoupon)
+    let loginStatus = app.globalData.loginStatus
+
+    console.log('onShow---->')
     if(hasCoupon != ''){
       this.checkCouponCode(hasCoupon);
+    }
+    if(loginStatus == 1){
+      this.getUnreceivedCouponList()
     }
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
@@ -1565,6 +1566,7 @@ Page({
    * 获取未领取优惠券列表
    */
   getUnreceivedCouponList: function () {
+    app.globalData.loginStatus = 0
     let that = this
     wx.showNavigationBarLoading();
     ajax.post(api.getUnreceivedCouponList, {}, ({
@@ -1573,7 +1575,7 @@ Page({
       if (data.code == 200) {
         let couponList = data.obj.list
         if(couponList.length != 0){
-          that.setData({couponList: couponList})
+          that.setData({unreceivedCoupons: couponList})
         }
       }
     }, 'auth', true)

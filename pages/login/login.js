@@ -80,6 +80,7 @@ Page({
           setTimeout(function(){
             that.jumpPage()
           }, 1000)
+          app.globalData.loginStatus = 1
         } else {
           ajax.cleanLogin();
           wx.showToast({

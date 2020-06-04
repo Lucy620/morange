@@ -422,16 +422,16 @@
 	</view>
 </view>
 
-<view class='mask' wx:if='{{couponList.length != 0}}' bindtap='clickMask'>
+<view class='mask' wx:if='{{utils.mixList(couponList, unreceivedCoupons).length != 0}}' bindtap='clickMask'>
 	<image class="coupon-cancel" src="/assets/image/cancel.png" mode="widthFix" bindtap="hideCouponModal"></image>
 	<view class='cuopon-main-content'>
 		<view class='cuopon-content' bindtap="exchange">
 			<image class="cuopon-img" src="https://assets.morangefitness.com/cuopon_receive_bg.png" mode="heightFix">
 			</image>
 			<view class="coupon">
-				<image wx:for="{{couponList}}" class="course-cover" src="{{item.cover}}" mode="widthFix"></image>
+				<image wx:for="{{utils.mixList(couponList, unreceivedCoupons)}}" class="course-cover" src="{{item.cover}}" mode="widthFix"></image>
 			</view>
-			<view class="coupon-tip-text ">送您<text class="coupon-count">{{couponList.length}}</text>张礼券，马上开始体验吧！</view>
+			<view class="coupon-tip-text ">送您<text class="coupon-count">{{utils.mixList(couponList, unreceivedCoupons).length}}</text>张礼券，马上开始体验吧！</view>
 			<view class="receive-coupon-box">
 			</view>
 		</view>
