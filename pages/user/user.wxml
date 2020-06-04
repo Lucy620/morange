@@ -146,6 +146,8 @@
 			</view>
 		</view>
 
+		<button open-type="contact" bindcontact="handleContact">联系客服</button>
+
 		<view class="row-item row-arrow" bindtap='jumpPage' data-url='pages/cash_coupon/cash_coupon'>
 			<view class="row-title">代金券</view>
 		</view>

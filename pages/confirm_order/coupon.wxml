@@ -11,7 +11,7 @@
 </view>
 
 <!--代金券-->
-	<view class="coupon-box" wx:for="{{coupon_list}}" bindtap="selectCoupon" wx:key="index">
+	<view class="coupon-box" wx:for="{{coupon_list}}"  wx:key="index">
 		<view class="coupon-box-row">
 			<view class="coupon-row-left">
 				<view class="coupon-price">{{tools.fen2yuan(item.reduce_cost,2)}}</view>
@@ -27,7 +27,7 @@
 				<view class="coupon-line-line"></view>
 			</view>
 			<view class="coupon-row-right">
-				<view class="coupon-btn-use">立即使用</view>
+				<view class="coupon-btn-use" bindtap="selectCoupon" data-index="{{index}}">立即使用</view>
 				<text class="coupon-use-text" bindtap="openExplain" data-name="{{item.name}}" data-notice="{{item.notice}}">查看可用范围</text>
 				<view class="cro right-top"></view>
 				<view class="cro right-bottom"></view>
