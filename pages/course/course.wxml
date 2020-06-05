@@ -75,10 +75,9 @@
 		</view>
 	</view>
 
-	<view class="coach-store-box" wx:if="{{curTab == 'general_course'}}" style="padding-bottom: {{barHeight + 84}}px">
+	<view class="coach-store-box" wx:if="{{curTab == 'general_course'}}" style="margin-bottom: {{statusBarHeight + 44 + 60}}px">
 			<swiper class="list-swiper-box" duration="{{200}}" current="{{weekIndex}}" bindchange='binSwiper'>
-				<view wx:for="{{courseList}}" wx:key='index'>
-					<swiper-item>
+					<swiper-item style="-webkit-overflow-scrolling:touch" wx:for="{{courseList}}" wx:key='index'>
 						<view id="course_box" class="scroll-box" bindtouchmove="onListTouch">
 							<block wx:for="{{item}}" wx:key='index' wx:for-item="course">
 								<view class="store-row">
@@ -144,9 +143,9 @@
 								</view>
 							</block>
 							<view class="box refresh-box" wx:if="{{searchTimeIndex >=1 || courseNumber >=1 || storeNumber >=1}}" wx:for="{{4}}" wx:key='index'></view>
+							<view style="height:10px;width:100%"></view>
 						</view>
 					</swiper-item>
-				</view>
 			</swiper>
 	</view>
 

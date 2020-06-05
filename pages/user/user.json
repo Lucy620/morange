@@ -4,5 +4,5 @@
     "loading": "/pages/components/loading/loading",
     "navigationBar": "/pages/components/navigationBar/navigationBar"
   },
-  "navigationStyle":"custom"
+  "enablePullDownRefresh": true
 }

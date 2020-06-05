@@ -22,10 +22,11 @@
 
 	<!--代金券-->
 	<view class="coupon-list">
-	<view class="coupon-box" wx:for="{{list}}" wx:key='index'>
+	<view class="coupon-box" wx:for="{{list}}" wx:key='index' >
+	
 		<view class="coupon-box-row">
 			<view class="coupon-row-left">
-				<view class="coupon-price">{{tools.fen2yuan(item.reduce_cost,2)}}</view>
+				<view class="coupon-price">{{item.coupon_type == 'discount' ? item.discount * 10 :tools.fen2yuan(item.reduce_cost,2)}}<text class="suffix">{{item.coupon_type == 'discount' ? '折': '元'}}</text></view>
 				<view class="coupon-detail">
 					<text class="coupon-name">{{item.name}}</text>
 					<text class="coupon-date">有效期至：{{tools.formatTime(item.use_end,'{y}-{m}-{d}')}}</text>
@@ -49,22 +50,22 @@
 
 	<!--无代金券提示-->
 	<view class="no-coupon-tips">
-		<view class="coupon-tips-title">暂无可用代金券哦~~</view>
+		<view class="coupon-tips-title">暂无更多可用代金券哦~~</view>
 		<view class="coupon-tips-text" bindtap='jumpPage' data-url='pages/cash_coupon/invalid_coupon'>查看已失效的券></view>
 	</view>
 
 </view>
 
-<view class="mask-box" wx:if="{{showExplain}}">
-	<view class="mask-row-box">
+<view class="coupon-mask-box" wx:if="{{showExplain}}">
+	<view class="coupon-mask-row-box">
 		<view class="mask-view">
 		<view class="mask-title">代金券使用说明</view>
 		<view class="mask-text-box">
-			<view class="coupon-row">
+			<view class="coupon-tip-row">
 				<view class="coupon-tips">名称：</view>
 				<view class="mask-text">{{title}}</view>
 			</view>
-			<view class="coupon-row">
+			<view class="coupon-tip-row">
 				<view class="coupon-tips">使用说明：</view>
 				<view class="mask-text">{{notice}}</view>
 			</view>
