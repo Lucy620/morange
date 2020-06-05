@@ -23,6 +23,7 @@ Page({
     ordersn: '',
     showModalTips: false,
     showLoad: true,
+    discount: 0,
     cart: '', // 购物清单
     type: 'buy', // 按钮类型
     courseDate: '', // 确认订单json
@@ -138,9 +139,11 @@ Page({
     let coupon_list = this.data.coupon_list
     let user_coupon_id = this.data.user_coupon_id
     let pay_price = this.data.discount_price
+    let course = this.data.course
     app.couponList = coupon_list
+    console.log('price--->',course.price)
     wx.navigateTo({
-      url: '/pages/confirm_order/coupon?id=' + user_coupon_id + '&pay_price=' + pay_price
+      url: '/pages/confirm_order/coupon?id=' + user_coupon_id + '&pay_price=' + pay_price + '&price=' + course.price
     })
   },
 
@@ -175,6 +178,7 @@ Page({
     let activity = this.data.activity
     let couponAll = this.data.couponAll
     let courseDate = this.data.courseDate
+    let coupon_type = this.coupon_type
     let user = this.data.user
     let temp = []
     let pay_price = this.teamPayPirce(courseDate, id, user, activity)
@@ -185,9 +189,22 @@ Page({
         }
       }
     }
+
     if (id == 1) {
       temp = couponAll
     }
+
+    let hasDiscount = false
+    this.data.coupon_list.forEach(item => {
+      if (item.coupon_type == 'discount') {
+          hasDiscount = true
+      }
+    });
+
+    if(hasDiscount){
+      temp = couponAll
+    }
+    
     this.setData({
       'cart.amount': id,
       dataId: id,
@@ -260,9 +277,11 @@ Page({
 
           // 团课
           if (course.type == 'team') {
+            let discountType = that.data.coupon_type
+            let discount = that.data.discount
             let price = that.teamPayPirce(courseDate, cart.amount, user, activity)
             discount_price = price
-            pay_price = price - that.data.reduce_cost
+            pay_price = discountType == 'discount' ? price * discount  :price - that.data.reduce_cost
             number = cart.amount
           }
 
@@ -351,7 +370,6 @@ Page({
         
       }
 
-
     }
 
     return pay_price
@@ -424,7 +442,7 @@ Page({
     }, ({
       data
     }) => {
-      if (data.code == 200) {
+      if (data.code == 200) { 
         that.setData({
           showModalTips: false,
           ordersn: data.obj.order_result.ordersn
@@ -432,7 +450,7 @@ Page({
         if (that.data.coupon_type == 'week' || that.data.coupon_type == 'gift' || reduce_cost == pay_price) {
           pay_price = 0
         }
-        console.log('createOrder---->',user.balance, pay_price)
+
         if (user.balance >= pay_price) {
           pay_price = pay_price / 100
           that.setData({

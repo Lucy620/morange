@@ -123,8 +123,7 @@ Page({
   },
 
   cancelMask: function () {
-    this.setData({showContactButton: false}
-      .detail)
+    this.setData({showContactButton: false})
   },
 
   /**
