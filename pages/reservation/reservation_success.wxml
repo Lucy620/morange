@@ -99,7 +99,7 @@
 		<view class="btn s-btn" bindtap='jumpPage' data-url='pages/reservation/my_reservation'>查看我的预约</view>
 	</view>
 
-	<view class='mask' wx:if='{{showContactButton}}' bindtap='clickMask'>
+	<view class='mask' wx:if="{{showContactButton}}" bindtap='clickMask'>
 		<view class='modal-content'>
 			<view scroll-y class='main-content'>
 				<text class="title">如何添加小橙子微信</text>
@@ -107,7 +107,7 @@
 			</view>
 			<view class='modal-btn-wrapper'>
 				<view class='cancel-btn' style='color:rgba(7,17,27,0.6)' bindtap='cancelMask'>取消</view>
-				<button open-type="contact"  class='confirm-btn' bindtap='confirm'>去添加</button>
+				<button open-type="contact"  class='confirm-btn'>去添加</button>
 			</view>
 		</view>
 	</view>

@@ -119,7 +119,7 @@ Page({
   },
 
   clickMask: function () {
-    this.setData({showContactButton: true})
+    this.setData({showContactButton: true})111
   },
 
   cancelMask: function () {
