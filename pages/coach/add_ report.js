@@ -38,7 +38,6 @@ Page({
    * 选择开始时间
    */
   bindTimeStart: function(e) {
-    console.log(e)
     this.setData({
       start: e.detail.value
     })
@@ -159,7 +158,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options.type)
     this.setData({
       type: options.type || '',
       nowtime: Math.round(new Date().getTime() / 1000)

@@ -3,12 +3,8 @@
 <import src="./module/private_education.wxml" />
 <import src="./module/training_camp.wxml" />
 
-<navigationBar>
-	<view slot="btn-left" class="bar-city">
-		<image bindtap="onHideCities" class="img-cancel" mode="aspectFit" src="/assets/image/cancel.png"></image>
-	</view>
-
-	<view slot="title" class="bar-title">title</view>
+<navigationBar hasBack background="#000">
+	<view slot="title" class="bar-title">{{courseData.data.course.name}}</view>
 </navigationBar>
 
 <view class="wrapper" hidden="{{showLoad}}">

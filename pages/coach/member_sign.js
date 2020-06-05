@@ -39,7 +39,9 @@ Page({
     lastPage: false, // 是否最后一页
     page: 1,
     limit: 10,
-    list:[]
+    list:[],
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**
@@ -539,7 +541,7 @@ Page({
     qiniuUploader.upload(filePath, (res) => {
       let error = res.error
       let imageURL = res.imageURL
-      if (error || imageURL == "https://boringcdn.nanningboring.com/undefined") {
+      if (error || imageURL == "https://assets.morangefitness.com/undefined") {
         let tips = type == 'img' ? '上传图片失败，请重新上传' : '上传视频失败，请重新上传'
         wx.showToast({
           title: tips,
@@ -560,7 +562,7 @@ Page({
       console.log('error: ' + error)
     }, {
       region: 'UPZ0',
-      domain: 'https://boringcdn.nanningboring.com',
+      domain: 'https://assets.morangefitness.com',
       shouldUseQiniuFileName: true,
       uptoken: that.data.uptoken,
     }, (res) => {

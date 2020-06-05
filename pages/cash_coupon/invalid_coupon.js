@@ -28,7 +28,6 @@ Page({
       data
     }) => {
       if (data.code == 200) {
-        console.log(data)
         that.setData({
           list: data.obj.list,
           showLoad: false

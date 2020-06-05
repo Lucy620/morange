@@ -1,19 +1,20 @@
 /* pages/Invitation/coupon.wxss */
 
 .container-box {
-  height: 888rpx;
-  background:url(https://boringcdn.nanningboring.com/molicheng/Invitation-coupon-bg.png) no-repeat;
+  /* height: 100%;
+  background:url(https://assets.morangefitness.com/Invitation-coupon-bg.png) no-repeat; */
   background-size: 100%;
 }
 
 .box {
   position: absolute;
-  top: 150rpx;
+  top: auto;
+  bottom: auto;
   left: 25rpx;
   width: 700rpx;
   height: 588rpx;
   text-align: center;
-  background: url(https://boringcdn.nanningboring.com/molicheng/bg.png);
+  background: url(https://assets.morangefitness.com/bg.png);
   background-size: 100%;
 }
 
@@ -60,7 +61,7 @@
   width: 700rpx;
   min-height: 588rpx;
   text-align: center;
-  background: #fffbe6 url(https://boringcdn.nanningboring.com/molicheng/receive-bg.png);
+  background: #fffbe6 url(https://assets.morangefitness.com/receive-bg.png);
   background-size: 100%;
   border-radius: 20rpx;
 }
@@ -83,7 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: url(https://boringcdn.nanningboring.com/molicheng/Invitation-coupon.png);
+  background: url(https://assets.morangefitness.com/Invitation-coupon.png);
   background-size: 100%;
 }
 

@@ -36,6 +36,32 @@
   border-radius: 13rpx;
 }
 
+.pay-coupon {
+    width: 90vw;
+    margin: auto;
+}
+
+.pay-coupon-img {
+    width: 100%;
+    margin-top: 24rpx;
+    margin-bottom: -84rpx;
+    display: flex;
+    overflow: visible;
+}
+
+.contacButton {
+  flex: 1;
+ height: 100rpx;
+ width: 100%;
+ line-height: 100rpx;
+ text-align: center;
+ font-size: 32rpx;
+ background:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
+ border-bottom-right-radius: 20rpx;
+ border-bottom-left-radius: 20rpx;
+ color: #000;
+}
+
 .coach {
   flex: 1;
   display: flex;
@@ -64,21 +90,21 @@
 }
 
 .coach-btn-box {
-  width: 126rpx;
-  height: 53rpx;
-  border-radius: 4px;
+  width: 120rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
   background-image: linear-gradient(to bottom, #ffd324, #ff7200);
   overflow: hidden;
   padding: 1px;
 }
 
 .coach-btn {
-  line-height: 53rpx;
+  line-height: 60rpx;
   text-align: center;
   color: #ffae00;
   width: 100%;
   height: 100%;
-  border-radius: 4px;
+  border-radius: 30rpx;
   background: #2a2a2a;
 }
 
@@ -126,19 +152,22 @@
 
 .btn-box {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 89rpx;
-  line-height: 89rpx;
+  bottom: 80rpx;
+  left: 20rpx;
+  right: 20rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  line-height: 100rpx;
   color: #fff;
   display: flex;
   align-items: center;
   font-size: 32rpx;
+  overflow: hidden;
+  box-shadow:0px 6px 8px 0px rgba(0, 0, 0, 0.5);
 }
 
 .btn {
-  width: 313rpx;
+  flex: 1;
   text-align: center;
   background: #000;
 }
@@ -146,7 +175,7 @@
 .s-btn {
   flex: 1;
   color: #000;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
   background-size: 100% 100%;
 }
 
@@ -161,3 +190,76 @@
   text-decoration: underline;
   margin-right: 10rpx;
 }
+
+.mask{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 9999;
+ }
+  
+ .modal-content{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  /* height: 80%; */
+  background-color: #fff;
+  border-radius: 20rpx;
+ }
+  
+ .modal-btn-wrapper{
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  line-height: 100rpx;
+ }
+  
+ .confirm-btn{
+  flex: 1;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 32rpx;
+  background:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
+  border-bottom-right-radius: 20rpx;
+  color: #000;
+  border: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0
+ }
+ 
+ .cancel-btn{
+   flex: 1;
+   height: 100rpx;
+   line-height: 100rpx;
+   text-align: center;
+   font-size: 32rpx;
+   border-top: 2rpx solid rgba(7,17,27,0.1);
+  }
+ 
+ .cancel-btn{
+  border-right: 2rpx solid rgba(7,17,27,0.1);
+ }
+  
+ .main-content{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 48rpx;
+ }
+ 
+ .title {
+   font-size: 40rpx;
+ }
+ 
+ .content {
+   font-size: 28rpx;
+   margin-top: 24rpx;
+ }

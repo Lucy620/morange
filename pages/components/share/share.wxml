@@ -2,9 +2,9 @@
 
 <view class="box-mask" wx:if="{{isShare}}">
   <view class="mask-title">
-    <image src="https://boringcdn.nanningboring.com/molicheng/mask-title-img.png" mode="widthFix"></image>
+    <image src="https://assets.morangefitness.com/mask-title-img.png" mode="widthFix"></image>
   </view>
-  <image src="https://boringcdn.nanningboring.com/molicheng/mask-icon.png" mode="widthFix" class="mask-icon"></image>
+  <image src="https://assets.morangefitness.com/mask-icon.png" mode="widthFix" class="mask-icon"></image>
   <view class="mask-tips-user">
     <view>新用户(未上过课、账户内无可用新人券的用户)</view>
     <view>首次打开你转发的页面，可获得2张20元代金券。</view>

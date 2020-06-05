@@ -2,16 +2,16 @@
 <import src="../../wxParse/wxParse.wxml" />
 
 <navigationBar hasBack background="{{scroll? '#000': 'transparent'}}">
-	<view slot="title" wx:if="{{scroll}}" class="bar-title">{{list.coach.name}}</view>
+	<view slot="title" wx:if="{{scroll}}" class="bar-title">{{list.course.name}}</view>
 </navigationBar>
 
 <view class="wrapper" hidden="{{showLoad}}">
 	<!--轮播-->
-	<view class="swiper-box">
-		<swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000" wx:if="{{show_type == 'slide' || show_type == ''}}">
+	<view class="swiper-box" style="height: {{imgHeights[curImg]}}px">
+		<swiper bindchange="onSwiperChange" indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000" wx:if="{{show_type == 'slide' || show_type == ''}}" style="height: {{imgHeights[curImg]}}px">
 			<block wx:for="{{list.course.slide_imgs}}" wx:key="{{index}}">
 				<swiper-item bindtap="previewImage" data-url="{{item}}">
-					<image src="{{item}}" class="slide-image" mode="widthFix" />
+					<image bindload="imageLoad" data-index="{{ index }}"  src="{{item}}?imageView2/1/w/730/h/300" style="width:{{ images[index].width }}px; height:{{ images[index].height }}px;" src="{{item}}" class="slide-image" mode="widthFix" />
 				</swiper-item>
 			</block>
 		</swiper>
@@ -40,18 +40,18 @@
 			<view class="details-box" bindtap="openStory">
 				<view class="coach-name">{{list.coach.name}}</view>
 				<view class="story" style="height:{{storyHeight}}rpx;">{{list.coach.introduction}}</view>
-				<image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="arrow" wx:if="{{storyHeight == '70'}}"></image>
+				<image src="https://assets.morangefitness.com/arrow1.png" mode="widthFix" class="arrow" wx:if="{{storyHeight == '70'}}"></image>
 			</view>
 		</view>
 
 		<view class="list-row">
-			<image src="https://boringcdn.nanningboring.com/molicheng/tiem-ixon.png" mode="widthFix" class="course-icon"></image>
+			<image src="https://assets.morangefitness.com/tiem-ixon.png" mode="widthFix" class="course-icon"></image>
 			<view class="list-details">时间：{{tools.formatTime(list.start_at,'{y}年{m}月{d}日')}} {{tools.getWeek(list.start_at)}} {{tools.formatTime(list.start_at,'{h}:{i}')}}-{{tools.formatTime(list.end_at,'{h}:{i}')}}</view>
 		</view>
 		<view class="divider"></view>
 
 		<view class="list-row">
-			<image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="address-icon"></image>
+			<image src="https://assets.morangefitness.com/icon1.png" mode="widthFix" class="address-icon"></image>
 			<view class="list-details">
 				<view>门店：{{list.store.name}}</view>
 				<view>{{list.store.address}}
@@ -62,7 +62,7 @@
 		<view class="divider"></view>
 
 		<view class="list-row">
-			<image src="https://boringcdn.nanningboring.com/molicheng/$.png" mode="widthFix" class="course-icon"></image>
+			<image src="https://assets.morangefitness.com/$.png" mode="widthFix" class="course-icon"></image>
 			<view class="list-details">
 				魔橙卡￥{{tools.fen2yuan(list.vip_price,2,2)}}
 			</view>
@@ -74,7 +74,7 @@
 	<!--简介-->
 	<view class="wxParse-box" id='posterHeight'>
 		<view class="title-box">
-			<image src="https://boringcdn.nanningboring.com/molicheng/icon.png" mode="widthFix" class="icon"></image>
+			<image src="https://assets.morangefitness.com/icon.png" mode="widthFix" class="icon"></image>
 			<view class="title">课程简介</view>
 		</view>
 		<view class="introduction">
@@ -85,7 +85,7 @@
 	<!--注意事项-->
 	<view class="wxParse-box" id='camphHeight'>
 		<view class="title-box">
-			<image src="https://boringcdn.nanningboring.com/molicheng/matter-icon.png" mode="widthFix" class="icon"></image>
+			<image src="https://assets.morangefitness.com/matter-icon.png" mode="widthFix" class="icon"></image>
 			<view class="title">注意事项</view>
 		</view>
 		<view class="introduction">
@@ -96,7 +96,7 @@
 	<!--健身步骤-->
 	<view class="wxParse-box">
 		<view class="title-box">
-			<image src="https://boringcdn.nanningboring.com/molicheng/step-icon.png" mode="widthFix" class="icon"></image>
+			<image src="https://assets.morangefitness.com/step-icon.png" mode="widthFix" class="icon"></image>
 			<view class="title">健身步骤</view>
 		</view>
 		<view class="introduction">
@@ -118,13 +118,13 @@
 			<!--等候-->
 			<view class="btn" wx:if="{{list.rest_stock == 0}}">
 				<view class="gray-btn">赠课给好友</view>
-				<view class="btn-text" bindtap="confirmOrder" data-order_type="buy">等候({{queue_order}}人等候中)</view>
+				<view class="btn-text" bindtap="confirmOrder" style="border-top-right-radius: 50rpx;border-bottom-right-radius: 50rpx" data-order_type="buy">等候({{queue_order}}人等候中)</view>
 			</view>
 		</block>
 
 		<!--拼课-->
 		<view wx:if="{{list.is_spell == 1 && nowtime < list.end_at}}" class="btn" bindtap="confirmOrder" data-order_type="buy">
-			<view class="btn-text">立即拼课</view>
+			<view class="btn-text" style="border-radius: 50rpx;">立即拼课</view>
 		</view>
 
 	</view>

@@ -63,7 +63,8 @@ Page({
     this.setData({
       coupon_list: coupon_list,
       id: options.id,
-      pay_price: options.pay_price
+      pay_price: options.pay_price,
+      price: options.price
     })
   },
 
@@ -85,10 +86,14 @@ Page({
       }
     }
     let reduce_cost = coupon_list[index].select ? coupon_list[index].reduce_cost : 0
+    let discount = coupon_list[index].discount
+    let couponType = coupon_list[index].coupon_type
+    let price = this.data.price
+    console.log('reduce_cost--->','discount'? parseFloat(pay_price*discount) :parseFloat(pay_price) - parseFloat(reduce_cost))
     prevPage.setData({
       user_coupon_id: coupon_list[index].select ? coupon_list[index].id : 0,
-      reduce_cost: reduce_cost > pay_price ? pay_price : reduce_cost,
-      pay_price: parseFloat(pay_price) - parseFloat(reduce_cost),
+      reduce_cost: couponType == 'discount' ? parseFloat(price * (1 - discount)) : reduce_cost > pay_price ? pay_price : reduce_cost,
+      pay_price: couponType == 'discount'? parseFloat(pay_price - price * (1 - discount)) :parseFloat(pay_price) - parseFloat(reduce_cost),
       coupon_type: coupon_list[index].select ? coupon_list[index].coupon_type : 'normal'
     })
 

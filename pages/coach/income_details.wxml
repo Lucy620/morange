@@ -10,7 +10,7 @@
         <text class="s-yellow">¥{{tools.fen2yuan(total_income,2)}}</text>
       </view>
     </picker>
-    <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="arrow"></image>
+    <image src="https://assets.morangefitness.com/arrow.png" mode="widthFix" class="arrow"></image>
   </view>
 
   <view class="schedule-row" wx:for="{{list}}" wx:key='index' bindtap='jumpPage' data-url="pages/coach/member_sign?id={{item.id}}&type=income">

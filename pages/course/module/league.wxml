@@ -1,10 +1,10 @@
 <import src="../../../wxParse/wxParse.wxml" />
 <template name="league">
-  <view class="box">
-    <view class="coach">
+  <view class="box" >
+    <view class="coach" style="margin-top:56px">
       <image src="{{courseData.coach.headimgurl}}" mode="aspectFill" class="user-coach"></image>
     </view>
-    <view class="head-box">
+    <view class="head-box" style="margin-top:104px">
       <view class="course-title">
         <!--拼课--->
         <text wx:if="{{courseData.data.is_spell == 1}}">『拼课』</text>{{courseData.data.course.name}}
@@ -31,7 +31,7 @@
         </block>
 
       </view>
-      <image class="mask-bg" src="https://boringcdn.nanningboring.com/molicheng/mask.png" mode="widthFix"></image>
+      <image class="mask-bg" src="https://assets.morangefitness.com/mask.png" mode="widthFix"></image>
     </view>
 
     <view class="league-box">
@@ -46,7 +46,7 @@
 
       <!--预约成功-->
       <view class="league-wrow-top">
-        <image src="https://boringcdn.nanningboring.com/molicheng/icon3.png" mode="widthFix" class="league-icon"></image>
+        <image src="https://assets.morangefitness.com/icon3.png" mode="widthFix" class="league-icon"></image>
         <view class="league-text">入场密码：
           <text class="league-tips" wx:if="{{courseData.order.status == 'queue' || time > min}}">开课前30分钟显示</text>
           <text class="league-tips" wx:if="{{courseData.order.status == 'success' && time < min}}">{{courseData.order.open_code}}</text>
@@ -55,7 +55,7 @@
 
 
       <view class="league-wrow">
-        <image src="https://boringcdn.nanningboring.com/molicheng/user-icon3.png" mode="widthFix" class="league-icon"></image>
+        <image src="https://assets.morangefitness.com/user-icon3.png" mode="widthFix" class="league-icon"></image>
         <view class="league-text">人数：{{courseData.order.course_num}}人
         </view>
 
@@ -64,7 +64,7 @@
 
       </view>
       <view class="league-wrow">
-        <image src="https://boringcdn.nanningboring.com/molicheng/wx-icon.png" mode="widthFix" class="league-icon"></image>
+        <image src="https://assets.morangefitness.com/wx-icon.png" mode="widthFix" class="league-icon"></image>
         <view class="league-text">
           教练：
           <view class="league-name">{{courseData.coach.name}}</view>
@@ -75,13 +75,13 @@
         </view>
       </view>
       <view class="league-address">
-        <image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="address-icon"></image>
+        <image src="https://assets.morangefitness.com/icon1.png" mode="widthFix" class="address-icon"></image>
         <view class="league-text">地址：</view>
       </view>
       <view class="league-address-test">{{courseData.store.address}}</view>
       <view class="league-map" bindtap="seeMap" data-latitude="{{courseData.store.latitude}}" data-longitude="{{courseData.store.longitude}}" data-name="{{courseData.store.name}}" data-address="{{courseData.store.address}}">点击查看地图</view>
       <view class="league-wrow">
-        <image src="https://boringcdn.nanningboring.com/molicheng/matter-icon.png" mode="widthFix" class="league-icon"></image>
+        <image src="https://assets.morangefitness.com/matter-icon.png" mode="widthFix" class="league-icon"></image>
         <view class="league-text">注意</view>
       </view>
       <view class="league-text-box">
@@ -112,7 +112,7 @@
       <view class="league-tips-text" wx:if="{{courseData.order.status == 'queue'}}">
         注：开课前6小时之内临时排上位，开课前6小时之内取消预约，支持退款； 开课前6小时之前排上位，开课前6小时之内取消预约，不支持退款。
       </view>
-      <image src="https://boringcdn.nanningboring.com/molicheng/share-img.png" mode="widthFix" class="share-img" bindtap="onGive"></image>
+      <image src="https://assets.morangefitness.com/share-img.png" mode="widthFix" class="share-img" bindtap="onGive"></image>
     </view>
   </view>
 </template>

@@ -4,9 +4,9 @@
 <import src="./module/private.wxml" />
 <import src="./module/training.wxml" />
 
-<navigationBar hasBack background="#000">
+<!-- <navigationBar hasBack background="#000">
 	<view slot="title" class="bar-title">确认订单信息</view>
-</navigationBar>
+</navigationBar> -->
 
 <view class="wrapper" hidden="{{showLoad}}">
   <!--团课-->
@@ -18,6 +18,9 @@
   
   <!--训练营-->
   <template is="training" wx:if="{{course.type == 'camp'}}" data="{{courseDate,course,user,price_list,coupon_list,user_coupon_id,coupon_type,reduce_cost,pay_price,showTips,discount_price}}"></template>
+
+<modal show="{{showModalTips}}" bindcancel="{{tip.cancelFun}}" bindconfirm='onConfirm' title="{{tip.title}}" content="{{tip.content}}">
+  </modal>
 
 </view>
 

@@ -52,7 +52,10 @@ Page({
     page: 1,
     limit: 10,
     openFollow: false,
-    is_attention: false
+    is_attention: false,
+    screenWidth: app.globalData.screenWidth,
+    sliceImage: {},
+    sliceHeight: 0
   },
 
   /**
@@ -203,6 +206,27 @@ Page({
     if (date.getDay() == 5) week = "五"
     if (date.getDay() == 6) week = "六"
     return week;
+  },
+
+    /**
+   * 加载图片
+   */
+  slideLode: function (e) {
+    
+    let width=e.detail.width,    //获取图片真实宽度
+         height=e.detail.height,
+         ratio=width/height;    //图片的真实宽高比例
+         let viewWidth=this.data.screenWidth,           //设置图片显示宽度，左右留有16rpx边距
+         viewHeight=this.data.screenWidth/ratio;    //计算的高度值
+         let image=this.data.sliceImage; 
+        image={
+          width:viewWidth,
+          height:viewHeight
+        }
+      this.setData({
+        sliceImage:image,
+        sliceHeight: viewHeight
+      })
   },
 
   /**

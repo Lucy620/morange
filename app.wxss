@@ -453,6 +453,16 @@ s
   border-radius: 12rpx;
 }
 
+.coupon-btn-used {
+  width: 148rpx;
+  height: 80rpx;
+  background-color: #818181;
+  color: #a5a5a5;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 12rpx;
+}
+
 .coupon-date {
   color: #747474;
   font-size: 24rpx;

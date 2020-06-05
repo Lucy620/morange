@@ -29,7 +29,7 @@ Page({
       wx.switchTab({
         url: app.redirectUrl
       })
-    } else if (!app.redirectUrl || app.redirectUrl == '/pages/login/login') {
+    } else if (index !=1 || !app.redirectUrl || app.redirectUrl == '/pages/login/login') {
       wx.switchTab({
         url: '/pages/course/course'
       })
@@ -80,6 +80,7 @@ Page({
           setTimeout(function(){
             that.jumpPage()
           }, 1000)
+          app.globalData.loginStatus = 1
         } else {
           ajax.cleanLogin();
           wx.showToast({

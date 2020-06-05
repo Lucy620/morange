@@ -115,7 +115,7 @@ function _doLogin(url, load) {
       })
       // 当前页面url
       app.redirectUrl = util.getUrl()
-      wx.redirectTo({
+      wx.navigateTo({
         url: "/pages/login/login"
       })
       return

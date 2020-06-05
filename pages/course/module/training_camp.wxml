@@ -1,6 +1,6 @@
 <import src="../../../wxParse/wxParse.wxml" />
 <template name="training_camp">
-  <view class="box">
+  <view class="box" style="margin-top: {{statusBarHeight}}px">
     <view class="coach">
       <image src="{{courseData.coach.headimgurl}}" mode="aspectFill" class="user-coach"></image>
     </view>
@@ -14,19 +14,19 @@
       <view class="training-camp-tips-box">
         课程安排，请与教练微信沟通
       </view>
-      <image class="mask-bg" src="https://boringcdn.nanningboring.com/molicheng/mask.png" mode="widthFix"></image>
+      <image class="mask-bg" src="https://assets.morangefitness.com/mask.png" mode="widthFix"></image>
     </view>
     <view class="training-box">
       <view class="circular"></view>
       <view class="circular1"></view>
       <view class="training-camp-top">
-        <image src="https://boringcdn.nanningboring.com/molicheng/icon3.png" mode="widthFix" class="training-icon"></image>
+        <image src="https://assets.morangefitness.com/icon3.png" mode="widthFix" class="training-icon"></image>
         <view class="training-text">入场密码：
           <text class="league-tips">{{courseData.order.open_code}}</text>
         </view>
       </view>
       <view class="training-camp">
-        <image src="https://boringcdn.nanningboring.com/molicheng/course-icon.png" mode="widthFix" class="training-icon"></image>
+        <image src="https://assets.morangefitness.com/course-icon.png" mode="widthFix" class="training-icon"></image>
         <view class="training-text">{{courseData.item.length}}课（已签到{{courseData.sign_amount}}节）</view>
       </view>
       <view class="training-list">
@@ -35,7 +35,7 @@
         </view>
       </view>
       <view class="training-camp">
-        <image src="https://boringcdn.nanningboring.com/molicheng/wx-icon.png" mode="widthFix" class="training-icon"></image>
+        <image src="https://assets.morangefitness.com/wx-icon.png" mode="widthFix" class="training-icon"></image>
         <view class="training-text">
           教练：
           <view class="training-name">{{courseData.coach.name}}</view>
@@ -46,7 +46,7 @@
         </view>
       </view>
       <view class="training-camp">
-        <image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="training-icon"></image>
+        <image src="https://assets.morangefitness.com/icon1.png" mode="widthFix" class="training-icon"></image>
         <view class="training-text">地址：</view>
       </view>
       <view class="training-text-wrapper">
@@ -54,12 +54,12 @@
         <view class="training-map" bindtap="seeMap" data-latitude="{{courseData.store.latitude}}" data-longitude="{{courseData.store.longitude}}" data-name="{{courseData.store.name}}" data-address="{{courseData.store.address}}">点击查看地图</view>
       </view>
       <view class="training-camp">
-        <image src="https://boringcdn.nanningboring.com/molicheng/date-icon1.png" mode="widthFix" class="training-icon"></image>
+        <image src="https://assets.morangefitness.com/date-icon1.png" mode="widthFix" class="training-icon"></image>
         <view class="training-text">本期课程安排</view>
       </view>
       <view class="training-text-wrapper">{{courseData.data.camp.time_text}}</view>
       <view class="training-camp">
-        <image src="https://boringcdn.nanningboring.com/molicheng/matter-icon.png" mode="widthFix" class="training-icon"></image>
+        <image src="https://assets.morangefitness.com/matter-icon.png" mode="widthFix" class="training-icon"></image>
         <view class="training-text">注意</view>
       </view>
       <view class="training-text-box">

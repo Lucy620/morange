@@ -17,7 +17,9 @@ Page({
     payData: '',
     isGive: false,
     isShare: false,
-    showWeChat: false
+    showWeChat: false,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**
@@ -114,6 +116,14 @@ Page({
       name: name,
       address: address
     })
+  },
+
+  clickMask: function () {
+    this.setData({showContactButton: true})
+  },
+
+  cancelMask: function () {
+    this.setData({showContactButton: false})
   },
 
   /**

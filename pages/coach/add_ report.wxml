@@ -13,7 +13,7 @@
           请选择
         </view>
       </picker>
-      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="arrow"></image>
+      <image src="https://assets.morangefitness.com/arrow.png" mode="widthFix" class="arrow"></image>
     </view>
   </view>
   <view class="row-box">
@@ -33,7 +33,7 @@
           请选择
         </view>
       </picker>
-      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="arrow"></image>
+      <image src="https://assets.morangefitness.com/arrow.png" mode="widthFix" class="arrow"></image>
     </view>
   </view>
   <view class="row-box">
@@ -50,7 +50,7 @@
           {{end}}
         </view>
       </picker>
-      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="arrow"></image>
+      <image src="https://assets.morangefitness.com/arrow.png" mode="widthFix" class="arrow"></image>
     </view>
   </view>
 

@@ -14,7 +14,7 @@
   </block>
   <view class="time" wx:if="{{relation}}">(于{{tools.formatTime(time,'{y}年{m}月{d}日')}}解锁该勋章)</view>
   <view class="shadow">
-    <image src="https://boringcdn.nanningboring.com/molicheng/shadow-icon.png" mode="widthFix" class="shadow"></image>
+    <image src="hhttps://assets.morangefitness.com/shadow-icon.png" mode="widthFix" class="shadow"></image>
   </view>
 
 
@@ -22,7 +22,7 @@
   <view class="list-box">
     <view class="list-row">
       <view class="row">
-        <image src="https://boringcdn.nanningboring.com/molicheng/row-icon.png" mode="widthFix" class="row-icon"></image>
+        <image src="https://assets.morangefitness.com/row-icon.png" mode="widthFix" class="row-icon"></image>
         <text class="row-text">目标</text>
       </view>
       <view class="list-text">
@@ -31,7 +31,7 @@
     </view>
     <view class="list-row">
       <view class="row">
-        <image src="https://boringcdn.nanningboring.com/molicheng/row-icon1.png" mode="widthFix" class="s-row-icon"></image>
+        <image src="https://assets.morangefitness.com/row-icon1.png" mode="widthFix" class="s-row-icon"></image>
         <text class="row-text">奖励</text>
       </view>
       <view class="list-text">
@@ -40,7 +40,7 @@
     </view>
     <view class="list-row">
       <view class="row">
-        <image src="https://boringcdn.nanningboring.com/molicheng/row-icon2.png" mode="widthFix" class="s-row-icon"></image>
+        <image src="https://assets.morangefitness.com/row-icon2.png" mode="widthFix" class="s-row-icon"></image>
         <text class="row-text">名人堂</text>
       </view>
       <view class="user-box">

@@ -4,6 +4,7 @@ import {
   config,
   api,
   ajax,
+  util
 } from '../../utils/myapp.js'
 Page({
 
@@ -11,6 +12,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    hasCoupon: '',
+    barHeight: app.globalData.barHeight,
+    tip: {
+      title: '提示',
+      content: '',
+      confirmFun: () => {},
+      cancelFun: () => {}
+    },
+    showTips: false,
+    couponList:  [],
     refreshTip: true,
     showLoad: true,
     showCities: false,
@@ -103,7 +114,8 @@ Page({
     scrollTop: 5,
     statusBarHeight: app.globalData.statusBarHeight,
     ios: app.globalData.ios,
-    status: true
+    status: true,
+    unreceivedCoupons: []
   },
 
   /***
@@ -254,8 +266,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   this.getFreeCourseList()
-   this.getUnreceivedCouponList()
+    if (options.coupon_code) {
+      app.globalData.hasCoupon = options.coupon_code
+      this.checkCouponCode(options.coupon_code)
+    }
+    
+    if(app.globalData.minisession){
+      this.getFreeCourseList()
+      this.getUnreceivedCouponList()
+    }
+   
     this.animation = wx.createAnimation()
     this.jointAnimation = wx.createAnimation()
     this.bannerAnimation = wx.createAnimation()
@@ -276,6 +296,106 @@ Page({
     this.getStoreArea()
   },
 
+  
+
+  /**
+   * 获取URL参数
+   */
+  getUrlParams(url, key) {
+    var value = '', pair = ''
+    if (url.indexOf("?") == -1) {
+      return value
+    }
+    url = url.split("?");
+    var arr = url[1].split("&");
+    for (var i = 0; i < arr.length; i++) {
+      pair = arr[i].split("=");
+      if (pair[0] == key) { value = pair[1]; }
+    }
+    return value
+  },
+
+  hideTip: function(){
+    this.setData({showTips: false})
+  },
+
+   /**
+   * 检验代金券兑换码
+   */
+  checkCouponCode: function (code) {
+    var that = this
+    ajax.post(api.checkCouponCode, {
+      'code': code
+    }, ({
+      data
+    }) => {
+        if (data.code == 200) {
+          if(data.obj.coupon){
+            var coupon = data.obj.coupon
+            coupon.coupon_code = code
+            that.setData({couponList: that.data.couponList.concat(coupon)})
+          }else{
+            let list = data.obj.list
+            //coupon.coupon_code = code
+            list = list.map(item => {
+              item.coupon_code = code;
+              return item;
+            })
+            that.setData({couponList: list})
+          }
+          
+        }else{
+          this.setModalContent('提示', data.msg, that.hideTip)
+        }
+      })
+  },
+
+  /***
+   * 设置 modal 内容
+   */
+  setModalContent: function (title, content, confirmFun) {
+    let tip = this.data.tip
+    tip.title = title
+    tip.content = content
+    tip.confirmFun = confirmFun
+    this.setData({
+      tip,
+      showTips: true,
+    })
+  },
+
+  /**
+   * 兑换
+   */
+  exchange: function() {
+    let that = this
+    let code_list = that.data.couponList.map(item => {return item.coupon_code})
+    let id_list = that.data.unreceivedCoupons.map(item => {return item.coupon_id})
+    ajax.post(api.receiveUserCoupon, {
+      'code_list': code_list,
+      'id_list': id_list
+    }, ({
+      data
+    }) => {
+      if (data.code == 200) {
+        app.globalData.hasCoupon = ''
+        that.setData({
+          couponList: [],
+          unreceivedCoupons: []
+        })
+        wx.showToast({
+          title: '领取成功',
+          icon: 'success'
+        })
+      } else {
+        wx.showToast({
+          title: data.msg,
+          icon: 'none'
+        })
+      }
+    })
+  },
+
   /**
    * 获取当前星期
    */
@@ -289,6 +409,15 @@ Page({
     if (date.getDay() == 5) week = "五"
     if (date.getDay() == 6) week = "六"
     return week;
+  },
+
+   /**
+   * 隐藏优惠券
+   */
+  hideCouponModal: function () {
+    app.globalData.hasCoupon = ''
+    this.setData({couponList: []})
+    this.setData({unreceivedCoupons: []})
   },
 
   /**
@@ -1115,6 +1244,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.setData({
+      barHeight: app.globalData.barHeight
+    })
     this.navigation = this.selectComponent('#navigation')
     let status = wx.getStorageSync('STATUS')
     this.setData({status})
@@ -1124,7 +1256,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (e) {
-    var that = this
+    let hasCoupon = app.globalData.hasCoupon
+    let loginStatus = app.globalData.loginStatus
+
+    console.log('onShow---->')
+    if(hasCoupon != ''){
+      this.checkCouponCode(hasCoupon);
+    }
+    if(loginStatus == 1){
+      this.getUnreceivedCouponList()
+    }
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
          this.getTabBar().setData({
@@ -1425,17 +1566,17 @@ Page({
    * 获取未领取优惠券列表
    */
   getUnreceivedCouponList: function () {
+    app.globalData.loginStatus = 0
     let that = this
     wx.showNavigationBarLoading();
     ajax.post(api.getUnreceivedCouponList, {}, ({
       data
     }) => {
       if (data.code == 200) {
-        let coach = data.obj.coach
-        // that.setData({
-        //   jointStoreList: data.obj.store,
-        //   coachList: coach
-        // })
+        let couponList = data.obj.list
+        if(couponList.length != 0){
+          that.setData({unreceivedCoupons: couponList})
+        }
       }
     }, 'auth', true)
   },
@@ -1589,7 +1730,7 @@ Page({
     let date = new Date(now * 1000)
     let year = date.getFullYear()
     let month = date.getMonth() + 1
-    let day = date.getDate()
+    let day = date.getDate() - 1
     let hour = date.getHours()
     let minute = date.getMinutes()
     month = (month < 10 ? "0" + month : month)

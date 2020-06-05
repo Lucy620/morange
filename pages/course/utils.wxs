@@ -1,9 +1,13 @@
 var utils = {
-  checkStatus: function(courseID, courseList){
-    return courseList.indexOf(courseID) == -1 ? '预约' : '免单'
+  checkStatus: function(courseID, courseList, isFree){
+    return courseList.indexOf(courseID) == -1 || isFree ? '预约' : '免单'
+  },
+  mixList: function (list1, list2) {
+    return list1.concat(list2);
   }
 }
 
 module.exports = {
-  checkStatus: utils.checkStatus
+  checkStatus: utils.checkStatus,
+  mixList: utils.mixList
 }

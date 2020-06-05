@@ -21,7 +21,9 @@ Page({
     month: '',
     last_out: '',
     last_schedule: '',
-    showLoad: true
+    showLoad: true,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**

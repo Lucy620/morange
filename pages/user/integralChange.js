@@ -16,7 +16,9 @@ Page({
     date: '',
     page: 1,
     limit: 10,
-    list: []
+    list: [],
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**

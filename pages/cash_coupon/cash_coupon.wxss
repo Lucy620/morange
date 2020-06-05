@@ -1,7 +1,7 @@
 /* pages/cash_coupon/cash_coupon.wxss */
 
 .wrapper {
-  position: fixed;
+  position: relative;
   width: 100%;
 }
 
@@ -109,8 +109,15 @@
   width: 100%;
   height: 52rpx;
   line-height: 52rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/coupon-box-date-bg.png);
+  background: url(https://assets.morangefitness.com/coupon-box-date-bg.png);
   background-size: 100%;
+}
+
+.coupon-list {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
 }
 
 
@@ -145,6 +152,9 @@
   width: 734rpx;
   margin: 150rpx auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .mask-title {
@@ -154,20 +164,30 @@
   border-top-right-radius: 13rpx;
   border-top-left-radius: 13rpx;
   text-align: center;
+  width: 100%;
+}
+
+.mask-view {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .mask-text-box {
   background: #fff;
   color: #000;
-  padding: 25rpx;
+  border-radius: 0;
   border-bottom-right-radius: 13rpx;
   border-bottom-left-radius: 13rpx;
+  width: 100%;
 }
 
 .coupon-row {
   font-size: 26rpx;
   display: flex;
-  padding: 25rpx 0;
+  padding: 25rpx 25rpx;
   border-bottom: 1px solid #bcbcbc;
 }
 .coupon-row:last-child{
@@ -186,8 +206,8 @@
   width: 50rpx;
   height: 50rpx;
   position: absolute;
-  right: 20rpx;
-  top: 15rpx;
+  right: 0rpx;
+  top: 20rpx;
 }
 .home-btn {
   position: fixed;

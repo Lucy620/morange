@@ -10,7 +10,7 @@ page {
 
 .open-head-box {
   height: 300px;
-  background: url(https://boringcdn.nanningboring.com/molicheng/user-bg.png);
+  background: url(https://assets.morangefitness.com/user-bg.png);
   background-size: cover;
 
 }
@@ -22,6 +22,7 @@ page {
   border-radius: 13.3rpx;
   border: solid 1.3rpx rgba(255, 236, 128, 0.7);
   margin: auto;
+  position: relative;
 }
 
 .user-box {
@@ -118,7 +119,7 @@ page {
 
 .head-box {
   height: 300px;
-  background: url(https://boringcdn.nanningboring.com/molicheng/head-bg.png);
+  background: url(https://assets.morangefitness.com/head-bg.png);
   background-size: 100%;
   display: flex;
   padding-top: 24rpx;
@@ -277,7 +278,7 @@ padding-top: 18rpx;
 .container-box {
   width: 678rpx;
   height: 130rpx;
-  background: url(https://boringcdn.nanningboring.com/molic/ranking-bg.png);
+  background: url(https://assets.morangefitness.com/ranking-bg.png);
   background-size: 100%;
   border-radius: 13.3rpx;
   margin: 0 auto;
@@ -339,7 +340,7 @@ padding-top: 18rpx;
   left: 0;
   right: 0;
   height: 2rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/line.png);
+  background: url(https://assets.morangefitness.com/line.png);
   background-size: 100%;
 }
 
@@ -392,7 +393,7 @@ padding-top: 18rpx;
   left: 0;
   right: 0;
   height: 2rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/line.png);
+  background: url(https://assets.morangefitness.com/line.png);
   background-size: 100%;
 } */
 
@@ -432,12 +433,19 @@ padding-top: 18rpx;
   left: 0;
   right: 0;
   height: 2rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/line.png);
+  background: url(https://assets.morangefitness.com/line.png);
   background-size: 100%;
 }
 
 .row-arrow {
   padding-right: 12px;
+}
+
+.master {
+  width: 64rpx;
+  position: absolute;
+  left: 24rpx;
+  z-index: 1;
 }
 
 .row-arrow::after {

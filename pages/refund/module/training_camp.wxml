@@ -19,7 +19,7 @@
     <view class="training-box">
       <view class="training">
         <view class="training-camp">
-          <image src="https://boringcdn.nanningboring.com/molicheng/course-icon.png" mode="widthFix" class="training-icon"></image>
+          <image src="https://assets.morangefitness.com/course-icon.png" mode="widthFix" class="training-icon"></image>
           <view class="training-text">{{order.data.item.length}}课（已签到{{signNum}}节）</view>
         </view>
         <view class="training-list">

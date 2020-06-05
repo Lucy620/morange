@@ -14,7 +14,9 @@ Page({
    */
   data: {
     refundData: '',
-    show: false
+    show: false,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**

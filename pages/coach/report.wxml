@@ -12,7 +12,7 @@
         <view class="tiem">{{tools.formatTime(item.start_at,'{h}:{i}')}} - {{tools.formatTime(item.end_at,'{h}:{i}')}}</view>
       </view>
       <view class="tips-tiem">
-        <image src="https://boringcdn.nanningboring.com/molicheng/tiem-icon.png" mode="widthFix" class="tiem-icon"></image>
+        <image src="https://assets.morangefitness.com/tiem-icon.png" mode="widthFix" class="tiem-icon"></image>
         <view class="time-text">{{item.matter}}</view>
       </view>
     </view>

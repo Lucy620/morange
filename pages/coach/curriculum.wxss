@@ -10,7 +10,7 @@ page {
   display: flex;
   align-items: center;
   height: 215.3rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/poster-bg.png);
+  background: url(https://assets.morangefitness.com/poster-bg.png);
   background-size: 100%;
   padding-left: 20rpx;
 }
@@ -232,7 +232,7 @@ page {
 }
 
 .slect-btn {
-  background: url(https://boringcdn.nanningboring.com/molicheng/btn-bg1.png);
+  background: url(https://assets.morangefitness.com/btn-bg1.png);
   background-size: 100% 100%;
   border-bottom: 2rpx solid #ffae00;
 }

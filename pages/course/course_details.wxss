@@ -452,7 +452,7 @@
   font-size: 32rpx;
   color: #000;
   border-top: 2rpx solid #ffbc0f;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background: url(https://assets.morangefitness.com/ranking-btn.png);
   background-size: 100% 100%;
 }
 

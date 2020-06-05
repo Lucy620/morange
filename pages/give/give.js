@@ -20,7 +20,9 @@ Page({
     user: '',
     ordersn: '',
     showLoad: true,
-    isGive: true
+    isGive: true,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
 

@@ -25,8 +25,8 @@
     </view>
   </view>
 
-  <image src="https://boringcdn.nanningboring.com/molicheng/home-btn.png" mode="widthFix" class="home-btn" bindtap='jumpPage' data-url='pages/course/course'></image>
-  <image src="https://boringcdn.nanningboring.com/molicheng/logo1.png" mode="widthFix" class="logo"></image>
+  <image src="https://assets.morangefitness.com/home-btn.png" mode="widthFix" class="home-btn" bindtap='jumpPage' data-url='pages/course/course'></image>
+  <image src="hhttps://assets.morangefitness.com/logo1.png" mode="widthFix" class="logo"></image>
 </view>
 
 <wxs module="tools" src="../../utils/tools.wxs"></wxs>

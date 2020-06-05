@@ -287,6 +287,6 @@
   height: 89rpx;
   line-height: 89rpx;
   text-align: center;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background: url(https://assets.morangefitness.com/ranking-btn.png);
   background-size: 100% 100%;
 }

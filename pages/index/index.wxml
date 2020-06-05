@@ -11,11 +11,11 @@
   <view class="tab-box">
     <view class="row-box" bindtap="openAnimation" data-type="screen">
       <view class="title">{{areaList[areaIndex].name+region[regionIndex].name}}</view>
-      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="tab-icon"></image>
+      <image src="https://assets.morangefitness.com/arrow.png" mode="widthFix" class="tab-icon"></image>
     </view>
     <view class="row-box" bindtap="openAnimation" data-type="theme">
       <view class="title">{{themeList[themeIndex].name}}</view>
-      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="tab-icon"></image>
+      <image src="https://assets.morangefitness.com/arrow.png" mode="widthFix" class="tab-icon"></image>
     </view>
   </view>
 
@@ -35,7 +35,7 @@
 
     </view>
     <view class="store-box">
-      <image src="https://boringcdn.nanningboring.com/molicheng/logo-bg.png" mode="widthFix" class="store"></image>
+      <image src="https://assets.morangefitness.com/logo-bg.png" mode="widthFix" class="store"></image>
       <view class="tip-title">敬请期待…</view>
     </view>
   </scroll-view>
@@ -75,7 +75,7 @@
     <!--门店主题-->
     <!-- <view class="box" wx:if="{{type == 'theme'}}" animation="{{animation}}">
       <view class="screen-title-box">
-        <image src="https://boringcdn.nanningboring.com/molicheng/screen-icon.png" mode="widthFix" class="screen-icon"></image>
+        <image src="https://assets.morangefitness.com/screen-icon.png" mode="widthFix" class="screen-icon"></image>
         <text class="screen-title">门店主题</text>
       </view>
       <view class="theme-box">

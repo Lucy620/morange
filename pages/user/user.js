@@ -16,19 +16,19 @@ Page({
     showLoad: true,
     authUser: false, // 未授权
     privilegeList: [{
-      'main_img': 'https://boringcdn.nanningboring.com/molicheng/privilege-icon.png',
+      'main_img': 'https://assets.morangefitness.com/privilege-icon.png',
       'privilege_tips_title': '解锁勋章成就',
       'privilege_tips': '挑战100节BP，解锁『 BP MONSTER 』勋章，赢取专属战袍，冲击名人堂！还有更多其他挑战...',
     }, {
-      'main_img': 'https://boringcdn.nanningboring.com/molicheng/privilege-icon4.png',
+      'main_img': 'https://assets.morangefitness.com/privilege-icon4.png',
       'privilege_tips_title': '预约专享95折',
       'privilege_tips': '课程，自助健身享受折扣优惠；课程，自助健身享受折扣优惠；(但不享折扣)',
     }, {
-      'main_img': 'https://boringcdn.nanningboring.com/molicheng/privilege-icon2.png',
+      'main_img': 'https://assets.morangefitness.com/privilege-icon2.png',
       'privilege_tips_title': '魔力星排名',
       'privilege_tips': '加入魔力橙全球榜，给你的锻炼更多动力，每次课程结束后，更有专属你的排名海报',
     }, {
-      'main_img': 'https://boringcdn.nanningboring.com/molicheng/privilege-icon3.png',
+      'main_img': 'https://assets.morangefitness.com/privilege-icon3.png',
       'privilege_tips_title': '满员等候特权',
       'privilege_tips': '满员课程，魔橙卡预支付等候，自动补排空位，若未排上自动退款',
     }],

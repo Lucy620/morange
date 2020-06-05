@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "自助退款",
-  "usingComponents": {}
+  "usingComponents": {
+    "navigationBar": "/pages/components/navigationBar/navigationBar"
+  }
 }

@@ -34,7 +34,7 @@ swiper {
   bottom: 150rpx;
   width: 588rpx;
   height: 95rpx;
-  background: url(https://boringcdn.nanningboring.com/molic/grade-bg.png);
+  background: url(https://assets.morangefitness.com/grade-bg.png);
   background-size: 100%;
   text-align: right;
   padding-right: 25rpx;

@@ -514,7 +514,7 @@
   font-size: 32rpx;
   color: #000;
   border-top: 2rpx solid #ffbc0f;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background: url(https://assets.morangefitness.com/ranking-btn.png);
   background-size: 100% 100%;
 }
 
@@ -582,14 +582,14 @@
 .star {
   width: 25rpx;
   height: 24rpx;
-  background: url(https://boringcdn.nanningboring.com/molic/large-star.png);
+  background: url(https://assets.morangefitness.com/large-star.png);
   background-size: 100%;
   margin-right: 5rpx;
   margin-top: -3rpx;
 }
 
 .light-star {
-  background: url(https://boringcdn.nanningboring.com/molic/large-light.png);
+  background: url(https://assets.morangefitness.com/large-light.png);
   background-size: 100%;
 }
 

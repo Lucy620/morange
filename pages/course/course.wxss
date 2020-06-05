@@ -138,6 +138,7 @@ swiper {
   color: #fff;
   line-height: 24rpx;
   margin-top: 12rpx;
+  height: 32rpx;
 }
 
 
@@ -230,23 +231,29 @@ swiper {
 .coach-store-box {
   flex: 1;
   padding-bottom: 128px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  height: 100%;
 }
 
 .list {
-  height: 100%
+  height: 100%;
+  flex: 1;
+  display: flex;
 }
 
 .list-swiper-box {
   height: 100%;
+  flex: 1;
 }
 
 .scroll-box {
   height: 100%;
   flex-direction: column;
   -webkit-overflow-scrolling: touch;
-  overflow: scroll;
+  overflow: auto;
   background-color: #262626;
-  padding-bottom: 148px;
 }
 
 .store-row {
@@ -338,7 +345,7 @@ swiper {
   align-items: center;
   padding: 20rpx 20rpx;
   background-color: #181818;
-  margin-bottom: 2rpx;
+  margin-bottom: 4rpx;
   position: relative;
   margin-left: 10rpx;
   margin-right: 10rpx;
@@ -499,9 +506,10 @@ swiper {
   -moz-transform: rotate(-43deg);
   -webkit-transform: rotate(-43deg);
   -o-transform: rotate(-43deg);
-  background: #C30000;
-  color: #fff777;
+  background: #D200D2;
+  color: #fff;
   font-size: 18rpx;
+  font-weight: 800;
 }
 
 .full {
@@ -721,7 +729,7 @@ swiper {
   line-height: 89rpx;
   text-align: center;
   font-weight: bold;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background: url(https://assets.morangefitness.com/ranking-btn.png);
   background-size: 100% 100%;
 }
 
@@ -814,7 +822,7 @@ swiper {
   height: 89rpx;
   line-height: 89rpx;
   text-align: center;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background: url(https://assets.morangefitness.com/ranking-btn.png);
   background-size: 100% 100%;
 }
 
@@ -930,7 +938,7 @@ swiper {
   height: 89rpx;
   line-height: 89rpx;
   text-align: center;
-  background: url(https://boringcdn.nanningboring.com/molicheng/ranking-btn.png);
+  background: url(https://assets.morangefitness.com/ranking-btn.png);
   background-size: 100% 100%;
 }
 
@@ -1049,7 +1057,7 @@ swiper {
   text-align: center;
   line-height: 52rpx;
   border-radius: 6.7rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/curriculum-btn.png);
+  background: url(https://assets.morangefitness.com/curriculum-btn.png);
   background-size: 100%;
   position: relative;
   z-index: 1;
@@ -1387,6 +1395,53 @@ swiper {
   height: 500px;
    position: relative;
    overflow: hidden;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+ .receive-coupon-box {
+   height: 300;
+   width: 100%;
+   position: absolute;
+   top: auto;
+   bottom: auto;
+ }
+
+ .coupon {
+   height: 200px;
+   position: absolute;
+   text-align: center;
+   align-items: center;
+   flex-direction: column;
+   justify-content: flex-end;
+   padding-top: 48rpx;
+    overflow: auto;
+    display: flex;
+ }
+
+ 
+
+ .coupon-count {
+   color: #ff9c00;
+   padding: 0 8rpx;
+   font-size: 40rpx;
+   margin-top: -10rpx;
+ }
+
+ .coupon-tip-text {
+   height: 100rpx;
+   align-items: center;
+   justify-content: center;
+   display: flex;
+   color: #d4d4d4;
+   position: absolute;
+   bottom: 100rpx;
+ }
+
+ .course-cover {
+   width: 220px;
+   margin-top: -20rpx;
  }
 
  .cuopon-img {
@@ -1406,4 +1461,25 @@ swiper {
   box-shadow:0px -5px 8px 0px rgba(0, 0, 0, 0.4);
   position: absolute;
   bottom: 0;
+ }
+
+ .coupon-cancel {
+   width: 32rpx;
+   position: fixed;
+   right: 12px;
+   top: 120px;
+ }
+
+ .coupon-bg {
+    position: absolute;
+    min-height: 200px;
+ }
+
+ .coupon_1 {
+   height: 300rpx;
+   width: 300rpx;
+ }
+
+ .coupon-1 {
+
  }

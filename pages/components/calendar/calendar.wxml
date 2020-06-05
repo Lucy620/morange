@@ -8,7 +8,7 @@
         </view>
       </picker>
     </view>
-    <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="arrow"></image>
+    <image src="https://assets.morangefitness.com/arrow.png" mode="widthFix" class="arrow"></image>
   </view>
 
   <!-- ============滚动展示============  -->

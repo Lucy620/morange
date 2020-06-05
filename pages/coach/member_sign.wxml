@@ -2,10 +2,14 @@
 
 <view class="wrapper" hidden="{{showLoad}}">
 
-	<view class="bg-box">
+	<navigationBar hasBack>
+		<view slot="title" class="bar-title">签到</view>
+	</navigationBar>
+
+	<view class="bg-box" style="margin-top: {{statusBarHeight+44}}px">
 		<!--课程 二维码 课程收入-->
 		<view class="list-box">
-			<image src="https://boringcdn.nanningboring.com/molicheng/MORANGE.png" mode="widthFix" class="logo-text"></image>
+			<image src="https://assets.morangefitness.com/MORANGE.png" mode="widthFix" class="logo-text"></image>
 			<view class="title">{{course.course.name}}
 				<text wx:if="{{type == 'camp'}}">{{course.camp.name}}</text>
 			</view>
@@ -80,13 +84,13 @@
 							<view class="number" wx:if="{{item.order.course_num > 0}}">{{item.order.course_num}}</view>
 						</image>
 						<view class="mask" wx:if="{{item.sign_at > 0}}">
-							<image src="https://boringcdn.nanningboring.com/molicheng/hook-icon.png" mode="widthFix" class="hook-icon"></image>
+							<image src="https://assets.morangefitness.com/hook-icon.png" mode="widthFix" class="hook-icon"></image>
 						</view>
 						<view class="student-name">{{item.miniprogram.nickname}}</view>
 					</view>
 				</view>
 			</scroll-view>
-			<image class="mask-bg" src="https://boringcdn.nanningboring.com/molicheng/mask.png" mode="widthFix"></image>
+			<image class="mask-bg" src="https://assets.morangefitness.com/mask.png" mode="widthFix"></image>
 		</view>
 		<view class="circular"></view>
 		<view class="circular1"></view>
@@ -96,29 +100,29 @@
 	<view class="curriculum-box">
 		<view class="row">
 			<view class="name-icon-box">
-				<image src="https://boringcdn.nanningboring.com/molicheng/icon.png" mode="widthFix" class="icon"></image>
+				<image src="https://assets.morangefitness.com/icon.png" mode="widthFix" class="icon"></image>
 				<view class="row-text">课程: {{course.course.name}}</view>
 			</view>
 			<view class="curriculum-btn" bindtap="seeCourse" data-id="{{course.id}}" data-type="{{course.course.type}}" data-area_id="{{course.store.area_id}}">查看</view>
 		</view>
 		<view class="row-address">
 			<view class="name-icon-box">
-				<image src="https://boringcdn.nanningboring.com/molicheng/icon1.png" mode="widthFix" class="address-icon"></image>
+				<image src="https://assets.morangefitness.com/icon1.png" mode="widthFix" class="address-icon"></image>
 				<view class="row-text">地址：</view>
 			</view>
 			<view class="address">{{course.store.address}}</view>
 			<view class="map-text" bindtap="seeMap" data-latitude="{{course.store.latitude}}" data-longitude="{{course.store.longitude}}" data-name="{{course.store.name}}" data-address="{{course.store.address}}">点击查看地图</view>
 		</view>
 		<view class="info-row">
-			<image src="https://boringcdn.nanningboring.com/molicheng/icon2.png" mode="widthFix" class="icon"></image>
+			<image src="https://assets.morangefitness.com/icon2.png" mode="widthFix" class="icon"></image>
 			<view class="row-text">教练：{{course.coach.name}}</view>
 		</view>
 		<view class="info-row">
-			<image src="https://boringcdn.nanningboring.com/molicheng/icon.png" mode="widthFix" class="icon"></image>
+			<image src="https://assets.morangefitness.com/icon.png" mode="widthFix" class="icon"></image>
 			<view class="row-text">课程ID: {{course.course.id}}</view>
 		</view>
 		<view class="curriculum-row">
-			<image src="https://boringcdn.nanningboring.com/molicheng/icon4.png" mode="widthFix" class="icon"></image>
+			<image src="https://assets.morangefitness.com/icon4.png" mode="widthFix" class="icon"></image>
 			<view class="row-text">课程照片</view>
 		</view>
 		<view class="course-img-box">
@@ -131,11 +135,11 @@
 					<video wx:if="{{showVideo}}" class="course-img" src='{{videoUrl}}' enable-play-gesture="{{true}}" id='myvideo' bindfullscreenchange="bindfullscreenchange">
 					</video>
 					<view wx:else class="up-tips" bindtap="openVideo" data-url="{{item.url}}">
-						<image src="https://boringcdn.nanningboring.com/molic/play.png" mode="widthFix" class="play"></image>
+						<image src="https://assets.morangefitness.com/play.png" mode="widthFix" class="play"></image>
 					</view>
 				</block>
 			</block>
-			<image src='https://boringcdn.nanningboring.com/molicheng/add-img.png' mode='widthFix' class="course-img" bindtap="optUpType"></image>
+			<image src='https://assets.morangefitness.com/add-img.png' mode='widthFix' class="course-img" bindtap="optUpType"></image>
 		</view>
 		<!-- <view class="curriculum-img-box">
       <view class="img-text">点击选择照片</view>
@@ -149,14 +153,14 @@
 		<!--留言板-->
 		<view class="msg-board">
 			<view class="curriculum-row">
-				<image src="https://boringcdn.nanningboring.com/molic/msg-board-cion.png" mode="widthFix" class="icon"></image>
+				<image src="https://assets.morangefitness.com/msg-board-cion.png" mode="widthFix" class="icon"></image>
 				<view class="row-text">教练评价</view>
 			</view>
 			<scroll-view scroll-y class="msg-list" bindscrolltolower='getCourseCommentList'>
 				<block wx:if="{{list.length > 0}}">
 					<view class="msg-row" wx:for="{{list}}" wx:key='index'>
 						<image src="{{item.coach.headimgurl}}" mode="widthFix" class="user-icon" wx:if="{{item.type == 'coach'}}"></image>
-						<image src="https://boringcdn.nanningboring.com/molic/comment-icon.png" mode="widthFix" class="user-icon" wx:else></image>
+						<image src="https://assets.morangefitness.com/comment-icon.png" mode="widthFix" class="user-icon" wx:else></image>
 						<view class="msg-info">
 							<view class="date-box">
 								<view class="date">
@@ -189,7 +193,7 @@
 
 		<!--新学员-->
 		<view class="container-box" wx:if="{{openStudent}}">
-			<image src="https://boringcdn.nanningboring.com/molicheng/close-icon.png" mode="widthFix" class="close-icon" bindtap="closeSee"></image>
+			<image src="https://assets.morangefitness.com/close-icon.png" mode="widthFix" class="close-icon" bindtap="closeSee"></image>
 			<view class="container-row-box">
 				<view class="container-left">
 					<view>魔橙新学员</view>

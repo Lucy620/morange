@@ -21,6 +21,7 @@
 
 
 	<!--代金券-->
+	<view class="coupon-list">
 	<view class="coupon-box" wx:for="{{list}}" wx:key='index'>
 		<view class="coupon-box-row">
 			<view class="coupon-row-left">
@@ -37,12 +38,13 @@
 				<view class="coupon-line-line"></view>
 			</view>
 			<view class="coupon-row-right">
-				<view class="coupon-btn-use">立即使用</view>
+				<view class="coupon-btn-use" bindtap='jumpPage' data-url='pages/course/course'>立即使用</view>
 				<text class="coupon-use-text" bindtap="openExplain" data-name="{{item.name}}" data-notice="{{item.notice}}">查看可用范围</text>
 				<view class="cro right-top"></view>
 				<view class="cro right-bottom"></view>
 			</view>
 		</view>
+	</view>
 	</view>
 
 	<!--无代金券提示-->
@@ -55,6 +57,7 @@
 
 <view class="mask-box" wx:if="{{showExplain}}">
 	<view class="mask-row-box">
+		<view class="mask-view">
 		<view class="mask-title">代金券使用说明</view>
 		<view class="mask-text-box">
 			<view class="coupon-row">
@@ -67,10 +70,11 @@
 			</view>
 		</view>
 		<image src="https://oppocdn.afxeon.net/close-iocm.png" mode="widthFix" class="close-iocm" bindtap="closeTips"></image>
+		</view>
 	</view>
 </view>
 
 
-<image src="https://boringcdn.nanningboring.com/molicheng/home-btn.png" mode="widthFix" class="home-btn" bindtap='jumpPage' data-url='pages/course/course' wx:if="{{showBack}}"></image>
+<image src="https://assets.morangefitness.com/home-btn.png" mode="widthFix" class="home-btn" bindtap='jumpPage' data-url='pages/course/course' wx:if="{{showBack}}"></image>
 
 <wxs module="tools" src="../../utils/tools.wxs"></wxs>

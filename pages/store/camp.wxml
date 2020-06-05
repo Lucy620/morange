@@ -1,9 +1,13 @@
 <!--pages/store/camp.wxml-->
 
-<view class="wrapper" hidden="{{showLoad}}">
+<navigationBar hasBack style="position:relative">
+		<view slot="title" class="bar-title">训练营</view>
+	</navigationBar>
+
+<view class="wrapper" hidden="{{showLoad}}" style="margin-top: {{statusBarHeight+44}}px">
 
   <view class="tips-box" wx:if="{{noData}}">
-    <image src="https://boringcdn.nanningboring.com/molicheng/user-icon.png" mode="widthFix" class="tips-img"></image>
+    <image src="https://assets.morangefitness.com/user-icon.png" mode="widthFix" class="tips-img"></image>
     <view class="tips-text">该门店暂无训练营</view>
     <view class="tips-more-box">
       <view class="line"></view>

@@ -18,9 +18,10 @@
 }
 
 .btn {
-  width: 259rpx;
-  height: 53rpx;
-  line-height: 53rpx;
+  width: 260rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 30rpx;
   margin: 80rpx auto 10rpx;
   font-size: 25rpx;
   color: #000;

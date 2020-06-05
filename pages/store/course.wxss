@@ -4,6 +4,7 @@ page {
   background: #181818;
 }
 
+
 /**星期**/
 
 .week-box {
@@ -87,6 +88,7 @@ page {
   left: 0;
   right: 0;
   bottom: 0;
+  box-sizing:border-box;
 }
 
 .list {
@@ -252,7 +254,7 @@ page {
   text-align: center;
   line-height: 52rpx;
   border-radius: 6.7rpx;
-  background: url(https://boringcdn.nanningboring.com/molicheng/curriculum-btn.png);
+  background: url(https://assets.morangefitness.com/curriculum-btn.png);
   background-size: 100%;
   position: relative;
   z-index: 1;

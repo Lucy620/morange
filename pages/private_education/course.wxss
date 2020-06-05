@@ -6,6 +6,10 @@
   background-color: #2A2A2A;
 }
 
+.swiper-box {
+  height: 0;
+}
+
 swiper {
   height: 100%;
 }

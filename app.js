@@ -15,8 +15,11 @@ var fundebug = require('utils/fundebug.1.3.1.min.js')
 })
 App({
   globalData: {
+    loginStatus: 0,
+    hasCoupon: '',
     freeCourseList: [],
     fundebug: fundebug,
+    screenWidth: 0,
     minisession: '',
     openid: '',
     cities: [],
@@ -24,6 +27,7 @@ App({
     headerBtnPosi: {}, // 胶囊按钮位置信息
     statusBarHeight: 0,
     ios: false,
+    barHeight: 0,
     list: [
       {
         "pagePath": "/pages/index/index",
@@ -70,6 +74,7 @@ App({
         this.globalData.systeminfo = res
         this.globalData.statusBarHeight = res.statusBarHeight
         this.globalData.ios = ios
+        this.globalData.screenWidth = res.windowWidth
       },
     })
     // 获得胶囊按钮位置信息
@@ -94,7 +99,6 @@ App({
       (config.BASE.minisessionKey)
       this.globalData.openid = wx.getStorageSync('openid')
     } catch (e) {
-      console.log(e)
       fundebug.notifyError(e)
     }
   },

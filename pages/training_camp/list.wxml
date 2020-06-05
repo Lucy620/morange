@@ -7,17 +7,17 @@
   <view class="tab-box">
     <view class="row-box" bindtap="openAnimation" data-type="area">
       <view class="title">{{areaList[areaIndex].name}}</view>
-      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="tab-icon"></image>
+      <image src="https://assets.morangefitness.com/arrow.png" mode="widthFix" class="tab-icon"></image>
     </view>
     <view class="row-box" bindtap="openAnimation" data-type="tag">
       <view class="title" wx:if="{{tagNumber == 0}}">全部</view>
       <view class="title" wx:if="{{tagNumber > 0}}">{{tagNumber}}个标签</view>
-      <image src="https://boringcdn.nanningboring.com/molicheng/arrow.png" mode="widthFix" class="tab-icon"></image>
+      <image src="https://assets.morangefitness.com/arrow.png" mode="widthFix" class="tab-icon"></image>
     </view>
   </view>
 
   <!-- <view class="mask">新训练营上架，点击查看
-    <image src="https://boringcdn.nanningboring.com/molicheng/mask-arrow.png" mode="widthFix" class="mask-arrow"></image>
+    <image src="https://assets.morangefitness.com/mask-arrow.png" mode="widthFix" class="mask-arrow"></image>
   </view> -->
   <view class="list-box">
     <view class="list-row">
@@ -41,7 +41,7 @@
     <view class="screen-box" wx:if="{{type == 'area'}}" animation="{{animation}}">
       <view class="course-title-box">
         <view class="course-title">
-          <image src="https://boringcdn.nanningboring.com/molicheng/city-icon.png" mode="widthFix" class="course-icon"></image>
+          <image src="https://assets.morangefitness.com/city-icon.png" mode="widthFix" class="course-icon"></image>
           <text class="course-title-text">城市</text>
         </view>
       </view>
@@ -56,7 +56,7 @@
     <view class="tag-box" wx:if="{{type == 'tag'}}" animation="{{animation}}">
       <view class="course-title-box">
         <view class="course-title">
-          <image src="https://boringcdn.nanningboring.com/molicheng/tag-icon.png" mode="widthFix" class="course-icon"></image>
+          <image src="https://assets.morangefitness.com/tag-icon.png" mode="widthFix" class="course-icon"></image>
           <text class="course-title-text">选择标签（可多选）</text>
         </view>
         <view class="tips">已选{{tagNumber == 0 ? '1' : tagNumber}}项</view>

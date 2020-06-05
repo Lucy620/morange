@@ -77,7 +77,7 @@
 					"id": 2,
 					"name": "会员签到",
 					"pathName": "pages/coach/member_sign",
-					"query": "id=2461&type=team",
+					"query": "id=3204&type=team",
 					"scene": null
 				},
 				{
@@ -113,6 +113,27 @@
 					"name": "教练详情",
 					"pathName": "pages/coach/coach_details",
 					"query": "coach_id=36",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "pages/course/course",
+					"pathName": "pages/course/course",
+					"query": "coupon_code= NEVMGCNHVB",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/course/course",
+					"pathName": "pages/course/course",
+					"query": "coupon_code=1;tag=迪卡侬",
+					"scene": 1011
+				},
+				{
+					"id": 10,
+					"name": "课程详情",
+					"pathName": "pages/course/course_details",
+					"query": "user_course_id= 2927& user_name=hahahha",
 					"scene": null
 				}
 			]

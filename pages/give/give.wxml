@@ -1,27 +1,32 @@
 <!--pages/give/give.wxml-->
 
-<view class="wrapper" hidden="{{showLoad}}">
-  <view class="box">
-    <view class="poster-box" wx:if="{{course}}">
-      <image src="{{course.course.slide_imgs[0]}}?imageView2/1/w/600/h/220" mode="widthFix" class="poster"></image>
-      <image src="{{send_user.miniprogram.headimgurl}}" mode="widthFix" class="user-img"></image>
-      <view class="tips" bindtap='jumpPage' data-url='pages/league/details?team_id={{course.id}}'>查看课程＞</view>
-    </view>
-    <view class="text-box">
-      <view class="user-name">
-        <text class="s-yellow ">{{send_user.miniprogram.nickname}}</text>赠送你一节课
-      </view>
-      <view class="coach">{{course.coach.name}}教练·{{course.course.name}}</view>
-      <view class="text">时间：{{tools.formatTime(course.start_at,'{y}年{m}月{d}日')}} {{tools.formatTime(course.start_at,'{h}:{i}')}}~{{tools.formatTime(course.end_at,'{h}:{i}')}}</view>
-      <view class="text">地址：{{course.store.address}}</view>
-    </view>
-    <view class="btn-box">
-      <view class="time-tips" wx:if="{{isGive && !give_user}}">{{msg}}后，赠送将自动取消</view>
-      <view class="btn {{!isGive || give_user  ? 'gray-btn' : ''}}" bindtap="{{isGive? 'receive' :''}}">领取</view>
-    </view>
-  </view>
-  <image src="https://boringcdn.nanningboring.com/molicheng/home-btn.png" mode="widthFix" class="home-btn" bindtap='jumpPage' data-url='pages/course/course'></image>
-  <image src="https://boringcdn.nanningboring.com/molicheng/logo1.png" mode="widthFix" class="logo"></image>
+<navigationBar hasBack background="transparent">
+	<view slot="title" class="bar-title"></view>
+</navigationBar>
+
+<view class="wrapper" hidden="{{showLoad}}" style="margin-top: {{statusBarHeight+104}}px">
+
+	<view class="box">
+		<view class="poster-box" wx:if="{{course}}">
+			<image src="{{course.course.slide_imgs[0]}}?imageView2/1/w/600/h/220" mode="widthFix" class="poster"></image>
+			<image src="{{send_user.miniprogram.headimgurl}}" mode="widthFix" class="user-img"></image>
+			<view class="tips" bindtap='jumpPage' data-url='pages/league/details?team_id={{course.id}}'>查看课程＞</view>
+		</view>
+		<view class="text-box">
+			<view class="user-name">
+				<text class="s-yellow ">{{send_user.miniprogram.nickname}}</text>赠送你一节课
+			</view>
+			<view class="coach">{{course.coach.name}}教练·{{course.course.name}}</view>
+			<view class="text">时间：{{tools.formatTime(course.start_at,'{y}年{m}月{d}日')}} {{tools.formatTime(course.start_at,'{h}:{i}')}}~{{tools.formatTime(course.end_at,'{h}:{i}')}}</view>
+			<view class="text">地址：{{course.store.address}}</view>
+		</view>
+		<view class="btn-box">
+			<view class="time-tips" wx:if="{{isGive && !give_user}}">{{msg}}后，赠送将自动取消</view>
+			<view class="btn {{!isGive || give_user  ? 'gray-btn' : ''}}" bindtap="{{isGive? 'receive' :''}}">领取</view>
+		</view>
+	</view>
+	<image src="https://assets.morangefitness.com/home-btn.png" mode="widthFix" class="home-btn" bindtap='jumpPage' data-url='pages/course/course'></image>
+	<image src="https://assets.morangefitness.com/logo1.png" mode="widthFix" class="logo"></image>
 </view>
 
 <wxs module="tools" src="../../utils/tools.wxs"></wxs>

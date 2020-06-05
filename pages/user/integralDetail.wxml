@@ -1,6 +1,10 @@
 <!--pages/user/integralDetail.wxml-->
 <view class="wrapper" hidden="{{showLoad}}">
 
+<navigationBar hasBack background="transparent">
+	<view slot="title" class="bar-title">{{integralItem.name}}</view>
+</navigationBar>
+
 	<!--开通魔橙卡 等级存在-->
 	<block wx:if="{{user.type == 'vip'}}">
 		<view class="head" style="background: url({{background[grade]}}); background-size: 100%;">
@@ -35,7 +39,7 @@
 
 	<!--未通魔橙卡 等级不存在-->
 	<block wx:else>
-		<view class="head" style="background: url(https://boringcdn.nanningboring.com/molicno-grade-bg.png); background-size: 100%;">
+		<view class="head" style="background: url(https://assets.morangefitness.com/no-grade-bg.png); background-size: 100%;">
 			<view class="user-box">
 				<image src="{{user.miniprogram.headimgurl}}" mode="widthFix" class="user-img"></image>
 				<view class="head-text">
@@ -45,11 +49,11 @@
 			</view>
 			<view class="icon-box">
 				<view class="icon-row" bindtap='jumpPage' data-url='pages/user/integralEquity?grade_id=1&user_integral={{user.total_integral}}'>
-					<image class="head-icon" src="https://boringcdn.nanningboring.com/molicgrade-icon1.png" mode="widthFix"></image>
+					<image class="head-icon" src="https://assets.morangefitness.com/grade-icon1.png" mode="widthFix"></image>
 					<view class="icon-text">专属页面</view>
 				</view>
 				<view class="icon-row" bindtap='jumpPage' data-url='pages/user/integralEquity?grade_id=1&user_integral={{user.total_integral}}'>
-					<image class="head-icon" src="https://boringcdn.nanningboring.com/molicgrade-icon2.png" mode="widthFix"></image>
+					<image class="head-icon" src="https://assets.morangefitness.com/grade-icon2.png" mode="widthFix"></image>
 					<view class="icon-text">更多权益</view>
 				</view>
 			</view>
@@ -79,7 +83,7 @@
 			<view class="task-row" wx:for="{{task}}" wx:key='index'>
 				<view class="task">{{item.name}}<text class="reward">积分+{{item.integral}}</text></view>
 				<view class="btn {{item.complete ? 'gray-btn' : ''}}" bindtap="goComplete" data-status='{{item.complete}}' data-type="{{item.type}}">{{item.complete == 'wait' ? '去完成': item.complete ? '已完成' : '去完成'}}</view>
-				<image src="https://boringcdn.nanningboring.com/molic/line.png" class="line" mode="widthFix"></image>
+				<image src="https://assets.morangefitness.com/line.png" class="line" mode="widthFix"></image>
 			</view>
 		</view>
 	</view>

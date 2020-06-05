@@ -13,7 +13,8 @@
 	<block wx:if="{{user.type == 'vip'}}">
 		<!--头部-->
 		<view class="open-head-box">
-			<view class="open-box" style="margin-top: {{statusBarHeight+64}}px">
+			<view class="open-box" style="margin-top: {{statusBarHeight+44}}px">
+			<image wx:if="{{user.prerogative == 1}}" class="master" mode="widthFix" src="https://assets.morangefitness.com/master.png"></image>
 				<view class="user-box">
 					<block wx:if="{{authUser}}">
 						<image src="{{user.miniprogram.headimgurl}}" catchtap="onGotUserInfo" mode="widthFix" class="user-img"></image>
@@ -23,7 +24,7 @@
 							<image src="{{user.miniprogram.headimgurl}}" mode="widthFix" class="user-img"></image>
 						</button>
 					</block>
-					<image src="https://boringcdn.nanningboring.com/molicheng/MORANGE-icon.png" mode="widthFix" class="box-title"></image>
+					<image src="https://assets.morangefitness.com/MORANGE-icon.png" mode="widthFix" class="box-title"></image>
 				</view>
 				<view class="tips">C O M E
 					<text>A L I V E</text>M O R A N G E</view>
@@ -31,7 +32,7 @@
 					<view class="balance" bindtap="displayAmount">余额：
 						<text wx:if="{{!isShow}}">*****</text>
 						<text wx:else>{{tools.fen2yuan(user.balance,2)}}</text>
-						<image src="{{isShow ? 'https://boringcdn.nanningboring.com/molicheng/see.png' : 'https://boringcdn.nanningboring.com/molicheng/see-icon.png'}}" mode="widthFix" class="see-icon"></image>
+						<image src="{{isShow ? 'https://assets.morangefitness.com/see.png' : 'https://assets.morangefitness.com/see-icon.png'}}" mode="widthFix" class="see-icon"></image>
 					</view>
 					<view class="open-btn" bindtap='jumpPage' data-url='pages/recharge/recharge?type=normal'>充值</view>
 				</view>
@@ -45,7 +46,7 @@
 		<view class="head-box">
 			<view class="box">
 				<view class="user-box">
-				<image src="https://boringcdn.nanningboring.com/molicheng/MORANGE-icon.png" mode="widthFix" class="box-title"></image>
+				<image src="https://assets.morangefitness.com/MORANGE-icon.png" mode="widthFix" class="box-title"></image>
 					<!--未登录 不可同步-->
 					<block wx:if="{{!user.type}}">
 						<image src="{{user.miniprogram.headimgurl}}" mode="widthFix" class="user-img"></image>
@@ -146,7 +147,6 @@
 			</view>
 		</view>
 
-		<button open-type="contact" bindcontact="handleContact">联系客服</button>
 
 		<view class="row-item row-arrow" bindtap='jumpPage' data-url='pages/cash_coupon/cash_coupon'>
 			<view class="row-title">代金券</view>

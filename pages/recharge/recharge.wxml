@@ -60,7 +60,7 @@
 </view>
 
 <view class="bg" wx:if="{{show}}">
-  <image src="https://boringcdn.nanningboring.com/molicheng/recharge-bg.png" class="recharge-bg" mode="widthFix"></image>
+  <image src="https://assets.morangefitness.com/recharge-bg.png" class="recharge-bg" mode="widthFix"></image>
   <view class="btn-box" bindtap="goBack">
     <view class="btn">返回</view>
   </view>

@@ -9,7 +9,7 @@ module.exports = {
   miniProgramInitUser: serverApiUrl + "miniProgramInitUser", // 初始化用户
   updateWxSessionKey: serverApiUrl + "updateWxSessionKey", // 更新微信session_key
   updateAvatarAndNickname: serverApiUrl + "updateAvatarAndNickname", // 更新微信头像及昵称
-  getQiNiuToken: "https://ml.gxsolution.cn/getQiNiuToken", // 获取七牛token
+  getQiNiuToken: "https://mp.morangefitness.com/getQiNiuToken", // 获取七牛token
   getUnreceivedCouponList: serverApiUrl +"getUnreceivedCouponList", //获取未领取优惠券
   getFreeCourseList: serverApiUrl + "getFreeCourseList", // 获取免费课程列表
   getStoreList: serverApiUrl + "getStoreList", // 获取门店列表

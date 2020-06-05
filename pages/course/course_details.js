@@ -26,7 +26,13 @@ Page({
     nowtime: '',
     time: '',
     min: '',
-    showWeChat: false
+    showWeChat: false,
+    curImg: 0,
+    images:[],
+    imgHeights: [],
+    showTitle: false,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios,
   },
 
   /**

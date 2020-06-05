@@ -4,8 +4,8 @@
 <loading wx:if="{{showTab}}"></loading>
 
 <navigationBar>
-	<view slot="btn-left" class="bar-city" style="margin-top: {{ios? 20: 0}}px">
-		<text wx:if="{{!showCities}}" bindtap="onShowCities">{{curCity.name}}</text>
+	<view slot="btn-left" class="bar-city" style="margin-top: {{ios? 20: 0}}px;width:120rpx">
+		<text  wx:if="{{!showCities}}" bindtap="onShowCities">{{curCity.name}}</text>
 		<image wx:if="{{!showCities}}" class="img-city" mode="aspectFit" src="/assets/image/down.png"></image>
 		<image wx:if="{{showCities}}" bindtap="onHideCities" class="img-cancel" mode="aspectFit" src="/assets/image/cancel.png"></image>
 	</view>
@@ -75,10 +75,9 @@
 		</view>
 	</view>
 
-	<view class="coach-store-box" wx:if="{{curTab == 'general_course'}}">
-		<view class="list">
+	<view class="coach-store-box" wx:if="{{curTab == 'general_course'}}" style="padding-bottom: {{barHeight + 84}}px">
 			<swiper class="list-swiper-box" duration="{{200}}" current="{{weekIndex}}" bindchange='binSwiper'>
-				<block wx:for="{{courseList}}" wx:key='index'>
+				<view wx:for="{{courseList}}" wx:key='index'>
 					<swiper-item>
 						<view id="course_box" class="scroll-box" bindtouchmove="onListTouch">
 							<block wx:for="{{item}}" wx:key='index' wx:for-item="course">
@@ -89,12 +88,12 @@
 									</view>
 									<view class="map-box">
 										<view class="map-text" bindtap="seeMap" data-name="{{course.name}}" data-address="{{course.address}}" data-latitude="{{course.latitude}}" data-longitude="{{course.longitude}}">查看地图</view>
-										<image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="map-arrow"></image>
+										<image src="https://assets.morangefitness.com/arrow1.png" mode="widthFix" class="map-arrow"></image>
 									</view>
 								</view>
 								<view class="coach-info" wx:if="{{course.team.length == 0}}">
 									<view class="coach-img">
-										<image src="https://boringcdn.nanningboring.com/molicheng/user-icon.png" mode="widthFix"></image>
+										<image src="https://assets.morangefitness.com/user-icon.png" mode="widthFix"></image>
 										<view class="coach-mask">...</view>
 									</view>
 									<view class="coach-info-details">
@@ -122,8 +121,8 @@
 											</view>
 										</view>
 
-										<view class="btn-active btn-default" wx:if="{{nowtime > teamItem.end_at}}">结束</view>
-										<view class="btn-active" wx:if="{{nowtime < teamItem.end_at && teamItem.rest_stock > 0}}">{{teamItem.is_spell == 1 ? '拼课' : utils.checkStatus(teamItem.course_id, freeCourseList)}}</view>
+										<view class="btn-active btn-default" wx:if="{{nowtime > teamItem.end_at}}" style="background: #515151; clolr: #AAAAAA">结束</view>
+										<view class="btn-active" wx:if="{{nowtime < teamItem.end_at && teamItem.rest_stock > 0}}">{{teamItem.is_spell == 1 ? '拼课' : utils.checkStatus(teamItem.course_id, freeCourseList, teamItem.svip_free)}}</view>
 										<view class="coach-btn-box" wx:if="{{teamItem.rest_stock == 0  && nowtime < teamItem.end_at}}">
 											<view class="wait-btn">等候</view>
 										</view>
@@ -147,14 +146,13 @@
 							<view class="box refresh-box" wx:if="{{searchTimeIndex >=1 || courseNumber >=1 || storeNumber >=1}}" wx:for="{{4}}" wx:key='index'></view>
 						</view>
 					</swiper-item>
-				</block>
+				</view>
 			</swiper>
-		</view>
 	</view>
 
 	<!--私教-->
 
-	<view scroll-y class="scroll-box" scroll-top="{{scroll}}" wx:if="{{curTab == 'private_course'}}">
+	<view class="scroll-box" wx:if="{{curTab == 'private_course'}}" style="padding-bottom: {{barHeight + 64}}px">
 		<block wx:key='index' wx:for="{{storeList}}" wx:if="{{index != 0}}">
 			<view class="store-row">
 				<view style="display:flex;align-items:center">
@@ -163,14 +161,18 @@
 				</view>
 				<view class="map-box">
 					<view class="map-text" bindtap="seeMap" data-name="{{course.name}}" data-address="{{course.address}}" data-latitude="{{course.latitude}}" data-longitude="{{course.longitude}}">查看地图</view>
-					<image src="https://boringcdn.nanningboring.com/molicheng/arrow1.png" mode="widthFix" class="map-arrow"></image>
+					<image src="https://assets.morangefitness.com/arrow1.png" mode="widthFix" class="map-arrow"></image>
 				</view>
 			</view>
+			
 			<view class="box" wx:for="{{priList}}" wx:for-item="course" wx:key='index' wx:if="{{item.id == course.store.id }}">
 				<image src="{{course.coach.headimgurl}}" mode="aspectFill" class="coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{course.coach.user_id}}'></image>
 				<view class="box-row" bindtap='jumpPage' data-url='pages/private_education/course?private_id={{course.id}}'>
 					<view class="mid">
-						<view class="pri-title">{{course.course.name}}<text class="kcal" style="margin-left:8rpx">600kcal</text></view>
+						<view class="pri-title">
+							<text class="title">{{course.course.name}}</text>
+							<view class="kcal" style="margin-left:8rpx;word-break:keep-all">600kcal</view>
+						</view>
 						<view class="attributes-box">
 							<view class="name" wx:for="{{course.course.attributes}}" wx:key='index' wx:for-item="attributes">
 								<view wx:if="{{index != 0}}" class="garden"></view>{{attributes}}
@@ -181,7 +183,7 @@
 							<text class="first" wx:if="{{item.first_price > 0 && first}}">(首次体验课￥{{tools.fen2yuan(course.first_price,2)}})</text>
 						</view>
 					</view>
-					<view class="btn-active btn-default" wx:if="{{course.rest_stock == 0}}">满员</view>
+					<view class="btn-active btn-default" wx:if="{{course.rest_stock == 0}}" style="background: #515151; clolr: #AAAAAA">满员</view>
 					<view class="btn-active" wx:if="{{course.rest_stock > 0}}">详情</view>
 					<view class="wrap">
 						<view class="silk-ribbon full" wx:if="{{course.rest_stock == 0}}">满员</view>
@@ -194,7 +196,7 @@
 	</view>
 
 	<!--训练营-->
-	<view scroll-y class="scroll-box list-space" scroll-top="{{scroll}}" wx:if="{{curTab == 'camp'}}">
+	<view class="scroll-box list-space"  wx:if="{{curTab == 'camp'}}" style="padding-bottom: {{barHeight + 64}}px">
 		<view class="camp-box">
 			<view class="camp-row">
 				<block wx:for="{{campList}}" wx:key='index'>
@@ -211,7 +213,7 @@
 	</view>
 
 	<!--拼课教练列表-->
-	<view scroll-y class="scroll-box" wx:if="{{curTab == 'joint_course'}}">
+	<view scroll-y class="scroll-box" wx:if="{{curTab == 'joint_course'}}" style="margin-bottom: {{barHeight}}px">
 		<view class="coach-box">
 			<view class="coach-list-title">选择教练</view>
 			<view class="coach-row" wx:for="{{coachList}}" wx:key='index' bindtap="choiceCoach" data-index="{{index}}">
@@ -288,7 +290,7 @@
 		</view>
 		<view class="time-tips-box" bindtap="hiddenEnd" wx:if="{{type == 'time'}}">
 			<view class="time-tips-img {{is_hide ? 'select-time-tips' : ''}}">
-				<image src="https://boringcdn.nanningboring.com/molicheng/hook-icon.png" mode="widthFix" class="hook-icon" wx:if="{{is_hide}}"></image>
+				<image src="https://assets.morangefitness.com/hook-icon.png" mode="widthFix" class="hook-icon" wx:if="{{is_hide}}"></image>
 			</view>
 			<view class="time-tips-text">隐藏今天已结束的课程</view>
 		</view>
@@ -420,17 +422,25 @@
 	</view>
 </view>
 
-<view class='mask' wx:if='{{false}}' bindtap='clickMask'>
+<view class='mask' wx:if='{{utils.mixList(couponList, unreceivedCoupons).length != 0}}' bindtap='clickMask'>
+	<image class="coupon-cancel" src="/assets/image/cancel.png" mode="widthFix" bindtap="hideCouponModal"></image>
 	<view class='cuopon-main-content'>
-		<view class='cuopon-content'>
+		<view class='cuopon-content' bindtap="exchange">
 			<image class="cuopon-img" src="https://assets.morangefitness.com/cuopon_receive_bg.png" mode="heightFix">
 			</image>
-			<!-- <view class='modal-btn'>立即领取</view> -->
+			<view class="coupon">
+				<image wx:for="{{utils.mixList(couponList, unreceivedCoupons)}}" class="course-cover" src="{{item.cover}}" mode="widthFix"></image>
+			</view>
+			<view class="coupon-tip-text ">送您<text class="coupon-count">{{utils.mixList(couponList, unreceivedCoupons).length}}</text>张礼券，马上开始体验吧！</view>
+			<view class="receive-coupon-box">
+			</view>
 		</view>
 
 	</view>
-
 </view>
+
+<modal show="{{showTips}}" bindcancel="hideTip" bindconfirm="{{tip.confirmFun}}" title="{{tip.title}}" content="{{tip.content}}">
+</modal>
 
 
 <!--转发有礼-->
