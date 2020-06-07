@@ -1,4 +1,5 @@
 <!--pages/league/list.wxml-->
+<page-meta page-style="overflow: {{ios? 'hidden': 'auto'}}"></page-meta>
 <wxs module="utils" src="./utils.wxs"></wxs>
 
 <loading wx:if="{{showTab}}"></loading>
@@ -13,6 +14,8 @@
 </navigationBar>
 
 <!-- <view wx:if="{{refreshTip}}" class="tip">双击这里，刷新课表</view> -->
+
+
 
 <view wx:if="{{showCities}}" class="city-modal">
 	<view class="city-select">
@@ -37,7 +40,8 @@
 	</view>
 </view>
 
-<view touchstart="onPageTouch" wx:else class="wrapper-box" hidden="{{showLoad}}" animation="{{bannerAnimation}}" style="margin-top: {{ios? statusBarHeight-20: statusBarHeight}}px">
+<view touchstart="onPageTouch" wx:else class="wrapper-box" hidden="{{showLoad}}" animation="{{bannerAnimation}}" style="margin-top: {{ios? statusBarHeight-20: statusBarHeight}}px; position:{{ios? 'absolute': 'fixed'}}">
+<!-- <image src="https://assets.morangefitness.com/powered_by_morange.png"  class="page-background"></image> -->
 	<view class="container-box">
 		<!--轮播-->
 		<view class="swiper-box" wx:if="{{showBanners}}">
@@ -446,3 +450,4 @@
 <share isShare="{{isShare}}" id='share'></share>
 
 <wxs module="tools" src="../../utils/tools.wxs"></wxs>
+
