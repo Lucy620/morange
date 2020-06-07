@@ -99,7 +99,7 @@
 		<view class="btn s-btn" bindtap='jumpPage' data-url='pages/reservation/my_reservation'>查看我的预约</view>
 	</view>
 
-	<view class='mask' wx:if="{{showContactButton}}" bindtap='clickMask'>
+	<view class='mask' wx:if="{{showContactButton}}">
 		<view class='modal-content'>
 			<view scroll-y class='main-content'>
 				<text class="title">如何添加小橙子微信</text>

@@ -374,7 +374,7 @@ s
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 84rpx;
+  font-size: 64rpx;
   font-weight: 900;
 }
 

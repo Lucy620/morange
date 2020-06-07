@@ -1,5 +1,9 @@
 /* pages/league/list.wxss */
 
+page {
+  overflow: hidden;
+}
+
 .bar-city {
   color: #fff;
   font-size: 24rpx;
