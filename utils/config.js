@@ -9,6 +9,7 @@ export default {
     minisessionKey: 'minisession', // 小程序Storage缓存的minisessionKey
     tabPages: ['/pages/index/index', '/pages/course/course', '/pages/reservation/my_reservation', '/pages/user/user'] // tabBar菜单页面url
   },
+
   SYSTEM: {
     debug: false // 是否开启本地调试 上线false, 本地true
   },

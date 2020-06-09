@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "MORANGE",
   "enablePullDownRefresh": true,
+  "disableScroll": false,
   "usingComponents": {
     "share": "/pages/components/share/share",
     "loading": "/pages/components/loading/loading",
