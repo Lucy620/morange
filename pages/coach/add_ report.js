@@ -21,7 +21,9 @@ Page({
     end: '00:00',
     nowtime: '',
     remark: '',
-    type: ''
+    type: '',
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
 

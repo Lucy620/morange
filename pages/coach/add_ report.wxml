@@ -1,7 +1,11 @@
 <!--pages/coach/add_ report.wxml-->
 
+<navigationBar hasBack background="#000">
+  <view slot="title" class="bar-title">新增报备</view>
+</navigationBar>
+
 <view class="wrapper" hidden="{{showLoad}}">
-  <view class="head">要报备的事项</view>
+  <view class="head" style="margin-top: {{statusBarHeight+44}}px">要报备的事项</view>
   <view class="row-box">
     <view class="row-title">事项</view>
     <view class="picker-box">

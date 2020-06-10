@@ -16,7 +16,10 @@ Page({
     complete: '',
     wait: '',
     showLoad: true,
-    user: ''
+    user: '',
+    waitList: [],
+    completeList: []
+
   },
 
   /**
@@ -80,6 +83,8 @@ Page({
         that.setData({
           complete: complete,
           wait: wait,
+          waitList: data.obj.wait_list,
+          completeList: data.obj.complete_list,
           showLoad: false
         })
       }

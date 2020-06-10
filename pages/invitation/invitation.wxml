@@ -31,34 +31,28 @@
 
 	<!--记录-->
 	<view class="record-box">
-		<view class="record-title-box">
-			<view class="record-title">我的邀请记录</view>
-			<view class="record-tips" bindtap='jumpPage' data-url='pages/course/course'>去约课></view>
-		</view>
-		<view class="record">
-			<view class="record-row">
-				<number wx:for="{{wait}}" wx:key='index' number="{{item}}"></number>元
-			</view>
-			<view class="record-row">
-				<number wx:for="{{complete}}" wx:key='index' number="{{item}}"></number>元
-			</view>
-
-			<!-- <view class="record-row">
-        <text class="record-money">{{tools.fen2yuan(wait)}}</text>元
-        <view class="record-tips">代金券在路上></view>
-      </view>
-      <view class="record-row">
-        <text class="record-money">{{tools.fen2yuan(complete)}}</text>元
-        <view class="record-tips">累计获得></view>
-      </view> -->
-		</view>
-	</view>
-
-	<!--规则-->
-	<view class="rule-box">
-		<view class="rule-row">
+		<view class="title-box">
 			<view class="line"></view>
-			<view class="rule-title">活动细则</view>
+			<text class="title">已获赠课</text>
+			<view class="line"></view>
+		</view>
+		<text class="result">已成功邀请 <text class="text-active">{{completeList.length}}名 </text>小伙伴，共获得 <text class="text-active">{{completeList.length}}</text>免费赠课</text>
+		<text class="result">还有<text class="text-active">{{waitList.length}}名</text>未使用，快去@TA</text>
+		<view wx:for="{{waitList}}" class="record-row">
+			<image class="avatar" src="{{item.user.headimgurl}}"></image>
+			<text class="nickname">{{item.user.nickname}}</text>
+			<text class="status">未使用</text>
+		</view>
+
+		<view wx:for="{{completeList}}" class="record-row">
+			<image class="avatar" src="{{item.user.headimgurl}}"></image>
+			<text class="nickname">{{item.user.nickname}}</text>
+			<text class="status" style="color:#FF9C00">+1</text>
+		</view>
+
+		<view class="title-box">
+			<view class="line"></view>
+			<view class="title">活动细则</view>
 			<view class="line"></view>
 		</view>
 		<view class="rule-text">
@@ -82,6 +76,11 @@
 				6.该活动最终解释权归广西南宁魔力橙健身服务有限公司所有。
 			</view>
 		</view>
+	</view>
+
+	<!--规则-->
+	<view class="rule-box">
+		
 	</view>
 </view>
 <wxs module="tools" src="../../utils/tools.wxs"></wxs>

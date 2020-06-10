@@ -14,12 +14,11 @@
 		<view class="user-box receive-box">
 			<text class="name">{{send_user.miniprogram.nickname}}</text> 邀你健身
 		</view>
-		<view class="receive-tips">送你{{tools.fen2yuan(total_price)}}元新人券，一起来健身吧！</view>
+		<view class="receive-tips">送你一张免单券，一起来健身吧！</view>
 		<view class="coupon-box">
 			<view class="coupon-details">
-				<view class="coupon-details-title">{{coupon.name}}</view>
-				<view class="coupon-details-money">¥{{tools.fen2yuan(coupon.price,2)}}
-					<text class="coupon-details-nun">X {{coupon.amount}}</text>
+				<view class="coupon-details-title">{{inviteCoupon.name}}</view>
+				<view class="coupon-details-money" bindtap="onShowNotice">查看可用范围
 				</view>
 			</view>
 			<view class="coupon-btn" bindtap="saveCoupon" wx:if="{{!isReceive}}">
@@ -54,6 +53,25 @@
 	</view>
 
 </view>
+</view>
+
+<view class="coupon-mask-box" wx:if="{{showNotice}}">
+	<view class="coupon-mask-row-box">
+		<view class="coupon-mask-view">
+		<view class="coupon-mask-title">代金券使用说明</view>
+		<view class="coupon-mask-text-box">
+			<view class="coupon-tip-row">
+				<view class="coupon-tips">名称：</view>
+				<view class="mask-text">{{inviteCoupon.name}}</view>
+			</view>
+			<view class="coupon-tip-row">
+				<view class="coupon-tips">使用说明：</view>
+				<view class="mask-text">{{inviteCoupon.notice}}</view>
+			</view>
+		</view>
+		<image src="https://oppocdn.afxeon.net/close-iocm.png" mode="widthFix" class="close-iocm" bindtap="onHideNotice"></image>
+		</view>
+	</view>
 </view>
 
 <wxs module="tools" src="../../utils/tools.wxs"></wxs>

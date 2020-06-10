@@ -368,15 +368,7 @@ s
   flex-direction: column;
 }
 
-.coupon-price {
-  width: 186rpx;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 64rpx;
-  font-weight: 900;
-}
+
 
 .coupon-detail {
   display: flex;
@@ -584,4 +576,24 @@ s
 .mask-text {
   flex: 1;
   color: #bcbcbc;
+}
+
+.close-iocm{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 24rpx;
+  top: 20rpx;
+}
+
+
+.coupon-price {
+  width: 250rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64rpx;
+  font-weight: 900;
+  font-family: 'DIN';
 }

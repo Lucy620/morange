@@ -135,6 +135,13 @@
 					"pathName": "pages/course/course_details",
 					"query": "user_course_id= 2927& user_name=hahahha",
 					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "分享领券",
+					"pathName": "pages/invitation/coupon",
+					"query": "send_user_id=1",
+					"scene": null
 				}
 			]
 		}

@@ -15,7 +15,9 @@ Page({
   data: {
     total_income: 0,
     date: '',
-    showLoad: true
+    showLoad: true,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /***

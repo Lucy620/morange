@@ -21,6 +21,7 @@ Page({
     send_user: '',
     user: '',
     isReceive: false,
+    inviteCoupon: {},
     statusBarHeight: app.globalData.statusBarHeight,
     ios: app.globalData.ios
   },
@@ -55,6 +56,7 @@ Page({
           send_user: data.obj.send_user,
           user: data.obj.user,
           total_price: total_price,
+          inviteCoupon: data.obj.coupon,
           showLoad: false
         })
       }
@@ -87,6 +89,13 @@ Page({
         })
       }
     })
+  },
+
+  onShowNotice: function () {
+    this.setData({showNotice: true})
+  },
+  onHideNotice: function () {
+    this.setData({showNotice: false})
   },
 
 

@@ -1,9 +1,12 @@
 <!--pages/coach/income_details.wxml-->
 
+<navigationBar hasBack background="#000">
+	<view slot="title" class="bar-title">收入明细</view>
+</navigationBar>
 
 <view class="wrapper" hidden="{{showLoad}}">
 
-  <view class="head-box">
+  <view class="head-box" style="margin-top: {{statusBarHeight+44}}px">
     <picker mode="date" fields="month" value="{{date}}" bindchange="bindDateChange">
       <view class="date">{{date}}</view>
       <view class="tips-income">总收入

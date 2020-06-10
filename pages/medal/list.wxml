@@ -1,8 +1,12 @@
 <!--pages/medal/list.wxml-->
 
+<navigationBar hasBack background="#000">
+  <view slot="title" class="bar-title">收入明细</view>
+</navigationBar>
+
 <view class="wrapper-box" hidden="{{showLoad}}">
   <!--tab 栏-->
-  <view class="tab-box">
+  <view class="tab-box" style="margin-top: {{statusBarHeight+44}}px">
     <view class="tab-row">
       <view class="tab-item">
         <view class="tab-text {{dataId == 1 ? 'select-tab-item' : ''}}" bindtap="switchTab" data-id="1">课程（{{course_num}}）</view>
@@ -15,7 +19,7 @@
 
 
   <!--勋章列表-->
-  <view class="medal-box">
+  <view class="medal-box" style="top: {{statusBarHeight+84}}px">
     <scroll-view scroll-y class="scroll-view-box" scroll-top="{{scrollTop}}" scroll-with-animation="{{true}}" bindscrolltoupper="upper" bindscrolltolower="lower">
       <view class="box" id='course' wx:for="{{list}}" wx:key='index'>
         <view wx:if="{{item.type == 'course'}}">

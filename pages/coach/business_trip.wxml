@@ -1,5 +1,9 @@
 <!--pages/coach/business_trip.wxml-->
-<view class="wrapper">
+<navigationBar hasBack background="#000">
+  <view slot="title" class="bar-title">外出/出差报备</view>
+</navigationBar>
+
+<view class="wrapper" style="margin-top: {{statusBarHeight+44}}px">
   <view class="head-tips">
     <view class="head-text">若{{tools.formatTime(start_at,'{m}月{d}日')}}-{{tools.formatTime(end_at,'{m}月{d}日')}}需外出/出差，请在</view>
     <view class="head-text">

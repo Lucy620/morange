@@ -1503,3 +1503,7 @@ swiper {
  .coupon-1 {
 
  }
+
+ .joint-num {
+   margin-top: 20rpx;
+ }

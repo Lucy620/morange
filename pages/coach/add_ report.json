@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "新增报备",
-  "usingComponents": {}
+  "usingComponents": {
+    "navigationBar": "/pages/components/navigationBar/navigationBar"
+  }
 }

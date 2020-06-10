@@ -17,7 +17,10 @@ Page({
     scrollTop: 0,
     other_num: 0,
     course_num: 0,
-    showLoad: true
+    showLoad: true,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
+
   },
 
   /**

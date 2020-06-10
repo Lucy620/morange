@@ -125,7 +125,9 @@
 										</view>
 
 										<view class="btn-active btn-default" wx:if="{{nowtime > teamItem.end_at}}" style="background: #515151; clolr: #AAAAAA">结束</view>
-										<view class="btn-active" wx:if="{{nowtime < teamItem.end_at && teamItem.rest_stock > 0}}">{{teamItem.is_spell == 1 ? '拼课' : utils.checkStatus(teamItem.course_id, freeCourseList, teamItem.svip_free)}}</view>
+										<view class="btn-active" wx:if="{{nowtime < teamItem.end_at && teamItem.rest_stock > 0}}">{{teamItem.is_spell == 1 ? '拼课' : utils.checkStatus(teamItem.course_id, freeCourseList, teamItem.svip_free)}}
+										 <!-- <progress wx:if="{{teamItem.is_spell == 1}}" class="joint-num" percent="20" font-size="12"></progress> -->
+										</view>
 										<view class="coach-btn-box" wx:if="{{teamItem.rest_stock == 0  && nowtime < teamItem.end_at}}">
 											<view class="wait-btn">等候</view>
 										</view>

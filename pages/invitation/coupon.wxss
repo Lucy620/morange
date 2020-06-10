@@ -99,8 +99,9 @@
 }
 
 .coupon-details-money {
-  font-size: 50rpx;
+  font-size: 20rpx;
   color: #9f3c00;
+  text-decoration: underline;
 }
 
 .coupon-details-nun {

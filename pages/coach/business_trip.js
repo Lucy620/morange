@@ -15,6 +15,8 @@ Page({
   data: {
     start_at: '',
     end_at: '',
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
 
