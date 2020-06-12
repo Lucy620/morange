@@ -158,7 +158,7 @@
 			<!-- <view class="row-title">邀请有礼</view> -->
 			<image src="https://assets.morangefitness.com/invite.png" class="share-line" mode="widthFix"></image>
 		</view>
-		<view class="row-item row-arrow" bindtap='jumpPage' data-url='pages/coach/curriculum?dataId=2' wx:if="{{user.coach}}">
+		<view class="row-item row-arrow" bindtap='jumpPage' data-url='pages/coach/curriculum?dataId=1' wx:if="{{user.coach}}">
 			<view class="row-title">我是教练</view>
 		</view>
 	</view>

@@ -88,13 +88,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log('options-->',options)
     let date = new Date
     let year = date.getFullYear()
     let month = date.getMonth() + 1
     month = (month < 10 ? "0" + month : month)
     let mydate = (year.toString() + '-' + month.toString())
     this.setData({
-      dataId: options.dataId || 2,
+      dataId: options.dataId || 1,
       date: mydate
     })
   },
