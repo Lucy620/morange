@@ -33,7 +33,7 @@ Page({
     scroll: false,
     dataId: 1,
     place: {
-      infoHeight: 0,
+      infoHeight: 0, 
       posterHeight: 236,
       camphHeight: 236,
       courseHeight: 236,

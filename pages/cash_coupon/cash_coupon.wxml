@@ -6,7 +6,7 @@
 
 <view class="wrapper" hidden="{{showLoad}}">
 
-	<image src="http://qad81djlf.bkt.clouddn.com/coupon_background.png" class="coupon-top-bg" mode="widthFix"></image>
+	<image src="https://assets.morangefitness.com/coupon_top_bg.png" class="coupon-top-bg" mode="widthFix"></image>
 
 
 	<!--搜索-->
