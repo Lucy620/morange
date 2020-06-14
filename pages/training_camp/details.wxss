@@ -164,13 +164,12 @@ video{
 }
 
 .btn {
-  width: 99rpx;
-  height: 52rpx;
+  width: 120rpx;
+  height: 60rpx;
   text-align: center;
-  line-height: 52rpx;
-  border-radius: 6.7rpx;
-  background: url(https://assets.morangefitness.com/curriculum-btn.png);
-  background-size: 100%;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  background: linear-gradient(0deg,rgba(255,135,28,1),rgba(255,167,14,1));
   position: relative;
   z-index: 1;
 }

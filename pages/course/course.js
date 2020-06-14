@@ -1607,7 +1607,6 @@ Page({
     }) => {
         if (data.code == 200) {
           this.jointAnimation.translateY(-500).step();
-          console.log(data.obj.course)
           that.setData({
             coachCourseList: data.obj.course,
             showLoad: false,

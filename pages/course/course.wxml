@@ -106,7 +106,7 @@
 								</view>
 								<view bindtouchmove="onPageTouch" class="box" wx:if="{{course.team.length > 0}}" wx:for="{{course.team}}" wx:key='index' wx:for-item="teamItem">
 									<image src="{{teamItem.coach.headimgurl}}" mode="aspectFill" class="coach" bindtap='jumpPage' data-url='pages/coach/coach_details?coach_id={{teamItem.coach.user_id}}'></image>
-									<view class="box-row" bindtap='jumpPage' data-url='pages/league/details?team_id={{teamItem.id}}'>
+									<view class="box-row" bindtap='jumpPage' data-url="{{teamItem.course.type == 'camp'? 'pages/training_camp/details?course_id=' + teamItem.course.id : 'pages/league/details?team_id=' + teamItem.id}}">
 										<view class="mid">
 											<view class="title"> {{teamItem.course.name}}</view>
 											<view class="time-kcal">
@@ -125,9 +125,10 @@
 										</view>
 
 										<view class="btn-active btn-default" wx:if="{{nowtime > teamItem.end_at}}" style="background: #515151; clolr: #AAAAAA">结束</view>
-										<view class="btn-active" wx:if="{{nowtime < teamItem.end_at && teamItem.rest_stock > 0}}">{{teamItem.is_spell == 1 ? '拼课' : utils.checkStatus(teamItem.course_id, freeCourseList, teamItem.svip_free)}}
+										<view class="btn-active" wx:if="{{nowtime < teamItem.end_at && teamItem.rest_stock > 0 && teamItem.course.type != 'camp'}}">{{teamItem.is_spell == 1 ? '拼课' : utils.checkStatus(teamItem.course_id, freeCourseList, teamItem.svip_free)}}
 										 <!-- <progress wx:if="{{teamItem.is_spell == 1}}" class="joint-num" percent="20" font-size="12"></progress> -->
 										</view>
+										<view class="btn-active" wx:if="{{teamItem.course.type == 'camp'}}">详情</view>
 										<view class="coach-btn-box" wx:if="{{teamItem.rest_stock == 0  && nowtime < teamItem.end_at}}">
 											<view class="wait-btn">等候</view>
 										</view>
