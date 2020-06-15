@@ -129,7 +129,7 @@
 										 <!-- <progress wx:if="{{teamItem.is_spell == 1}}" class="joint-num" percent="20" font-size="12"></progress> -->
 										</view>
 										<view class="btn-active" wx:if="{{teamItem.course.type == 'camp'}}">详情</view>
-										<view class="coach-btn-box" wx:if="{{teamItem.rest_stock == 0  && nowtime < teamItem.end_at}}">
+										<view class="coach-btn-box" wx:if="{{teamItem.rest_stock == 0  && nowtime < teamItem.end_at && teamItem.course.type != 'camp'}}">
 											<view class="wait-btn">等候</view>
 										</view>
 
