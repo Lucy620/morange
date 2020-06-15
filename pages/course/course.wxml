@@ -13,7 +13,7 @@
 	<view slot="title" class="bar-title">{{showCities? '选择城市': 'MORANGE'}}</view>
 </navigationBar>
 
-<!-- <view wx:if="{{refreshTip}}" class="tip">双击这里，刷新课表</view> -->
+<view wx:if="{{refreshTip}}" class="tip">双击这里，刷新课表</view>
 
 
 

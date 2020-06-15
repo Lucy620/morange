@@ -22,7 +22,7 @@ Page({
     },
     showTips: false,
     couponList:  [],
-    refreshTip: true,
+    refreshTip: false,
     showLoad: true,
     showCities: false,
     cover: false, //遮罩

@@ -1351,7 +1351,7 @@ swiper {
 .tip {
   position: absolute;
   padding: 0rpx 40rpx;
-  bottom: 60px;
+  bottom: 70px;
   font-size: 24rpx;
   height: 64rpx;
   color: #000;
