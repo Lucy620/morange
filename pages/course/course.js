@@ -1259,7 +1259,6 @@ Page({
     let hasCoupon = app.globalData.hasCoupon
     let loginStatus = app.globalData.loginStatus
 
-    console.log('onShow---->')
     if(hasCoupon != ''){
       this.checkCouponCode(hasCoupon);
     }

@@ -20,7 +20,7 @@
   <template is="training" wx:if="{{course.type == 'camp'}}" data="{{courseDate,course,user,price_list,coupon_list,user_coupon_id,coupon_type,reduce_cost,pay_price,showTips,discount_price}}"></template>
 
 <modal show="{{showModalTips}}" bindcancel="{{tip.cancelFun}}" bindconfirm='onConfirm' title="{{tip.title}}" content="{{tip.content}}">
-  </modal>
+</modal>
 
 </view>
 

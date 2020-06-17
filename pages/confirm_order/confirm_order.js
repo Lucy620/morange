@@ -362,10 +362,12 @@ Page({
       }
       //会员价
       if (user.type == 'vip') {
+        let balanceEnough = false;
         if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1 && courseDate.is_spell != 1 && !courseDate.svip_free && type == 'buy'){
           pay_price = courseDate.vip_price * (num - 1)
         }else{
-          pay_price = courseDate.vip_price * num
+          balanceEnough = this.data.user.balance >= courseDate.vip_price * num;
+          pay_price = balanceEnough? courseDate.vip_price * num :courseDate.price * num
         }
         
       }
@@ -462,7 +464,7 @@ Page({
           that.wxPay()
         }
       } else if (data.code == 501) {
-        this.setModalContent('提示', '库存不足', ()=>{
+        that.setModalContent('提示', '库存不足', ()=>{
           wx.navigateBack({
             delta: 1,
           })
@@ -513,20 +515,7 @@ Page({
               }
             },
             'fail': function (res) {
-              this.setModalContent('提示', '离支付成功只差一步,怎么能轻易放弃？', that.wxPay)
-            
-              // wx.showModal({
-              //   content: '离支付成功只差一步,怎么能轻易放弃？',
-              //   cancelText: '放弃支付',
-              //   confirmText: '继续支付',
-              //   success: function (res) {
-              //     if (res.confirm) {
-              //       that.wxPay(ordersn)
-              //     } else if (res.cancel) {
-
-              //     }
-              //   },
-              // })
+              that.setModalContent('提示', '离支付成功只差一步,怎么能轻易放弃？', that.wxPay)
             }
           })
         } else {
