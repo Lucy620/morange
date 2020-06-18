@@ -1,0 +1,74 @@
+/* pages/components/modal/inout_modal.wxss */
+
+.mask{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 9999;
+ }
+  
+ .modal-content{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  /* height: 80%; */
+  background-color: #fff;
+  border-radius: 20rpx;
+ }
+  
+ .modal-btn-wrapper{
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  line-height: 100rpx;
+ }
+  
+ .confirm-btn{
+  flex: 1;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 32rpx;
+  background:linear-gradient(0deg,rgba(255,144,46,1),rgba(255,186,0,1));
+  border-bottom-right-radius: 20rpx;
+  color: #000;
+ }
+ 
+ .cancel-btn{
+   flex: 1;
+   height: 100rpx;
+   line-height: 100rpx;
+   text-align: center;
+   font-size: 32rpx;
+   border-top: 2rpx solid rgba(7,17,27,0.1);
+  }
+ 
+ .cancel-btn{
+  border-right: 2rpx solid rgba(7,17,27,0.1);
+ }
+  
+ .main-content{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  margin: 48rpx;
+ }
+ 
+ .title {
+   font-size: 40rpx;
+ }
+ 
+ .content {
+   width: 100%;
+   font-size: 28rpx;
+   margin-top: 24rpx;
+   min-height: 200rpx;
+   border: #000 solid 2rpx;
+ }

@@ -6,6 +6,7 @@
     "share": "/pages/components/share/share",
     "loading": "/pages/components/loading/loading",
     "navigationBar": "/pages/components/navigationBar/navigationBar",
-    "modal": "/pages/components/modal/modal"
+    "modal": "/pages/components/modal/modal",
+    "inputModal": "/pages/components/modal/input_modal"
   }
 }
