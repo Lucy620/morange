@@ -1,20 +1,5 @@
 <!--pages/components/forwarding/forwarding.wxml-->
 
-<view class="box-mask" wx:if="{{isShare}}">
-  <view class="mask-title">
-    <image src="https://assets.morangefitness.com/mask-title-img.png" mode="widthFix"></image>
-  </view>
-  <image src="https://assets.morangefitness.com/mask-icon.png" mode="widthFix" class="mask-icon"></image>
-  <view class="mask-tips-user">
-    <view>新用户(未上过课、账户内无可用新人券的用户)</view>
-    <view>首次打开你转发的页面，可获得2张20元代金券。</view>
-  </view>
-  <view class="mask-tips">
-    <view>Ta使用该券约课并签到后</view>
-    <view>你也可获得2张20元代金券</view>
-  </view>
-  <view class="mask-btn-box">
-    <view class="mask-btn" bindtap="know">知道了</view>
-    <view class="mask-btn-tips" bindtap="noTips">不再提示</view>
-  </view>
+<view  wx:if="{{isShare}}">
+  
 </view>

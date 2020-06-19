@@ -137,6 +137,10 @@
 											<view class="silk-ribbon-left">拼课</view>
 										</view>
 
+										<view class="wrap-left" wx:if="{{teamItem.course.type == 'camp'}}">
+											<view style="background-color:#FF6A1F" class="silk-ribbon-left">训练营</view>
+										</view>
+
 										<view class="wrap-left" wx:if="{{teamItem.is_spell != 1 && teamItem.tag}}">
 											<view class="silk-ribbon-left" style="background-color:{{teamItem.tag_color}};color:#000">{{teamItem.tag}}</view>
 										</view>
