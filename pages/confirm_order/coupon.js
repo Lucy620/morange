@@ -89,7 +89,7 @@ Page({
     let discount = coupon_list[index].discount
     let couponType = coupon_list[index].coupon_type
     let price = this.data.price
-    console.log('reduce_cost--->','discount'? parseFloat(pay_price*discount) :parseFloat(pay_price) - parseFloat(reduce_cost))
+    console.log('price-->', price,pay_price)
     prevPage.setData({
       user_coupon_id: coupon_list[index].select ? coupon_list[index].id : 0,
       reduce_cost: couponType == 'discount' ? parseFloat(price * (1 - discount)) : reduce_cost > pay_price ? pay_price : reduce_cost,

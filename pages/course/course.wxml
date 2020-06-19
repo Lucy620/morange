@@ -128,7 +128,7 @@
 										<view class="btn-active" wx:if="{{nowtime < teamItem.end_at && teamItem.rest_stock > 0 && teamItem.course.type != 'camp'}}">{{teamItem.is_spell == 1 ? '拼课' : utils.checkStatus(teamItem.course_id, freeCourseList, teamItem.svip_free)}}
 										 <!-- <progress wx:if="{{teamItem.is_spell == 1}}" class="joint-num" percent="20" font-size="12"></progress> -->
 										</view>
-										<view class="btn-active" wx:if="{{teamItem.course.type == 'camp'}}">详情</view>
+										<view class="btn-active" wx:if="{{teamItem.course.type == 'camp' && nowtime <= teamItem.end_at}}">详情</view>
 										<view class="coach-btn-box" wx:if="{{teamItem.rest_stock == 0  && nowtime < teamItem.end_at && teamItem.course.type != 'camp'}}">
 											<view class="wait-btn">等候</view>
 										</view>

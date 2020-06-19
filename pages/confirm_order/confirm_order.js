@@ -138,12 +138,16 @@ Page({
     let dataId = this.data.dataId
     let coupon_list = this.data.coupon_list
     let user_coupon_id = this.data.user_coupon_id
-    let pay_price = this.data.discount_price
+    let pay_price = this.data.pay_price
+    let discount_price = this.data.discount_price
     let course = this.data.course
+    let user = this.data.user
     app.couponList = coupon_list
-    console.log('price--->',course.price)
+    let balanceEnough = this.data.user.balance >= discount_price;
+    let finalyPrice = balanceEnough? discount_price :pay_price
+    let price = user.type == 'vip'? course.vip_price: course.price
     wx.navigateTo({
-      url: '/pages/confirm_order/coupon?id=' + user_coupon_id + '&pay_price=' + pay_price + '&price=' + course.price
+      url: '/pages/confirm_order/coupon?id=' + user_coupon_id + '&pay_price=' + finalyPrice + '&price=' + price
     })
   },
 
@@ -182,6 +186,7 @@ Page({
     let user = this.data.user
     let temp = []
     let pay_price = this.teamPayPirce(courseDate, id, user, activity)
+    let discount_price = this.teamPayVipPirce(courseDate, id, user, activity)
     if (id == 3 || id == 2 && !activity.two) {
       for (let item of couponAll) {
         if (item.coupon_type == 'normal') {
@@ -213,7 +218,7 @@ Page({
       user_coupon_id: 0,
       coupon_type: 'normal',
       pay_price: pay_price,
-      discount_price: pay_price
+      discount_price: discount_price
     })
 
   },
@@ -280,7 +285,7 @@ Page({
             let discountType = that.data.coupon_type
             let discount = that.data.discount
             let price = that.teamPayPirce(courseDate, cart.amount, user, activity)
-            discount_price = price
+            discount_price = that.teamPayVipPirce(courseDate, cart.amount, user, activity)
             pay_price = discountType == 'discount' ? price * discount  :price - that.data.reduce_cost
             number = cart.amount
           }
@@ -375,6 +380,25 @@ Page({
     }
 
     return pay_price
+  },
+
+  /**
+   * 计算团课魔橙卡折扣价
+   */
+  teamPayVipPirce: function (courseDate, num, user, activity) {
+    let vip_price = 0
+    if (activity.two && num == 2) {
+      //会员价
+        vip_price = courseDate.vip_price
+    } else {
+      //会员价
+        if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1 && courseDate.is_spell != 1 && !courseDate.svip_free && type == 'buy'){
+          vip_price = courseDate.vip_price * (num - 1)
+        }else{
+          vip_price = courseDate.vip_price * num
+        } 
+    }
+    return vip_price
   },
 
   /***
