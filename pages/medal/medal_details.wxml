@@ -1,6 +1,10 @@
 <!--pages/medal/medal.wxml-->
 
-<view class="wrapper" hidden="{{showLoad}}">
+<navigationBar hasBack background="#000">
+		<view slot="title" class="bar-title">魔橙勋章详情</view>
+	</navigationBar> 
+
+<view class="wrapper" hidden="{{showLoad}}" style="margin-top: {{statusBarHeight+44}}px">
   <!--勋章-->
   <image src="{{status== 'true' ? medal.light_img : medal.img}}" mode="widthFix" class="medal-img" wx:if="{{unlock == 'true'}}"></image>
   <image src="http://boringcdn.nanningboring.com/FgzfHnaSVFL_xijFi23souN9Kiif" mode="widthFix" class="medal-img" wx:else></image>

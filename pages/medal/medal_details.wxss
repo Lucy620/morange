@@ -11,9 +11,10 @@
 /**勋章**/
 
 .medal-img {
-  width: 309rpx;
-  height: 340rpx;
+  width: 300rpx;
   margin-top: 60rpx;
+  margin: auto;
+  padding-top: 80rpx;
 }
 
 .speed {
@@ -40,7 +41,8 @@
 .node-number {
   color: #fff;
   margin-top: 15rpx;
-  font-size: 26.7rpx;
+  font-size: 22rpx;
+  font-weight: 300rpx;
 }
 
 .time {
@@ -60,6 +62,7 @@
 
 .list-box {
   padding: 50rpx;
+  margin-top: 225rpx;
 }
 
 .list-row {
@@ -90,8 +93,9 @@
 .list-text {
   color: #fff;
   text-align: left;
-  font-size: 24rpx;
+  font-size: 22rpx;
   margin-top: 10rpx;
+  font-weight: 300;
 }
 
 .user-box {

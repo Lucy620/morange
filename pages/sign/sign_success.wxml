@@ -137,7 +137,6 @@
 					</view>
 				</block>
 			</view>
-			<image src="https://assets.morangefitness.com/bg.png" mode="widthFix" class="bg"></image>
 		</view>
 	</view>
 	<image src="https://assets.morangefitness.com/share-img.png" mode="widthFix" class="share-img" bindtap="onGive"></image>

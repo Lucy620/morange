@@ -18,7 +18,9 @@ Page({
     user_amount: 0,
     status: 'false',
     time: '',
-    speed: 0
+    speed: 0,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**

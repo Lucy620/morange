@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "魔橙勋章详情",
-  "usingComponents": {}
+  "usingComponents": {
+    "navigationBar": "/pages/components/navigationBar/navigationBar"
+  }
 }
