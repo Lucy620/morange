@@ -39,6 +39,8 @@ Page({
     number: 0, // 选择的数量
     priceIndex: 0, // 价格私教课时index
     pay_price: 0, // 应付金额
+    default_price: 0,
+    default_vip_price: 0,
     queue_order: 0, // /订单人数
     showTips: false, // 提示遮罩
     discount_price: 0, // 魔橙卡优惠价
@@ -138,14 +140,14 @@ Page({
     let dataId = this.data.dataId
     let coupon_list = this.data.coupon_list
     let user_coupon_id = this.data.user_coupon_id
-    let pay_price = this.data.pay_price
-    let discount_price = this.data.discount_price
+    let pay_price = this.data.default_price
+    let discount_price = this.data.default_vip_price
     let course = this.data.course
     let user = this.data.user
     app.couponList = coupon_list
     let balanceEnough = this.data.user.balance >= discount_price;
     let finalyPrice = balanceEnough? discount_price :pay_price
-    let price = user.type == 'vip'? course.vip_price: course.price
+    let price = user.type == 'vip' && user.balance > finalyPrice? course.vip_price: course.price
     wx.navigateTo({
       url: '/pages/confirm_order/coupon?id=' + user_coupon_id + '&pay_price=' + finalyPrice + '&price=' + price
     })
@@ -218,7 +220,9 @@ Page({
       user_coupon_id: 0,
       coupon_type: 'normal',
       pay_price: pay_price,
-      discount_price: discount_price
+      discount_price: discount_price,
+      default_price: pay_price,
+      default_vip_price: discount_price
     })
 
   },
@@ -319,6 +323,8 @@ Page({
             priceIndex: priceIndex,
             pay_price: pay_price,
             discount_price: discount_price,
+            default_price: pay_price,
+            default_vip_price: discount_price,
             give_expired: data.obj.give_expired,
             teamNumber: teamNumber,
             dataId: 1,
@@ -392,7 +398,7 @@ Page({
         vip_price = courseDate.vip_price
     } else {
       //会员价
-        if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1 && courseDate.is_spell != 1 && !courseDate.svip_free && type == 'buy'){
+        if(app.globalData.freeCourseList.indexOf(courseDate.course_id) != -1 && courseDate.is_spell != 1 && !courseDate.svip_free && courseDate.type == 'buy'){
           vip_price = courseDate.vip_price * (num - 1)
         }else{
           vip_price = courseDate.vip_price * num
