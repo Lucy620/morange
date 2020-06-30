@@ -6,11 +6,15 @@ page {
   background: #181818;
 }
 
+.header {
+  background:rgba(32,32,32,1);
+  box-shadow:0px 2px 18px 0px rgba(0, 0, 0, 0.5);
+}
+
 .head-box {
   display: flex;
   align-items: center;
   height: 215.3rpx;
-  background: #131313;
 }
 
 .row-box {
@@ -47,8 +51,7 @@ page {
 
 /**卡路里**/
 .calorie-box{
-  height: 122rpx;
-  background: url(https://assets.morangefitness.com/calorie-bg.png);
+  height: 140rpx;
   background-size: 100%;
   display: flex;
   align-items: center;

@@ -8,6 +8,7 @@
 
 <view class="wrapper" hidden="{{showLoad}}" style="margin-top: {{ios? statusBarHeight-20: statusBarHeight}}px">
   <!--头部-->
+  <view class="header">
   <view class="head-box">
     <view class="row-box">
       <view class="row-number">
@@ -37,6 +38,7 @@
       </view>
       <view class="calorie-text">累计消耗热量/Kcal</view>
     </view>
+  </view>
   </view>
 
   <!--待进行-->

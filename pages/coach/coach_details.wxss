@@ -129,7 +129,7 @@ video {
   flex-direction: column;
   position: absolute;
   bottom: 0;
-  background-image:linear-gradient(0deg,rgba(0,0,0,1),rgba(255,255,255,0));
+  background-image:linear-gradient(0deg,rgba(0,0,0,1),rgba(0,0,0,0));
 }
 
 .details-box {
@@ -149,6 +149,7 @@ video {
   padding-left: 30rpx;
   width: fit-content;
   padding-right: 20rpx;
+  margin-bottom: -20rpx;
 }
 
 .coach-heart {
@@ -164,6 +165,9 @@ video {
   font-size: 20rpx;
   margin: 30rpx;
   color: #fff;
+  font-weight: 300;
+  line-height: 40rpx;
+  margin-bottom: 5rpx;
 }
 
 .arrow {
@@ -500,6 +504,7 @@ video {
   border-radius: 30rpx;
   border: solid 3rpx #424242;
   color: #bcbcbc;
+  box-shadow: none;
 }
 
 .coach-btn-box {
@@ -543,12 +548,10 @@ video {
   left: 0;
   bottom: 0;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
   background-color: #181818;
   border-top-left-radius: 32rpx;
   border-top-right-radius: 32rpx;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .evaluate-top {
@@ -558,6 +561,7 @@ video {
   justify-content: center;
   color: #FF9C00;
   background-color: #252525;
+  margin-bottom: 15rpx;
 }
 
 .evaluate-down {
