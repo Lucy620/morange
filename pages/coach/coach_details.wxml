@@ -64,12 +64,20 @@
 
 		<!--星期-->
 		<view class="week-box {{weekFix ? 'week-box-fix' :''}}">
-			<view class="week-item" wx:for="{{weekList}}" wx:key="index" bindtap="selectDate" data-index="{{index}}">{{item.week}}
+			<!-- <view class="week-item" wx:for="{{weekList}}" wx:key="index" bindtap="selectDate" data-index="{{index}}">{{item.week}}
 				<view class="select-week-box" wx:if="{{weekIndex == index}}">
 					<view class="select-week">
 						<view class="select-date">{{tools.formatTime(item.time,'{m}.{d}')}}</view>
 						<view class="select-date-tips" wx:if="{{weekIndex <= 2}}">{{weekText[index]}} </view>
 						<view class="select-date-tips" wx:else>{{weekText[index]+ item.week}} </view>
+					</view>
+				</view>
+			</view> -->
+			<view class="week-item" wx:for="{{weekList}}" wx:key="index" bindtap="selectDate" data-index="{{index}}">
+				<view class="select-week-box">
+					<view class="select-date {{weekIndex == index? 'time-date-active': ''}}">{{tools.formatTime(item.time,'{m}.{d}')}}</view>
+					<view class="select-week {{weekIndex == index? 'time-week-active': ''}}">
+						<view class="select-date-tips {{weekIndex == index? 'week-active': ''}}">{{item.week}} </view>
 					</view>
 				</view>
 			</view>

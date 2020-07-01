@@ -15,6 +15,7 @@ var fundebug = require('utils/fundebug.1.3.1.min.js')
 })
 App({
   globalData: {
+    tag_id: '0',
     loginStatus: 0,
     hasCoupon: '',
     freeCourseList: [],

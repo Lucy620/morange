@@ -145,6 +145,13 @@
 					"pathName": "pages/invitation/coupon",
 					"query": "send_user_id=1",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "tag_id",
+					"pathName": "pages/course/course",
+					"query": "tag_id=1",
+					"scene": null
 				}
 			]
 		}

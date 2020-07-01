@@ -226,6 +226,7 @@ swiper {
   background-color: #262626;
   flex-wrap: wrap;
   width: 100%;
+  flex: 1;
 }
 
 .theme-item {

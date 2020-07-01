@@ -269,12 +269,15 @@ Page({
     if (options.coupon_code) {
       app.globalData.hasCoupon = options.coupon_code
       this.checkCouponCode(options.coupon_code)
+    }else if (options.tag_id) {
+        app.globalData.tag_id = options.tag_id.toString()
     }
     
     if(app.globalData.minisession){
       this.getFreeCourseList()
       this.getUnreceivedCouponList()
     }
+
    
     this.animation = wx.createAnimation()
     this.jointAnimation = wx.createAnimation()

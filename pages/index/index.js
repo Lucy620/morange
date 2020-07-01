@@ -98,7 +98,7 @@ Page({
    * 打开城市、主题动画
    */
   translate: function () {
-    this.animation.translateY(-400).step();
+    this.animation.translateY(-500).step();
     this.setData({
       animation: this.animation.export()
     })
@@ -109,7 +109,7 @@ Page({
    */
   closeAnimation: function () {
     let that = this
-    that.animation.translateY(400).step();
+    that.animation.translateY(500).step();
     that.setData({
       animation: that.animation.export()
     })

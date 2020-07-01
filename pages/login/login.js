@@ -69,7 +69,8 @@ Page({
         encrypted_data: e.detail.encryptedData,
         openid: app.globalData.openid,
         phone_model: that.data.phoneModel,
-        channel: that.data.channel
+        channel: that.data.channel,
+        tag_id: app.globalData.tag_id
       }, (res) => {
         if (res.data.code == 200) {
           ajax.setMinisession(res.data.obj.session);
