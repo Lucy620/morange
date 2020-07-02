@@ -264,13 +264,6 @@ video {
   background: #272727;
 }
 
-.select-date-tips {
-  width: 100%;
-  font-size: 22rpx;
-  color: #fff;
-  text-align: center;
-  line-height: 1.2;
-}
 
 /**教练 门店**/
 

@@ -237,6 +237,7 @@ s
 .btn-default {
   background: #515151;
   color: #AAAAAA;
+  box-shadow: none;
 }
 
 .detail-position-box {
@@ -638,4 +639,16 @@ s
 
 .time-date-active {
   color: #FF9C00;
+}
+
+.select-date-tips {
+  width: 100%;
+  font-size: 24rpx;
+  color: #676767;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.week-active {
+  color: #000;
 }

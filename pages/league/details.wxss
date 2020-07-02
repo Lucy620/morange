@@ -186,6 +186,7 @@ video{
 .btn-text {
   flex: 1;
   position: relative;
+  color: #000;
   background:linear-gradient(0deg,rgba(255,135,28,1),rgba(255,167,14,1));
 }
 

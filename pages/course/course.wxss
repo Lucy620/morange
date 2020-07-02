@@ -192,18 +192,6 @@ swiper {
 }
 
 
-.select-date-tips {
-  width: 100%;
-  font-size: 24rpx;
-  color: #676767;
-  text-align: center;
-  line-height: 1.2;
-}
-
-.week-active {
-  color: #000;
-}
-
 /**教练 门店**/
 
 .coach-store-box {
@@ -1302,7 +1290,7 @@ swiper {
 }
 
 .course-coach-selected {
-  color: #131313;
+  color: #000;
   background:linear-gradient(0deg,rgba(255,135,28,1),rgba(255,167,14,1));
   box-shadow:0px 6px 8px 0px rgba(0, 0, 0, 0.5);
 }

@@ -371,7 +371,7 @@
 			<text class="select-box-button-confirm" bindtap="toJointCouser">确认</text>
 			<view class="coach-row-item coach-row-item-selected">
 				<image src="{{coachList[coachIndex].headimgurl}}" mode="aspectFill" class="coach-img coach-img-selected"></image>
-				<view class="coach-name ">{{coachList[coachIndex].name}}</view>
+				<view style="margin-top:-200rpx" class="coach-name">{{coachList[coachIndex].name}}</view>
 			</view>
 		</view>
 

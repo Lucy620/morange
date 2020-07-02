@@ -1,11 +1,11 @@
 <!--pages/user/integralEquity.wxml-->
 <view class="wrapper" hidden="{{showLoad}}">
 
-<navigationBar hasBack background="transparent">
+<navigationBar hasBack background="#000">
 	<view slot="title" class="bar-title">会员权益</view>
 </navigationBar>
 
-	<swiper indicator-dots="{{true}}" autoplay="{{false}}" interval="5000" duration="500" indicator-active-color="#ff8400" bindchange='binSwiper' current='{{equity}}'>
+	<swiper style="margin-top: {{statusBarHeight+44}}px" indicator-dots="{{true}}" autoplay="{{false}}" interval="5000" duration="500" indicator-active-color="#ff8400" bindchange='binSwiper' current='{{equity}}'>
 		<block wx:for="{{integral}}" wx:key="index">
 			<swiper-item class='swiper-item-box'>
 				<image class="swiper-item" src="{{item.img}}" mode="widthFix"></image>

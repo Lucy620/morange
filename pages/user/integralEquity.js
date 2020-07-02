@@ -14,7 +14,9 @@ Page({
    */
   data: {
     equity: 0,
-    showLoad:true
+    showLoad:true,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios
   },
 
   /**
