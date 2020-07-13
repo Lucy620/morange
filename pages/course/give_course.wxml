@@ -35,6 +35,7 @@
 
   <view class="tips-box" wx:if="{{list.length == 0}}">
     <view class="box-row">
+    <image src="https://assets.morangefitness.com/little-evil.png"mode="widthFix"class=little-evil"></image>
       <view class="tips">还没有赠送过课程哦!</view>
       <view class="tips-text">点击任意课程的名称，选择「赠课给好友」，即可送出。</view>
       <view class="tips-btn" bindtap='jumpPage' data-url='pages/course/course'>立即去送课</view>

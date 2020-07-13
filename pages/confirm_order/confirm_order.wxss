@@ -129,11 +129,14 @@
 .tab-item {
   width: 113rpx;
   text-align: center;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
   line-height: 66rpx;
   height: 66rpx;
   margin-right: 20rpx;
   color: #cdcdcd;
-  border-radius: 7rpx;
+  border-radius: 33rpx;
   position: relative;
   background-image: linear-gradient(#5e5e5e, #5e5e5e);
 }

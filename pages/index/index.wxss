@@ -75,8 +75,8 @@ swiper {
 
 .store-title {
   width: 100%;
-  color: #fff;
-  background-color: #292929;
+  color:black;
+  background-color: #ff9c00;
   position: relative
 }
 
@@ -99,8 +99,9 @@ swiper {
   height: 44rpx;
 }
 .phone{
-  width: 44rpx;
-  height: 44rpx;
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 15rpx;
 }
 
 .tip-title {

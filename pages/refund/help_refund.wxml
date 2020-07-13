@@ -116,6 +116,9 @@
 
 
   <view class="mask-box" wx:if="{{show}}">
+  <view></view>
+   <view></view>
+    <view ></view>
     <view class="mask-text-box">
       <view class="mask-text-title">提示</view>
 

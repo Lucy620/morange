@@ -56,16 +56,19 @@
 
 .btn {
   font-size: 36rpx;
-  width: 661rpx;
+  width: 600rpx;
+  height: 100rpx;
   position: absolute;
   bottom: 80rpx;
-  height: 101rpx;
-  left: 18rpx;
+  left: 0;
+  right: 0;
   text-align: center;
   line-height: 101rpx;
   color: #6c6c6c;
   background-color: #303030;
   border: solid 1rpx #6c6c6c;
+  border-radius: 50rpx;
+  margin: auto;
 }
 
 .mask-box {

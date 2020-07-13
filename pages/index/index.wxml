@@ -25,8 +25,8 @@
       <image src="{{item.main_img}}?imageView2/1/w/730/h/300" mode="widthFix" class="store" bindtap='jumpPage' data-url='pages/store/store_details?store_id={{item.id}}'></image>
       <view class="store-title">
       <view class="icon-box">
-          <image src="/assets/image/phone.png" mode="widthFix" class="phone" bindtap="onPhone" data-tel="{{item.mobile}}"></image>
-          <image src="{{!item.is_favorite ? '/assets/image/heart.png':'/assets/image/heart.png'}}" mode="widthFix" class="heart" bindtap="collection" data-status="{{item.is_favorite}}" data-store_id="{{item.id}}"></image>
+          <image src="https://assets.morangefitness.com/phone5.png" mode="widthFix" class="phone" bindtap="onPhone" data-tel="{{item.mobile}}"></image>
+          <image src="{{!item.is_favorite ? 'https://assets.morangefitness.com/heart.png':'https://assets.morangefitness.com/redheart'}}" mode="widthFix" class="heart" bindtap="collection" data-status="{{item.is_favorite}}" data-store_id="{{item.id}}"></image>
         </view>
         <view class="store-name">{{item.name}}</view>
         <view class="store-address">{{item.address}}</view>
@@ -54,14 +54,14 @@
       <view class="select-row" wx:if="{{type == 'screen'}}">
         <view class="box-left">
           <scroll-view scroll-y class="scroll-view-box">
-            <view class="box-item item-left item-normal">城市</view>
-            <view class="box-item item-left {{areaIndex == index ? 'box-item-acitve' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choiceCity" data-index="{{index}}">{{item.name}}</view>
+            <view class="box-item-store item-left item-normal">城市</view>
+            <view class="box-item-store item-left {{areaIndex == index ? 'box-item-acitve' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choiceCity" data-index="{{index}}">{{item.name}}</view>
           </scroll-view>
         </view>
         <view class="box-right">
           <scroll-view scroll-y class="scroll-view-box">
-            <view class="box-item item-right item-normal">选择区域</view>
-            <view class="box-item item-right {{regionIndex == index ? 'box-item-acitve' : ''}}" wx:for='{{region}}' wx:key='index' bindtap="choiceArea" data-index="{{index}}">{{item.name}}</view>
+            <view class="box-item-store item-right item-normal">选择区域</view>
+            <view class="box-item-store item-right {{regionIndex == index ? 'box-item-acitve' : ''}}" wx:for='{{region}}' wx:key='index' bindtap="choiceArea" data-index="{{index}}">{{item.name}}</view>
           </scroll-view>
         </view>
       </view>

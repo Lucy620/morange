@@ -228,8 +228,8 @@
 			<view class="coach-list-title">选择教练</view>
 			<view class="coach-row" wx:for="{{coachList}}" wx:key='index' bindtap="choiceCoach" data-index="{{index}}">
 				<view class="coach-row-item">
-					<image src="{{item.headimgurl}}" mode="aspectFill" class="coach-img {{index == coachIndex ? 's-coach-img' : ''}}"></image>
-					<view class="coach-name {{index == coachIndex ? 's-coach-name' : ''}}">{{item.name}}</view>
+					<image src="{{item.headimgurl}}" mode="aspectFill" class="coach-img-spell {{index == coachIndex ? 's-coach-img-spell' : ''}}"></image>
+					 <view class="coach-name-spell {{index == coachIndex ? 's-coach-name-spell' : ''}}">{{item.name}}</view> 
 				</view>
 			</view>
 		</view>
@@ -254,7 +254,7 @@
 		<view class="select-row" wx:if="{{type == 'screen' && curTab == 'general_course'}}">
 			<view class="box-left">
 				<scroll-view scroll-y class="scroll-view-box">
-					<view class="box-item item-left item-normal">地区</view>
+					<view class=" box-item item-left item-normal">地区</view>
 					<view class="box-item item-left {{genAreaIndex == index ? 'box-item-acitve' : ''}}" wx:for='{{areaList}}' wx:key='index' bindtap="choiceGenArea" data-index="{{index}}">{{item.name}}</view>
 				</scroll-view>
 			</view>

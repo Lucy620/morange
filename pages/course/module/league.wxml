@@ -103,7 +103,7 @@
         <view class="money-row-text">支付时间: </view>
         <view class="money-row-text s-gray">{{tools.formatTime(courseData.order.pay_at,'{y}年{m}月{d}日{h}:{i}')}}</view>
       </view>
-      <view class="league-btn" bindtap="apply">取消预约</view>
+      <view class="league-btn"  bindtap="apply">取消预约</view>
 
       <view class="league-tips-text" wx:if="{{courseData.order.status == 'success' && courseData.data.is_spell == 0}}">
         <text wx:if="{{ courseData.order.type=='buy'}}">({{tools.formatTime(start_at,'{m}月{d}日 {h}:{i}')}}后取消,不支持退款)</text>

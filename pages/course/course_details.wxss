@@ -227,15 +227,17 @@
 }
 
 .league-btn {
-  width: 663rpx;
-  font-size: 40rpx;
-  height: 101rpx;
+  width: 663rpx; 
+  margin-bottom: 40rpx;
+  border-radius: 50rpx;
+  font-size: 36rpx;
+  height: 100rpx;
   text-align: center;
   line-height: 101rpx;
-  margin: 0 auto;
-  color: #676767;
+  color: #858585;
+  background-color: #515151;
   margin-top: 50rpx;
-  border: solid 1rpx #6c6c6c;
+  border: solid 1rpx #515151;
 }
 
 .league-tips-text {

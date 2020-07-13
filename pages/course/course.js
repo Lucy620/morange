@@ -1139,11 +1139,28 @@ Page({
         wx.stopPullDownRefresh();
         if (data.code == 200) {
           let list = data.obj.list
+
           for (let i in list) {
             for (let item of list[i]) {
               item.team = that.countPercent(item.team)
             }
           }
+          list = list.map(item =>{ 
+            return item.map(subItem =>{                               
+                  const lastCourseList = subItem.team.filter(function(item,index,array) {
+                    return item.end_at < Math.round(new Date().getTime() / 1000)
+                  })
+                  
+                  const futureCourseList = subItem.team.filter(function(item,index,array) {
+                    return item.end_at > Math.round(new Date().getTime() / 1000)
+                  })
+                  subItem.team = futureCourseList.concat(lastCourseList)
+                  
+                  return subItem
+              })
+            })
+          
+
           that.setData({
             courseList: list,
             showLoad: false,
