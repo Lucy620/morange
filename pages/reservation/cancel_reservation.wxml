@@ -5,6 +5,10 @@
   <!--时间-->
   <view class="date-box">本月</view>
 
+<!--顶部导览-->
+<navigationBar>
+	<view slot="title" class="bar-title">取消预约记录</view>
+</navigationBar>
 
   <!--预约课程-->
   <view class="box" wx:for="{{list}}" wx:key='index'>

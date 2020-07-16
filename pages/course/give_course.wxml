@@ -4,7 +4,7 @@
  <view slot="title"  class="bar-title">赠课记录</view>
 </navigationBar>
 
-<view class="wrapper" style="margin-top:68px" hidden="{{showLoad}}">
+<view class="wrapper" style="margin-top:{{statusBarHeight+44}}px;" hidden="{{showLoad}}">
 
   <!--时间选择-->
   <view class="date-box">

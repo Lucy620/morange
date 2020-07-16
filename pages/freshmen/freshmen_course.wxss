@@ -1,0 +1,34 @@
+/* pages/freshmen/freshmen_course.wxss */
+
+.scroll-box {
+  height: 100%;
+  display: flex;
+  padding-bottom: 150rpx;
+}
+.course-box {
+  margin: 20rpx;
+  background-color: #292929;
+  border-radius: 12rpx;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.course {
+  width: 100%;
+  height: 100%;
+}
+
+.course-title {
+  width: 100%;
+  color:black;
+  background-color: #ff9c00;
+  position: relative
+}
+
+.course-name {
+  font-size: 26rpx;
+  margin-top: 12rpx;
+  margin-left: 12rpx;
+}

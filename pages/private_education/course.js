@@ -35,6 +35,7 @@ Page({
     curImg: 0,
     images:[],
     imgHeights: [],
+    scrollHeight:0,
   },
 
   /**
@@ -45,6 +46,8 @@ Page({
     let id = e.currentTarget.dataset.id
     let place = that.data.place
     let courseHeight = that.data.place.posterHeight + that.data.place.camphHeight + that.data.place.storyAreaHeight
+    let scrollBoxHeight = that.data.place.storyAreaHeight
+
     if (id == 1) {
       wx.pageScrollTo({
         scrollTop: place.posterHeight,
@@ -162,6 +165,7 @@ Page({
       query.select('#story').boundingClientRect(function (res) {
         that.data.place.storyAreaHeight = res.height
       }).exec()
+      
     },1000)
     this.setData({
       private_id: options.private_id || 0

@@ -58,7 +58,6 @@ page {
   justify-content: center ;
   align-items: center;
   font-size: 28rpx;
-  box-shadow:0px 6px 8px 0px rgba(0, 0, 0, 0.5);
   margin-top: 32rpx;
 }
 
@@ -84,7 +83,7 @@ page {
   border-radius: 28rpx;
   margin: auto;
   left: 0;
-  right: 0
+  right: 0;
 }
 
 .wrapper-box {
@@ -105,6 +104,7 @@ page {
 
 .swiper-box {
   height: 74px;
+  
 }
 
 swiper {
@@ -215,7 +215,7 @@ swiper {
 }
 
 .scroll-box {
-  height: 100%;
+  
   flex-direction: column;
   -webkit-overflow-scrolling: touch;
   overflow: auto;
@@ -272,7 +272,6 @@ swiper {
 .coach-img {
   width: 150rpx;
   height: 150rpx;
-  
   position: relative;
 }
 
@@ -540,7 +539,7 @@ swiper {
   top: 0;
   left: -750px;
   bottom: 0;
-  z-index: 2;
+  z-index: 1;
   background-color: #262626;
 }
 
@@ -552,7 +551,7 @@ swiper {
   line-height: 89.3rpx;
   background-color: #0d0d0d;
   position: relative;
-  z-index: 2;
+  z-index: 1;
   padding: 0 20rpx;
 }
 
@@ -798,7 +797,7 @@ swiper {
   top: 0;
   left: -750px;
   bottom: 0;
-  z-index: 2;
+  z-index: 1;
 }
 
 .screen-title-box {
@@ -830,7 +829,7 @@ swiper {
   text-align: center;
   padding-bottom: 89rpx;
   background-color: #131313;
-  z-index: 3
+  z-index: 0
 }
 
 .scroll-view-box {
@@ -1127,7 +1126,6 @@ swiper {
   overflow: hidden;
   border-radius: 18rpx;
   width: 30vw;
-  height: 25vw;
   margin: 4vw 2vw 0 2vw;
   position: relative;
 }
@@ -1177,7 +1175,7 @@ bottom:0;
   padding: 0 8rpx;
   margin-left: -40rpx;
   margin-top: -126rpx;
-  z-index: 1;
+  z-index: 3;
 }
 
 .coach-name-selected {
@@ -1207,10 +1205,25 @@ bottom:0;
 }
 
 .coach-img-selected {
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
   border: 2px solid #FF9C00;
-  margin-bottom: 82rpx
+  margin-bottom: 100rpx;
+  z-index:2;
+  width: 150rpx;
+  height: 150rpx;
+}
+
+
+.freshmen_box{
+  height:100rpx;
+}
+.freshmen_title_box{
+  height:100rpx;
+  background-color:#FF9C00;
+  border-radius: 20rpx;
 }
 
 .course-coach-box{
@@ -1247,7 +1260,8 @@ bottom:0;
   justify-content: center;
   height: 84rpx;
   align-items: center;
-  margin: auto
+  margin: auto;
+  z-index:1;
 }
 
 .coach-line {

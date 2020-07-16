@@ -15,11 +15,15 @@ Page({
   data: {
     list:'',
     showLoad: true,
+    statusBarHeight: app.globalData.statusBarHeight,
+    ios: app.globalData.ios,
   },
+ 
   /**
    * 跳转页面
    */
   jumpPage: function (e) {
+    
     var url = e.currentTarget.dataset.url || ''
     var index = config.BASE.tabPages.indexOf('/' + url)
     if (index != -1) {

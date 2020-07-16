@@ -115,7 +115,8 @@ Page({
     statusBarHeight: app.globalData.statusBarHeight,
     ios: app.globalData.ios,
     status: true,
-    unreceivedCoupons: []
+    unreceivedCoupons: [],
+    scrollHeight:0
   },
 
   /***
@@ -297,6 +298,20 @@ Page({
       showTab: app.showTab
     })
     this.getStoreArea()
+
+    // let that = this
+    // setTimeout(function(){
+    //   const query = wx.createSelectorQuery()
+
+    //   query.select('#sroll-box').boundingClientRect(function (res) {
+    //     that.setData()({
+    //       scrollHeight : res.height
+    //     })
+    //   }).exec()
+    // },1000)
+    // this.setData({
+    //   private_id: options.private_id || 0
+    // })
   },
 
   
@@ -1264,6 +1279,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    
+    
     this.setData({
       barHeight: app.globalData.barHeight
     })
@@ -1765,3 +1782,5 @@ Page({
   },
 
 })
+
+// console.log('高度'+scrollHeight);

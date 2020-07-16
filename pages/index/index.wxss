@@ -107,7 +107,8 @@ swiper {
 .tip-title {
   font-size: 24rpx;
   text-align: center;
-  color: #fff;
+  color: black;
+  background-color: #ff9c00;
   height: 92rpx;
   display: flex;
   justify-content: center;

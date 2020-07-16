@@ -18,7 +18,7 @@
 
 
 <view wx:if="{{showCities}}" class="city-modal">
-	<view class="city-select">
+	<view class="city-select" style="margin-top:{{statusBarHeight}}px">
 		<view class="selected">
 			<text>当前选择</text>
 			<text>{{curCity.name}}</text>
@@ -44,7 +44,7 @@
 <!-- <image src="https://assets.morangefitness.com/powered_by_morange.png"  class="page-background"></image> -->
 	<view class="container-box">
 		<!--轮播-->
-		<view class="swiper-box" wx:if="{{showBanners}}">
+		<view class="swiper-box"  wx:if="{{showBanners}}">
 			<swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000">
 				<block wx:for="{{advList}}" wx:key="index">
 					<swiper-item bindtap='jumpPage' data-url="{{item.url}}">
@@ -55,7 +55,7 @@
 		</view>
 
 		<!--tab-->
-		<view class="tab-title-box">
+		<view class="tab-title-box" >
 			<text class="tab-title {{curTab == 'general_course'? 'tab-title-active': ''}}" bindtap="onTabChange" data-type="general_course">团课</text>
 			<text class="tab-title {{curTab == 'private_course'? 'tab-title-active': ''}}" bindtap="onTabChange" data-type="private_course">私教</text>
 			<text class="tab-title {{curTab == 'camp'? 'tab-title-active': ''}}" bindtap="onTabChange" data-type="camp">训练营</text>
@@ -79,10 +79,22 @@
 		</view>
 	</view>
 
+<!--新人必选-->
+<view class="freshmen_box" wx:if="{{curTab == 'general_course'}}">
+			<swiper class="list-swiper-box" duration="{{200}}" current="{{weekIndex}}" bindchange='binSwiper'>
+					<swiper-item style="-webkit-overflow-scrolling:touch" wx:for="{{courseList}}" wx:key='index'>
+						<view class="freshmen_title_box" bindtap='jumpPage' data-url='pages/freshmen/freshmen_course'>
+						</view>
+					</swiper-item>
+			</swiper>
+</view>
+						
+
 	<view class="coach-store-box" wx:if="{{curTab == 'general_course'}}" style="margin-bottom: {{statusBarHeight + 44 + 60}}px">
 			<swiper class="list-swiper-box" duration="{{200}}" current="{{weekIndex}}" bindchange='binSwiper'>
 					<swiper-item style="-webkit-overflow-scrolling:touch" wx:for="{{courseList}}" wx:key='index'>
 						<view id="course_box" class="scroll-box" bindtouchmove="onListTouch">
+						
 							<block wx:for="{{item}}" wx:key='index' wx:for-item="course">
 								<view class="store-row">
 									<view style="display:flex; align-items:center">
@@ -207,7 +219,7 @@
 
 	<!--训练营-->
 	<view class="scroll-box list-space"  wx:if="{{curTab == 'camp'}}" style="padding-bottom: {{barHeight + 64}}px">
-		<view class="camp-box">
+		<scroll-view scroll-y class="camp-box">
 			<view class="camp-row">
 				<block wx:for="{{campList}}" wx:key='index'>
 					<view class="camp-row-item" bindtap='jumpPage' data-url='pages/training_camp/details?course_id={{item.id}}&area_id={{areaList[areaIndex].id}}'>
@@ -219,13 +231,13 @@
 					</view>
 				</block>
 			</view>
-		</view>
+		</scroll-view>
 	</view>
 
 	<!--拼课教练列表-->
-	<view scroll-y class="scroll-box" wx:if="{{curTab == 'joint_course'}}" style="margin-bottom: {{barHeight}}px">
+	<view scroll-y class="scroll-box" wx:if="{{curTab == 'joint_course'}}" style="margin-bottom: 55px">
 		<view class="coach-box">
-			<view class="coach-list-title">选择教练</view>
+			<view class="coach-list-title" >选择教练</view>
 			<view class="coach-row" wx:for="{{coachList}}" wx:key='index' bindtap="choiceCoach" data-index="{{index}}">
 				<view class="coach-row-item">
 					<image src="{{item.headimgurl}}" mode="aspectFill" class="coach-img-spell {{index == coachIndex ? 's-coach-img-spell' : ''}}"></image>
@@ -376,7 +388,7 @@
 		</view>
 
 		<view class="select-row">
-			<view class="select-coach-box">
+			<scroll-view scroll-y class="select-coach-box">
 				<view class="coach-title-box">
 					<view class="coach-line"></view>
 					<view class="coach-title">选择课程</view>
@@ -426,7 +438,7 @@
 					</view>
 				</view>
 
-			</view>
+			</scroll-view>
 		</view>
 
 	</view>

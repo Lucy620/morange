@@ -130,6 +130,7 @@ padding: 6rpx;
   background:linear-gradient(0deg,rgba(255,135,28,1),rgba(255,167,14,1));
   box-shadow:0rpx 6rpx 8rpx 0rpx rgba(0, 0, 0, 0.5);
   border-radius:36rpx;
+  font-size: 32rpx;
   margin: 0 auto;
   line-height: 99rpx;
   color: black;

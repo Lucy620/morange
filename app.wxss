@@ -114,13 +114,13 @@ image{
   font-size: 24rpx;
   color: #696969;
   margin-bottom: 24rpx;
-  border-radius: 10rpx;
+  border-radius: 32rpx;
   height: 64rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #515151;
-  box-shadow:0px 6px 8px 0px rgba(0, 0, 0, 0.5);
+  
 }
 .box-item-store {
   font-size: 24rpx;
@@ -132,7 +132,7 @@ image{
   align-items: center;
   justify-content: center;
   background-color: #515151;
-  box-shadow:0px 6px 8px 0px rgba(0, 0, 0, 0.5);
+  
 }
 
 .item-left{

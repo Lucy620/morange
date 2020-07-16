@@ -54,7 +54,8 @@
     "pages/sign/sign_success",
     "pages/user/integralEquity",
     "pages/user/integralDetail",
-    "pages/user/integralChange"
+    "pages/user/integralChange",
+    "pages/freshmen/freshmen_course"
   ],
   "window": {
     "backgroundColor": "#1f1f1f",

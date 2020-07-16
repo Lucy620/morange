@@ -56,8 +56,9 @@
   <block wx:if="{{list.length == 0}}">
     <view class="no-record-box">
       <view class="record-box">
-        <view class="record-tips">本月无任何预约记录</view>
-        <view class="record-tips">「有心不怕迟，立即约课吧! 」</view>
+      <image src="https://assets.morangefitness.com/little-evil.png"mode="widthFix"class=little-evil"></image>
+        <view class="tips">本月无任何预约记录</view>
+        <view class="tips-text">「有心不怕迟，立即约课吧! 」</view>
         <view class="record-btn" bindtap='jumpPage' data-url='pages/course/course'>立 即 约 课</view>
         <view class="cancel-tips" bindtap='jumpPage' data-url='pages/reservation/cancel_reservation'>已取消的课程></view>
       </view>

@@ -10,9 +10,9 @@
   <!--头部-->
   <view class="head-box" style="margin-top: {{statusBarHeight+44}}px">
     <view class="row">
-      <view class="row-title {{type == 'rank_month' ? 'title' : ''}}" bindtap="switchTab" data-type="rank_month">本月</view>
-      <view class="row-title {{type == 'rank_year' ? 'title' : ''}}" bindtap="switchTab" data-type="rank_year">今年</view>
-      <view class="row-title {{type == 'rank_all' ? 'title' : ''}}" bindtap="switchTab" data-type="rank_all">总计</view>
+      <view class="row-title {{type == 'rank_month' ? '' : 'title'}}" bindtap="switchTab" data-type="rank_month">本月</view>
+      <view class="row-title {{type == 'rank_year' ? '' : 'title'}}" bindtap="switchTab" data-type="rank_year">今年</view>
+      <view class="row-title {{type == 'rank_all' ? '' : 'title'}}" bindtap="switchTab" data-type="rank_all">总计</view>
     </view>
   </view>
 
